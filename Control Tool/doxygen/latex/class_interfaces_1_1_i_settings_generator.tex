@@ -1,0 +1,194 @@
+\hypertarget{class_interfaces_1_1_i_settings_generator}{}\section{Interfaces\+:\+:I\+Settings\+Generator Class Reference}
+\label{class_interfaces_1_1_i_settings_generator}\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+
+
+Class, containing all settings steps. It being used to generate settings table, which will be converted to E\+E\+P\+R\+OM data.  
+
+
+
+
+{\ttfamily \#include $<$I\+Settings\+Generator.\+hpp$>$}
+
+
+
+Inheritance diagram for Interfaces\+:\+:I\+Settings\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_interfaces_1_1_i_settings_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Interfaces\+:\+:I\+Settings\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_interfaces_1_1_i_settings_generator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_a4aa0307e906c003012aad75101072c65}{Initialize\+Steps\+List} (uint steps\+\_\+number)=0
+\begin{DoxyCompactList}\small\item\em Call this method to initialize steps list. It must be called before any other methods. Implementation must be ready to provide the instance of \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor}{I\+Adc\+Temperature\+Convertor} to steps. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}{Set\+Base\+Temperature} (double btemp)=0
+\begin{DoxyCompactList}\small\item\em Set\+Base\+Temperature -\/ Call it to set base temperature (in Celsius). Please note, that all steps will be recalculated afterwards. \end{DoxyCompactList}\item 
+virtual double \hyperlink{class_interfaces_1_1_i_settings_generator_a9cc36185b446f21e09a0e5633f39a1c5}{Get\+Base\+Temperature} ()=0
+\begin{DoxyCompactList}\small\item\em Get\+Base\+Temperature -\/ Call it to get base temperature (in Celsius). Please note, that base temperature returned by this method M\+AY D\+I\+F\+F\+ER from that, what was set by \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}{Set\+Base\+Temperature()}. It is because implementation may store A\+DC value rather than temperature. \end{DoxyCompactList}\item 
+virtual uint \hyperlink{class_interfaces_1_1_i_settings_generator_a1000ff41c6eecdb55a46c859ca0ebe67}{Get\+Base\+Temperature\+A\+DC} ()=0
+\begin{DoxyCompactList}\small\item\em Get\+Base\+Temperature\+A\+DC Like \hyperlink{class_interfaces_1_1_i_settings_generator_a9cc36185b446f21e09a0e5633f39a1c5}{Get\+Base\+Temperature()}, but returns A\+DC code for it. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_a4caf07447d0930440d9f21318892244c}{Set\+Base\+R\+PM} (uint base\+\_\+rpm)=0
+\begin{DoxyCompactList}\small\item\em Set\+Base\+Rpm Call this method to set base R\+PM. Base R\+PM -\/ is a R\+PM at base temperature. Please note, that all steps will be recalculated afterwards. \end{DoxyCompactList}\item 
+virtual uint \hyperlink{class_interfaces_1_1_i_settings_generator_ad088253da57b2ee0b94fe6fd1fb2dfdd}{Get\+Base\+R\+PM} ()=0
+\begin{DoxyCompactList}\small\item\em Get\+Base\+R\+PM -\/ Returns base R\+PM level. See \hyperlink{class_interfaces_1_1_i_settings_generator_a4caf07447d0930440d9f21318892244c}{Set\+Base\+R\+P\+M()} for details. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}\label{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}} 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps} ()=0
+\begin{DoxyCompactList}\small\item\em Calculate\+Steps Call this method to recalculate step A\+DC levels and R\+P\+Ms. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade3235715ae2e9cdbcfe0}{Get\+Step\+Ptr} (uint step)=0
+\begin{DoxyCompactList}\small\item\em Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps()} after making any changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class, containing all settings steps. It being used to generate settings table, which will be converted to E\+E\+P\+R\+OM data. 
+
+Definition at line 13 of file I\+Settings\+Generator.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_ad088253da57b2ee0b94fe6fd1fb2dfdd}\label{class_interfaces_1_1_i_settings_generator_ad088253da57b2ee0b94fe6fd1fb2dfdd}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Get\+Base\+R\+PM@{Get\+Base\+R\+PM}}
+\index{Get\+Base\+R\+PM@{Get\+Base\+R\+PM}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Get\+Base\+R\+P\+M()}{GetBaseRPM()}}
+{\footnotesize\ttfamily virtual uint Interfaces\+::\+I\+Settings\+Generator\+::\+Get\+Base\+R\+PM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get\+Base\+R\+PM -\/ Returns base R\+PM level. See \hyperlink{class_interfaces_1_1_i_settings_generator_a4caf07447d0930440d9f21318892244c}{Set\+Base\+R\+P\+M()} for details. 
+
+\begin{DoxyReturn}{Returns}
+Base R\+PM level. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_generator_a99bbe6e67e638ccc7bf6b21b3bc36135}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a9cc36185b446f21e09a0e5633f39a1c5}\label{class_interfaces_1_1_i_settings_generator_a9cc36185b446f21e09a0e5633f39a1c5}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Get\+Base\+Temperature@{Get\+Base\+Temperature}}
+\index{Get\+Base\+Temperature@{Get\+Base\+Temperature}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Get\+Base\+Temperature()}{GetBaseTemperature()}}
+{\footnotesize\ttfamily virtual double Interfaces\+::\+I\+Settings\+Generator\+::\+Get\+Base\+Temperature (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get\+Base\+Temperature -\/ Call it to get base temperature (in Celsius). Please note, that base temperature returned by this method M\+AY D\+I\+F\+F\+ER from that, what was set by \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}{Set\+Base\+Temperature()}. It is because implementation may store A\+DC value rather than temperature. 
+
+\begin{DoxyReturn}{Returns}
+Base temperature in Celsius 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_generator_a80b1ff8060a16d149989d98a88ab253e}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a1000ff41c6eecdb55a46c859ca0ebe67}\label{class_interfaces_1_1_i_settings_generator_a1000ff41c6eecdb55a46c859ca0ebe67}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Get\+Base\+Temperature\+A\+DC@{Get\+Base\+Temperature\+A\+DC}}
+\index{Get\+Base\+Temperature\+A\+DC@{Get\+Base\+Temperature\+A\+DC}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Get\+Base\+Temperature\+A\+D\+C()}{GetBaseTemperatureADC()}}
+{\footnotesize\ttfamily virtual uint Interfaces\+::\+I\+Settings\+Generator\+::\+Get\+Base\+Temperature\+A\+DC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get\+Base\+Temperature\+A\+DC Like \hyperlink{class_interfaces_1_1_i_settings_generator_a9cc36185b446f21e09a0e5633f39a1c5}{Get\+Base\+Temperature()}, but returns A\+DC code for it. 
+
+\begin{DoxyReturn}{Returns}
+A\+DC code for current base temperature. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_generator_a5f3f78597f001c127b89f6447a46df09}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade3235715ae2e9cdbcfe0}\label{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade3235715ae2e9cdbcfe0}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Get\+Step\+Ptr@{Get\+Step\+Ptr}}
+\index{Get\+Step\+Ptr@{Get\+Step\+Ptr}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Get\+Step\+Ptr()}{GetStepPtr()}}
+{\footnotesize\ttfamily virtual \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step}$\ast$ Interfaces\+::\+I\+Settings\+Generator\+::\+Get\+Step\+Ptr (\begin{DoxyParamCaption}\item[{uint}]{step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps()} after making any changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em step} & Step number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to step 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_generator_a37f4175a0ed24853b2f187f15505086b}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a4aa0307e906c003012aad75101072c65}\label{class_interfaces_1_1_i_settings_generator_a4aa0307e906c003012aad75101072c65}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Initialize\+Steps\+List@{Initialize\+Steps\+List}}
+\index{Initialize\+Steps\+List@{Initialize\+Steps\+List}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Initialize\+Steps\+List()}{InitializeStepsList()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Settings\+Generator\+::\+Initialize\+Steps\+List (\begin{DoxyParamCaption}\item[{uint}]{steps\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Call this method to initialize steps list. It must be called before any other methods. Implementation must be ready to provide the instance of \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor}{I\+Adc\+Temperature\+Convertor} to steps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em steps\+\_\+number} & How many steps we have \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_settings_generator_a84b81d11cb5f83d4066e73a03acfc143}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a4caf07447d0930440d9f21318892244c}\label{class_interfaces_1_1_i_settings_generator_a4caf07447d0930440d9f21318892244c}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Set\+Base\+R\+PM@{Set\+Base\+R\+PM}}
+\index{Set\+Base\+R\+PM@{Set\+Base\+R\+PM}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Set\+Base\+R\+P\+M()}{SetBaseRPM()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Settings\+Generator\+::\+Set\+Base\+R\+PM (\begin{DoxyParamCaption}\item[{uint}]{base\+\_\+rpm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set\+Base\+Rpm Call this method to set base R\+PM. Base R\+PM -\/ is a R\+PM at base temperature. Please note, that all steps will be recalculated afterwards. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base\+\_\+rpm} & -\/ Base R\+PM value. 0x00 -\/ cooler is stopped. 0x01 -\/ minimal possible R\+PM. 0x100 -\/ maximal possible R\+PM. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_settings_generator_a1c1960b9021f7081b4c42c4d7c0eda34}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}\label{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Set\+Base\+Temperature@{Set\+Base\+Temperature}}
+\index{Set\+Base\+Temperature@{Set\+Base\+Temperature}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Set\+Base\+Temperature()}{SetBaseTemperature()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Settings\+Generator\+::\+Set\+Base\+Temperature (\begin{DoxyParamCaption}\item[{double}]{btemp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set\+Base\+Temperature -\/ Call it to set base temperature (in Celsius). Please note, that all steps will be recalculated afterwards. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em btemp} & Base temperature in Celsius \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}{Settings\+Generator}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Interfaces/I\+Settings\+Generator.\+hpp\end{DoxyCompactItemize}

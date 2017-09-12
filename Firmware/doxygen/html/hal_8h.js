@@ -1,0 +1,28 @@
+var hal_8h =
+[
+    [ "F_CPU", "hal_8h.html#a43bafb28b29491ec7f871319b5a3b2f8", null ],
+    [ "HAL_ADC_NUM_OF_MEASUREMENTS", "hal_8h.html#a82209d8dac3f2555cfc97d23a5c19c21", null ],
+    [ "HAL_ADC_RESULT_SHIFT_BITS", "hal_8h.html#a5475fc1ef1bad09d596d408a809d12ca", null ],
+    [ "HAL_COOLER_PIN", "hal_8h.html#acf111dcf0ba444bf06e4e190c65dc199", null ],
+    [ "HAL_COOLER_PORT", "hal_8h.html#a0177dd985d15d2c9214abd09889847e3", null ],
+    [ "HAL_F0_JUST_TICKED", "hal_8h.html#abf159eed441562936ad4242276a0d450", null ],
+    [ "hal_get_cooler_duty_cycle", "hal_8h.html#a97ff1243aade6539ebb713d2ac40288d", null ],
+    [ "HAL_MAX_DUTY_CYCLE", "hal_8h.html#af211195e32162d29d86e78324acf00e4", null ],
+    [ "HAL_MIN_DUTY_CYCLE", "hal_8h.html#ad32f581801ce8b8d6049ad0d870bb254", null ],
+    [ "HAL_PORTB_DIR", "hal_8h.html#a1c45179e58df497f184d36dd0689d5cc", null ],
+    [ "HAL_TIMER1_OVERFLOWS_PER_SECOND", "hal_8h.html#adaef54e9ab2087cb7f66d0cefddc5c8e", null ],
+    [ "HAL_WDT_INTERVAL", "hal_8h.html#af93ce7f83d494e7ecc5cddc20f7056a5", null ],
+    [ "hal_early_init", "hal_8h.html#a67c27de15bc07a3c14bf05d56baa8802", null ],
+    [ "hal_init", "hal_8h.html#aa0bc78c8fe1e69b9f472299e24eb266e", null ],
+    [ "hal_second_tick", "hal_8h.html#a09985dd15e83bdf67de9b094fedfc3c4", null ],
+    [ "hal_set_cooler_duty_cycle", "hal_8h.html#aa9da766c7ee6dc36908cbb1e420dad91", null ],
+    [ "hal_start_cooler", "hal_8h.html#a2a2b6bc12aa727f0c9e7aeb00b6ca968", null ],
+    [ "hal_stop_cooler", "hal_8h.html#a4af12cd4bf768991e6c9314386490d37", null ],
+    [ "hal_adc_accumulator", "hal_8h.html#a2a54125d80b441c34db1d0e87bd7b427", null ],
+    [ "hal_adc_avg_counter", "hal_8h.html#a5affcb06dd10ffb2defe52c4ad3ff5ce", null ],
+    [ "hal_flags0", "hal_8h.html#a3efc8a4de41fdc584fdbd72dc09e99a5", null ],
+    [ "hal_tacho", "hal_8h.html#a66f8c2a26bfd65bd6c9585b05aac9106", null ],
+    [ "hal_tacho_counter", "hal_8h.html#a46bd2678b6760f1e13f2bedc80c0e1b4", null ],
+    [ "hal_temperature", "hal_8h.html#a2661fa7a92af5f4edd5f7b418ef32856", null ],
+    [ "hal_timer1_overflows_number", "hal_8h.html#a902c4f152a70db4380e5feb329882af5", null ]
+];

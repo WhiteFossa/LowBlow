@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/fossa/Projects/Electronics/PowerUnitCoolerController/ThermalSensor.sch</source>
+    <date>Fri 22 Jan 2016 11:30:47 PM MSK</date>
+    <tool>Eeschema 4.0.0~rc1a-stable</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>LM35 Thermal Sensor</title>
+        <company/>
+        <rev>1.0</rev>
+        <date/>
+        <source>ThermalSensor.sch</source>
+        <comment number="1" value="Licence: GPLv3+"/>
+        <comment number="2" value="aka Artyom Wetroff"/>
+        <comment number="3" value="By White Fossa"/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>0.1uF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>56A13448</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>2k</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>56A13578</tstamp>
+    </comp>
+    <comp ref="P2">
+      <value>OUT</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x01</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>56A1379F</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>VCC</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x01</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>56A13A81</tstamp>
+    </comp>
+    <comp ref="P3">
+      <value>GND</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x01</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>56A13BB7</tstamp>
+    </comp>
+    <comp ref="DA1">
+      <value>LM35_-_TO-220</value>
+      <footprint>TO_SOT_Packages_THT:TO-220_Neutral123_Vertical</footprint>
+      <libsource lib="fossa library" part="LM35_-_TO-220"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>56A14EB0</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="fossa library" part="LM35_-_TO-220">
+      <fields>
+        <field name="Reference">DA</field>
+        <field name="Value">LM35_-_TO-220</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VCC" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="OUT" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X01">
+      <footprints>
+        <fp>Pin_Header_Straight_1X01</fp>
+        <fp>Pin_Header_Angled_1X01</fp>
+        <fp>Socket_Strip_Straight_1X01</fp>
+        <fp>Socket_Strip_Angled_1X01</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X01</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="device">
+      <uri>/usr/share/kicad/library/device.lib</uri>
+    </library>
+    <library logical="fossa library">
+      <uri>/home/fossa/Projects/Electronics/KiCad/fossa library/fossa library.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>/usr/share/kicad/library/conn.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(C1-Pad2)">
+      <node ref="C1" pin="2"/>
+      <node ref="P3" pin="1"/>
+      <node ref="DA1" pin="2"/>
+    </net>
+    <net code="2" name="Net-(DA1-Pad3)">
+      <node ref="DA1" pin="3"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="3" name="Net-(C1-Pad1)">
+      <node ref="C1" pin="1"/>
+      <node ref="P1" pin="1"/>
+      <node ref="DA1" pin="1"/>
+    </net>
+    <net code="4" name="Net-(P2-Pad1)">
+      <node ref="P2" pin="1"/>
+      <node ref="R1" pin="1"/>
+    </net>
+  </nets>
+</export>

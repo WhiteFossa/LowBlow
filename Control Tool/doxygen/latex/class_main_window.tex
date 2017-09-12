@@ -1,0 +1,243 @@
+\hypertarget{class_main_window}{}\section{Main\+Window Class Reference}
+\label{class_main_window}\index{Main\+Window@{Main\+Window}}
+
+
+Inheritance diagram for Main\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_main_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Main\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_main_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_window_a95fb3a2c4f9240d386029d5ffebab1ac}\label{class_main_window_a95fb3a2c4f9240d386029d5ffebab1ac}} 
+void \hyperlink{class_main_window_a95fb3a2c4f9240d386029d5ffebab1ac}{Mw\+Slot\+Exit} ()
+\begin{DoxyCompactList}\small\item\em mn\+\_\+slot\+\_\+exit Called when user want to close application. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_a360889512281e9ac54ed2456597db083}\label{class_main_window_a360889512281e9ac54ed2456597db083}} 
+void \hyperlink{class_main_window_a360889512281e9ac54ed2456597db083}{Mw\+Slot\+Convertor\+Changed} ()
+\begin{DoxyCompactList}\small\item\em Called when new this-\/$>$tconv initialized with the new instance of A\+DC to Temperature convertor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_a2ef62a3653289364eace9bbf334d904b}\label{class_main_window_a2ef62a3653289364eace9bbf334d904b}} 
+void \hyperlink{class_main_window_a2ef62a3653289364eace9bbf334d904b}{Mw\+Slot\+Create\+New\+A\+D\+C2\+Temp} ()
+\begin{DoxyCompactList}\small\item\em Called when user wants to create a new A\+D\+C-\/$>$Temperature conversion settings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_aa118a1eb2f4ef1693518dff9a852fc68}\label{class_main_window_aa118a1eb2f4ef1693518dff9a852fc68}} 
+void \hyperlink{class_main_window_aa118a1eb2f4ef1693518dff9a852fc68}{Mw\+Slot\+Load\+A\+D\+C2\+Temp} ()
+\begin{DoxyCompactList}\small\item\em Called when user wants to load A\+D\+C-\/$>$Temperature conversion settings. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a0a690287dffb47b6477f2fb50c2a818e}{Mw\+Slot\+Base\+Temperature\+Changed} (double tempC)
+\begin{DoxyCompactList}\small\item\em Called when user changes base temperature. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_aaf5b44955c0c93824ea89edd3cdc5730}{Mw\+Slot\+Base\+R\+P\+M\+Changed} (int R\+PM)
+\begin{DoxyCompactList}\small\item\em Mw\+Slot\+Base\+R\+P\+M\+Changed Called when user changes base R\+PM level. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw} (int new\+Delta)
+\begin{DoxyCompactList}\small\item\em Called when A\+DC delta value of any spinbox is changed. It process change, determines what spinbox caused the change and then emits Mw\+A\+D\+C\+Delta\+Changed(uint Step\+Number, uint New\+Value) with step and new value. Connect all A\+DC delta spinboxes in steps table to it. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a4480e7516f91b93c8abc3d42c1284124}{Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw} (int new\+Delta)
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw()}, but for R\+PM delta. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}{Mw\+Slot\+A\+D\+C\+Delta\+Changed} (uint Step\+Number, uint New\+Delta)
+\begin{DoxyCompactList}\small\item\em Called when A\+DC delta value of any spinbox is chaned. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a32b3a311b7151092db3ec0756d2c22d4}{Mw\+Slot\+R\+P\+M\+Delta\+Changed} (uint Step\+Number, uint New\+Delta)
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}{Mw\+Slot\+A\+D\+C\+Delta\+Changed()}, but for R\+PM Delta change. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_a07c8e8c9d91588bdcc8e1eae01c4ffd7}\label{class_main_window_a07c8e8c9d91588bdcc8e1eae01c4ffd7}} 
+void \hyperlink{class_main_window_a07c8e8c9d91588bdcc8e1eae01c4ffd7}{Mw\+Slot\+Update\+Steps\+Table} ()
+\begin{DoxyCompactList}\small\item\em Updates UI steps table according to steps from this-\/$>$\+\_\+setgen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_window_abc97afb888a70565123689a1444ab4b9}\label{class_main_window_abc97afb888a70565123689a1444ab4b9}} 
+void \hyperlink{class_main_window_abc97afb888a70565123689a1444ab4b9}{Mw\+Signal\+Convertor\+Changed} ()
+\begin{DoxyCompactList}\small\item\em Emit it when this-\/$>$tconv initialized with the new instance of A\+DC to Temperature convertor. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a37ea64ccb9b5bcf9bb976602d42aadfa}{Mw\+Signal\+A\+D\+C\+Delta\+Changed} (uint Step\+Number, uint New\+Delta)
+\begin{DoxyCompactList}\small\item\em Mw\+A\+D\+C\+Delta\+Changed Emitted when A\+DC delta changed for cell in steps table. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a7b5fab96f0c2363958436141a3aae65b}{Mw\+Signal\+R\+P\+M\+Delta\+Changed} (uint Step\+Number, uint New\+Delta)
+\begin{DoxyCompactList}\small\item\em As Mw\+A\+D\+C\+Delta\+Changed(), but for R\+PM delta. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_abf2e8820a7173fb2231e7f835160d8a1}\label{class_main_window_abf2e8820a7173fb2231e7f835160d8a1}} 
+void \hyperlink{class_main_window_abf2e8820a7173fb2231e7f835160d8a1}{Mw\+Signal\+Update\+Steps\+Table} ()
+\begin{DoxyCompactList}\small\item\em Emit it when steps table (UI) needs to be re-\/read from this-\/$>$\+\_\+setgen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_window_a8b244be8b7b7db1b08de2a2acb9409db}\label{class_main_window_a8b244be8b7b7db1b08de2a2acb9409db}} 
+{\bfseries Main\+Window} (Q\+Widget $\ast$parent=0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_window_af4ca5d0d3d18ddcb7d54b6596bbf4797}\label{class_main_window_af4ca5d0d3d18ddcb7d54b6596bbf4797}} 
+void {\bfseries change\+Event} (Q\+Event $\ast$e)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 43 of file mainwindow.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_main_window_a37ea64ccb9b5bcf9bb976602d42aadfa}\label{class_main_window_a37ea64ccb9b5bcf9bb976602d42aadfa}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Signal\+A\+D\+C\+Delta\+Changed@{Mw\+Signal\+A\+D\+C\+Delta\+Changed}}
+\index{Mw\+Signal\+A\+D\+C\+Delta\+Changed@{Mw\+Signal\+A\+D\+C\+Delta\+Changed}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Signal\+A\+D\+C\+Delta\+Changed}{MwSignalADCDeltaChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Signal\+A\+D\+C\+Delta\+Changed (\begin{DoxyParamCaption}\item[{uint}]{Step\+Number,  }\item[{uint}]{New\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Mw\+A\+D\+C\+Delta\+Changed Emitted when A\+DC delta changed for cell in steps table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Step\+Number} & -\/ Step number. \\
+\hline
+{\em New\+Value} & -\/ New A\+DC delta value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_window_a7b5fab96f0c2363958436141a3aae65b}\label{class_main_window_a7b5fab96f0c2363958436141a3aae65b}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Signal\+R\+P\+M\+Delta\+Changed@{Mw\+Signal\+R\+P\+M\+Delta\+Changed}}
+\index{Mw\+Signal\+R\+P\+M\+Delta\+Changed@{Mw\+Signal\+R\+P\+M\+Delta\+Changed}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Signal\+R\+P\+M\+Delta\+Changed}{MwSignalRPMDeltaChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Signal\+R\+P\+M\+Delta\+Changed (\begin{DoxyParamCaption}\item[{uint}]{Step\+Number,  }\item[{uint}]{New\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+As Mw\+A\+D\+C\+Delta\+Changed(), but for R\+PM delta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Step\+Number} & See Mw\+A\+D\+C\+Delta\+Changed(). \\
+\hline
+{\em New\+Delta} & See Mw\+A\+D\+C\+Delta\+Changed(). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}\label{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Slot\+A\+D\+C\+Delta\+Changed@{Mw\+Slot\+A\+D\+C\+Delta\+Changed}}
+\index{Mw\+Slot\+A\+D\+C\+Delta\+Changed@{Mw\+Slot\+A\+D\+C\+Delta\+Changed}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Slot\+A\+D\+C\+Delta\+Changed}{MwSlotADCDeltaChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Slot\+A\+D\+C\+Delta\+Changed (\begin{DoxyParamCaption}\item[{uint}]{Step\+Number,  }\item[{uint}]{New\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Called when A\+DC delta value of any spinbox is chaned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Step\+Number} & Step number, for what change occured. \\
+\hline
+{\em New\+Delta} & New A\+DC delta. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 259 of file mainwindow.\+cpp.
+
+\mbox{\Hypertarget{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}\label{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw@{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw}}
+\index{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw@{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw}{MwSlotADCDeltaChangedRaw}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw (\begin{DoxyParamCaption}\item[{int}]{new\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Called when A\+DC delta value of any spinbox is changed. It process change, determines what spinbox caused the change and then emits Mw\+A\+D\+C\+Delta\+Changed(uint Step\+Number, uint New\+Value) with step and new value. Connect all A\+DC delta spinboxes in steps table to it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Delta} & New delta value. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 233 of file mainwindow.\+cpp.
+
+\mbox{\Hypertarget{class_main_window_aaf5b44955c0c93824ea89edd3cdc5730}\label{class_main_window_aaf5b44955c0c93824ea89edd3cdc5730}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Slot\+Base\+R\+P\+M\+Changed@{Mw\+Slot\+Base\+R\+P\+M\+Changed}}
+\index{Mw\+Slot\+Base\+R\+P\+M\+Changed@{Mw\+Slot\+Base\+R\+P\+M\+Changed}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Slot\+Base\+R\+P\+M\+Changed}{MwSlotBaseRPMChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Slot\+Base\+R\+P\+M\+Changed (\begin{DoxyParamCaption}\item[{int}]{R\+PM }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Mw\+Slot\+Base\+R\+P\+M\+Changed Called when user changes base R\+PM level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em R\+PM} & -\/ new R\+PM value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 165 of file mainwindow.\+cpp.
+
+\mbox{\Hypertarget{class_main_window_a0a690287dffb47b6477f2fb50c2a818e}\label{class_main_window_a0a690287dffb47b6477f2fb50c2a818e}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Slot\+Base\+Temperature\+Changed@{Mw\+Slot\+Base\+Temperature\+Changed}}
+\index{Mw\+Slot\+Base\+Temperature\+Changed@{Mw\+Slot\+Base\+Temperature\+Changed}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Slot\+Base\+Temperature\+Changed}{MwSlotBaseTemperatureChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Slot\+Base\+Temperature\+Changed (\begin{DoxyParamCaption}\item[{double}]{tempC }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Called when user changes base temperature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & -\/ new temperature in Celsius \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 149 of file mainwindow.\+cpp.
+
+\mbox{\Hypertarget{class_main_window_a32b3a311b7151092db3ec0756d2c22d4}\label{class_main_window_a32b3a311b7151092db3ec0756d2c22d4}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Slot\+R\+P\+M\+Delta\+Changed@{Mw\+Slot\+R\+P\+M\+Delta\+Changed}}
+\index{Mw\+Slot\+R\+P\+M\+Delta\+Changed@{Mw\+Slot\+R\+P\+M\+Delta\+Changed}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Slot\+R\+P\+M\+Delta\+Changed}{MwSlotRPMDeltaChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Slot\+R\+P\+M\+Delta\+Changed (\begin{DoxyParamCaption}\item[{uint}]{Step\+Number,  }\item[{uint}]{New\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+As \hyperlink{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}{Mw\+Slot\+A\+D\+C\+Delta\+Changed()}, but for R\+PM Delta change. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Step\+Number} & See \hyperlink{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}{Mw\+Slot\+A\+D\+C\+Delta\+Changed()}. \\
+\hline
+{\em New\+Delta} & New R\+PM delta. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 268 of file mainwindow.\+cpp.
+
+\mbox{\Hypertarget{class_main_window_a4480e7516f91b93c8abc3d42c1284124}\label{class_main_window_a4480e7516f91b93c8abc3d42c1284124}} 
+\index{Main\+Window@{Main\+Window}!Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw@{Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw}}
+\index{Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw@{Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw}{MwSlotRPMDeltaChangedRaw}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw (\begin{DoxyParamCaption}\item[{int}]{new\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+As \hyperlink{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw()}, but for R\+PM delta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Delta} & New R\+PM delta. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 246 of file mainwindow.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+hpp\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

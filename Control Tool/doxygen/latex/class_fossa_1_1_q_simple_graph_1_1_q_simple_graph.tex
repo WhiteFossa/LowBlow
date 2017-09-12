@@ -1,0 +1,335 @@
+\hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph}{}\section{Fossa\+:\+:Q\+Simple\+Graph\+:\+:Q\+Simple\+Graph Class Reference}
+\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph}\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+
+
+\hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph}{Q\+Simple\+Graph} widget implementation.  
+
+
+
+
+{\ttfamily \#include $<$Q\+Simple\+Graph.\+hpp$>$}
+
+
+
+Inheritance diagram for Fossa\+:\+:Q\+Simple\+Graph\+:\+:Q\+Simple\+Graph\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fossa\+:\+:Q\+Simple\+Graph\+:\+:Q\+Simple\+Graph\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_ab08b1293b3698e1e179a8d36dc737c77}{Q\+Simple\+Graph} (Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph}{Q\+Simple\+Graph} widget constructor. \end{DoxyCompactList}\item 
+Q\+Size \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7cc7465f2137a1d9f80425afec47faeb}{size\+Hint} () const
+\begin{DoxyCompactList}\small\item\em Returning hint about widget size, actually -\/ preferred size. \end{DoxyCompactList}\item 
+Q\+Size \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a2b427ee7fc54efd87a33d0a23bbdd1f8}{minimum\+Size\+Hint} () const
+\begin{DoxyCompactList}\small\item\em Returns minimal possible widget size. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a0eef21e58d8c85f6083d73857f871639}{Set\+Min\+X\+Value} (double min\+Value)
+\begin{DoxyCompactList}\small\item\em See Set\+Max\+X\+Value for details, it have completely the same behaviour. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a568a2dea4e0307b6888aaa048b4da97a}{Set\+Max\+X\+Value} (double max\+Value)
+\begin{DoxyCompactList}\small\item\em Call it to set maximal value of X-\/axis. Please note, that if new point added to graph later, and point\textquotesingle{}s X coordinate exceeds maximal X value, then maximal X value will be increased, allowing graph to display such points. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a8bf9aac5856a659eb89abffca7750df0}{Set\+Min\+Y\+Value} (double min\+Value)
+\begin{DoxyCompactList}\small\item\em As Set\+Min\+X\+Value, but for Y-\/axis. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a6cb6eee80dc489f300e32263833cf1cd}{Set\+Max\+Y\+Value} (double max\+Value)
+\begin{DoxyCompactList}\small\item\em As Set\+Max\+X\+Value, but for Y-\/axis. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7579da572b54d43ccec3d2bd572b6cfa}{Set\+X\+Axis\+Title} (Q\+String title)
+\begin{DoxyCompactList}\small\item\em Set title of X-\/\+Axis. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a41c9e9d34744f6e6550ca97dc0d2f488}{Set\+Y\+Axis\+Title} (Q\+String title)
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7579da572b54d43ccec3d2bd572b6cfa}{Set\+X\+Axis\+Title()}, but for Y-\/\+Axis. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a96233ee152a35d27d6b0a66712f52011}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a96233ee152a35d27d6b0a66712f52011}} 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a96233ee152a35d27d6b0a66712f52011}{Clear\+All\+Points} ()
+\begin{DoxyCompactList}\small\item\em Removes all points from graph. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a39fdbd2aa624b7b086b5761308d8d49c}{Add\+Point} (double X\+Val, double Y\+Val)
+\begin{DoxyCompactList}\small\item\em Adds point with given X and Y value to graph. Points collection inside the graph must be self-\/ordered, so points can be added in arbitraty order. If point outside maximal and minimal values for graph, minimal and maximal values will be expanded to allow display all points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a6559739099820e1303c1dbe2c5757bc4}{paint\+Event} (Q\+Paint\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Painting method, paints the entrie graph. \end{DoxyCompactList}\item 
+void \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7ae9773902324fc533f0b18294f7c516}{mouse\+Move\+Event} (Q\+Mouse\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Called when mouse is being moved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph}{Q\+Simple\+Graph} widget implementation. 
+
+Definition at line 39 of file Q\+Simple\+Graph.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_ab08b1293b3698e1e179a8d36dc737c77}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_ab08b1293b3698e1e179a8d36dc737c77}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Q\+Simple\+Graph@{Q\+Simple\+Graph}}
+\index{Q\+Simple\+Graph@{Q\+Simple\+Graph}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Q\+Simple\+Graph()}{QSimpleGraph()}}
+{\footnotesize\ttfamily Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph}{Q\+Simple\+Graph} widget constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Parent widget. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 7 of file Q\+Simple\+Graph.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a39fdbd2aa624b7b086b5761308d8d49c}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a39fdbd2aa624b7b086b5761308d8d49c}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Add\+Point@{Add\+Point}}
+\index{Add\+Point@{Add\+Point}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Add\+Point()}{AddPoint()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Add\+Point (\begin{DoxyParamCaption}\item[{double}]{X\+Val,  }\item[{double}]{Y\+Val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adds point with given X and Y value to graph. Points collection inside the graph must be self-\/ordered, so points can be added in arbitraty order. If point outside maximal and minimal values for graph, minimal and maximal values will be expanded to allow display all points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X\+Val} & X-\/axis value. \\
+\hline
+{\em Y\+Val} & Y-\/axis value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph_a5d43e4e0f06bedb1734e4240070fe229}{Fossa\+::\+Q\+Simple\+Graph\+::\+Interfaces\+::\+I\+Q\+Simple\+Graph}.
+
+
+
+Definition at line 322 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a2b427ee7fc54efd87a33d0a23bbdd1f8}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a2b427ee7fc54efd87a33d0a23bbdd1f8}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!minimum\+Size\+Hint@{minimum\+Size\+Hint}}
+\index{minimum\+Size\+Hint@{minimum\+Size\+Hint}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{minimum\+Size\+Hint()}{minimumSizeHint()}}
+{\footnotesize\ttfamily Q\+Size Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::minimum\+Size\+Hint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns minimal possible widget size. 
+
+\begin{DoxyReturn}{Returns}
+Minimal possible widget size. 
+\end{DoxyReturn}
+
+
+Definition at line 15 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7ae9773902324fc533f0b18294f7c516}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7ae9773902324fc533f0b18294f7c516}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!mouse\+Move\+Event@{mouse\+Move\+Event}}
+\index{mouse\+Move\+Event@{mouse\+Move\+Event}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{mouse\+Move\+Event()}{mouseMoveEvent()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::mouse\+Move\+Event (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Called when mouse is being moved. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Mouse move parameters. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 25 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a6559739099820e1303c1dbe2c5757bc4}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a6559739099820e1303c1dbe2c5757bc4}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!paint\+Event@{paint\+Event}}
+\index{paint\+Event@{paint\+Event}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{paint\+Event()}{paintEvent()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::paint\+Event (\begin{DoxyParamCaption}\item[{Q\+Paint\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Painting method, paints the entrie graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Pointer to paint event. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a568a2dea4e0307b6888aaa048b4da97a}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a568a2dea4e0307b6888aaa048b4da97a}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Set\+Max\+X\+Value@{Set\+Max\+X\+Value}}
+\index{Set\+Max\+X\+Value@{Set\+Max\+X\+Value}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Set\+Max\+X\+Value()}{SetMaxXValue()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Set\+Max\+X\+Value (\begin{DoxyParamCaption}\item[{double}]{max\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Call it to set maximal value of X-\/axis. Please note, that if new point added to graph later, and point\textquotesingle{}s X coordinate exceeds maximal X value, then maximal X value will be increased, allowing graph to display such points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Value} & New maximal value. If it less then minimal X value, it will be set to minimal X value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph_a04e7ec46c2be46257bef53c7bf978a2a}{Fossa\+::\+Q\+Simple\+Graph\+::\+Interfaces\+::\+I\+Q\+Simple\+Graph}.
+
+
+
+Definition at line 259 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a6cb6eee80dc489f300e32263833cf1cd}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a6cb6eee80dc489f300e32263833cf1cd}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Set\+Max\+Y\+Value@{Set\+Max\+Y\+Value}}
+\index{Set\+Max\+Y\+Value@{Set\+Max\+Y\+Value}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Set\+Max\+Y\+Value()}{SetMaxYValue()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Set\+Max\+Y\+Value (\begin{DoxyParamCaption}\item[{double}]{max\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As Set\+Max\+X\+Value, but for Y-\/axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Value} & See Set\+Max\+X\+Value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph_a09e04c116810e79ca1663d2075477746}{Fossa\+::\+Q\+Simple\+Graph\+::\+Interfaces\+::\+I\+Q\+Simple\+Graph}.
+
+
+
+Definition at line 271 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a0eef21e58d8c85f6083d73857f871639}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a0eef21e58d8c85f6083d73857f871639}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Set\+Min\+X\+Value@{Set\+Min\+X\+Value}}
+\index{Set\+Min\+X\+Value@{Set\+Min\+X\+Value}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Set\+Min\+X\+Value()}{SetMinXValue()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Set\+Min\+X\+Value (\begin{DoxyParamCaption}\item[{double}]{min\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+See Set\+Max\+X\+Value for details, it have completely the same behaviour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+Value} & New minimal value. If it greater then maximal X value, it will be set to maximal X value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph_a4266725f87b306e572ad1ae37cfab4ef}{Fossa\+::\+Q\+Simple\+Graph\+::\+Interfaces\+::\+I\+Q\+Simple\+Graph}.
+
+
+
+Definition at line 253 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a8bf9aac5856a659eb89abffca7750df0}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a8bf9aac5856a659eb89abffca7750df0}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Set\+Min\+Y\+Value@{Set\+Min\+Y\+Value}}
+\index{Set\+Min\+Y\+Value@{Set\+Min\+Y\+Value}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Set\+Min\+Y\+Value()}{SetMinYValue()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Set\+Min\+Y\+Value (\begin{DoxyParamCaption}\item[{double}]{min\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As Set\+Min\+X\+Value, but for Y-\/axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+Value} & See Set\+Min\+X\+Value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph_a3fdd1f6b538e2dfbf4a0140acd6b6e94}{Fossa\+::\+Q\+Simple\+Graph\+::\+Interfaces\+::\+I\+Q\+Simple\+Graph}.
+
+
+
+Definition at line 265 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7579da572b54d43ccec3d2bd572b6cfa}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7579da572b54d43ccec3d2bd572b6cfa}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Set\+X\+Axis\+Title@{Set\+X\+Axis\+Title}}
+\index{Set\+X\+Axis\+Title@{Set\+X\+Axis\+Title}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Set\+X\+Axis\+Title()}{SetXAxisTitle()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Set\+X\+Axis\+Title (\begin{DoxyParamCaption}\item[{Q\+String}]{title }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set title of X-\/\+Axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph_adfca7d41a47790e8403507544468ba86}{Fossa\+::\+Q\+Simple\+Graph\+::\+Interfaces\+::\+I\+Q\+Simple\+Graph}.
+
+
+
+Definition at line 307 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a41c9e9d34744f6e6550ca97dc0d2f488}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a41c9e9d34744f6e6550ca97dc0d2f488}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!Set\+Y\+Axis\+Title@{Set\+Y\+Axis\+Title}}
+\index{Set\+Y\+Axis\+Title@{Set\+Y\+Axis\+Title}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{Set\+Y\+Axis\+Title()}{SetYAxisTitle()}}
+{\footnotesize\ttfamily void Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::\+Set\+Y\+Axis\+Title (\begin{DoxyParamCaption}\item[{Q\+String}]{title }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7579da572b54d43ccec3d2bd572b6cfa}{Set\+X\+Axis\+Title()}, but for Y-\/\+Axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & See \hyperlink{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7579da572b54d43ccec3d2bd572b6cfa}{Set\+X\+Axis\+Title()}. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph_a606c07c40ed294cdd568de5488875af5}{Fossa\+::\+Q\+Simple\+Graph\+::\+Interfaces\+::\+I\+Q\+Simple\+Graph}.
+
+
+
+Definition at line 312 of file Q\+Simple\+Graph.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7cc7465f2137a1d9f80425afec47faeb}\label{class_fossa_1_1_q_simple_graph_1_1_q_simple_graph_a7cc7465f2137a1d9f80425afec47faeb}} 
+\index{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}!size\+Hint@{size\+Hint}}
+\index{size\+Hint@{size\+Hint}!Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph@{Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph}}
+\subsubsection{\texorpdfstring{size\+Hint()}{sizeHint()}}
+{\footnotesize\ttfamily Q\+Size Fossa\+::\+Q\+Simple\+Graph\+::\+Q\+Simple\+Graph\+::size\+Hint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returning hint about widget size, actually -\/ preferred size. 
+
+\begin{DoxyReturn}{Returns}
+Q\+Size with hint about widget size. 
+\end{DoxyReturn}
+
+
+Definition at line 20 of file Q\+Simple\+Graph.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Fossas\+Simple\+Graph/\+Implementations/Q\+Simple\+Graph.\+hpp\item 
+Fossas\+Simple\+Graph/\+Implementations/Q\+Simple\+Graph.\+cpp\end{DoxyCompactItemize}

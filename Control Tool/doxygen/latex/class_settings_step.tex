@@ -1,0 +1,338 @@
+\hypertarget{class_settings_step}{}\section{Settings\+Step Class Reference}
+\label{class_settings_step}\index{Settings\+Step@{Settings\+Step}}
+
+
+Class with one settings step (see Interfaces/\+I\+Settings\+Step for information)  
+
+
+
+
+{\ttfamily \#include $<$Settings\+Step.\+hpp$>$}
+
+
+
+Inheritance diagram for Settings\+Step\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_settings_step__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Settings\+Step\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_settings_step__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_settings_step_a650844d8164741ba04f153d7d6be1261}\label{class_settings_step_a650844d8164741ba04f153d7d6be1261}} 
+{\bfseries Settings\+Step} (\hyperlink{class_interfaces_1_1_i_adc_temperature_convertor}{Interfaces\+::\+I\+Adc\+Temperature\+Convertor} $\ast$\hyperlink{class_interfaces_1_1_i_settings_step_a5db60ca3f2c1b4e7059910e2d86656b9}{conv})
+\item 
+void \hyperlink{class_settings_step_ac6f79a139ab25cc50ed105f64fc9652f}{Calculate\+Primary\+Values} (uint previous\+\_\+adc, uint previous\+\_\+rpm)
+\begin{DoxyCompactList}\small\item\em Calculates primary values (i.\+e. current A\+DC level and current R\+PM) basing on previus step values. If resulting A\+DC / R\+PM levels will be greater than A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM respectively, then levels will be set to A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_settings_step_a21e452401e180d6e114561a8b05ab1ae}{Get\+Current\+R\+P\+M\+Percents\+String} ()
+\begin{DoxyCompactList}\small\item\em Returns \char`\"{}\+Off\char`\"{} if this-\/$>$\+\_\+\+Current\+R\+PM == 0, and string representation of this-\/$>$\hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}{Get\+Current\+R\+P\+M\+Percents()} otherwise. \end{DoxyCompactList}\item 
+void \hyperlink{class_settings_step_a8124c87ae0b1d9fb3b623144d0e492db}{Set\+A\+D\+C\+Delta} (uint delta, bool skip\+Limits\+Check=false)
+\begin{DoxyCompactList}\small\item\em Call it to set this-\/$>$adc\+\_\+delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. \end{DoxyCompactList}\item 
+uint \hyperlink{class_settings_step_a443f5643d9b547632c261c5f3a4288f1}{Get\+Current\+A\+DC} ()
+\begin{DoxyCompactList}\small\item\em Returns A\+DC level for this step. \end{DoxyCompactList}\item 
+double \hyperlink{class_settings_step_a78ec872aa61713e3df36e93f56804afe}{Get\+Current\+Temperature} ()
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_settings_step_a443f5643d9b547632c261c5f3a4288f1}{Get\+Current\+A\+D\+C()}, but returns temperature in Celsius. \end{DoxyCompactList}\item 
+uint \hyperlink{class_settings_step_aee30aaa97692d6b546e9dd002900f52e}{Get\+A\+D\+C\+Delta} ()
+\begin{DoxyCompactList}\small\item\em Returns current A\+DC delta. \end{DoxyCompactList}\item 
+double \hyperlink{class_settings_step_a8162810e5ce2df99053ac5722acc0901}{Get\+Temp\+Delta} ()
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_settings_step_aee30aaa97692d6b546e9dd002900f52e}{Get\+A\+D\+C\+Delta()}, but returns current A\+DC delta, converted to Celsius. \end{DoxyCompactList}\item 
+void \hyperlink{class_settings_step_a25ddaf1d4d77727b8f87b5f8588f2de1}{Set\+R\+P\+M\+Delta} (uint delta, bool skip\+Limits\+Check=false)
+\begin{DoxyCompactList}\small\item\em Like \hyperlink{class_settings_step_a8124c87ae0b1d9fb3b623144d0e492db}{Set\+A\+D\+C\+Delta()}, but for R\+PM delta. Making check for M\+A\+X\+\_\+\+R\+P\+M\+\_\+\+D\+E\+L\+TA, if delta is greater then it, delta will be M\+A\+X\+\_\+\+R\+P\+M\+\_\+\+D\+E\+L\+TA. \end{DoxyCompactList}\item 
+uint \hyperlink{class_settings_step_aaba560b593af9bc96eeed3db01a469f4}{Get\+Current\+R\+PM} ()
+\begin{DoxyCompactList}\small\item\em Get current R\+PM setting (see \hyperlink{_i_settings_generator_8hpp_source}{Interfaces/\+I\+Settings\+Generator.\+hpp} for details) \end{DoxyCompactList}\item 
+double \hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}{Get\+Current\+R\+P\+M\+Percents} ()
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_settings_step_aaba560b593af9bc96eeed3db01a469f4}{Get\+Current\+R\+P\+M()}, but returns value in percents. \end{DoxyCompactList}\item 
+uint \hyperlink{class_settings_step_a594ce71fb0626c79c3e4d4f988e484af}{Get\+R\+P\+M\+Delta} ()
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_settings_step_aee30aaa97692d6b546e9dd002900f52e}{Get\+A\+D\+C\+Delta()}, but for R\+PM delta. \end{DoxyCompactList}\item 
+double \hyperlink{class_settings_step_ada359fe4bfdaf271e621ec2943c0644c}{Get\+R\+P\+M\+Delta\+Percents} ()
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_settings_step_a594ce71fb0626c79c3e4d4f988e484af}{Get\+R\+P\+M\+Delta()}, but in percents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class with one settings step (see Interfaces/\+I\+Settings\+Step for information) 
+
+Definition at line 34 of file Settings\+Step.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_settings_step_ac6f79a139ab25cc50ed105f64fc9652f}\label{class_settings_step_ac6f79a139ab25cc50ed105f64fc9652f}} 
+\index{Settings\+Step@{Settings\+Step}!Calculate\+Primary\+Values@{Calculate\+Primary\+Values}}
+\index{Calculate\+Primary\+Values@{Calculate\+Primary\+Values}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Calculate\+Primary\+Values()}{CalculatePrimaryValues()}}
+{\footnotesize\ttfamily void Settings\+Step\+::\+Calculate\+Primary\+Values (\begin{DoxyParamCaption}\item[{uint}]{previous\+\_\+adc,  }\item[{uint}]{previous\+\_\+rpm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculates primary values (i.\+e. current A\+DC level and current R\+PM) basing on previus step values. If resulting A\+DC / R\+PM levels will be greater than A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM respectively, then levels will be set to A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em previous\+\_\+adc} & Previous step A\+DC value \\
+\hline
+{\em previous\+\_\+rpm} & Previous step R\+PM value \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a04e46c3ebe1f28e0ad0bce23fb863f66}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 13 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_aee30aaa97692d6b546e9dd002900f52e}\label{class_settings_step_aee30aaa97692d6b546e9dd002900f52e}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+A\+D\+C\+Delta@{Get\+A\+D\+C\+Delta}}
+\index{Get\+A\+D\+C\+Delta@{Get\+A\+D\+C\+Delta}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+A\+D\+C\+Delta()}{GetADCDelta()}}
+{\footnotesize\ttfamily uint Settings\+Step\+::\+Get\+A\+D\+C\+Delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns current A\+DC delta. 
+
+\begin{DoxyReturn}{Returns}
+A\+DC delta for this step 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_ab77c6eaa45707ec4932a8f432b13ad78}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 57 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a443f5643d9b547632c261c5f3a4288f1}\label{class_settings_step_a443f5643d9b547632c261c5f3a4288f1}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+Current\+A\+DC@{Get\+Current\+A\+DC}}
+\index{Get\+Current\+A\+DC@{Get\+Current\+A\+DC}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+Current\+A\+D\+C()}{GetCurrentADC()}}
+{\footnotesize\ttfamily uint Settings\+Step\+::\+Get\+Current\+A\+DC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns A\+DC level for this step. 
+
+\begin{DoxyReturn}{Returns}
+A\+DC level for this step 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a54d5ce3350791e080bcb75d472376abf}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 86 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_aaba560b593af9bc96eeed3db01a469f4}\label{class_settings_step_aaba560b593af9bc96eeed3db01a469f4}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+Current\+R\+PM@{Get\+Current\+R\+PM}}
+\index{Get\+Current\+R\+PM@{Get\+Current\+R\+PM}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+Current\+R\+P\+M()}{GetCurrentRPM()}}
+{\footnotesize\ttfamily uint Settings\+Step\+::\+Get\+Current\+R\+PM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get current R\+PM setting (see \hyperlink{_i_settings_generator_8hpp_source}{Interfaces/\+I\+Settings\+Generator.\+hpp} for details) 
+
+\begin{DoxyReturn}{Returns}
+Current step R\+PM setting 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_ac2b2370bf70fb09a9e1da4db922e8903}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 91 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a35bea9115637a0c848e8f827f2353c11}\label{class_settings_step_a35bea9115637a0c848e8f827f2353c11}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+Current\+R\+P\+M\+Percents@{Get\+Current\+R\+P\+M\+Percents}}
+\index{Get\+Current\+R\+P\+M\+Percents@{Get\+Current\+R\+P\+M\+Percents}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+Current\+R\+P\+M\+Percents()}{GetCurrentRPMPercents()}}
+{\footnotesize\ttfamily double Settings\+Step\+::\+Get\+Current\+R\+P\+M\+Percents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As \hyperlink{class_settings_step_aaba560b593af9bc96eeed3db01a469f4}{Get\+Current\+R\+P\+M()}, but returns value in percents. 
+
+\begin{DoxyReturn}{Returns}
+Current step R\+PM setting in percents 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_abbbb49e91352212c6201a85f1a22253f}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 106 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a21e452401e180d6e114561a8b05ab1ae}\label{class_settings_step_a21e452401e180d6e114561a8b05ab1ae}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+Current\+R\+P\+M\+Percents\+String@{Get\+Current\+R\+P\+M\+Percents\+String}}
+\index{Get\+Current\+R\+P\+M\+Percents\+String@{Get\+Current\+R\+P\+M\+Percents\+String}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+Current\+R\+P\+M\+Percents\+String()}{GetCurrentRPMPercentsString()}}
+{\footnotesize\ttfamily Q\+String Settings\+Step\+::\+Get\+Current\+R\+P\+M\+Percents\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns \char`\"{}\+Off\char`\"{} if this-\/$>$\+\_\+\+Current\+R\+PM == 0, and string representation of this-\/$>$\hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}{Get\+Current\+R\+P\+M\+Percents()} otherwise. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Off\char`\"{} or current R\+P\+Ms as string with percents 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a7575d43b7d178d700e161ec48e2c766f}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 29 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a78ec872aa61713e3df36e93f56804afe}\label{class_settings_step_a78ec872aa61713e3df36e93f56804afe}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+Current\+Temperature@{Get\+Current\+Temperature}}
+\index{Get\+Current\+Temperature@{Get\+Current\+Temperature}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+Current\+Temperature()}{GetCurrentTemperature()}}
+{\footnotesize\ttfamily double Settings\+Step\+::\+Get\+Current\+Temperature (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As \hyperlink{class_settings_step_a443f5643d9b547632c261c5f3a4288f1}{Get\+Current\+A\+D\+C()}, but returns temperature in Celsius. 
+
+\begin{DoxyReturn}{Returns}
+Current step temperature in Celsius 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a62644690b7b63d27e72eca277a32bfdd}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 101 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a594ce71fb0626c79c3e4d4f988e484af}\label{class_settings_step_a594ce71fb0626c79c3e4d4f988e484af}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+R\+P\+M\+Delta@{Get\+R\+P\+M\+Delta}}
+\index{Get\+R\+P\+M\+Delta@{Get\+R\+P\+M\+Delta}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+R\+P\+M\+Delta()}{GetRPMDelta()}}
+{\footnotesize\ttfamily uint Settings\+Step\+::\+Get\+R\+P\+M\+Delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As \hyperlink{class_settings_step_aee30aaa97692d6b546e9dd002900f52e}{Get\+A\+D\+C\+Delta()}, but for R\+PM delta. 
+
+\begin{DoxyReturn}{Returns}
+R\+PM delta for this step 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_ace758dafae2a6bcbb0b1a3a64c802e3c}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 81 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_ada359fe4bfdaf271e621ec2943c0644c}\label{class_settings_step_ada359fe4bfdaf271e621ec2943c0644c}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+R\+P\+M\+Delta\+Percents@{Get\+R\+P\+M\+Delta\+Percents}}
+\index{Get\+R\+P\+M\+Delta\+Percents@{Get\+R\+P\+M\+Delta\+Percents}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+R\+P\+M\+Delta\+Percents()}{GetRPMDeltaPercents()}}
+{\footnotesize\ttfamily double Settings\+Step\+::\+Get\+R\+P\+M\+Delta\+Percents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As \hyperlink{class_settings_step_a594ce71fb0626c79c3e4d4f988e484af}{Get\+R\+P\+M\+Delta()}, but in percents. 
+
+\begin{DoxyReturn}{Returns}
+R\+PM delta for this step in percents 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a9db8c7569c5dc35b8541dc6e4d202df1}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 96 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a8162810e5ce2df99053ac5722acc0901}\label{class_settings_step_a8162810e5ce2df99053ac5722acc0901}} 
+\index{Settings\+Step@{Settings\+Step}!Get\+Temp\+Delta@{Get\+Temp\+Delta}}
+\index{Get\+Temp\+Delta@{Get\+Temp\+Delta}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Get\+Temp\+Delta()}{GetTempDelta()}}
+{\footnotesize\ttfamily double Settings\+Step\+::\+Get\+Temp\+Delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As \hyperlink{class_settings_step_aee30aaa97692d6b546e9dd002900f52e}{Get\+A\+D\+C\+Delta()}, but returns current A\+DC delta, converted to Celsius. 
+
+\begin{DoxyReturn}{Returns}
+Celsuis representation of A\+DC delta 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a7dd93517fbd9bc10a54b3b35a2f8bd78}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 62 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a8124c87ae0b1d9fb3b623144d0e492db}\label{class_settings_step_a8124c87ae0b1d9fb3b623144d0e492db}} 
+\index{Settings\+Step@{Settings\+Step}!Set\+A\+D\+C\+Delta@{Set\+A\+D\+C\+Delta}}
+\index{Set\+A\+D\+C\+Delta@{Set\+A\+D\+C\+Delta}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Set\+A\+D\+C\+Delta()}{SetADCDelta()}}
+{\footnotesize\ttfamily void Settings\+Step\+::\+Set\+A\+D\+C\+Delta (\begin{DoxyParamCaption}\item[{uint}]{delta,  }\item[{bool}]{skip\+Limits\+Check = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Call it to set this-\/$>$adc\+\_\+delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & This value added to A\+DC value when we are going to next step (see Firmware/main.\+h E\+E\+P\+R\+OM S\+T\+R\+U\+C\+T\+U\+RE section for description) \\
+\hline
+{\em skip\+Limits\+Check} & If set to true, then checks for M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA and M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA will be skipped. Us it only for setting base level, because values outside \mbox{[}M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+T\+A-\/\+M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA\mbox{]} can\textquotesingle{}t be programmed into M\+CU. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a83f00b8b66f6566721065e34e41508c6}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 39 of file Settings\+Step.\+cpp.
+
+\mbox{\Hypertarget{class_settings_step_a25ddaf1d4d77727b8f87b5f8588f2de1}\label{class_settings_step_a25ddaf1d4d77727b8f87b5f8588f2de1}} 
+\index{Settings\+Step@{Settings\+Step}!Set\+R\+P\+M\+Delta@{Set\+R\+P\+M\+Delta}}
+\index{Set\+R\+P\+M\+Delta@{Set\+R\+P\+M\+Delta}!Settings\+Step@{Settings\+Step}}
+\subsubsection{\texorpdfstring{Set\+R\+P\+M\+Delta()}{SetRPMDelta()}}
+{\footnotesize\ttfamily void Settings\+Step\+::\+Set\+R\+P\+M\+Delta (\begin{DoxyParamCaption}\item[{uint}]{delta,  }\item[{bool}]{skip\+Limits\+Check = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Like \hyperlink{class_settings_step_a8124c87ae0b1d9fb3b623144d0e492db}{Set\+A\+D\+C\+Delta()}, but for R\+PM delta. Making check for M\+A\+X\+\_\+\+R\+P\+M\+\_\+\+D\+E\+L\+TA, if delta is greater then it, delta will be M\+A\+X\+\_\+\+R\+P\+M\+\_\+\+D\+E\+L\+TA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & This value added to R\+PM raw value when we are going to next step (see Firmware/main.\+h E\+E\+P\+R\+OM S\+T\+R\+U\+C\+T\+U\+RE section for description) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_step_a62997701dc6ad91ec0a9d699ef99463e}{Interfaces\+::\+I\+Settings\+Step}.
+
+
+
+Definition at line 67 of file Settings\+Step.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Implementations/Settings\+Step.\+hpp\item 
+Implementations/Settings\+Step.\+cpp\end{DoxyCompactItemize}

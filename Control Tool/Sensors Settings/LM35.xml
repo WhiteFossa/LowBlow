@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ADC2TempSettings Device="TermalController_mk1" Version="0">
+    <Description>LM35 (10mV/C)</Description>
+    <Multiplicative>0.10752688172</Multiplicative>
+    <Additive>0</Additive>
+</ADC2TempSettings>

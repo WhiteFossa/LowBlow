@@ -1,0 +1,223 @@
+\hypertarget{class_interfaces_1_1_i_adc_temperature_convertor}{}\section{Interfaces\+:\+:I\+Adc\+Temperature\+Convertor Class Reference}
+\label{class_interfaces_1_1_i_adc_temperature_convertor}\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+
+
+Class, used to convert A\+DC values to Temperature and vice versa.  
+
+
+
+
+{\ttfamily \#include $<$I\+Adc\+Temperature\+Convertor.\+hpp$>$}
+
+
+
+Inheritance diagram for Interfaces\+:\+:I\+Adc\+Temperature\+Convertor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_interfaces_1_1_i_adc_temperature_convertor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Interfaces\+:\+:I\+Adc\+Temperature\+Convertor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_interfaces_1_1_i_adc_temperature_convertor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_aa6283c62cbbb012954b5e51d7a969385}{A\+D\+C2\+T\+E\+MP} (uint adc)=0
+\begin{DoxyCompactList}\small\item\em Convert A\+DC measurement to temperature (Celsius). \end{DoxyCompactList}\item 
+virtual uint \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_ab5d3453ecc41848b723a790fe7e01f79}{T\+E\+M\+P2\+A\+DC} (double temp)=0
+\begin{DoxyCompactList}\small\item\em Convert temperature in Celsius to A\+DC measurement. Imitates A\+DC saturation, i.\+e. returns 0 if value must be less than 0, and A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE if it must be more than A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a3e4c9204b3593bc434a041c7a69c430f}{Set\+A\+D\+C2\+Temp\+Conversion\+Factors} (double a, double b)=0
+\begin{DoxyCompactList}\small\item\em Call it to set A\+DC to Temperature conversion factors. Tc = a $\ast$ A\+DC + b, where Tc -\/ Temperature in Celsius, A\+DC -\/ A\+DC measurement. Reverse conversion factors (i.\+e. Temperature to A\+DC will be calculated automatically). \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a61cff0aa0590906acfb18c9b789dceb2}{Get\+A\+D\+C2\+Temp\+Conversion\+Factors} (double $\ast$a, double $\ast$b)=0
+\begin{DoxyCompactList}\small\item\em Returns temperature conversion factors (look \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a3e4c9204b3593bc434a041c7a69c430f}{Set\+A\+D\+C2\+Temp\+Conversion\+Factors()} for details). \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a65bbef2300e21c495d95305921ddb74b}{Set\+Description} (Q\+String descr)=0
+\begin{DoxyCompactList}\small\item\em Set description of this instance (i.\+e. for this conversion settings). \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a2f3b59be793c3ed43e880ef12e9749bc}{Get\+Description} ()=0
+\begin{DoxyCompactList}\small\item\em Get description of this instance (i.\+e. for this conversion settings). \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a9697a0319f82ebd1fc20f5e24d3b191c}{Load\+Settings} (Q\+String filename)=0
+\begin{DoxyCompactList}\small\item\em Load conversion settings from given file. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a6631e979e067ab78d3e5c337449876ac}{Save\+Settings} (Q\+String filename)=0
+\begin{DoxyCompactList}\small\item\em Save conversion settings to given file. If file already exists it will be overwritten. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class, used to convert A\+DC values to Temperature and vice versa. 
+
+Definition at line 12 of file I\+Adc\+Temperature\+Convertor.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_aa6283c62cbbb012954b5e51d7a969385}\label{class_interfaces_1_1_i_adc_temperature_convertor_aa6283c62cbbb012954b5e51d7a969385}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!A\+D\+C2\+T\+E\+MP@{A\+D\+C2\+T\+E\+MP}}
+\index{A\+D\+C2\+T\+E\+MP@{A\+D\+C2\+T\+E\+MP}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{A\+D\+C2\+T\+E\+M\+P()}{ADC2TEMP()}}
+{\footnotesize\ttfamily virtual double Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+A\+D\+C2\+T\+E\+MP (\begin{DoxyParamCaption}\item[{uint}]{adc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Convert A\+DC measurement to temperature (Celsius). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & A\+DC measurement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Temperature in Celsius 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_a3ee4549435400d9ed319fd5fdb83c97f}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a61cff0aa0590906acfb18c9b789dceb2}\label{class_interfaces_1_1_i_adc_temperature_convertor_a61cff0aa0590906acfb18c9b789dceb2}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Get\+A\+D\+C2\+Temp\+Conversion\+Factors@{Get\+A\+D\+C2\+Temp\+Conversion\+Factors}}
+\index{Get\+A\+D\+C2\+Temp\+Conversion\+Factors@{Get\+A\+D\+C2\+Temp\+Conversion\+Factors}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Get\+A\+D\+C2\+Temp\+Conversion\+Factors()}{GetADC2TempConversionFactors()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Get\+A\+D\+C2\+Temp\+Conversion\+Factors (\begin{DoxyParamCaption}\item[{double $\ast$}]{a,  }\item[{double $\ast$}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns temperature conversion factors (look \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a3e4c9204b3593bc434a041c7a69c430f}{Set\+A\+D\+C2\+Temp\+Conversion\+Factors()} for details). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Tc = a $\ast$ A\+DC + b \\
+\hline
+{\em b} & Tc = a $\ast$ A\+DC + b \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_aeab56811467e8019731f1e2867a76671}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a2f3b59be793c3ed43e880ef12e9749bc}\label{class_interfaces_1_1_i_adc_temperature_convertor_a2f3b59be793c3ed43e880ef12e9749bc}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Get\+Description@{Get\+Description}}
+\index{Get\+Description@{Get\+Description}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Get\+Description()}{GetDescription()}}
+{\footnotesize\ttfamily virtual Q\+String Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Get\+Description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get description of this instance (i.\+e. for this conversion settings). 
+
+\begin{DoxyReturn}{Returns}
+Description 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_ad82afdddbac46a95b6da44e769180d10}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a9697a0319f82ebd1fc20f5e24d3b191c}\label{class_interfaces_1_1_i_adc_temperature_convertor_a9697a0319f82ebd1fc20f5e24d3b191c}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Load\+Settings@{Load\+Settings}}
+\index{Load\+Settings@{Load\+Settings}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Load\+Settings()}{LoadSettings()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Load\+Settings (\begin{DoxyParamCaption}\item[{Q\+String}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Load conversion settings from given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Full path to file with settings \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_affab0a66a3508e2eedd8bab3407ae80f}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a6631e979e067ab78d3e5c337449876ac}\label{class_interfaces_1_1_i_adc_temperature_convertor_a6631e979e067ab78d3e5c337449876ac}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Save\+Settings@{Save\+Settings}}
+\index{Save\+Settings@{Save\+Settings}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Save\+Settings()}{SaveSettings()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Save\+Settings (\begin{DoxyParamCaption}\item[{Q\+String}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Save conversion settings to given file. If file already exists it will be overwritten. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Full path to file where settings will be saved \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_aa6935469c6bb9e2df9a21495d7e8b72a}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a3e4c9204b3593bc434a041c7a69c430f}\label{class_interfaces_1_1_i_adc_temperature_convertor_a3e4c9204b3593bc434a041c7a69c430f}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Set\+A\+D\+C2\+Temp\+Conversion\+Factors@{Set\+A\+D\+C2\+Temp\+Conversion\+Factors}}
+\index{Set\+A\+D\+C2\+Temp\+Conversion\+Factors@{Set\+A\+D\+C2\+Temp\+Conversion\+Factors}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Set\+A\+D\+C2\+Temp\+Conversion\+Factors()}{SetADC2TempConversionFactors()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Set\+A\+D\+C2\+Temp\+Conversion\+Factors (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Call it to set A\+DC to Temperature conversion factors. Tc = a $\ast$ A\+DC + b, where Tc -\/ Temperature in Celsius, A\+DC -\/ A\+DC measurement. Reverse conversion factors (i.\+e. Temperature to A\+DC will be calculated automatically). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Tc = a $\ast$ A\+DC + b \\
+\hline
+{\em b} & Tc = a $\ast$ A\+DC + b \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_a5a19355f805554763e914e5b2216d5f6}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a65bbef2300e21c495d95305921ddb74b}\label{class_interfaces_1_1_i_adc_temperature_convertor_a65bbef2300e21c495d95305921ddb74b}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Set\+Description@{Set\+Description}}
+\index{Set\+Description@{Set\+Description}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Set\+Description()}{SetDescription()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Set\+Description (\begin{DoxyParamCaption}\item[{Q\+String}]{descr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set description of this instance (i.\+e. for this conversion settings). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em desct} & Description \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_a56103443d7da4769339ddb685a0a8df0}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_ab5d3453ecc41848b723a790fe7e01f79}\label{class_interfaces_1_1_i_adc_temperature_convertor_ab5d3453ecc41848b723a790fe7e01f79}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!T\+E\+M\+P2\+A\+DC@{T\+E\+M\+P2\+A\+DC}}
+\index{T\+E\+M\+P2\+A\+DC@{T\+E\+M\+P2\+A\+DC}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{T\+E\+M\+P2\+A\+D\+C()}{TEMP2ADC()}}
+{\footnotesize\ttfamily virtual uint Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+T\+E\+M\+P2\+A\+DC (\begin{DoxyParamCaption}\item[{double}]{temp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Convert temperature in Celsius to A\+DC measurement. Imitates A\+DC saturation, i.\+e. returns 0 if value must be less than 0, and A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE if it must be more than A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & Temperature in Celsius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\+DC measurement 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_ae82f374826a431c837bdf796c593775b}{Adc\+Temperature\+Convertor}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Interfaces/I\+Adc\+Temperature\+Convertor.\+hpp\end{DoxyCompactItemize}
