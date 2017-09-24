@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     NewADC2TempDialog.cpp \
     Implementations/SettingsStep.cpp \
     Implementations/SettingsGenerator.cpp \
-    FossasSimpleGraph/Implementations/QSimpleGraph.cpp
+    FossasSimpleGraph/Implementations/QSimpleGraph.cpp \
+    Implementations/SettingsSaverLoader.cpp
 
 HEADERS  += mainwindow.hpp \
     Interfaces/IAdcTemperatureConvertor.hpp \
@@ -30,7 +31,9 @@ HEADERS  += mainwindow.hpp \
     Interfaces/ISettingsGenerator.hpp \
     Implementations/SettingsGenerator.hpp \
     FossasSimpleGraph/Implementations/QSimpleGraph.hpp \
-    FossasSimpleGraph/Interfaces/IQSimpleGraph.hpp
+    FossasSimpleGraph/Interfaces/IQSimpleGraph.hpp \
+    Interfaces/ISettingsSaverLoader.hpp \
+    Implementations/SettingsSaverLoader.hpp
 
 FORMS    += mainwindow.ui \
     NewADC2TempDialog.ui

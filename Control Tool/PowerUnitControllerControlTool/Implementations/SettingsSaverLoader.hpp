@@ -17,20 +17,28 @@ You should have received a copy of the GNU General Public License
 along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef AUXILIARY_HPP
-#define AUXILIARY_HPP
+#ifndef SETTINGSSAVERLOADER_HPP
+#define SETTINGSSAVERLOADER_HPP
 
-/* Auxiliary functions */
+#include <Interfaces/ISettingsSaverLoader.hpp>
 
 /**
- * @brief Use it to safely remove anything. It calls delete obj, and then sets obj to 0.
- * @param obj What we need to delete
+ * @brief Class to save and load settings to XML.
  */
-template <typename T>
-void SafeDelete(T obj)
+class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 {
-  delete obj;
-  obj = 0;
-}
+	public:
 
-#endif // AUXILIARY_HPP
+	protected:
+
+	private:
+
+		/**
+		 * @brief Currently opened file.
+		 */
+		QString _currentFile;
+
+
+};
+
+#endif // SETTINGSSAVERLOADER_HPP
