@@ -1,3 +1,22 @@
+﻿/*
+Copyright 2017 White Fossa aka Artyom Vetrov.
+
+This file is part of project "LowBlow" (advanced programmable cooler controller).
+
+All parts of "LowBlow" is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+"LowBlow" project files is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #ifndef IFOSSASSIMPLEGRAPH_HPP
 #define IFOSSASSIMPLEGRAPH_HPP
 
@@ -24,75 +43,75 @@ namespace Fossa
        */
       class IQSimpleGraph : public QWidget
       {
-        Q_OBJECT
+	Q_OBJECT
 
-        // Public members
-        public:
+	// Public members
+	public:
 
-          /**
-           * @brief Widget constructor.
-           * @param parent Parent widget.
-           */
-          IQSimpleGraph(QWidget *parent = 0) : QWidget(parent)
-          {
+	  /**
+	   * @brief Widget constructor.
+	   * @param parent Parent widget.
+	   */
+	  IQSimpleGraph(QWidget *parent = 0) : QWidget(parent)
+	  {
 
-          }
+	  }
 
-          /**
-           * @brief See SetMaxXValue for details, it have completely the same behaviour.
-           * @param minValue New minimal value. If it greater then maximal X value, it will be set to maximal X value.
-           */
-          virtual void SetMinXValue(double minValue) = 0;
+	  /**
+	   * @brief See SetMaxXValue for details, it have completely the same behaviour.
+	   * @param minValue New minimal value. If it greater then maximal X value, it will be set to maximal X value.
+	   */
+	  virtual void SetMinXValue(double minValue) = 0;
 
-          /**
-           * @brief Call it to set maximal value of X-axis. Please note, that if new point added to graph later, and point's X coordinate exceeds maximal X value, then
-           * maximal X value will be increased, allowing graph to display such points.
-           * @param maxValue New maximal value. If it less then minimal X value, it will be set to minimal X value.
-           */
-          virtual void SetMaxXValue(double maxValue) = 0;
+	  /**
+	   * @brief Call it to set maximal value of X-axis. Please note, that if new point added to graph later, and point's X coordinate exceeds maximal X value, then
+	   * maximal X value will be increased, allowing graph to display such points.
+	   * @param maxValue New maximal value. If it less then minimal X value, it will be set to minimal X value.
+	   */
+	  virtual void SetMaxXValue(double maxValue) = 0;
 
-          /**
-           * @brief As SetMinXValue, but for Y-axis.
-           * @param minValue See SetMinXValue.
-           */
-          virtual void SetMinYValue(double minValue) = 0;
+	  /**
+	   * @brief As SetMinXValue, but for Y-axis.
+	   * @param minValue See SetMinXValue.
+	   */
+	  virtual void SetMinYValue(double minValue) = 0;
 
-          /**
-           * @brief As SetMaxXValue, but for Y-axis.
-           * @param maxValue See SetMaxXValue.
-           */
-          virtual void SetMaxYValue(double maxValue) = 0;
+	  /**
+	   * @brief As SetMaxXValue, but for Y-axis.
+	   * @param maxValue See SetMaxXValue.
+	   */
+	  virtual void SetMaxYValue(double maxValue) = 0;
 
-          /**
-           * @brief Set title of X-Axis.
-           * @param title Title.
-           */
-          virtual void SetXAxisTitle(QString title) = 0;
+	  /**
+	   * @brief Set title of X-Axis.
+	   * @param title Title.
+	   */
+	  virtual void SetXAxisTitle(QString title) = 0;
 
-          /**
-           * @brief As SetXAxisTitle(), but for Y-Axis.
-           * @param title See SetXAxisTitle().
-           */
-          virtual void SetYAxisTitle(QString title) = 0;
+	  /**
+	   * @brief As SetXAxisTitle(), but for Y-Axis.
+	   * @param title See SetXAxisTitle().
+	   */
+	  virtual void SetYAxisTitle(QString title) = 0;
 
-          /**
-           * @brief Removes all points from graph.
-           */
-          virtual void ClearAllPoints() = 0;
+	  /**
+	   * @brief Removes all points from graph.
+	   */
+	  virtual void ClearAllPoints() = 0;
 
-          /**
-           * @brief Adds point with given X and Y value to graph. Points collection inside the graph must be self-ordered, so points can be added in
-           * arbitraty order. If point outside maximal and minimal values for graph, minimal and maximal values will be expanded to allow display all points.
-           * @param XVal X-axis value.
-           * @param YVal Y-axis value.
-           */
-          virtual void AddPoint(double XVal, double YVal) = 0;
+	  /**
+	   * @brief Adds point with given X and Y value to graph. Points collection inside the graph must be self-ordered, so points can be added in
+	   * arbitraty order. If point outside maximal and minimal values for graph, minimal and maximal values will be expanded to allow display all points.
+	   * @param XVal X-axis value.
+	   * @param YVal Y-axis value.
+	   */
+	  virtual void AddPoint(double XVal, double YVal) = 0;
 
-        // Protected members
-        protected:
+	// Protected members
+	protected:
 
-        // Private members
-        private:
+	// Private members
+	private:
 
       };
     }
