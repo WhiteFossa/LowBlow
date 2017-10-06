@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	// Saver/loader
+	this->_settingsSaverLoader = new SettingsSaverLoader();
+
 	// Connecting signals to slots
 	QObject::connect(this->ui->mw_actionExit, SIGNAL(triggered(bool)), this, SLOT(MwSlotExit()));
 	QObject::connect(this->ui->actionCreateNewADC2Temp, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateNewADC2Temp()));
@@ -379,6 +382,8 @@ MainWindow::~MainWindow()
 	SafeDelete(this->_mwConversionStatus);
 
 	SafeDelete(this->_mwFileName);
+
+	SafeDelete(this->_settingsSaverLoader);
 
 	SafeDelete(ui);
 }

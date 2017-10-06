@@ -33,6 +33,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <NewADC2TempDialog.hpp>
 #include <Implementations/SettingsGenerator.hpp>
 #include <Implementations/SettingsStep.hpp>
+#include <Implementations/SettingsSaverLoader.hpp>
 #include <FossasSimpleGraph/Implementations/QSimpleGraph.hpp>
 
 
@@ -229,6 +230,11 @@ private:
 	 * @brief Graph to display RPMs-themperature relation
 	 */
 	Fossa::QSimpleGraph::QSimpleGraph* _graph = nullptr;
+
+	/**
+	 * @brief _settingsSaverLoader Settings saver/loader.
+	 */
+	Interfaces::ISettingsSaverLoader* _settingsSaverLoader = nullptr;
 
 	/**
 	 * @brief Call this to initialize given steps table column. Requires initialized _ADCDetlaSpinboxes and _RPMDeltaSpinboxes.

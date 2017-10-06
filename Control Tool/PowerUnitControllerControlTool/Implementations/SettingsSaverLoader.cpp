@@ -18,3 +18,38 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <Implementations/SettingsSaverLoader.hpp>
+
+		SettingsSaverLoader::SettingsSaverLoader()
+		{
+			this->_path = QObject::trUtf8("");
+		}
+
+		void SettingsSaverLoader::Create(QString path, QString adc2TempPath)
+		{
+
+		}
+
+		void SettingsSaverLoader::Load(QString path)
+		{
+
+		}
+
+		void SettingsSaverLoader::Save()
+		{
+
+		}
+
+		void SettingsSaverLoader::SaveAs(QString path)
+		{
+
+		}
+
+		QString SettingsSaverLoader::GetFilePath()
+		{
+			return this->_path;
+		}
+
+		bool SettingsSaverLoader::IsModified()
+		{
+			return true;
+		}

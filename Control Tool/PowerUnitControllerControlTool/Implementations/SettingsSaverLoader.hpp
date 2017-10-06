@@ -29,15 +29,27 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 {
 	public:
 
+		/**
+		 * @brief SettingsSaverLoader Constructor.
+		 */
+		SettingsSaverLoader();
+
+		void Create(QString path, QString adc2TempPath);
+		void Load(QString path);
+		void Save();
+		void SaveAs(QString path);
+		QString GetFilePath();
+		bool IsModified();
+
+
 	protected:
 
 	private:
 
 		/**
-		 * @brief Currently opened file.
+		 * @brief _path Current file path.
 		 */
-		QString _currentFile;
-
+		QString _path;
 
 };
 
