@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Power Unit Thermal Controller Setup Tool: Class Members</title>
+<title>Project LowBlow Thermal Controller Setup Tool: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Power Unit Thermal Controller Setup Tool
+   <div id="projectname">Project LowBlow Thermal Controller Setup Tool
    </div>
    <div id="projectbrief">Generates EEPROM contents for given temerature-RPMs lookup table</div>
   </td>
@@ -92,6 +92,10 @@ $(function() {
 <li>conv
 : <a class="el" href="class_interfaces_1_1_i_settings_step.html#a5db60ca3f2c1b4e7059910e2d86656b9">Interfaces::ISettingsStep</a>
 </li>
+<li>Create()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a67e729cc53f53b6bdeb534dc62000531">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#a23524241e3edea7f26b72807c0090bdc">SettingsSaverLoader</a>
+</li>
 </ul>
 
 
@@ -140,6 +144,10 @@ $(function() {
 : <a class="el" href="class_adc_temperature_convertor.html#ad82afdddbac46a95b6da44e769180d10">AdcTemperatureConvertor</a>
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a2f3b59be793c3ed43e880ef12e9749bc">Interfaces::IAdcTemperatureConvertor</a>
 </li>
+<li>GetFilePath()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a7224c9ffc2d9c6a3b98fb20246e97cc3">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#a006a6350a00ffc18ec544616e504ccf7">SettingsSaverLoader</a>
+</li>
 <li>GetRPMDelta()
 : <a class="el" href="class_interfaces_1_1_i_settings_step.html#ace758dafae2a6bcbb0b1a3a64c802e3c">Interfaces::ISettingsStep</a>
 , <a class="el" href="class_settings_step.html#a594ce71fb0626c79c3e4d4f988e484af">SettingsStep</a>
@@ -167,10 +175,18 @@ $(function() {
 <li>IQSimpleGraph()
 : <a class="el" href="class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph.html#a7208e669127d3683d41329d110269e97">Fossa::QSimpleGraph::Interfaces::IQSimpleGraph</a>
 </li>
+<li>IsModified()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a4c3f69d0bc7c355030c8d371367108d3">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#a35574bdfc340a148245ea8017c59f2eb">SettingsSaverLoader</a>
+</li>
 </ul>
 
 
 <h3><a id="index_l"></a>- l -</h3><ul>
+<li>Load()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a615065a16447aaebc4f8ec5aacc28963">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#a423b613ca565c52de165dc976d0df066">SettingsSaverLoader</a>
+</li>
 <li>LoadSettings()
 : <a class="el" href="class_adc_temperature_convertor.html#affab0a66a3508e2eedd8bab3407ae80f">AdcTemperatureConvertor</a>
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a9697a0319f82ebd1fc20f5e24d3b191c">Interfaces::IAdcTemperatureConvertor</a>
@@ -218,14 +234,14 @@ $(function() {
 <li>MwSlotExit()
 : <a class="el" href="class_main_window.html#a95fb3a2c4f9240d386029d5ffebab1ac">MainWindow</a>
 </li>
-<li>MwSlotLoadADC2Temp()
-: <a class="el" href="class_main_window.html#aa118a1eb2f4ef1693518dff9a852fc68">MainWindow</a>
-</li>
 <li>MwSlotRPMDeltaChanged()
 : <a class="el" href="class_main_window.html#a32b3a311b7151092db3ec0756d2c22d4">MainWindow</a>
 </li>
 <li>MwSlotRPMDeltaChangedRaw()
 : <a class="el" href="class_main_window.html#a4480e7516f91b93c8abc3d42c1284124">MainWindow</a>
+</li>
+<li>MwSlotSetFileName()
+: <a class="el" href="class_main_window.html#a034aa95bf311ef5cded91bfe9350ce69">MainWindow</a>
 </li>
 <li>MwSlotUpdateStepsTable()
 : <a class="el" href="class_main_window.html#a07c8e8c9d91588bdcc8e1eae01c4ffd7">MainWindow</a>
@@ -248,6 +264,14 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>Save()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a5434144e59300dd6ed380f9600870cfa">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#a76f49378c54746013a5767dd6b348a33">SettingsSaverLoader</a>
+</li>
+<li>SaveAs()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a2d6a6dd6e5b6fe15e8b78af2e75725fc">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#a67b93496f8b0a0a779d783e967d93572">SettingsSaverLoader</a>
+</li>
 <li>SaveSettings()
 : <a class="el" href="class_adc_temperature_convertor.html#aa6935469c6bb9e2df9a21495d7e8b72a">AdcTemperatureConvertor</a>
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a6631e979e067ab78d3e5c337449876ac">Interfaces::IAdcTemperatureConvertor</a>
@@ -295,6 +319,9 @@ $(function() {
 <li>SettingsGenerator()
 : <a class="el" href="class_settings_generator.html#a063e189547011b62a567ff55446341d7">SettingsGenerator</a>
 </li>
+<li>SettingsSaverLoader()
+: <a class="el" href="class_settings_saver_loader.html#a735862a6c6797a2faae92959d15ea531">SettingsSaverLoader</a>
+</li>
 <li>SetXAxisTitle()
 : <a class="el" href="class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph.html#adfca7d41a47790e8403507544468ba86">Fossa::QSimpleGraph::Interfaces::IQSimpleGraph</a>
 , <a class="el" href="class_fossa_1_1_q_simple_graph_1_1_q_simple_graph.html#a7579da572b54d43ccec3d2bd572b6cfa">Fossa::QSimpleGraph::QSimpleGraph</a>
@@ -334,7 +361,7 @@ $(function() {
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Sep 10 2017 23:49:59 for Power Unit Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 6 2017 23:09:06 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

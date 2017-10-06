@@ -14,8 +14,8 @@ var searchData=
   ['mwslotconvertorchanged',['MwSlotConvertorChanged',['../class_main_window.html#a360889512281e9ac54ed2456597db083',1,'MainWindow']]],
   ['mwslotcreatenewadc2temp',['MwSlotCreateNewADC2Temp',['../class_main_window.html#a2ef62a3653289364eace9bbf334d904b',1,'MainWindow']]],
   ['mwslotexit',['MwSlotExit',['../class_main_window.html#a95fb3a2c4f9240d386029d5ffebab1ac',1,'MainWindow']]],
-  ['mwslotloadadc2temp',['MwSlotLoadADC2Temp',['../class_main_window.html#aa118a1eb2f4ef1693518dff9a852fc68',1,'MainWindow']]],
   ['mwslotrpmdeltachanged',['MwSlotRPMDeltaChanged',['../class_main_window.html#a32b3a311b7151092db3ec0756d2c22d4',1,'MainWindow']]],
   ['mwslotrpmdeltachangedraw',['MwSlotRPMDeltaChangedRaw',['../class_main_window.html#a4480e7516f91b93c8abc3d42c1284124',1,'MainWindow']]],
+  ['mwslotsetfilename',['MwSlotSetFileName',['../class_main_window.html#a034aa95bf311ef5cded91bfe9350ce69',1,'MainWindow']]],
   ['mwslotupdatestepstable',['MwSlotUpdateStepsTable',['../class_main_window.html#a07c8e8c9d91588bdcc8e1eae01c4ffd7',1,'MainWindow']]]
 ];
