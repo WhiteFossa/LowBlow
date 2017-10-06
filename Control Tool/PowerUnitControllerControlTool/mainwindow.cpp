@@ -113,6 +113,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	emit MwSignalUpdateStepsTable();
 
 	this->MwSlotSetFileName("yiff.xml");
+	this->LockUnlockInterface(false);
 }
 
 void MainWindow::changeEvent(QEvent *e)
@@ -357,6 +358,16 @@ void MainWindow::MwSlotSetFileName(QString filename)
 	windowTitle += QObject::trUtf8("Project \"LowBlow\" Control Tool");
 
 	this->setWindowTitle(windowTitle);
+}
+
+void MainWindow::LockUnlockInterface(bool isUnlock)
+{
+	this->ui->actionSave->setEnabled(isUnlock);
+	this->ui->actionSave_As->setEnabled(isUnlock);
+	this->ui->mw_basetemperature->setEnabled(isUnlock);
+	this->ui->mw_baseRPM->setEnabled(isUnlock);
+	this->_graph->setEnabled(isUnlock);
+	this->ui->mw_StepsTable->setEnabled(isUnlock);
 }
 
 MainWindow::~MainWindow()

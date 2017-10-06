@@ -235,6 +235,13 @@ private:
 	 * @param col Column number (starting from 0)
 	 */
 	void InitializeStepsTableColumn(uint col);
+
+	/**
+	 * @brief Call this method to lock or unlock UI elements, related to loaded file.
+	 * @param isUnlock if true, then elements will be unlocked.
+	 */
+	void LockUnlockInterface(bool isUnlock);
+
 };
 
 #endif // MAINWINDOW_HPP

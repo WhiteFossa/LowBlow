@@ -34,11 +34,14 @@ namespace Interfaces
 
 		// Public methods.
 		public:
+
 			/**
-			 * @brief Creates new settings file (in memory) and setting ADC->Temperature settings for it by calling
-			 * LoadADC2Temp().
+			 * @brief Creates settings file at path and embeds ADC->Temperature settings
+			 * from adc2TempPath into it.
+			 * @param path Path where created file will be stored (actual write occurs on "Save" call).
+			 * @param adc2TempPath
 			 */
-			virtual void Create() = 0;
+			virtual void Create(QString path, QString adc2TempPath) = 0;
 
 			/**
 			 * @brief Loads settings from given file.
@@ -47,15 +50,27 @@ namespace Interfaces
 			virtual void Load(QString path) = 0;
 
 			/**
+			 * @brief Saves settings to current file or throws exception if current file is not set.
+			 */
+			virtual void Save() = 0;
+
+			/**
 			 * @brief Saves settings to given file, then sets this file as current.
 			 * @param path Path to save.
 			 */
 			virtual void SaveAs(QString path) = 0;
 
 			/**
-			 * @brief Saves settings to current file or throws exception if current file is not set.
+			 * @brief GetFilePath Returns current file full path. If null then file wasn't loaded/created at all.
+			 * @return Current file path.
 			 */
-			virtual void Save() = 0;
+			virtual QString GetFilePath() = 0;
+
+			/**
+			 * @brief IsModified True if file was modified and haven't saved till now.
+			 * @return True if file modified.
+			 */
+			virtual bool IsModified() = 0;
 
 	};
 }
