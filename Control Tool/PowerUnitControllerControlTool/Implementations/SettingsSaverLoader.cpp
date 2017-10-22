@@ -19,37 +19,59 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Implementations/SettingsSaverLoader.hpp>
 
-		SettingsSaverLoader::SettingsSaverLoader()
-		{
-			this->_path = QObject::trUtf8("");
-		}
+SettingsSaverLoader::SettingsSaverLoader()
+{
+	this->_adc2Temp = new AdcTemperatureConvertor();
+	this->_path = QObject::trUtf8("");
+	this->_isModified = false;
+}
 
-		void SettingsSaverLoader::Create(QString path, QString adc2TempPath)
-		{
+void SettingsSaverLoader::Create(QString path, QString adc2TempPath)
+{
+	this->_path = path;
+	this->_isModified = true;
 
-		}
+	this->_adc2Temp->LoadSettings(adc2TempPath);
+}
 
-		void SettingsSaverLoader::Load(QString path)
-		{
+void SettingsSaverLoader::Load(QString path)
+{
+	this->_path = path;
+}
 
-		}
+void SettingsSaverLoader::Save()
+{
+	this->_isModified = false;
+}
 
-		void SettingsSaverLoader::Save()
-		{
+void SettingsSaverLoader::SaveAs(QString path)
+{
+}
 
-		}
+QString SettingsSaverLoader::GetFilePath()
+{
+	return this->_path;
+}
 
-		void SettingsSaverLoader::SaveAs(QString path)
-		{
+void SettingsSaverLoader::MarkAsModified()
+{
+	if (!this->_path.isEmpty())
+	{
+		this->_isModified = true;
+	}
+}
 
-		}
+bool SettingsSaverLoader::IsModified()
+{
+	return this->_isModified;
+}
 
-		QString SettingsSaverLoader::GetFilePath()
-		{
-			return this->_path;
-		}
+const Interfaces::IAdcTemperatureConvertor* SettingsSaverLoader::GetADC2TempConvertorPtr()
+{
+	return this->_adc2Temp;
+}
 
-		bool SettingsSaverLoader::IsModified()
-		{
-			return true;
-		}
+SettingsSaverLoader::~SettingsSaverLoader()
+{
+	SafeDelete(this->_adc2Temp);
+}

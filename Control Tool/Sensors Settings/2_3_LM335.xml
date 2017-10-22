@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ADC2TempSettings Device="TermalController_mk1" Version="0">
-    <Description>2 * LM335 / 3</Description>
-    <Multiplicative>0.375366568915</Multiplicative>
-    <Additive>-273.15</Additive>
-</ADC2TempSettings>

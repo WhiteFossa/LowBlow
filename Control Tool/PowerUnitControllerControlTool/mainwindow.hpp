@@ -28,6 +28,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QMessageBox>
 #include <Interfaces/IAdcTemperatureConvertor.hpp>
 #include <Implementations/AdcTemperatureConvertor.hpp>
 #include <NewADC2TempDialog.hpp>
@@ -133,10 +134,10 @@ public slots:
 	void MwSlotUpdateStepsTable();
 
 	/**
-	 * @brief Sets filename to window title and status bar.
-	 * @param filename Filename to set.
+	 * @brief Call this slot to create a new file.
 	 */
-	void MwSlotSetFileName(QString filename);
+	void MwSlotCreateFile();
+
 
 /* Signals */
 signals:
@@ -247,6 +248,12 @@ private:
 	 * @param isUnlock if true, then elements will be unlocked.
 	 */
 	void LockUnlockInterface(bool isUnlock);
+
+		/**
+	 * @brief Updates displayed filename from this->_settingsSaverLoader
+	 */
+	void UpdateDisplayedFileName();
+
 
 };
 

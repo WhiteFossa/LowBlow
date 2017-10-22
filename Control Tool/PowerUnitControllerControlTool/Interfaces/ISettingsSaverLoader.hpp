@@ -22,6 +22,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 #include <QObject>
 #include <QString>
+#include <Interfaces/IAdcTemperatureConvertor.hpp>
 
 namespace Interfaces
 {
@@ -39,7 +40,7 @@ namespace Interfaces
 			 * @brief Creates settings file at path and embeds ADC->Temperature settings
 			 * from adc2TempPath into it.
 			 * @param path Path where created file will be stored (actual write occurs on "Save" call).
-			 * @param adc2TempPath
+			 * @param adc2TempPath path to file with ADC->Temperature settings.
 			 */
 			virtual void Create(QString path, QString adc2TempPath) = 0;
 
@@ -67,11 +68,27 @@ namespace Interfaces
 			virtual QString GetFilePath() = 0;
 
 			/**
+			 * @brief Makrs current file is modified. If no file loaded does nothing.
+			 */
+			virtual void MarkAsModified() = 0;
+
+			/**
 			 * @brief IsModified True if file was modified and haven't saved till now.
 			 * @return True if file modified.
 			 */
 			virtual bool IsModified() = 0;
 
+			/**
+			 * @brief Returns constant pointer to ADC->Temperature convertor instance.
+			 * @return Pointer to ADC->Temperature convertor.
+			 */
+			virtual const Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr() = 0;
+
+		protected:
+			/**
+			 * @brief ADC to temperature convertor.
+			 */
+			Interfaces::IAdcTemperatureConvertor* _adc2Temp = nullptr;
 	};
 }
 

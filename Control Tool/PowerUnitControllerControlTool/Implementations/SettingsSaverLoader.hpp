@@ -20,7 +20,9 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #ifndef SETTINGSSAVERLOADER_HPP
 #define SETTINGSSAVERLOADER_HPP
 
+#include <Auxiliary.hpp>
 #include <Interfaces/ISettingsSaverLoader.hpp>
+#include <Implementations/AdcTemperatureConvertor.hpp>
 
 /**
  * @brief Class to save and load settings to XML.
@@ -34,12 +36,19 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		 */
 		SettingsSaverLoader();
 
+		/**
+		* @brief Destructor.
+		*/
+		~SettingsSaverLoader();
+
 		void Create(QString path, QString adc2TempPath);
 		void Load(QString path);
 		void Save();
 		void SaveAs(QString path);
 		QString GetFilePath();
+		void MarkAsModified();
 		bool IsModified();
+		const Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr();
 
 
 	protected:
@@ -50,6 +59,11 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		 * @brief _path Current file path.
 		 */
 		QString _path;
+
+		/**
+		 * @brief _isModified True if file is modified and not saved.
+		 */
+		bool _isModified;
 
 };
 

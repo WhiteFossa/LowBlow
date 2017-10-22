@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(this, SIGNAL(MwSignalADCDeltaChanged(uint,uint)), this, SLOT(MwSlotADCDeltaChanged(uint, uint)));
 	QObject::connect(this, SIGNAL(MwSignalRPMDeltaChanged(uint,uint)), this, SLOT(MwSlotRPMDeltaChanged(uint, uint)));
 	QObject::connect(this, SIGNAL(MwSignalUpdateStepsTable()), this, SLOT(MwSlotUpdateStepsTable()));
+	QObject::connect(this->ui->actionNew, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateFile()));
 
 	// Initializing status bar
 	// ADC->Temperature conversion info
@@ -115,7 +116,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
 
-	this->MwSlotSetFileName("yiff.xml");
+	this->UpdateDisplayedFileName();
 	this->LockUnlockInterface(false);
 }
 
@@ -345,17 +346,25 @@ void MainWindow::MwSlotUpdateStepsTable()
 	this->_graph->update();
 }
 
-void MainWindow::MwSlotSetFileName(QString filename)
+void MainWindow::UpdateDisplayedFileName()
 {
+	QString filePath = this->_settingsSaverLoader->GetFilePath();
+
 	QString windowTitle = QObject::trUtf8("");
-	if (!filename.isEmpty())
+	if (!filePath.isEmpty())
 	{
-		windowTitle = QObject::trUtf8("%1 - ").arg(filename);
-		this->_mwFileName->setText(filename);
+		QString modifiedSign = QObject::trUtf8("");
+		if (this->_settingsSaverLoader->IsModified())
+		{
+			modifiedSign = QObject::trUtf8("*");
+		}
+
+		windowTitle = QObject::trUtf8("%1%2 - ").arg(filePath).arg(modifiedSign);
+		this->_mwFileName->setText(filePath);
 	}
 	else
 	{
-		this->_mwFileName->setText(QObject::trUtf8("File is not specified"));
+		this->_mwFileName->setText(QObject::trUtf8("File not specified"));
 	}
 
 	windowTitle += QObject::trUtf8("Project \"LowBlow\" Control Tool");
@@ -371,6 +380,30 @@ void MainWindow::LockUnlockInterface(bool isUnlock)
 	this->ui->mw_baseRPM->setEnabled(isUnlock);
 	this->_graph->setEnabled(isUnlock);
 	this->ui->mw_StepsTable->setEnabled(isUnlock);
+}
+
+void MainWindow::MwSlotCreateFile()
+{
+	// Do current file saved?
+	if (this->_settingsSaverLoader->IsModified())
+	{
+		// Saving if needed
+		if (QMessageBox::Yes == QMessageBox::question(this, QObject::trUtf8("Save changes?"), QObject::trUtf8("Save changes before creating new settings file?"),
+		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
+		{
+			this->_settingsSaverLoader->Save();
+		}
+	}
+
+	// Settings filename
+	QString newFilePath = QFileDialog::getSaveFileName(this, QObject::trUtf8("New settings file:"));
+
+	// ADC->Temperature settings file
+	QString ADC2TempFilePath = QFileDialog::getOpenFileName(this, QObject::trUtf8("Select ADC to temperature settings file:"));
+
+	this->_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
+
+	this->UpdateDisplayedFileName();
 }
 
 MainWindow::~MainWindow()
