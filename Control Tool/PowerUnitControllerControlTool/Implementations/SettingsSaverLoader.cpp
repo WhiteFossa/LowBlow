@@ -66,7 +66,7 @@ bool SettingsSaverLoader::IsModified()
 	return this->_isModified;
 }
 
-const Interfaces::IAdcTemperatureConvertor* SettingsSaverLoader::GetADC2TempConvertorPtr()
+Interfaces::IAdcTemperatureConvertor* SettingsSaverLoader::GetADC2TempConvertorPtr()
 {
 	return this->_adc2Temp;
 }

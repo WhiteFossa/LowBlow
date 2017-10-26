@@ -48,7 +48,7 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		QString GetFilePath();
 		void MarkAsModified();
 		bool IsModified();
-		const Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr();
+		Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr();
 
 
 	protected:

@@ -32,7 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	// Connecting signals to slots
 	QObject::connect(this->ui->mw_actionExit, SIGNAL(triggered(bool)), this, SLOT(MwSlotExit()));
 	QObject::connect(this->ui->actionCreateNewADC2Temp, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateNewADC2Temp()));
-	QObject::connect(this, SIGNAL(MwSignalConvertorChanged()), this, SLOT(MwSlotConvertorChanged()));
 	QObject::connect(this->ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double)));
 	QObject::connect(this->ui->mw_baseRPM, SIGNAL(valueChanged(int)), this, SLOT(MwSlotBaseRPMChanged(int)));
 	QObject::connect(this, SIGNAL(MwSignalADCDeltaChanged(uint,uint)), this, SLOT(MwSlotADCDeltaChanged(uint, uint)));
@@ -49,11 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->_mwFileName = new QLabel(this);
 	this->ui->mw_status->addPermanentWidget(this->_mwFileName);
 
-	// Temperature convertor
-	this->_tconv = new AdcTemperatureConvertor();
-	emit MwSignalConvertorChanged();
-
-	this->_setgen = new SettingsGenerator(this->_tconv);
+	this->_setgen = new SettingsGenerator(this->_settingsSaverLoader->GetADC2TempConvertorPtr());
 	this->_setgen->InitializeStepsList(STEPS_NUMBER);
 
 	// Initializing step table (UI)
@@ -116,6 +111,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
 
+	// Actualizing ADC->Temperature convertor settings
+	this->UpdateConvertorInformation();
+
+	// And filename
 	this->UpdateDisplayedFileName();
 	this->LockUnlockInterface(false);
 }
@@ -137,11 +136,13 @@ void MainWindow::MwSlotExit()
 		QCoreApplication::quit();
 }
 
-void MainWindow::MwSlotConvertorChanged()
+void MainWindow::UpdateConvertorInformation()
 {
+	Interfaces::IAdcTemperatureConvertor* conv = this->_settingsSaverLoader->GetADC2TempConvertorPtr();
+
 	// Visualize new convertor
 	double a, b;
-	this->_tconv->GetADC2TempConversionFactors(&a, &b);
+	conv->GetADC2TempConversionFactors(&a, &b);
 
 	QString format_str = QObject::trUtf8("Sensor: %1: T = %2*ADC");
 	if (b >= 0)
@@ -151,10 +152,7 @@ void MainWindow::MwSlotConvertorChanged()
 
 	format_str += QObject::trUtf8("%3");
 
-	this->_mwConversionStatus->setText(QString(format_str).arg(this->_tconv->GetDescription()).arg(a).arg(b));
-
-	// Actualizing UI steps table
-	emit MwSignalUpdateStepsTable();
+	this->_mwConversionStatus->setText(QString(format_str).arg(conv->GetDescription()).arg(a).arg(b));
 }
 
 void MainWindow::MwSlotCreateNewADC2Temp()
@@ -382,6 +380,7 @@ void MainWindow::LockUnlockInterface(bool isUnlock)
 	this->ui->mw_StepsTable->setEnabled(isUnlock);
 }
 
+
 void MainWindow::MwSlotCreateFile()
 {
 	// Do current file saved?
@@ -404,13 +403,13 @@ void MainWindow::MwSlotCreateFile()
 	this->_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
 
 	this->UpdateDisplayedFileName();
+	this->UpdateConvertorInformation();
+	this->LockUnlockInterface(true);
 }
 
 MainWindow::~MainWindow()
 {
 	SafeDelete(this->_setgen);
-
-	SafeDelete(this->_tconv);
 
 	SafeDelete(this->_mwConversionStatus);
 

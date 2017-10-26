@@ -30,7 +30,6 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QMessageBox>
 #include <Interfaces/IAdcTemperatureConvertor.hpp>
-#include <Implementations/AdcTemperatureConvertor.hpp>
 #include <NewADC2TempDialog.hpp>
 #include <Implementations/SettingsGenerator.hpp>
 #include <Implementations/SettingsStep.hpp>
@@ -77,11 +76,6 @@ public slots:
 	 * Called when user want to close application.
 	 */
 	void MwSlotExit();
-
-	/**
-	 * @brief Called when new this->tconv initialized with the new instance of ADC to Temperature convertor.
-	 */
-	void MwSlotConvertorChanged();
 
 	/**
 	 * @brief Called when user wants to create a new ADC->Temperature conversion settings
@@ -207,10 +201,10 @@ private:
 	 */
 	QLabel *_mwFileName = nullptr;
 
-	/**
-	 * @brief Temperature convertor
-	 */
-	Interfaces::IAdcTemperatureConvertor *_tconv= nullptr;
+//	/**
+//	 * @brief Temperature convertor
+//	 */
+//	Interfaces::IAdcTemperatureConvertor *_tconv= nullptr;
 
 	/**
 	 * @brief _setgen Settings generator
@@ -253,6 +247,11 @@ private:
 	 * @brief Updates displayed filename from this->_settingsSaverLoader
 	 */
 	void UpdateDisplayedFileName();
+
+	/**
+	 * @brief Updates information on ADC->Temperature convertor. Call it after create/open file.
+	 */
+	void UpdateConvertorInformation();
 
 
 };

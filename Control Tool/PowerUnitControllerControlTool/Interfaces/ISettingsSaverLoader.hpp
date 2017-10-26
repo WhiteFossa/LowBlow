@@ -79,10 +79,10 @@ namespace Interfaces
 			virtual bool IsModified() = 0;
 
 			/**
-			 * @brief Returns constant pointer to ADC->Temperature convertor instance.
+			 * @brief Returns pointer to ADC->Temperature convertor instance.
 			 * @return Pointer to ADC->Temperature convertor.
 			 */
-			virtual const Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr() = 0;
+			virtual Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr() = 0;
 
 		protected:
 			/**
