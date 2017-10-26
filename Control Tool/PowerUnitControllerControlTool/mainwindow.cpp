@@ -48,9 +48,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->_mwFileName = new QLabel(this);
 	this->ui->mw_status->addPermanentWidget(this->_mwFileName);
 
-	this->_setgen = new SettingsGenerator(this->_settingsSaverLoader->GetADC2TempConvertorPtr());
-	this->_setgen->InitializeStepsList(STEPS_NUMBER);
-
 	// Initializing step table (UI)
 	this->ui->mw_StepsTable->setColumnCount(NUMBER_OF_STEPS_TABLE_RECORDS);
 
@@ -165,15 +162,17 @@ void MainWindow::MwSlotCreateNewADC2Temp()
 
 void MainWindow::MwSlotBaseTemperatureChanged(double tempC)
 {
-	this->_setgen->SetBaseTemperature(tempC);
-	this->_setgen->CalculateSteps(); // Updating steps values
+	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+
+	setgen->SetBaseTemperature(tempC);
+	setgen->CalculateSteps(); // Updating steps values
 
 	// Setting temperature back (it may not be equal to entered by user due ADC granularity)
 	QObject::disconnect(this->ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double))); // Disabling signal-slot connection to avoid recursion
-	this->ui->mw_basetemperature->setValue(this->_setgen->GetBaseTemperature());
+	this->ui->mw_basetemperature->setValue(setgen->GetBaseTemperature());
 	QObject::connect(this->ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double))); // Re-enabling it
 
-	this->ui->mw_basetemperatureADC->setNum((int)this->_setgen->GetBaseTemperatureADC());
+	this->ui->mw_basetemperatureADC->setNum((int)setgen->GetBaseTemperatureADC());
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -181,7 +180,7 @@ void MainWindow::MwSlotBaseTemperatureChanged(double tempC)
 
 void MainWindow::MwSlotBaseRPMChanged(int RPM)
 {
-	this->_setgen->SetBaseRPM(RPM);
+	this->_settingsSaverLoader->GetSettingsGeneratorPtr()->SetBaseRPM(RPM);
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -275,8 +274,9 @@ void MainWindow::MwSlotRPMDeltaChangedRaw(int newDelta)
 
 void MainWindow::MwSlotADCDeltaChanged(uint StepNumber, uint NewDelta)
 {
-	this->_setgen->GetStepPtr(StepNumber)->SetADCDelta(NewDelta);
-	this->_setgen->CalculateSteps();
+	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+	setgen->GetStepPtr(StepNumber)->SetADCDelta(NewDelta);
+	setgen->CalculateSteps();
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -284,8 +284,9 @@ void MainWindow::MwSlotADCDeltaChanged(uint StepNumber, uint NewDelta)
 
 void MainWindow::MwSlotRPMDeltaChanged(uint StepNumber, uint NewDelta)
 {
-	this->_setgen->GetStepPtr(StepNumber)->SetRPMDelta(NewDelta);
-	this->_setgen->CalculateSteps();
+	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+	setgen->GetStepPtr(StepNumber)->SetRPMDelta(NewDelta);
+	setgen->CalculateSteps();
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -293,8 +294,10 @@ void MainWindow::MwSlotRPMDeltaChanged(uint StepNumber, uint NewDelta)
 
 void MainWindow::MwSlotUpdateStepsTable()
 {
-	// We can do nothing is this->_setgen or this->_graph is not ready yet
-	if ((NULL == this->_setgen) || (NULL == this->_graph))
+	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+
+	// We can do nothing is setgen or this->_graph is not ready yet
+	if ((NULL == setgen) || (NULL == this->_graph))
 	{
 		return;
 	}
@@ -311,7 +314,7 @@ void MainWindow::MwSlotUpdateStepsTable()
 	for (uint step = 0; step < NUMBER_OF_STEPS_TABLE_RECORDS; step++)
 	{
 		// Getting step
-		stepItem = this->_setgen->GetStepPtr(step);
+		stepItem = setgen->GetStepPtr(step);
 
 		// ADC level
 		this->ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::ADC_LEVEL, step)->setText(QString("%1").arg(stepItem->GetCurrentADC()));
@@ -402,15 +405,30 @@ void MainWindow::MwSlotCreateFile()
 
 	this->_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
 
+	this->InitializeAfterFileChanged();
+}
+
+
+void MainWindow::InitializeAfterFileChanged()
+{
 	this->UpdateDisplayedFileName();
 	this->UpdateConvertorInformation();
+
+	// Setting base parameters
+	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+	this->ui->mw_basetemperature->setValue(setgen->GetBaseTemperature());
+	this->MwSlotBaseTemperatureChanged(this->ui->mw_basetemperature->value()); // Calling explicitly, because ValueChanged() signal may not be emitted
+	// if new value is equal to old one.
+
+	this->ui->mw_baseRPM->setValue(setgen->GetBaseRPM());
+	this->MwSlotBaseRPMChanged(this->ui->mw_baseRPM->value());
+
 	this->LockUnlockInterface(true);
 }
 
+
 MainWindow::~MainWindow()
 {
-	SafeDelete(this->_setgen);
-
 	SafeDelete(this->_mwConversionStatus);
 
 	SafeDelete(this->_mwFileName);

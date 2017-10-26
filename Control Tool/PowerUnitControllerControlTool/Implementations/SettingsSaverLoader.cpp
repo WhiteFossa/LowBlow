@@ -22,6 +22,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 SettingsSaverLoader::SettingsSaverLoader()
 {
 	this->_adc2Temp = new AdcTemperatureConvertor();
+
 	this->_path = QObject::trUtf8("");
 	this->_isModified = false;
 }
@@ -32,6 +33,14 @@ void SettingsSaverLoader::Create(QString path, QString adc2TempPath)
 	this->_isModified = true;
 
 	this->_adc2Temp->LoadSettings(adc2TempPath);
+
+	// Regenerating settings generator
+	SafeDelete(this->_setgen);
+	this->_setgen = new SettingsGenerator(this->_adc2Temp);
+
+	// Zero base levels
+	this->_setgen->SetBaseRPM(0);
+	this->_setgen->SetBaseTemperature(0);
 }
 
 void SettingsSaverLoader::Load(QString path)
@@ -71,7 +80,13 @@ Interfaces::IAdcTemperatureConvertor* SettingsSaverLoader::GetADC2TempConvertorP
 	return this->_adc2Temp;
 }
 
+Interfaces::ISettingsGenerator* SettingsSaverLoader::GetSettingsGeneratorPtr()
+{
+	return this->_setgen;
+}
+
 SettingsSaverLoader::~SettingsSaverLoader()
 {
+	SafeDelete(this->_setgen);
 	SafeDelete(this->_adc2Temp);
 }

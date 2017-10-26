@@ -23,6 +23,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <Auxiliary.hpp>
 #include <Interfaces/ISettingsSaverLoader.hpp>
 #include <Implementations/AdcTemperatureConvertor.hpp>
+#include <Implementations/SettingsGenerator.hpp>
 
 /**
  * @brief Class to save and load settings to XML.
@@ -49,6 +50,7 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		void MarkAsModified();
 		bool IsModified();
 		Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr();
+		Interfaces::ISettingsGenerator* GetSettingsGeneratorPtr();
 
 
 	protected:

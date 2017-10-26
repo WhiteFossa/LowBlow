@@ -123,7 +123,7 @@ public slots:
 	void MwSlotRPMDeltaChanged(uint StepNumber, uint NewDelta);
 
 	/**
-	 * @brief Updates UI steps table according to steps from this->_setgen
+	 * @brief Updates UI steps table according to steps from settings generator.
 	 */
 	void MwSlotUpdateStepsTable();
 
@@ -155,7 +155,7 @@ signals:
 	void MwSignalRPMDeltaChanged(uint StepNumber, uint NewDelta);
 
 	/**
-	 * @brief Emit it when steps table (UI) needs to be re-read from this->_setgen
+	 * @brief Emit it when steps table (UI) needs to be re-read from settings generator.
 	 */
 	void MwSignalUpdateStepsTable();
 
@@ -201,16 +201,6 @@ private:
 	 */
 	QLabel *_mwFileName = nullptr;
 
-//	/**
-//	 * @brief Temperature convertor
-//	 */
-//	Interfaces::IAdcTemperatureConvertor *_tconv= nullptr;
-
-	/**
-	 * @brief _setgen Settings generator
-	 */
-	Interfaces::ISettingsGenerator *_setgen= nullptr;
-
 	/**
 	 * @brief List with pointers to steps table spinboxes for ADC Deltas. This is used for determining what spinbox was changed.
 	 */
@@ -252,6 +242,11 @@ private:
 	 * @brief Updates information on ADC->Temperature convertor. Call it after create/open file.
 	 */
 	void UpdateConvertorInformation();
+
+	/**
+	 * @brief Pwerforms initialization after file changed (i.e. created or loaded).
+	 */
+	void InitializeAfterFileChanged();
 
 
 };

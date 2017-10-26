@@ -23,6 +23,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <QObject>
 #include <QString>
 #include <Interfaces/IAdcTemperatureConvertor.hpp>
+#include <Interfaces/ISettingsGenerator.hpp>
 
 namespace Interfaces
 {
@@ -84,11 +85,22 @@ namespace Interfaces
 			 */
 			virtual Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr() = 0;
 
+			/**
+			 * @brief Returns pointer to settings generator.
+			 * @return Pointer to settings generator.
+			 */
+			virtual Interfaces::ISettingsGenerator* GetSettingsGeneratorPtr() = 0;
+
 		protected:
 			/**
 			 * @brief ADC to temperature convertor.
 			 */
 			Interfaces::IAdcTemperatureConvertor* _adc2Temp = nullptr;
+
+			/**
+			* @brief _setgen Settings generator
+			*/
+			Interfaces::ISettingsGenerator *_setgen = nullptr;
 	};
 }
 
