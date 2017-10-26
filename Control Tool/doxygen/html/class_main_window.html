@@ -86,10 +86,6 @@ Public Slots</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a95fb3a2c4f9240d386029d5ffebab1ac">MwSlotExit</a> ()</td></tr>
 <tr class="memdesc:a95fb3a2c4f9240d386029d5ffebab1ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">mn_slot_exit Called when user want to close application. <br /></td></tr>
 <tr class="separator:a95fb3a2c4f9240d386029d5ffebab1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a360889512281e9ac54ed2456597db083"><td class="memItemLeft" align="right" valign="top"><a id="a360889512281e9ac54ed2456597db083"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a360889512281e9ac54ed2456597db083">MwSlotConvertorChanged</a> ()</td></tr>
-<tr class="memdesc:a360889512281e9ac54ed2456597db083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when new this-&gt;tconv initialized with the new instance of ADC to Temperature convertor. <br /></td></tr>
-<tr class="separator:a360889512281e9ac54ed2456597db083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ef62a3653289364eace9bbf334d904b"><td class="memItemLeft" align="right" valign="top"><a id="a2ef62a3653289364eace9bbf334d904b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a2ef62a3653289364eace9bbf334d904b">MwSlotCreateNewADC2Temp</a> ()</td></tr>
 <tr class="memdesc:a2ef62a3653289364eace9bbf334d904b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when user wants to create a new ADC-&gt;Temperature conversion settings. <br /></td></tr>
@@ -114,11 +110,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a32b3a311b7151092db3ec0756d2c22d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07c8e8c9d91588bdcc8e1eae01c4ffd7"><td class="memItemLeft" align="right" valign="top"><a id="a07c8e8c9d91588bdcc8e1eae01c4ffd7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a07c8e8c9d91588bdcc8e1eae01c4ffd7">MwSlotUpdateStepsTable</a> ()</td></tr>
-<tr class="memdesc:a07c8e8c9d91588bdcc8e1eae01c4ffd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates UI steps table according to steps from this-&gt;_setgen. <br /></td></tr>
+<tr class="memdesc:a07c8e8c9d91588bdcc8e1eae01c4ffd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates UI steps table according to steps from settings generator. <br /></td></tr>
 <tr class="separator:a07c8e8c9d91588bdcc8e1eae01c4ffd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034aa95bf311ef5cded91bfe9350ce69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a034aa95bf311ef5cded91bfe9350ce69">MwSlotSetFileName</a> (QString filename)</td></tr>
-<tr class="memdesc:a034aa95bf311ef5cded91bfe9350ce69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets filename to window title and status bar.  <a href="#a034aa95bf311ef5cded91bfe9350ce69">More...</a><br /></td></tr>
-<tr class="separator:a034aa95bf311ef5cded91bfe9350ce69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2bca26ed91446c16caebf7a93ae1334"><td class="memItemLeft" align="right" valign="top"><a id="ab2bca26ed91446c16caebf7a93ae1334"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#ab2bca26ed91446c16caebf7a93ae1334">MwSlotCreateFile</a> ()</td></tr>
+<tr class="memdesc:ab2bca26ed91446c16caebf7a93ae1334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this slot to create a new file. <br /></td></tr>
+<tr class="separator:ab2bca26ed91446c16caebf7a93ae1334"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
@@ -134,7 +131,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a7b5fab96f0c2363958436141a3aae65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf2e8820a7173fb2231e7f835160d8a1"><td class="memItemLeft" align="right" valign="top"><a id="abf2e8820a7173fb2231e7f835160d8a1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#abf2e8820a7173fb2231e7f835160d8a1">MwSignalUpdateStepsTable</a> ()</td></tr>
-<tr class="memdesc:abf2e8820a7173fb2231e7f835160d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit it when steps table (UI) needs to be re-read from this-&gt;_setgen. <br /></td></tr>
+<tr class="memdesc:abf2e8820a7173fb2231e7f835160d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit it when steps table (UI) needs to be re-read from settings generator. <br /></td></tr>
 <tr class="separator:abf2e8820a7173fb2231e7f835160d8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -286,7 +283,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEve
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00277">277</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00275">275</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +319,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEve
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00251">251</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00249">249</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +355,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEve
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00183">183</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00181">181</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -394,7 +391,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEve
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00167">167</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00163">163</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +438,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEve
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00286">286</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00285">285</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -477,43 +474,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEve
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00264">264</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a034aa95bf311ef5cded91bfe9350ce69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a034aa95bf311ef5cded91bfe9350ce69">&#9670;&nbsp;</a></span>MwSlotSetFileName</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MainWindow::MwSlotSetFileName </td>
-          <td>(</td>
-          <td class="paramtype">QString&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets filename to window title and status bar. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>Filename to set. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00348">348</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00262">262</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -524,7 +485,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEve
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 6 2017 23:09:06 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 26 2017 23:34:08 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

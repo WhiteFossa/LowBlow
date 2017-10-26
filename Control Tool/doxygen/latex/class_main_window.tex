@@ -24,9 +24,6 @@ Collaboration diagram for Main\+Window\+:\nopagebreak
 \mbox{\Hypertarget{class_main_window_a95fb3a2c4f9240d386029d5ffebab1ac}\label{class_main_window_a95fb3a2c4f9240d386029d5ffebab1ac}} 
 void \hyperlink{class_main_window_a95fb3a2c4f9240d386029d5ffebab1ac}{Mw\+Slot\+Exit} ()
 \begin{DoxyCompactList}\small\item\em mn\+\_\+slot\+\_\+exit Called when user want to close application. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_main_window_a360889512281e9ac54ed2456597db083}\label{class_main_window_a360889512281e9ac54ed2456597db083}} 
-void \hyperlink{class_main_window_a360889512281e9ac54ed2456597db083}{Mw\+Slot\+Convertor\+Changed} ()
-\begin{DoxyCompactList}\small\item\em Called when new this-\/$>$tconv initialized with the new instance of A\+DC to Temperature convertor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_main_window_a2ef62a3653289364eace9bbf334d904b}\label{class_main_window_a2ef62a3653289364eace9bbf334d904b}} 
 void \hyperlink{class_main_window_a2ef62a3653289364eace9bbf334d904b}{Mw\+Slot\+Create\+New\+A\+D\+C2\+Temp} ()
 \begin{DoxyCompactList}\small\item\em Called when user wants to create a new A\+D\+C-\/$>$Temperature conversion settings. \end{DoxyCompactList}\item 
@@ -44,9 +41,10 @@ void \hyperlink{class_main_window_a32b3a311b7151092db3ec0756d2c22d4}{Mw\+Slot\+R
 \begin{DoxyCompactList}\small\item\em As \hyperlink{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}{Mw\+Slot\+A\+D\+C\+Delta\+Changed()}, but for R\+PM Delta change. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_main_window_a07c8e8c9d91588bdcc8e1eae01c4ffd7}\label{class_main_window_a07c8e8c9d91588bdcc8e1eae01c4ffd7}} 
 void \hyperlink{class_main_window_a07c8e8c9d91588bdcc8e1eae01c4ffd7}{Mw\+Slot\+Update\+Steps\+Table} ()
-\begin{DoxyCompactList}\small\item\em Updates UI steps table according to steps from this-\/$>$\+\_\+setgen. \end{DoxyCompactList}\item 
-void \hyperlink{class_main_window_a034aa95bf311ef5cded91bfe9350ce69}{Mw\+Slot\+Set\+File\+Name} (Q\+String filename)
-\begin{DoxyCompactList}\small\item\em Sets filename to window title and status bar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Updates UI steps table according to steps from settings generator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_ab2bca26ed91446c16caebf7a93ae1334}\label{class_main_window_ab2bca26ed91446c16caebf7a93ae1334}} 
+void \hyperlink{class_main_window_ab2bca26ed91446c16caebf7a93ae1334}{Mw\+Slot\+Create\+File} ()
+\begin{DoxyCompactList}\small\item\em Call this slot to create a new file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
@@ -59,7 +57,7 @@ void \hyperlink{class_main_window_a7b5fab96f0c2363958436141a3aae65b}{Mw\+Signal\
 \begin{DoxyCompactList}\small\item\em As Mw\+A\+D\+C\+Delta\+Changed(), but for R\+PM delta. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_main_window_abf2e8820a7173fb2231e7f835160d8a1}\label{class_main_window_abf2e8820a7173fb2231e7f835160d8a1}} 
 void \hyperlink{class_main_window_abf2e8820a7173fb2231e7f835160d8a1}{Mw\+Signal\+Update\+Steps\+Table} ()
-\begin{DoxyCompactList}\small\item\em Emit it when steps table (UI) needs to be re-\/read from this-\/$>$\+\_\+setgen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Emit it when steps table (UI) needs to be re-\/read from settings generator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -135,7 +133,7 @@ Called when A\+DC delta value of any spinbox is chaned.
 \end{DoxyParams}
 
 
-Definition at line 277 of file mainwindow.\+cpp.
+Definition at line 275 of file mainwindow.\+cpp.
 
 \mbox{\Hypertarget{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}\label{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}} 
 \index{Main\+Window@{Main\+Window}!Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw@{Mw\+Slot\+A\+D\+C\+Delta\+Changed\+Raw}}
@@ -154,7 +152,7 @@ Called when A\+DC delta value of any spinbox is changed. It process change, dete
 \end{DoxyParams}
 
 
-Definition at line 251 of file mainwindow.\+cpp.
+Definition at line 249 of file mainwindow.\+cpp.
 
 \mbox{\Hypertarget{class_main_window_aaf5b44955c0c93824ea89edd3cdc5730}\label{class_main_window_aaf5b44955c0c93824ea89edd3cdc5730}} 
 \index{Main\+Window@{Main\+Window}!Mw\+Slot\+Base\+R\+P\+M\+Changed@{Mw\+Slot\+Base\+R\+P\+M\+Changed}}
@@ -173,7 +171,7 @@ Mw\+Slot\+Base\+R\+P\+M\+Changed Called when user changes base R\+PM level.
 \end{DoxyParams}
 
 
-Definition at line 183 of file mainwindow.\+cpp.
+Definition at line 181 of file mainwindow.\+cpp.
 
 \mbox{\Hypertarget{class_main_window_a0a690287dffb47b6477f2fb50c2a818e}\label{class_main_window_a0a690287dffb47b6477f2fb50c2a818e}} 
 \index{Main\+Window@{Main\+Window}!Mw\+Slot\+Base\+Temperature\+Changed@{Mw\+Slot\+Base\+Temperature\+Changed}}
@@ -192,7 +190,7 @@ Called when user changes base temperature.
 \end{DoxyParams}
 
 
-Definition at line 167 of file mainwindow.\+cpp.
+Definition at line 163 of file mainwindow.\+cpp.
 
 \mbox{\Hypertarget{class_main_window_a32b3a311b7151092db3ec0756d2c22d4}\label{class_main_window_a32b3a311b7151092db3ec0756d2c22d4}} 
 \index{Main\+Window@{Main\+Window}!Mw\+Slot\+R\+P\+M\+Delta\+Changed@{Mw\+Slot\+R\+P\+M\+Delta\+Changed}}
@@ -213,7 +211,7 @@ As \hyperlink{class_main_window_a5778840f76f8ce6edd63d84b57b801b1}{Mw\+Slot\+A\+
 \end{DoxyParams}
 
 
-Definition at line 286 of file mainwindow.\+cpp.
+Definition at line 285 of file mainwindow.\+cpp.
 
 \mbox{\Hypertarget{class_main_window_a4480e7516f91b93c8abc3d42c1284124}\label{class_main_window_a4480e7516f91b93c8abc3d42c1284124}} 
 \index{Main\+Window@{Main\+Window}!Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw@{Mw\+Slot\+R\+P\+M\+Delta\+Changed\+Raw}}
@@ -232,26 +230,7 @@ As \hyperlink{class_main_window_acbdfd3592779f6946c4fecc33c79e9a4}{Mw\+Slot\+A\+
 \end{DoxyParams}
 
 
-Definition at line 264 of file mainwindow.\+cpp.
-
-\mbox{\Hypertarget{class_main_window_a034aa95bf311ef5cded91bfe9350ce69}\label{class_main_window_a034aa95bf311ef5cded91bfe9350ce69}} 
-\index{Main\+Window@{Main\+Window}!Mw\+Slot\+Set\+File\+Name@{Mw\+Slot\+Set\+File\+Name}}
-\index{Mw\+Slot\+Set\+File\+Name@{Mw\+Slot\+Set\+File\+Name}!Main\+Window@{Main\+Window}}
-\subsubsection{\texorpdfstring{Mw\+Slot\+Set\+File\+Name}{MwSlotSetFileName}}
-{\footnotesize\ttfamily void Main\+Window\+::\+Mw\+Slot\+Set\+File\+Name (\begin{DoxyParamCaption}\item[{Q\+String}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
-
-
-
-Sets filename to window title and status bar. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em filename} & Filename to set. \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line 348 of file mainwindow.\+cpp.
+Definition at line 262 of file mainwindow.\+cpp.
 
 
 

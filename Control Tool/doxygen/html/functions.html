@@ -61,6 +61,16 @@ $(function() {
 <div class="contents">
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
+<h3><a id="index__"></a>- _ -</h3><ul>
+<li>_adc2Temp
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#accc3becffc7bb3688db96f3f34a68b80">Interfaces::ISettingsSaverLoader</a>
+</li>
+<li>_setgen
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a7b2968ed33e6f5e2cc3b863649aa7f17">Interfaces::ISettingsSaverLoader</a>
+</li>
+</ul>
+
+
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>ADC2TEMP()
 : <a class="el" href="class_adc_temperature_convertor.html#a3ee4549435400d9ed319fd5fdb83c97f">AdcTemperatureConvertor</a>
@@ -103,6 +113,10 @@ $(function() {
 <li>GetADC2TempConversionFactors()
 : <a class="el" href="class_adc_temperature_convertor.html#aeab56811467e8019731f1e2867a76671">AdcTemperatureConvertor</a>
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a61cff0aa0590906acfb18c9b789dceb2">Interfaces::IAdcTemperatureConvertor</a>
+</li>
+<li>GetADC2TempConvertorPtr()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a44d68d2bc7de1717bc41ee264db13ac5">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#aa1265b1e9431bf3b611e5b45b4782700">SettingsSaverLoader</a>
 </li>
 <li>GetADCDelta()
 : <a class="el" href="class_interfaces_1_1_i_settings_step.html#ab77c6eaa45707ec4932a8f432b13ad78">Interfaces::ISettingsStep</a>
@@ -156,6 +170,10 @@ $(function() {
 : <a class="el" href="class_interfaces_1_1_i_settings_step.html#a9db8c7569c5dc35b8541dc6e4d202df1">Interfaces::ISettingsStep</a>
 , <a class="el" href="class_settings_step.html#ada359fe4bfdaf271e621ec2943c0644c">SettingsStep</a>
 </li>
+<li>GetSettingsGeneratorPtr()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a73c8012dc63ca02d65a013ca901840ba">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#aa6b0a9b4f42335b03341a13f8bfff845">SettingsSaverLoader</a>
+</li>
 <li>GetStepPtr()
 : <a class="el" href="class_interfaces_1_1_i_settings_generator.html#af1b65a18c3ade3235715ae2e9cdbcfe0">Interfaces::ISettingsGenerator</a>
 , <a class="el" href="class_settings_generator.html#a37f4175a0ed24853b2f187f15505086b">SettingsGenerator</a>
@@ -195,6 +213,10 @@ $(function() {
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>MarkAsModified()
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#aba09cbe4cc05e6cef67c41789bdccd23">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#afc1ec1b13b273216779f3c9a9137cf87">SettingsSaverLoader</a>
+</li>
 <li>minimumSizeHint()
 : <a class="el" href="class_fossa_1_1_q_simple_graph_1_1_q_simple_graph.html#a2b427ee7fc54efd87a33d0a23bbdd1f8">Fossa::QSimpleGraph::QSimpleGraph</a>
 </li>
@@ -225,8 +247,8 @@ $(function() {
 <li>MwSlotBaseTemperatureChanged()
 : <a class="el" href="class_main_window.html#a0a690287dffb47b6477f2fb50c2a818e">MainWindow</a>
 </li>
-<li>MwSlotConvertorChanged()
-: <a class="el" href="class_main_window.html#a360889512281e9ac54ed2456597db083">MainWindow</a>
+<li>MwSlotCreateFile()
+: <a class="el" href="class_main_window.html#ab2bca26ed91446c16caebf7a93ae1334">MainWindow</a>
 </li>
 <li>MwSlotCreateNewADC2Temp()
 : <a class="el" href="class_main_window.html#a2ef62a3653289364eace9bbf334d904b">MainWindow</a>
@@ -239,9 +261,6 @@ $(function() {
 </li>
 <li>MwSlotRPMDeltaChangedRaw()
 : <a class="el" href="class_main_window.html#a4480e7516f91b93c8abc3d42c1284124">MainWindow</a>
-</li>
-<li>MwSlotSetFileName()
-: <a class="el" href="class_main_window.html#a034aa95bf311ef5cded91bfe9350ce69">MainWindow</a>
 </li>
 <li>MwSlotUpdateStepsTable()
 : <a class="el" href="class_main_window.html#a07c8e8c9d91588bdcc8e1eae01c4ffd7">MainWindow</a>
@@ -357,11 +376,14 @@ $(function() {
 <li>~SettingsGenerator()
 : <a class="el" href="class_settings_generator.html#aeb8e3d3875929a6869aa93552f30599f">SettingsGenerator</a>
 </li>
+<li>~SettingsSaverLoader()
+: <a class="el" href="class_settings_saver_loader.html#ad71f52898b7cfe1036351cce23400d78">SettingsSaverLoader</a>
+</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 6 2017 23:09:06 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 26 2017 23:34:09 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

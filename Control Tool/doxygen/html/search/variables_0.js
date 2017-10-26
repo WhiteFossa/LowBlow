@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['conv',['conv',['../class_interfaces_1_1_i_settings_step.html#a5db60ca3f2c1b4e7059910e2d86656b9',1,'Interfaces::ISettingsStep']]]
+  ['_5fadc2temp',['_adc2Temp',['../class_interfaces_1_1_i_settings_saver_loader.html#accc3becffc7bb3688db96f3f34a68b80',1,'Interfaces::ISettingsSaverLoader']]],
+  ['_5fsetgen',['_setgen',['../class_interfaces_1_1_i_settings_saver_loader.html#a7b2968ed33e6f5e2cc3b863649aa7f17',1,'Interfaces::ISettingsSaverLoader']]]
 ];
