@@ -23,7 +23,7 @@ SettingsSaverLoader::SettingsSaverLoader()
 {
 	this->_adc2Temp = new AdcTemperatureConvertor();
 
-	this->_path = QObject::trUtf8("");
+	this->_path = "";
 	this->_isModified = false;
 }
 
@@ -48,13 +48,77 @@ void SettingsSaverLoader::Load(QString path)
 	this->_path = path;
 }
 
+void SettingsSaverLoader::SaveAtGivenPath(QString path)
+{
+	if (path.isEmpty())
+	{
+		throw std::runtime_error(QObject::tr("Attempt to save file while path is not specified.").toStdString());
+	}
+
+	// Saving
+	QFile *file = new QFile(path);
+	if (!file->open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+	{
+		SafeDelete(file);
+		throw std::runtime_error(QString(QObject::tr("Cannot open file \"%1\" for writing")).arg(path).toStdString());
+	}
+
+	QXmlStreamWriter xsw(file); // Stream writer for XML data
+	xsw.setAutoFormatting(true);
+	xsw.writeStartDocument();
+		// Writing version and device
+		xsw.writeStartElement(this->SettingsRootElement); // Settings root
+
+		xsw.writeAttribute(this->SettingsDeviceAttribute, this->SettingsDeviceName); // Device
+		xsw.writeAttribute(this->SettingsVersionAttribute, QString::number(this->SettingsVersion)); // Settings version
+
+		// Writing ADC->Temperature settings
+		this->_adc2Temp->WriteADC2TemperatureSection(&xsw);
+
+		// Base levels
+		xsw.writeStartElement(this->BaseLevelsElement);
+			xsw.writeTextElement(this->BaseADCLevelElement, QString::number(this->_setgen->GetBaseTemperatureADC())); // Temperature
+			xsw.writeTextElement(this->BaseRPMsLevelElement, QString::number(this->_setgen->GetBaseRPM())); // RPMs
+		xsw.writeEndElement();
+
+		// Steps
+		xsw.writeStartElement(this->StepsElement);
+			for (uint i = ADDITIONAL_STEPS; i < STEPS_NUMBER; i ++)
+			{
+				xsw.writeStartElement(this->StepElement.arg(i - ADDITIONAL_STEPS));
+					Interfaces::ISettingsStep* step = this->_setgen->GetStepPtr(i);
+					xsw.writeTextElement(this->ADCIncreaseElement, QString::number(step->GetADCDelta()));
+					xsw.writeTextElement(this->RPMsPWMIncreaseElement, QString::number(step->GetRPMDelta()));
+				xsw.writeEndElement();
+			}
+
+		xsw.writeEndElement();
+
+		xsw.writeEndElement();
+
+	xsw.writeEndDocument();
+
+	file->close();
+	SafeDelete(file);
+}
+
 void SettingsSaverLoader::Save()
 {
+	// Do we need to save?
+	if (!this->_isModified)
+	{
+		return;
+	}
+
+	this->SaveAtGivenPath(this->_path);
+
+
 	this->_isModified = false;
 }
 
 void SettingsSaverLoader::SaveAs(QString path)
 {
+	this->SaveAtGivenPath(path);
 }
 
 QString SettingsSaverLoader::GetFilePath()

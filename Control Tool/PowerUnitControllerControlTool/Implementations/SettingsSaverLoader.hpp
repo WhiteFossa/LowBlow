@@ -20,6 +20,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #ifndef SETTINGSSAVERLOADER_HPP
 #define SETTINGSSAVERLOADER_HPP
 
+#include <QException>
 #include <Auxiliary.hpp>
 #include <Interfaces/ISettingsSaverLoader.hpp>
 #include <Implementations/AdcTemperatureConvertor.hpp>
@@ -58,6 +59,66 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 	private:
 
 		/**
+		 * @brief Name of XML root element with settings.
+		 */
+		const QString SettingsRootElement = "Settings";
+
+		/**
+		 * @brief This attribute of root element stores device name.
+		 */
+		const QString SettingsDeviceAttribute = "Device";
+
+		/**
+		 * @brief Settings are for this device. Actually it's a signature to check that it's our file.
+		 */
+		const QString SettingsDeviceName = "LowBlow";
+
+		/**
+		 * @brief This attribute of root elemen stores settings version.
+		 */
+		const QString SettingsVersionAttribute = "Version";
+
+		/**
+		 * @brief Base levels section name.
+		 */
+		const QString BaseLevelsElement = "BaseLevels";
+
+		/**
+		 * @brief Settings file version.
+		 */
+		const int SettingsVersion = 1;
+
+		/**
+		 * @brief Base temperature ADC level element name.
+		 */
+		const QString BaseADCLevelElement = "TemperatureADC";
+
+		/**
+		 * @brief Base RPMs PWM level element name.
+		 */
+		const QString BaseRPMsLevelElement = "RPMsPWM";
+
+		/**
+		 * @brief Steps element name.
+		 */
+		const QString StepsElement = "Steps";
+
+		/**
+		 * @brief Single step element name. %1 - step number (starting from 0, additional steps not included).
+		 */
+		const QString StepElement = "Step%1";
+
+		/**
+		 * @brief ADC level increase for given step stored in element with this name.
+		 */
+		const QString ADCIncreaseElement = "ADCIncrease";
+
+		/**
+		 * @brief PWM level increase for given step stored in element with this name,
+		 */
+		const QString RPMsPWMIncreaseElement = "RPMsPWMIncrease";
+
+		/**
 		 * @brief _path Current file path.
 		 */
 		QString _path;
@@ -66,6 +127,12 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		 * @brief _isModified True if file is modified and not saved.
 		 */
 		bool _isModified;
+
+		/**
+		 * @brief Saves current settings to file with given path without any questions.
+		 * @param path Where to save current settings.
+		 */
+		void SaveAtGivenPath(QString path);
 
 };
 

@@ -19,7 +19,8 @@ SOURCES += main.cpp\
 		Implementations/SettingsStep.cpp \
 		Implementations/SettingsGenerator.cpp \
 		FossasSimpleGraph/Implementations/QSimpleGraph.cpp \
-		Implementations/SettingsSaverLoader.cpp
+		Implementations/SettingsSaverLoader.cpp \
+    Auxiliary.cpp
 
 HEADERS  += mainwindow.hpp \
 		Interfaces/IAdcTemperatureConvertor.hpp \

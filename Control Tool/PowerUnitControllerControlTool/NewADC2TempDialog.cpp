@@ -21,36 +21,36 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include "ui_NewADC2TempDialog.h"
 
 NewADC2TempDialog::NewADC2TempDialog(QWidget *parent) :
-  QDialog(parent),
-  ui(new Ui::NewADC2TempDialog)
+	QDialog(parent),
+	ui(new Ui::NewADC2TempDialog)
 {
-  ui->setupUi(this);
+	ui->setupUi(this);
 
-  /* No path specified */
-  this->filepath = "";
-  this->SlotCheckRequirements();
+	/* No path specified */
+	this->filepath = "";
+	this->SlotCheckRequirements();
 
-  QObject::connect(this->ui->Cancel, SIGNAL(clicked()), this, SLOT(reject()));
-  QObject::connect(this->ui->Create, SIGNAL(clicked()), this, SLOT(SlotSaveSettings()));
-  QObject::connect(this->ui->tbSelectFile, SIGNAL(clicked()), this, SLOT(SlotSelectFile()));
-  QObject::connect(this->ui->lnDescription, SIGNAL(textChanged(QString)), this, SLOT(SlotCheckRequirements()));
+	QObject::connect(this->ui->Cancel, SIGNAL(clicked()), this, SLOT(reject()));
+	QObject::connect(this->ui->Create, SIGNAL(clicked()), this, SLOT(SlotSaveSettings()));
+	QObject::connect(this->ui->tbSelectFile, SIGNAL(clicked()), this, SLOT(SlotSelectFile()));
+	QObject::connect(this->ui->lnDescription, SIGNAL(textChanged(QString)), this, SLOT(SlotCheckRequirements()));
 }
 
 NewADC2TempDialog::~NewADC2TempDialog()
 {
-  delete ui;
+	delete ui;
 }
 
 void NewADC2TempDialog::changeEvent(QEvent *e)
 {
-  QDialog::changeEvent(e);
-  switch (e->type()) {
-  case QEvent::LanguageChange:
-    ui->retranslateUi(this);
-    break;
-  default:
-    break;
-  }
+	QDialog::changeEvent(e);
+	switch (e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
 }
 
 /**
@@ -58,10 +58,10 @@ void NewADC2TempDialog::changeEvent(QEvent *e)
  */
 void NewADC2TempDialog::SlotSelectFile()
 {
-  this->filepath = QFileDialog::getSaveFileName(this, QObject::trUtf8("Save ADC to Temperature settings"));
-  this->ui->lnFilePath->setText(this->filepath);
+	this->filepath = QFileDialog::getSaveFileName(this, QObject::tr("Save ADC to Temperature settings"));
+	this->ui->lnFilePath->setText(this->filepath);
 
-  this->SlotCheckRequirements();
+	this->SlotCheckRequirements();
 }
 
 /**
@@ -69,15 +69,15 @@ void NewADC2TempDialog::SlotSelectFile()
  */
 void NewADC2TempDialog::SlotSaveSettings()
 {
-  Interfaces::IAdcTemperatureConvertor *conv = new AdcTemperatureConvertor();
-  conv->SetDescription(this->ui->lnDescription->text());
-  conv->SetADC2TempConversionFactors(this->ui->sbMul->value(), this->ui->sbAdd->value());
+	Interfaces::IAdcTemperatureConvertor *conv = new AdcTemperatureConvertor();
+	conv->SetDescription(this->ui->lnDescription->text());
+	conv->SetADC2TempConversionFactors(this->ui->sbMul->value(), this->ui->sbAdd->value());
 
-  conv->SaveSettings(this->filepath);
+	conv->SaveSettings(this->filepath);
 
-  SafeDelete(conv);
+	SafeDelete(conv);
 
-  this->accept();
+	this->accept();
 }
 
 /**
@@ -85,12 +85,12 @@ void NewADC2TempDialog::SlotSaveSettings()
  */
 void NewADC2TempDialog::SlotCheckRequirements()
 {
-  if ("" == this->filepath || "" == this->ui->lnDescription->text())
-  {
-    this->ui->Create->setEnabled(false);
-  }
-  else
-  {
-    this->ui->Create->setEnabled(true);
-  }
+	if ("" == this->filepath || "" == this->ui->lnDescription->text())
+	{
+		this->ui->Create->setEnabled(false);
+	}
+	else
+	{
+		this->ui->Create->setEnabled(true);
+	}
 }

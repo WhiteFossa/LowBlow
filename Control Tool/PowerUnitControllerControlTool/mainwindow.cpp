@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(this, SIGNAL(MwSignalRPMDeltaChanged(uint,uint)), this, SLOT(MwSlotRPMDeltaChanged(uint, uint)));
 	QObject::connect(this, SIGNAL(MwSignalUpdateStepsTable()), this, SLOT(MwSlotUpdateStepsTable()));
 	QObject::connect(this->ui->actionNew, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateFile()));
+	QObject::connect(this->ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFile()));
+	QObject::connect(this->ui->actionSave_As, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFileAs()));
 
 	// Initializing status bar
 	// ADC->Temperature conversion info
@@ -53,26 +55,26 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	// Column names
 	QStringList STColumnLabels;
-	STColumnLabels.append(QObject::trUtf8("Zero")); // Zero level
-	STColumnLabels.append(QObject::trUtf8("Base"));
+	STColumnLabels.append(QObject::tr("Zero")); // Zero level
+	STColumnLabels.append(QObject::tr("Base"));
 
 	for (int i = 0; i < STEPS_NUMBER; i++)
 	{
-		STColumnLabels.append(QString(QObject::trUtf8("Step %1")).arg(i + 1));
+		STColumnLabels.append(QString(QObject::tr("Step %1")).arg(i + 1));
 	}
 
 	this->ui->mw_StepsTable->setHorizontalHeaderLabels(STColumnLabels);
 
 	// Row names
 	QStringList STRowLabels;
-	STRowLabels.append(QObject::trUtf8("ADC level"));
-	STRowLabels.append(QObject::trUtf8("Temperature"));
-	STRowLabels.append(QObject::trUtf8("RPM level"));
-	STRowLabels.append(QObject::trUtf8("RPM percent"));
-	STRowLabels.append(QObject::trUtf8("ADC level increase"));
-	STRowLabels.append(QObject::trUtf8("Temperature increase"));
-	STRowLabels.append(QObject::trUtf8("RPM level increase"));
-	STRowLabels.append(QObject::trUtf8("RPM increase percent"));
+	STRowLabels.append(QObject::tr("ADC level"));
+	STRowLabels.append(QObject::tr("Temperature"));
+	STRowLabels.append(QObject::tr("RPM level"));
+	STRowLabels.append(QObject::tr("RPM percent"));
+	STRowLabels.append(QObject::tr("ADC level increase"));
+	STRowLabels.append(QObject::tr("Temperature increase"));
+	STRowLabels.append(QObject::tr("RPM level increase"));
+	STRowLabels.append(QObject::tr("RPM increase percent"));
 
 	this->ui->mw_StepsTable->setVerticalHeaderLabels(STRowLabels);
 
@@ -99,11 +101,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	// For debug
 	this->_graph->SetMinXValue(0);
 	this->_graph->SetMaxXValue(120);
-	this->_graph->SetXAxisTitle(QObject::trUtf8("Temperature"));
+	this->_graph->SetXAxisTitle(QObject::tr("Temperature"));
 
 	this->_graph->SetMinYValue(0);
 	this->_graph->SetMaxYValue(100);
-	this->_graph->SetYAxisTitle(QObject::trUtf8("RPMs, %"));
+	this->_graph->SetYAxisTitle(QObject::tr("RPMs, %"));
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -128,9 +130,25 @@ void MainWindow::changeEvent(QEvent *e)
 		}
 }
 
+void MainWindow::closeEvent(QCloseEvent *e)
+{
+	// Do we have unsaved changes?
+	if(this->_settingsSaverLoader->IsModified())
+	{
+		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Unsaved changes"), QObject::tr("There is unsaved changes. Are you really want to quit?")))
+		{
+			e->accept();
+		}
+		else
+		{
+			e->ignore();
+		}
+	}
+}
+
 void MainWindow::MwSlotExit()
 {
-		QCoreApplication::quit();
+	QCoreApplication::quit();
 }
 
 void MainWindow::UpdateConvertorInformation()
@@ -141,13 +159,13 @@ void MainWindow::UpdateConvertorInformation()
 	double a, b;
 	conv->GetADC2TempConversionFactors(&a, &b);
 
-	QString format_str = QObject::trUtf8("Sensor: %1: T = %2*ADC");
+	QString format_str = QObject::tr("Sensor: %1: T = %2*ADC");
 	if (b >= 0)
 	{
-		format_str += QObject::trUtf8("+");
+		format_str += QObject::tr("+");
 	}
 
-	format_str += QObject::trUtf8("%3");
+	format_str += QObject::tr("%3");
 
 	this->_mwConversionStatus->setText(QString(format_str).arg(conv->GetDescription()).arg(a).arg(b));
 }
@@ -191,19 +209,19 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 	QTableWidgetItem* labelItem;
 
 	// ADC Level (label)
-	labelItem = new QTableWidgetItem(QObject::trUtf8("0"), QTableWidgetItem::Type);
+	labelItem = new QTableWidgetItem(QObject::tr("0"), QTableWidgetItem::Type);
 	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::ADC_LEVEL, col, labelItem);
 
 	// Temperature (label)
-	labelItem = new QTableWidgetItem(QObject::trUtf8("0.0"), QTableWidgetItem::Type);
+	labelItem = new QTableWidgetItem(QObject::tr("0.0"), QTableWidgetItem::Type);
 	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::TEMPERATURE, col, labelItem);
 
 	// RPM level (label)
-	labelItem = new QTableWidgetItem(QObject::trUtf8("0"), QTableWidgetItem::Type);
+	labelItem = new QTableWidgetItem(QObject::tr("0"), QTableWidgetItem::Type);
 	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_LEVEL, col, labelItem);
 
 	// RPM percent (label)
-	labelItem = new QTableWidgetItem(QObject::trUtf8("0.0%"), QTableWidgetItem::Type);
+	labelItem = new QTableWidgetItem(QObject::tr("0.0%"), QTableWidgetItem::Type);
 	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_PERCENT, col, labelItem);
 
 	// ADC level increase (spinbox)
@@ -211,7 +229,7 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 	this->ui->mw_StepsTable->setCellWidget(Ui::STEPS_TABLE_ROWS::ADC_DELTA, col, this->_ADCDeltaSpinboxes[col]);
 
 	// Temperature increase (label)
-	labelItem = new QTableWidgetItem(QObject::trUtf8("0.0"), QTableWidgetItem::Type);
+	labelItem = new QTableWidgetItem(QObject::tr("0.0"), QTableWidgetItem::Type);
 	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::TEMPERATURE_DELTA, col, labelItem);
 
 	// RPM increase (spinbox)
@@ -219,7 +237,7 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 	this->ui->mw_StepsTable->setCellWidget(Ui::STEPS_TABLE_ROWS::RPM_DELTA, col, this->_RPMDeltaSpinboxes[col]);
 
 	// RPM increase percent (label)
-	labelItem = new QTableWidgetItem(QObject::trUtf8("0.0%"), QTableWidgetItem::Type);
+	labelItem = new QTableWidgetItem(QObject::tr("0.0%"), QTableWidgetItem::Type);
 	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_DELTA_PERCENT, col, labelItem);
 
 	if (col < ADDITIONAL_STEPS)
@@ -351,24 +369,24 @@ void MainWindow::UpdateDisplayedFileName()
 {
 	QString filePath = this->_settingsSaverLoader->GetFilePath();
 
-	QString windowTitle = QObject::trUtf8("");
+	QString windowTitle = "";
 	if (!filePath.isEmpty())
 	{
-		QString modifiedSign = QObject::trUtf8("");
+		QString modifiedSign = "";
 		if (this->_settingsSaverLoader->IsModified())
 		{
-			modifiedSign = QObject::trUtf8("*");
+			modifiedSign = QObject::tr("*");
 		}
 
-		windowTitle = QObject::trUtf8("%1%2 - ").arg(filePath).arg(modifiedSign);
+		windowTitle = QObject::tr("%1%2 - ").arg(filePath).arg(modifiedSign);
 		this->_mwFileName->setText(filePath);
 	}
 	else
 	{
-		this->_mwFileName->setText(QObject::trUtf8("File not specified"));
+		this->_mwFileName->setText(QObject::tr("File not specified"));
 	}
 
-	windowTitle += QObject::trUtf8("Project \"LowBlow\" Control Tool");
+	windowTitle += QObject::tr("Project \"LowBlow\" Control Tool");
 
 	this->setWindowTitle(windowTitle);
 }
@@ -390,7 +408,7 @@ void MainWindow::MwSlotCreateFile()
 	if (this->_settingsSaverLoader->IsModified())
 	{
 		// Saving if needed
-		if (QMessageBox::Yes == QMessageBox::question(this, QObject::trUtf8("Save changes?"), QObject::trUtf8("Save changes before creating new settings file?"),
+		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Save changes?"), QObject::tr("Save changes before creating new settings file?"),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
 		{
 			this->_settingsSaverLoader->Save();
@@ -398,14 +416,42 @@ void MainWindow::MwSlotCreateFile()
 	}
 
 	// Settings filename
-	QString newFilePath = QFileDialog::getSaveFileName(this, QObject::trUtf8("New settings file:"));
+	QString newFilePath = QFileDialog::getSaveFileName(this, QObject::tr("New settings file:"));
 
 	// ADC->Temperature settings file
-	QString ADC2TempFilePath = QFileDialog::getOpenFileName(this, QObject::trUtf8("Select ADC to temperature settings file:"));
+	QString ADC2TempFilePath = QFileDialog::getOpenFileName(this, QObject::tr("Select ADC to temperature settings file:"));
 
 	this->_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
 
 	this->InitializeAfterFileChanged();
+}
+
+void MainWindow::MwSlotSaveFile()
+{
+	this->_settingsSaverLoader->Save();
+
+	this->UpdateDisplayedFileName();
+}
+
+void MainWindow::MwSlotSaveFileAs()
+{
+	// Showing save dialogue
+	QString saveAsPath = QFileDialog::getSaveFileName(this, QObject::tr("Save settings as:"));
+
+	if (saveAsPath == "")
+	{
+		return;
+	}
+
+	if (saveAsPath == this->_settingsSaverLoader->GetFilePath())
+	{
+		QMessageBox::warning(this, QObject::tr("Can't override opened file!"),
+		QObject::tr("You are trying to override currently opened file. Use \"Save\", not \"Save As\" to do it."),
+		QMessageBox::Ok
+		);
+	}
+
+	this->_settingsSaverLoader->SaveAs(saveAsPath);
 }
 
 

@@ -132,6 +132,16 @@ public slots:
 	 */
 	void MwSlotCreateFile();
 
+	/**
+	 * @brief Call this slot to save file.
+	 */
+	void MwSlotSaveFile();
+
+	/**
+	 * @brief Call it to save file under another name.
+	 */
+	void MwSlotSaveFileAs();
+
 
 /* Signals */
 signals:
@@ -161,6 +171,8 @@ signals:
 
 protected:
 	void changeEvent(QEvent *e);
+
+	void closeEvent(QCloseEvent *e);
 
 private:
 

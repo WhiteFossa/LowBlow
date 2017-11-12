@@ -17,29 +17,11 @@ You should have received a copy of the GNU General Public License
 along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef AUXILIARY_HPP
-#define AUXILIARY_HPP
+#include <Auxiliary.hpp>
 
-#include <QString>
 
-/* Auxiliary functions */
 
-/**
- * @brief Use it to safely remove anything. It calls delete obj, and then sets obj to 0.
- * @param obj What we need to delete
- */
-template <typename T>
-void SafeDelete(T obj)
+QString FormatDoubleForXML(double d)
 {
-	delete obj;
-	obj = 0;
+	return QString::number(d, 'g', 16);
 }
-
-/**
- * @brief Formats double for saving in XML as string.
- * @param d Double to format.
- * @return String with formatted value.
- */
-QString FormatDoubleForXML(double d);
-
-#endif // AUXILIARY_HPP
