@@ -45,13 +45,15 @@ virtual Q\+String \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a2
 virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a9697a0319f82ebd1fc20f5e24d3b191c}{Load\+Settings} (Q\+String filename)=0
 \begin{DoxyCompactList}\small\item\em Load conversion settings from given file. \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a6631e979e067ab78d3e5c337449876ac}{Save\+Settings} (Q\+String filename)=0
-\begin{DoxyCompactList}\small\item\em Save conversion settings to given file. If file already exists it will be overwritten. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Save conversion settings to given file. If file already exists it will be overwritten. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_abc7ed5fdfeaed255af14930431b46ac1}{Write\+A\+D\+C2\+Temperature\+Section} (Q\+Xml\+Stream\+Writer $\ast$writer)=0
+\begin{DoxyCompactList}\small\item\em Writes A\+DC to temperature convertor settings section into given X\+ML writer. Use this method to embed A\+DC -\/$>$ Temperature settings into existing X\+ML file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Class, used to convert A\+DC values to Temperature and vice versa. 
 
-Definition at line 31 of file I\+Adc\+Temperature\+Convertor.\+hpp.
+Definition at line 32 of file I\+Adc\+Temperature\+Convertor.\+hpp.
 
 
 
@@ -215,6 +217,25 @@ A\+DC measurement
 
 
 Implemented in \hyperlink{class_adc_temperature_convertor_ae82f374826a431c837bdf796c593775b}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_abc7ed5fdfeaed255af14930431b46ac1}\label{class_interfaces_1_1_i_adc_temperature_convertor_abc7ed5fdfeaed255af14930431b46ac1}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Write\+A\+D\+C2\+Temperature\+Section@{Write\+A\+D\+C2\+Temperature\+Section}}
+\index{Write\+A\+D\+C2\+Temperature\+Section@{Write\+A\+D\+C2\+Temperature\+Section}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Write\+A\+D\+C2\+Temperature\+Section()}{WriteADC2TemperatureSection()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Write\+A\+D\+C2\+Temperature\+Section (\begin{DoxyParamCaption}\item[{Q\+Xml\+Stream\+Writer $\ast$}]{writer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Writes A\+DC to temperature convertor settings section into given X\+ML writer. Use this method to embed A\+DC -\/$>$ Temperature settings into existing X\+ML file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em writer} & Pointer to X\+ML writer. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_aa06c19d0ac9f45d6f2f67718eda042ac}{Adc\+Temperature\+Convertor}.
 
 
 

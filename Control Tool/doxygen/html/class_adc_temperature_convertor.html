@@ -118,6 +118,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad82afdddbac46a95b6da44e769180d10"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#ad82afdddbac46a95b6da44e769180d10">GetDescription</a> ()</td></tr>
 <tr class="memdesc:ad82afdddbac46a95b6da44e769180d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get description of this instance (i.e. for this conversion settings).  <a href="#ad82afdddbac46a95b6da44e769180d10">More...</a><br /></td></tr>
 <tr class="separator:ad82afdddbac46a95b6da44e769180d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa06c19d0ac9f45d6f2f67718eda042ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#aa06c19d0ac9f45d6f2f67718eda042ac">WriteADC2TemperatureSection</a> (QXmlStreamWriter *writer)</td></tr>
+<tr class="memdesc:aa06c19d0ac9f45d6f2f67718eda042ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes ADC to temperature convertor settings section into given XML writer. Use this method to embed ADC -&gt; Temperature settings into existing XML file.  <a href="#aa06c19d0ac9f45d6f2f67718eda042ac">More...</a><br /></td></tr>
+<tr class="separator:aa06c19d0ac9f45d6f2f67718eda042ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html" title="Class, used to convert ADC values to Temperature and vice versa. ">Interfaces::IAdcTemperatureConvertor</a>. </p>
@@ -240,7 +243,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a2f3b59be793c3ed43e880ef12e9749bc">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00202">202</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00207">207</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -403,7 +406,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a65bbef2300e21c495d95305921ddb74b">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00197">197</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00202">202</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -446,6 +449,44 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa06c19d0ac9f45d6f2f67718eda042ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa06c19d0ac9f45d6f2f67718eda042ac">&#9670;&nbsp;</a></span>WriteADC2TemperatureSection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AdcTemperatureConvertor::WriteADC2TemperatureSection </td>
+          <td>(</td>
+          <td class="paramtype">QXmlStreamWriter *&#160;</td>
+          <td class="paramname"><em>writer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes ADC to temperature convertor settings section into given XML writer. Use this method to embed ADC -&gt; Temperature settings into existing XML file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">writer</td><td>Pointer to XML writer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#abc7ed5fdfeaed255af14930431b46ac1">Interfaces::IAdcTemperatureConvertor</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00191">191</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Implementations/<a class="el" href="_adc_temperature_convertor_8hpp_source.html">AdcTemperatureConvertor.hpp</a></li>
 <li>Implementations/<a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a></li>
@@ -453,7 +494,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 26 2017 23:34:08 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 12 2017 21:37:20 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

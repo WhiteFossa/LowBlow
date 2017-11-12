@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7esettingsgenerator',['~SettingsGenerator',['../class_settings_generator.html#aeb8e3d3875929a6869aa93552f30599f',1,'SettingsGenerator']]],
-  ['_7esettingssaverloader',['~SettingsSaverLoader',['../class_settings_saver_loader.html#ad71f52898b7cfe1036351cce23400d78',1,'SettingsSaverLoader']]]
+  ['writeadc2temperaturesection',['WriteADC2TemperatureSection',['../class_adc_temperature_convertor.html#aa06c19d0ac9f45d6f2f67718eda042ac',1,'AdcTemperatureConvertor::WriteADC2TemperatureSection()'],['../class_interfaces_1_1_i_adc_temperature_convertor.html#abc7ed5fdfeaed255af14930431b46ac1',1,'Interfaces::IAdcTemperatureConvertor::WriteADC2TemperatureSection()']]]
 ];
