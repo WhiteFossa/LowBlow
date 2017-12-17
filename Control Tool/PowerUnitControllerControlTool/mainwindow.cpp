@@ -418,8 +418,18 @@ void MainWindow::MwSlotCreateFile()
 	// Settings filename
 	QString newFilePath = QFileDialog::getSaveFileName(this, QObject::tr("New settings file:"));
 
+	if ("" == newFilePath)
+	{
+		return;
+	}
+
 	// ADC->Temperature settings file
 	QString ADC2TempFilePath = QFileDialog::getOpenFileName(this, QObject::tr("Select ADC to temperature settings file:"));
+
+	if ("" == ADC2TempFilePath)
+	{
+		return;
+	}
 
 	this->_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
 
