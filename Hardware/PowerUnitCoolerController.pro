@@ -1,4 +1,4 @@
-update=Mon 22 Feb 2016 08:53:21 PM MSK
+update=Сб 23 дек 2017 21:35:55
 version=1
 last_client=kicad
 [pcbnew]
@@ -22,9 +22,22 @@ BoardOutlineThickness=0.100000000000
 ModuleOutlineThickness=0.150000000000
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
+[cvpcb]
+version=1
+NetIExt=net
 [eeschema]
 version=1
-LibDir=/home/fossa/Projects/Electronics/KiCad/fossa library;../KiCad/not my libraries/github.com/topiaruss/KiCad-Parts
+LibDir=/mnt/main_storage/fossa/Projects/Electronics/KiCad/not my libraries/github.com/topiaruss/KiCad-Parts;/mnt/main_storage/fossa/Projects/Electronics/KiCad/fossas_kicad_lib/fossa library
 [eeschema/libraries]
 LibName1=/home/fossa/Projects/Electronics/KiCad/not my libraries/github.com/topiaruss/KiCad-Parts/lm1117
 LibName2=power
@@ -57,16 +70,3 @@ LibName28=atmel
 LibName29=contrib
 LibName30=valves
 LibName31=fossa library
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=Pcbnew
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
-[cvpcb]
-version=1
-NetIExt=net

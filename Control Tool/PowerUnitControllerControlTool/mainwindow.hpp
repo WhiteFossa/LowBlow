@@ -142,6 +142,11 @@ public slots:
 	 */
 	void MwSlotSaveFileAs();
 
+	/**
+	 * @brief Call it to load existing file.
+	 */
+	void MwSlotLoadFile();
+
 
 /* Signals */
 signals:
@@ -256,9 +261,14 @@ private:
 	void UpdateConvertorInformation();
 
 	/**
-	 * @brief Pwerforms initialization after file changed (i.e. created or loaded).
+	 * @brief Performs initialization after file changed (i.e. created or loaded).
 	 */
 	void InitializeAfterFileChanged();
+
+	/**
+	 * @brief Checks if current file modified, if so - shows request to save and saves if user approves.
+	 */
+	void CheckDoSaveNeeded();
 
 
 };

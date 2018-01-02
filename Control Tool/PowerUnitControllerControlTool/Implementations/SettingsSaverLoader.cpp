@@ -46,6 +46,128 @@ void SettingsSaverLoader::Create(QString path, QString adc2TempPath)
 void SettingsSaverLoader::Load(QString path)
 {
 	this->_path = path;
+	this->_isModified = false;
+
+	// Loading sensor settings
+	this->_adc2Temp->LoadSettings(this->_path);
+
+	SafeDelete(this->_setgen);
+	this->_setgen = new SettingsGenerator(this->_adc2Temp);
+
+	QFile *file = new QFile(_path);
+	if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
+	{
+		SafeDelete(file);
+		throw std::runtime_error(QString(QObject::tr("Cannot open file \"%1\" for reading.")).arg(_path).toStdString());
+	}
+
+	QXmlQuery query;
+
+	// Binding settings file contents into $settingsFile variable
+	query.bindVariable("settingsFile", file);
+
+	// Base levels
+	// ADC level
+	query.setQuery("doc($settingsFile)/Settings/BaseLevels/TemperatureADC/text()");
+	_setgen->SetBaseTemperatureADC(Fossa::Helpers::XmlHelper::GetIntegerValue(&query));
+
+	// Base RPMs PWM level
+	query.setQuery("doc($settingsFile)/Settings/BaseLevels/RPMsPWM/text()");
+	_setgen->SetBaseRPM(Fossa::Helpers::XmlHelper::GetIntegerValue(&query));
+
+//	QXmlStreamReader xsr(file);
+
+//	bool rootFound = false;
+//	bool baseLevelsElementStarted = false;
+//	bool baseLevelsElementFound = false;
+//	bool baseTemperatureFound = false;
+//	bool baseRPMsFound = false;
+
+//	while (!xsr.atEnd())
+//	{
+//		QXmlStreamReader::TokenType token = xsr.readNext();
+//		if (QXmlStreamReader::TokenType::StartElement == token)
+//		{
+//			QString elementName = xsr.Name();
+
+//			if (!baseLevelsElementStarted && (SettingsRootElement == elementName))
+//			{
+//				// Root
+//				rootFound = true;
+
+//				QXmlStreamAttributes attrs = xsr.attributes();
+
+//				// We need device and version
+//				if (!attrs.hasAttribute(SettingsDeviceAttribute) || !attrs.hasAttribute(SettingsVersionAttribute))
+//				{
+//					// Missing required attributes
+//					file->close();
+//					SafeDelete(file);
+//					throw std::runtime_error(QString(QObject::tr("Either %1 or %2 attributes missing at %3 element"))
+//						.arg(SettingsDeviceAttribute)
+//						.arg(SettingsVersionAttribute)
+//						.arg(SettingsRootElement));
+
+//					// Is it our file?
+//					if (attrs.value(SettingsDeviceAttribute) != SettingsDeviceName)
+//					{
+//						// Wrong device
+//						file->close();
+//						SafeDelete(file);
+//						throw std::runtime_error(QString(QObject::tr("%1 file is for another device")).arg(_path).toStdString());
+//					}
+
+//					if (attrs.value(SettingsVersionAttribute) != SettingsVersion)
+//					{
+//						// Wrong version
+//						file->close();
+//						SafeDelete(file);
+//						throw std::runtime_error(QString(QObject::tr("%1 file have wrong version")).arg(filename).toStdString());
+//					}
+//				}
+//				else if (!baseLevelsElementStarted && !baseLevelsElementFound && (BaseLevelsElement == elementName))
+//				{
+//					baseLevelsElementStarted = true;
+//				}
+//				else if (baseLevelsElementStarted && !baseLevelsElementFound && (BaseADCLevelElement == elementName))
+//				{
+//					// Base ADC level
+
+//					if (baseRPMsFound && baseTemperatureFound)
+//					{
+//						baseLevelsElementStarted = false;
+//						baseLevelsElementFound = true;
+//					}
+//				}
+//				else if (baseLevelsElementStarted && !baseLevelsElementFound && (BaseRPMsLevelElement == elementName))
+//				{
+//					// Base RPMs level
+
+//					if (baseRPMsFound && baseTemperatureFound)
+//					{
+//						baseLevelsElementStarted = false;
+//						baseLevelsElementFound = true;
+//					}
+//				}
+//			}
+
+//		}
+//	}
+
+	file->close();
+	SafeDelete(file);
+
+//	// Is it error?
+//	if (xsr.hasError())
+//	{
+//		throw std::runtime_error(QString(QObject::tr("Error %1 while parsing file %2")).arg(xsr.errorString()).arg(_path).toStdString());
+//	}
+
+//	// Do we have everything?
+//	if (!(rootFound))
+//	{
+//		 throw std::runtime_error(QString(QObject::tr("File %1 have missing required records")).arg(_path).toStdString());
+//	}
 }
 
 void SettingsSaverLoader::SaveAtGivenPath(QString path)
@@ -60,7 +182,7 @@ void SettingsSaverLoader::SaveAtGivenPath(QString path)
 	if (!file->open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
 	{
 		SafeDelete(file);
-		throw std::runtime_error(QString(QObject::tr("Cannot open file \"%1\" for writing")).arg(path).toStdString());
+		throw std::runtime_error(QString(QObject::tr("Cannot open file \"%1\" for writing.")).arg(path).toStdString());
 	}
 
 	QXmlStreamWriter xsw(file); // Stream writer for XML data
@@ -83,14 +205,14 @@ void SettingsSaverLoader::SaveAtGivenPath(QString path)
 
 		// Steps
 		xsw.writeStartElement(this->StepsElement);
-			for (uint i = ADDITIONAL_STEPS; i < STEPS_NUMBER; i ++)
-			{
-				xsw.writeStartElement(this->StepElement.arg(i - ADDITIONAL_STEPS));
-					Interfaces::ISettingsStep* step = this->_setgen->GetStepPtr(i);
-					xsw.writeTextElement(this->ADCIncreaseElement, QString::number(step->GetADCDelta()));
-					xsw.writeTextElement(this->RPMsPWMIncreaseElement, QString::number(step->GetRPMDelta()));
-				xsw.writeEndElement();
-			}
+		for (uint i = ADDITIONAL_STEPS; i < STEPS_NUMBER; i ++)
+		{
+			xsw.writeStartElement(this->StepElement.arg(i - ADDITIONAL_STEPS));
+				Interfaces::ISettingsStep* step = this->_setgen->GetStepPtr(i);
+				xsw.writeTextElement(this->ADCIncreaseElement, QString::number(step->GetADCDelta()));
+				xsw.writeTextElement(this->RPMsPWMIncreaseElement, QString::number(step->GetRPMDelta()));
+			xsw.writeEndElement();
+		}
 
 		xsw.writeEndElement();
 

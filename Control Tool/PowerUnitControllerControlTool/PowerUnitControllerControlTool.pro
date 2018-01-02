@@ -6,7 +6,7 @@
 
 CONFIG += c++11
 
-QT       += core gui widgets
+QT       += core gui widgets xmlpatterns
 
 TARGET = LowBlowControlTool
 TEMPLATE = app
@@ -20,7 +20,8 @@ SOURCES += main.cpp\
 		Implementations/SettingsGenerator.cpp \
 		FossasSimpleGraph/Implementations/QSimpleGraph.cpp \
 		Implementations/SettingsSaverLoader.cpp \
-    Auxiliary.cpp
+		Auxiliary.cpp \
+    XmlHelper.cpp
 
 HEADERS  += mainwindow.hpp \
 		Interfaces/IAdcTemperatureConvertor.hpp \
@@ -34,7 +35,8 @@ HEADERS  += mainwindow.hpp \
 		FossasSimpleGraph/Implementations/QSimpleGraph.hpp \
 		FossasSimpleGraph/Interfaces/IQSimpleGraph.hpp \
 		Interfaces/ISettingsSaverLoader.hpp \
-		Implementations/SettingsSaverLoader.hpp
+		Implementations/SettingsSaverLoader.hpp \
+    XmlHelper.hpp
 
 FORMS    += mainwindow.ui \
 		NewADC2TempDialog.ui

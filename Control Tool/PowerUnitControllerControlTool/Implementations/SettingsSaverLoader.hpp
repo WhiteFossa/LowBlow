@@ -21,10 +21,13 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #define SETTINGSSAVERLOADER_HPP
 
 #include <QException>
+#include <QXmlQuery>
+#include <QXmlResultItems>
 #include <Auxiliary.hpp>
 #include <Interfaces/ISettingsSaverLoader.hpp>
 #include <Implementations/AdcTemperatureConvertor.hpp>
 #include <Implementations/SettingsGenerator.hpp>
+#include <XmlHelper.hpp>
 
 /**
  * @brief Class to save and load settings to XML.

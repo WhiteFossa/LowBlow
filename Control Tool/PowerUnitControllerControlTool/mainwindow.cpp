@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(this->ui->actionNew, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateFile()));
 	QObject::connect(this->ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFile()));
 	QObject::connect(this->ui->actionSave_As, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFileAs()));
+	QObject::connect(this->ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(MwSlotLoadFile()));
 
 	// Initializing status bar
 	// ADC->Temperature conversion info
@@ -405,15 +406,7 @@ void MainWindow::LockUnlockInterface(bool isUnlock)
 void MainWindow::MwSlotCreateFile()
 {
 	// Do current file saved?
-	if (this->_settingsSaverLoader->IsModified())
-	{
-		// Saving if needed
-		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Save changes?"), QObject::tr("Save changes before creating new settings file?"),
-		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
-		{
-			this->_settingsSaverLoader->Save();
-		}
-	}
+	CheckDoSaveNeeded();
 
 	// Settings filename
 	QString newFilePath = QFileDialog::getSaveFileName(this, QObject::tr("New settings file:"));
@@ -432,6 +425,25 @@ void MainWindow::MwSlotCreateFile()
 	}
 
 	this->_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
+
+	this->InitializeAfterFileChanged();
+}
+
+
+void MainWindow::MwSlotLoadFile()
+{
+	// Do save needed?
+	CheckDoSaveNeeded();
+
+	// Load dialog
+	QString loadFilePath = QFileDialog::getOpenFileName(this, QObject::tr("Select file to open:"));
+
+	if ("" == loadFilePath)
+	{
+		return;
+	}
+
+	this->_settingsSaverLoader->Load(loadFilePath);
 
 	this->InitializeAfterFileChanged();
 }
@@ -482,6 +494,18 @@ void MainWindow::InitializeAfterFileChanged()
 	this->LockUnlockInterface(true);
 }
 
+void MainWindow::CheckDoSaveNeeded()
+{
+if (this->_settingsSaverLoader->IsModified())
+	{
+		// Saving if needed
+		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Save changes?"), QObject::tr("Save changes before creating new settings file?"),
+		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
+		{
+			this->_settingsSaverLoader->Save();
+		}
+	}
+}
 
 MainWindow::~MainWindow()
 {

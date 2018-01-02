@@ -78,7 +78,7 @@ namespace Interfaces
 			virtual QString GetDescription() = 0;
 
 			/**
-			 * @brief Load conversion settings from given file.
+			 * @brief Load conversion settings from given file. File may contain only settings, or another data too.
 			 * @param filename Full path to file with settings
 			 */
 			virtual void LoadSettings(QString filename) = 0;

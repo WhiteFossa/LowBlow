@@ -74,6 +74,7 @@ class SettingsGenerator : public Interfaces::ISettingsGenerator
 
 
 		void SetBaseTemperature(double btemp);
+		void SetBaseTemperatureADC(uint adc);
 		double GetBaseTemperature();
 		uint GetBaseTemperatureADC();
 

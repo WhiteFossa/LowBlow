@@ -85,82 +85,83 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 		{
 			if (A2T_SETTINGS_ROOT_ELEMENT == xsr.name())
 			{
-	// Root element
-	QXmlStreamAttributes attrs = xsr.attributes();
+				// Root element
+				QXmlStreamAttributes attrs = xsr.attributes();
 
-	if (!attrs.hasAttribute(A2T_SETTINGS_DEVICE_ATTR) || !attrs.hasAttribute(A2T_SETTINGS_VERSION_ATTR))
-	{
-		// Missing required attributes
-		file->close();
-		SafeDelete(file);
-		throw std::runtime_error(QString(QObject::tr("Either %1 or %2 attributes missing at %3 element")).arg(A2T_SETTINGS_DEVICE_ATTR).arg(A2T_SETTINGS_VERSION_ATTR).arg(A2T_SETTINGS_ROOT_ELEMENT).toStdString());
-	}
+				if (!attrs.hasAttribute(A2T_SETTINGS_DEVICE_ATTR) || !attrs.hasAttribute(A2T_SETTINGS_VERSION_ATTR))
+				{
+					// Missing required attributes
+					file->close();
+					SafeDelete(file);
+					throw std::runtime_error(QString(QObject::tr("Either %1 or %2 attributes missing at %3 element"))
+						.arg(A2T_SETTINGS_DEVICE_ATTR)
+						.arg(A2T_SETTINGS_VERSION_ATTR)
+						.arg(A2T_SETTINGS_ROOT_ELEMENT).toStdString());
+				}
 
-	if (attrs.value(A2T_SETTINGS_DEVICE_ATTR) != A2T_SETTINGS_DEVICE_NAME)
-	{
-		// Wrong device
-		file->close();
-		SafeDelete(file);
-		throw std::runtime_error(QString(QObject::tr("%1 file is for another device")).arg(filename).toStdString());
-	}
+				if (attrs.value(A2T_SETTINGS_DEVICE_ATTR) != A2T_SETTINGS_DEVICE_NAME)
+				{
+					// Wrong device
+					file->close();
+					SafeDelete(file);
+					throw std::runtime_error(QString(QObject::tr("%1 file is for another device")).arg(filename).toStdString());
+				}
 
-	if (attrs.value(A2T_SETTINGS_VERSION_ATTR) != A2T_SETTINGS_VERSION)
-	{
-		// Wrong version
-		file->close();
-		SafeDelete(file);
-		throw std::runtime_error(QString(QObject::tr("%1 file have wrong version")).arg(filename).toStdString());
-	}
+				if (attrs.value(A2T_SETTINGS_VERSION_ATTR) != A2T_SETTINGS_VERSION)
+				{
+					// Wrong version
+					file->close();
+					SafeDelete(file);
+					throw std::runtime_error(QString(QObject::tr("%1 file have wrong version")).arg(filename).toStdString());
+				}
 
-	start_found = true;
+				start_found = true;
 			}
 			else if (A2T_SETTINGS_DESCRIPTION_EL == xsr.name())
 			{
-	this->description = xsr.readElementText();
-	description_loaded = true;
+				this->description = xsr.readElementText();
+				description_loaded = true;
 			}
 			else if (A2T_SETTINGS_MULTIPLICATIVE_EL == xsr.name())
 			{
-	bool success = false;
-	this->a = xsr.readElementText().toDouble(&success);
+				bool success = false;
+				this->a = xsr.readElementText().toDouble(&success);
 
-	if (!success)
-	{
-		file->close();
-		SafeDelete(file);
-		throw std::runtime_error(QString(QObject::tr("Multiplicative parameter in %1 file is not a floating point number")).arg(filename).toStdString());
-	}
+				if (!success)
+				{
+					file->close();
+					SafeDelete(file);
+					throw std::runtime_error(QString(QObject::tr("Multiplicative parameter in %1 file is not a floating point number")).arg(filename).toStdString());
+				}
 
-	mul_loaded = true;
+				mul_loaded = true;
 			}
 
 			else if (A2T_SETTINGS_ADDITIVE_EL == xsr.name())
 			{
-	bool success = false;
-	this->b = xsr.readElementText().toDouble(&success);
+				bool success = false;
+				this->b = xsr.readElementText().toDouble(&success);
 
-	if (!success)
-	{
-		file->close();
-		SafeDelete(file);
-		throw std::runtime_error(QString(QObject::tr("Additive parameter in %1 file is not a floating point number")).arg(filename).toStdString());
-	}
+				if (!success)
+				{
+					file->close();
+					SafeDelete(file);
+					throw std::runtime_error(QString(QObject::tr("Additive parameter in %1 file is not a floating point number")).arg(filename).toStdString());
+				}
 
-	add_loaded = true;
+				add_loaded = true;
 			}
 		}
 	}
 
+	file->close();
+	SafeDelete(file);
+
 	// Is it error?
 	if (xsr.hasError())
 	{
-		file->close();
-		SafeDelete(file);
 		throw std::runtime_error(QString(QObject::tr("Error %1 while parsing file %2")).arg(xsr.errorString()).arg(filename).toStdString());
 	}
-
-	file->close();
-	SafeDelete(file);
 
 	// Do we have all data?
 	if (!(start_found && description_loaded && mul_loaded && add_loaded))
