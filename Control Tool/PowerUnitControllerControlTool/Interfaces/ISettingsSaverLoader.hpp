@@ -48,8 +48,9 @@ namespace Interfaces
 			/**
 			 * @brief Loads settings from given file.
 			 * @param path File to load from.
+			 * @return True if load successful.
 			 */
-			virtual void Load(QString path) = 0;
+			virtual bool Load(QString path) = 0;
 
 			/**
 			 * @brief Saves settings to current file or throws exception if current file is not set.

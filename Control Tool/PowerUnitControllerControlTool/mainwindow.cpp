@@ -443,7 +443,11 @@ void MainWindow::MwSlotLoadFile()
 		return;
 	}
 
-	this->_settingsSaverLoader->Load(loadFilePath);
+	if (!this->_settingsSaverLoader->Load(loadFilePath))
+	{
+		QMessageBox::warning(this, QObject::tr("Failed to load selected file"), QObject::tr("Failed to load selected file"));
+		return;
+	}
 
 	this->InitializeAfterFileChanged();
 }

@@ -28,6 +28,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <Implementations/AdcTemperatureConvertor.hpp>
 #include <Implementations/SettingsGenerator.hpp>
 #include <XmlHelper.hpp>
+#include <QMessageBox>
 
 /**
  * @brief Class to save and load settings to XML.
@@ -47,7 +48,7 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		~SettingsSaverLoader();
 
 		void Create(QString path, QString adc2TempPath);
-		void Load(QString path);
+		bool Load(QString path);
 		void Save();
 		void SaveAs(QString path);
 		QString GetFilePath();

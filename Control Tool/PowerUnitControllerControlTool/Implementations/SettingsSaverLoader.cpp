@@ -43,7 +43,7 @@ void SettingsSaverLoader::Create(QString path, QString adc2TempPath)
 	this->_setgen->SetBaseTemperature(0);
 }
 
-void SettingsSaverLoader::Load(QString path)
+bool SettingsSaverLoader::Load(QString path)
 {
 	this->_path = path;
 	this->_isModified = false;
@@ -65,6 +65,23 @@ void SettingsSaverLoader::Load(QString path)
 
 	// Binding settings file contents into $settingsFile variable
 	query.bindVariable("settingsFile", file);
+
+	// Is it our XML at all?
+	query.setQuery(QString(QObject::tr("doc($settingsFile)/%1/@%2/string()")).arg(SettingsRootElement).arg(SettingsDeviceAttribute));
+	QString deviceName = Fossa::Helpers::XmlHelper::GetTextValue(&query);
+
+	// Version
+	query.setQuery(QString(QObject::tr("doc($settingsFile)/%1/@%2/string()")).arg(SettingsRootElement).arg(SettingsVersionAttribute));
+	uint version = Fossa::Helpers::XmlHelper::GetIntegerValue(&query);
+
+	if ((deviceName != SettingsDeviceName) ||(version != SettingsVersion))
+	{
+		// Wrong file
+		file->close();
+		SafeDelete(file);
+
+		return false;
+	}
 
 	// Base levels
 	QString baseLevelsXPath = QString(QObject::tr("doc($settingsFile)/%1/%2/")).arg(SettingsRootElement).arg(BaseLevelsElement);
@@ -95,9 +112,10 @@ void SettingsSaverLoader::Load(QString path)
 		stepData->SetRPMDelta(Fossa::Helpers::XmlHelper::GetIntegerValue(&query));
 	}
 
-
 	file->close();
 	SafeDelete(file);
+
+	return true;
 }
 
 void SettingsSaverLoader::SaveAtGivenPath(QString path)
