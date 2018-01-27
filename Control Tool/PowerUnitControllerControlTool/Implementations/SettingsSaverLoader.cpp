@@ -67,107 +67,37 @@ void SettingsSaverLoader::Load(QString path)
 	query.bindVariable("settingsFile", file);
 
 	// Base levels
+	QString baseLevelsXPath = QString(QObject::tr("doc($settingsFile)/%1/%2/")).arg(SettingsRootElement).arg(BaseLevelsElement);
+
 	// ADC level
-	query.setQuery("doc($settingsFile)/Settings/BaseLevels/TemperatureADC/text()");
+	query.setQuery(QString(QObject::tr("%1TemperatureADC/text()")).arg(baseLevelsXPath));
 	_setgen->SetBaseTemperatureADC(Fossa::Helpers::XmlHelper::GetIntegerValue(&query));
 
 	// Base RPMs PWM level
-	query.setQuery("doc($settingsFile)/Settings/BaseLevels/RPMsPWM/text()");
+	query.setQuery(QString(QObject::tr("%1RPMsPWM/text()")).arg(baseLevelsXPath));
 	_setgen->SetBaseRPM(Fossa::Helpers::XmlHelper::GetIntegerValue(&query));
 
-//	QXmlStreamReader xsr(file);
+	// Steps
+	QString stepsXPath = QString(QObject::tr("doc($settingsFile)/%1/%2/")).arg(SettingsRootElement).arg(StepsElement);
 
-//	bool rootFound = false;
-//	bool baseLevelsElementStarted = false;
-//	bool baseLevelsElementFound = false;
-//	bool baseTemperatureFound = false;
-//	bool baseRPMsFound = false;
+	for (uint step = 0; step < SettingsGenerator::StepsNumber; step ++)
+	{
+		Interfaces::ISettingsStep* stepData = this->_setgen->GetStepPtrRelative(step);
 
-//	while (!xsr.atEnd())
-//	{
-//		QXmlStreamReader::TokenType token = xsr.readNext();
-//		if (QXmlStreamReader::TokenType::StartElement == token)
-//		{
-//			QString elementName = xsr.Name();
+		QString xmlStepName = QString(QObject::tr("%1Step%2/")).arg(stepsXPath).arg(step);
 
-//			if (!baseLevelsElementStarted && (SettingsRootElement == elementName))
-//			{
-//				// Root
-//				rootFound = true;
+		// ADC increase for step
+		query.setQuery(QString(QObject::tr("%1%2/text()")).arg(xmlStepName).arg(this->ADCIncreaseElement));
+		stepData->SetADCDelta(Fossa::Helpers::XmlHelper::GetIntegerValue(&query));
 
-//				QXmlStreamAttributes attrs = xsr.attributes();
+		// RPM increase for step
+		query.setQuery(QString(QObject::tr("%1%2/text()")).arg(xmlStepName).arg(this->RPMsPWMIncreaseElement));
+		stepData->SetRPMDelta(Fossa::Helpers::XmlHelper::GetIntegerValue(&query));
+	}
 
-//				// We need device and version
-//				if (!attrs.hasAttribute(SettingsDeviceAttribute) || !attrs.hasAttribute(SettingsVersionAttribute))
-//				{
-//					// Missing required attributes
-//					file->close();
-//					SafeDelete(file);
-//					throw std::runtime_error(QString(QObject::tr("Either %1 or %2 attributes missing at %3 element"))
-//						.arg(SettingsDeviceAttribute)
-//						.arg(SettingsVersionAttribute)
-//						.arg(SettingsRootElement));
-
-//					// Is it our file?
-//					if (attrs.value(SettingsDeviceAttribute) != SettingsDeviceName)
-//					{
-//						// Wrong device
-//						file->close();
-//						SafeDelete(file);
-//						throw std::runtime_error(QString(QObject::tr("%1 file is for another device")).arg(_path).toStdString());
-//					}
-
-//					if (attrs.value(SettingsVersionAttribute) != SettingsVersion)
-//					{
-//						// Wrong version
-//						file->close();
-//						SafeDelete(file);
-//						throw std::runtime_error(QString(QObject::tr("%1 file have wrong version")).arg(filename).toStdString());
-//					}
-//				}
-//				else if (!baseLevelsElementStarted && !baseLevelsElementFound && (BaseLevelsElement == elementName))
-//				{
-//					baseLevelsElementStarted = true;
-//				}
-//				else if (baseLevelsElementStarted && !baseLevelsElementFound && (BaseADCLevelElement == elementName))
-//				{
-//					// Base ADC level
-
-//					if (baseRPMsFound && baseTemperatureFound)
-//					{
-//						baseLevelsElementStarted = false;
-//						baseLevelsElementFound = true;
-//					}
-//				}
-//				else if (baseLevelsElementStarted && !baseLevelsElementFound && (BaseRPMsLevelElement == elementName))
-//				{
-//					// Base RPMs level
-
-//					if (baseRPMsFound && baseTemperatureFound)
-//					{
-//						baseLevelsElementStarted = false;
-//						baseLevelsElementFound = true;
-//					}
-//				}
-//			}
-
-//		}
-//	}
 
 	file->close();
 	SafeDelete(file);
-
-//	// Is it error?
-//	if (xsr.hasError())
-//	{
-//		throw std::runtime_error(QString(QObject::tr("Error %1 while parsing file %2")).arg(xsr.errorString()).arg(_path).toStdString());
-//	}
-
-//	// Do we have everything?
-//	if (!(rootFound))
-//	{
-//		 throw std::runtime_error(QString(QObject::tr("File %1 have missing required records")).arg(_path).toStdString());
-//	}
 }
 
 void SettingsSaverLoader::SaveAtGivenPath(QString path)
@@ -205,15 +135,14 @@ void SettingsSaverLoader::SaveAtGivenPath(QString path)
 
 		// Steps
 		xsw.writeStartElement(this->StepsElement);
-		for (uint i = ADDITIONAL_STEPS; i < STEPS_NUMBER; i ++)
+		for (uint step = 0; step < SettingsGenerator::StepsNumber; step ++)
 		{
-			xsw.writeStartElement(this->StepElement.arg(i - ADDITIONAL_STEPS));
-				Interfaces::ISettingsStep* step = this->_setgen->GetStepPtr(i);
-				xsw.writeTextElement(this->ADCIncreaseElement, QString::number(step->GetADCDelta()));
-				xsw.writeTextElement(this->RPMsPWMIncreaseElement, QString::number(step->GetRPMDelta()));
+			xsw.writeStartElement(this->StepElement.arg(step));
+				Interfaces::ISettingsStep* stepPtr = this->_setgen->GetStepPtrRelative(step);
+				xsw.writeTextElement(this->ADCIncreaseElement, QString::number(stepPtr->GetADCDelta()));
+				xsw.writeTextElement(this->RPMsPWMIncreaseElement, QString::number(stepPtr->GetRPMDelta()));
 			xsw.writeEndElement();
 		}
-
 		xsw.writeEndElement();
 
 		xsw.writeEndElement();

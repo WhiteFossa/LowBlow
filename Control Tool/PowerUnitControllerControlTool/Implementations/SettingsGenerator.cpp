@@ -22,69 +22,69 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 SettingsGenerator::SettingsGenerator(Interfaces::IAdcTemperatureConvertor* convertor)
 {
-	this->_ADC2TempConvertor = convertor;
+	_ADC2TempConvertor = convertor;
 
 	// Setting up steps number
-	this->InitializeStepsList(STEPS_NUMBER);
+	InitializeStepsList(StepsNumber);
 }
 
 void SettingsGenerator::InitializeStepsList(uint steps_number)
 {
 	// Destroying old ones
-	this->DestroySteps();
+	DestroySteps();
 
-	this->_steps.clear();
+	_steps.clear();
 
 	// And creating a new ones
-	for (uint i = 0; i < steps_number + ADDITIONAL_STEPS; i++)
+	for (uint i = 0; i < steps_number + AdditionalSteps; i++)
 	{
-		SettingsStep* step = new SettingsStep(this->_ADC2TempConvertor);
-		this->_steps.push_back(step);
+		SettingsStep* step = new SettingsStep(_ADC2TempConvertor);
+		_steps.push_back(step);
 	}
 
 	// Calculating steps data
-	this->CalculateSteps();
+	CalculateSteps();
 }
 
 void SettingsGenerator::SetBaseTemperature(double btemp)
 {
-	this->_baseADC = this->_ADC2TempConvertor->TEMP2ADC(btemp);
+	_baseADC = _ADC2TempConvertor->TEMP2ADC(btemp);
 
-	this->CalculateSteps(); // Recalculating
+	CalculateSteps(); // Recalculating
 }
 
 void SettingsGenerator::SetBaseTemperatureADC(uint adc)
 {
-	this->_baseADC = adc;
-	this->CalculateSteps();
+	_baseADC = adc;
+	CalculateSteps();
 }
 
 double SettingsGenerator::GetBaseTemperature()
 {
-	return this->_ADC2TempConvertor->ADC2TEMP(this->_baseADC);
+	return _ADC2TempConvertor->ADC2TEMP(_baseADC);
 }
 
 uint SettingsGenerator::GetBaseTemperatureADC()
 {
-	return this->_baseADC;
+	return _baseADC;
 }
 
 void SettingsGenerator::SetBaseRPM(uint base_rpm)
 {
-	this->_baseRPM = base_rpm;
+	_baseRPM = base_rpm;
 
-	this->CalculateSteps(); // Recalculating
+	CalculateSteps(); // Recalculating
 }
 
 uint SettingsGenerator::GetBaseRPM()
 {
-	return this->_baseRPM;
+	return _baseRPM;
 }
 
 void SettingsGenerator::DestroySteps()
 {
 	// Destroying all steps
-	for (QList<Interfaces::ISettingsStep*>::iterator i = this->_steps.begin(); i != this->_steps.end(); ++i)
+	for (QList<Interfaces::ISettingsStep*>::iterator i = _steps.begin(); i != _steps.end(); ++i)
 	{
 		SafeDelete(*i);
 	}
@@ -93,32 +93,37 @@ void SettingsGenerator::DestroySteps()
 void SettingsGenerator::CalculateSteps()
 {
 	// Zero levels step
-	Interfaces::ISettingsStep *stepPtr = this->_steps[ZERO_STEP_INDEX];
+	Interfaces::ISettingsStep *stepPtr = _steps[ZeroLevelsStepIndex];
 
 	stepPtr->SetADCDelta(0);
 	stepPtr->SetRPMDelta(0);
 	stepPtr->CalculatePrimaryValues(0, 0);
 
 	// Base levels step
-	stepPtr = this->_steps[BASE_STEP_INDEX];
-	stepPtr->SetADCDelta(this->_baseADC, true);
-	stepPtr->SetRPMDelta(this->_baseRPM, true);
+	stepPtr = _steps[BaseLevelsStepIndex];
+	stepPtr->SetADCDelta(_baseADC, true);
+	stepPtr->SetRPMDelta(_baseRPM, true);
 
 	// Iterating through steps (except first)
-	for (int i = 1; i < this->_steps.size(); i++)
+	for (int i = 1; i < _steps.size(); i++)
 	{
 		// Previous element
-		Interfaces::ISettingsStep* prev = this->_steps[i - 1];
-		this->_steps[i]->CalculatePrimaryValues(prev->GetCurrentADC(), prev->GetCurrentRPM());
+		Interfaces::ISettingsStep* prev = _steps[i - 1];
+		_steps[i]->CalculatePrimaryValues(prev->GetCurrentADC(), prev->GetCurrentRPM());
 	}
 }
 
 Interfaces::ISettingsStep* SettingsGenerator::GetStepPtr(uint step)
 {
-	return this->_steps[step];
+	return _steps[step];
+}
+
+Interfaces::ISettingsStep* SettingsGenerator::GetStepPtrRelative(uint step)
+{
+	return _steps[step + AdditionalSteps];
 }
 
 SettingsGenerator::~SettingsGenerator()
 {
-	this->DestroySteps();
+	DestroySteps();
 }

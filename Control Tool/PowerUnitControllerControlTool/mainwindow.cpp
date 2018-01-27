@@ -52,14 +52,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->ui->mw_status->addPermanentWidget(this->_mwFileName);
 
 	// Initializing step table (UI)
-	this->ui->mw_StepsTable->setColumnCount(NUMBER_OF_STEPS_TABLE_RECORDS);
+	this->ui->mw_StepsTable->setColumnCount(SettingsGenerator::TotalSteps);
 
 	// Column names
 	QStringList STColumnLabels;
 	STColumnLabels.append(QObject::tr("Zero")); // Zero level
 	STColumnLabels.append(QObject::tr("Base"));
 
-	for (int i = 0; i < STEPS_NUMBER; i++)
+	for (int i = 0; i < SettingsGenerator::StepsNumber; i++)
 	{
 		STColumnLabels.append(QString(QObject::tr("Step %1")).arg(i + 1));
 	}
@@ -80,14 +80,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->ui->mw_StepsTable->setVerticalHeaderLabels(STRowLabels);
 
 	// Preparing tables of spinboxes
-	for (uint i = 0; i < NUMBER_OF_STEPS_TABLE_RECORDS; i++)
+	for (uint i = 0; i < SettingsGenerator::TotalSteps; i++)
 	{
 		this->_ADCDeltaSpinboxes.append(NULL);
 		this->_RPMDeltaSpinboxes.append(NULL);
 	}
 
 	// Initializing each column (requires initialized _ADCDetlaSpinboxes and _RPMDeltaSpinboxes)
-	for (uint i = 0; i < NUMBER_OF_STEPS_TABLE_RECORDS; i++)
+	for (uint i = 0; i < SettingsGenerator::TotalSteps; i++)
 	{
 		this->InitializeStepsTableColumn(i);
 	}
@@ -241,14 +241,14 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 	labelItem = new QTableWidgetItem(QObject::tr("0.0%"), QTableWidgetItem::Type);
 	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_DELTA_PERCENT, col, labelItem);
 
-	if (col < ADDITIONAL_STEPS)
+	if (col < SettingsGenerator::AdditionalSteps)
 	{
 		this->_ADCDeltaSpinboxes[col]->setReadOnly(true);
 		this->_RPMDeltaSpinboxes[col]->setReadOnly(true);
 	}
 
 	// Overriding ranges
-	if (BASE_STEP_INDEX == col)
+	if (SettingsGenerator::BaseLevelsStepIndex == col)
 	{
 		// Base step, it have wide range
 		this->_ADCDeltaSpinboxes[col]->setRange(0, ADC_MAX_VALUE);
@@ -330,7 +330,7 @@ void MainWindow::MwSlotUpdateStepsTable()
 
 	Interfaces::ISettingsStep *stepItem;
 
-	for (uint step = 0; step < NUMBER_OF_STEPS_TABLE_RECORDS; step++)
+	for (uint step = 0; step < SettingsGenerator::TotalSteps; step++)
 	{
 		// Getting step
 		stepItem = setgen->GetStepPtr(step);

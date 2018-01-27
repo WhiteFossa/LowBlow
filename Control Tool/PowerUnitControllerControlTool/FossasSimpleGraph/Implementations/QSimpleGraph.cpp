@@ -25,20 +25,20 @@ namespace Fossa
 	{
 		QSimpleGraph::QSimpleGraph(QWidget *parent) : IQSimpleGraph(parent)
 		{
-			this->_localMouseX = 0;
-			this->_localMouseY = 0;
-			this->_graphBorder.setRect(0, 0, 1, 1); // Initial set-up
-			this->setMouseTracking(true); // Call mouseMoveEvent() even if no buttons pressed
+			_localMouseX = 0;
+			_localMouseY = 0;
+			_graphBorder.setRect(0, 0, 1, 1); // Initial set-up
+			setMouseTracking(true); // Call mouseMoveEvent() even if no buttons pressed
 		}
 
 		QSize QSimpleGraph::minimumSizeHint() const
 		{
-			return this->minimumSize();
+			return minimumSize();
 		}
 
 		QSize QSimpleGraph::sizeHint() const
 		{
-			return this->size();
+			return size();
 		}
 
 		void QSimpleGraph::mouseMoveEvent(QMouseEvent *event)
@@ -46,29 +46,29 @@ namespace Fossa
 			// Are we in graph data area?
 			if
 			(
-	(event->x() >= this->_graphBorder.left()) && (event->x() <= this->_graphBorder.right())
+	(event->x() >= _graphBorder.left()) && (event->x() <= _graphBorder.right())
 	&&
-	(event->y() >= this->_graphBorder.top()) && (event->y() <= this->_graphBorder.bottom())
+	(event->y() >= _graphBorder.top()) && (event->y() <= _graphBorder.bottom())
 			)
 			{
-	this->_localMouseX = event->x() - this->_graphBorder.left();
-	this->_localMouseY = event->y() - this->_graphBorder.top();
+				_localMouseX = event->x() - _graphBorder.left();
+				_localMouseY = event->y() - _graphBorder.top();
 			}
 
 			// We need to repaint
-			this->update();
+			update();
 		}
 
 		void QSimpleGraph::paintEvent(QPaintEvent *event)
 		{
 			// Setting up painter
 			QPainter painter(this);
-			this->_painter = &painter;
+			_painter = &painter;
 
 			painter.setRenderHint(QPainter::Antialiasing);
 
 			// Drawing outer rectangle
-			this->_graphBorder.setTop(this->_outerTopSpacing);
+			_graphBorder.setTop(_outerTopSpacing);
 			this->_graphBorder.setLeft(this->_outerLeftSpacing);
 			this->_graphBorder.setBottom(this->height() - this->_outerBottomSpacing);
 			this->_graphBorder.setRight(this->width() - this->_outerRightSpacing);

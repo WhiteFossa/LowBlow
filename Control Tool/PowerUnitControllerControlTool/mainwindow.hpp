@@ -151,7 +151,7 @@ public slots:
 /* Signals */
 signals:
 	/**
-	 * @brief Emit it when this->tconv initialized with the new instance of ADC to Temperature convertor.
+	 * @brief Emit it when temperature to ADC convertor initialized with the new instance of ADC to Temperature convertor.
 	 */
 	void MwSignalConvertorChanged();
 
@@ -251,7 +251,7 @@ private:
 	void LockUnlockInterface(bool isUnlock);
 
 		/**
-	 * @brief Updates displayed filename from this->_settingsSaverLoader
+	 * @brief Updates displayed filename from _settingsSaverLoader
 	 */
 	void UpdateDisplayedFileName();
 

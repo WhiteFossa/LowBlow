@@ -66,12 +66,12 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #define A2T_SETTINGS_DESCRIPTION_EL "Description"
 
 /**
-	* Save file Multiplicative (i.e. this->a) attribute name
+	* Save file Multiplicative (i.e. _a) attribute name
 	*/
 #define A2T_SETTINGS_MULTIPLICATIVE_EL "Multiplicative"
 
 /**
-	* Save file Additive (i.e. this->b) attribute name
+	* Save file Additive (i.e. _b) attribute name
 	*/
 #define A2T_SETTINGS_ADDITIVE_EL "Additive"
 
@@ -93,9 +93,9 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 
 		uint TEMP2ADC(double temp);
 
-		void SetADC2TempConversionFactors(double a, double b);
+		void SetADC2TempConversionFactors(double _a, double _b);
 
-		void GetADC2TempConversionFactors(double *a, double *b);
+		void GetADC2TempConversionFactors(double *_a, double *_b);
 
 		void LoadSettings(QString filename);
 
@@ -116,12 +116,12 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 		/**
 		 * @brief a Factor for ADC->Temperature conversion. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement.
 		 */
-		double a;
+		double _a;
 
 		/**
 		 * @brief a Factor for ADC->Temperature conversion. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement.
 		 */
-		double b;
+		double _b;
 
 };
 

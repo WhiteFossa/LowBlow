@@ -27,7 +27,7 @@ NewADC2TempDialog::NewADC2TempDialog(QWidget *parent) :
 	ui->setupUi(this);
 
 	/* No path specified */
-	this->filepath = "";
+	this->_filepath = "";
 	this->SlotCheckRequirements();
 
 	QObject::connect(this->ui->Cancel, SIGNAL(clicked()), this, SLOT(reject()));
@@ -58,8 +58,8 @@ void NewADC2TempDialog::changeEvent(QEvent *e)
  */
 void NewADC2TempDialog::SlotSelectFile()
 {
-	this->filepath = QFileDialog::getSaveFileName(this, QObject::tr("Save ADC to Temperature settings"));
-	this->ui->lnFilePath->setText(this->filepath);
+	this->_filepath = QFileDialog::getSaveFileName(this, QObject::tr("Save ADC to Temperature settings"));
+	this->ui->lnFilePath->setText(this->_filepath);
 
 	this->SlotCheckRequirements();
 }
@@ -73,7 +73,7 @@ void NewADC2TempDialog::SlotSaveSettings()
 	conv->SetDescription(this->ui->lnDescription->text());
 	conv->SetADC2TempConversionFactors(this->ui->sbMul->value(), this->ui->sbAdd->value());
 
-	conv->SaveSettings(this->filepath);
+	conv->SaveSettings(this->_filepath);
 
 	SafeDelete(conv);
 
@@ -85,7 +85,7 @@ void NewADC2TempDialog::SlotSaveSettings()
  */
 void NewADC2TempDialog::SlotCheckRequirements()
 {
-	if ("" == this->filepath || "" == this->ui->lnDescription->text())
+	if ("" == this->_filepath || "" == this->ui->lnDescription->text())
 	{
 		this->ui->Create->setEnabled(false);
 	}

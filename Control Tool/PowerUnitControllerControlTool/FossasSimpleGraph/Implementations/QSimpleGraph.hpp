@@ -32,35 +32,35 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <QtDebug>
 
 /**
-  * Define it to draw point-to-point graph instead of ladder one.
-  */
+	* Define it to draw point-to-point graph instead of ladder one.
+	*/
 //#define FOSSA_SIMPLE_GRAPH_POINT_TO_POINT_LINE
 
 
 namespace Fossa
 {
-  namespace QSimpleGraph
-  {
-    /**
-     * @brief Possible tooltip directions relative to target point.
-     */
-    enum TooltipDirection
-    {
-      UpLeft,
-      UpRight,
-      DownLeft,
-      DownRight
-    };
+	namespace QSimpleGraph
+	{
+		/**
+		 * @brief Possible tooltip directions relative to target point.
+		 */
+		enum TooltipDirection
+		{
+			UpLeft,
+			UpRight,
+			DownLeft,
+			DownRight
+		};
 
-    /**
-     * @brief QSimpleGraph widget implementation
-     */
-    class QSimpleGraph : public Interfaces::IQSimpleGraph
-    {
-      Q_OBJECT
+		/**
+		 * @brief QSimpleGraph widget implementation
+		 */
+		class QSimpleGraph : public Interfaces::IQSimpleGraph
+		{
+			Q_OBJECT
 
-      // Public members
-      public:
+			// Public members
+			public:
 
 	/**
 	 * @brief QSimpleGraph widget constructor.
@@ -91,8 +91,8 @@ namespace Fossa
 	void ClearAllPoints();
 	void AddPoint(double XVal, double YVal);
 
-      // Protected members
-      protected:
+			// Protected members
+			protected:
 
 	/**
 	 * @brief Painting method, paints the entrie graph.
@@ -106,8 +106,8 @@ namespace Fossa
 	 */
 	void mouseMoveEvent(QMouseEvent *event);
 
-      // Private members
-      private:
+			// Private members
+			private:
 
 	/**
 	 * @brief Spacing between widget frame and left side of drawing area.
@@ -377,7 +377,7 @@ namespace Fossa
 	/**
 	 * @brief Returns closest point for given coordinate.
 	 * @param x X coordinate withing graph.
-	 * @return Iterator for this->_points with closest pont.
+	 * @return Iterator for _points with closest point.
 	 */
 	QMap<double, double>::const_iterator GetClosestPoint(uint x);
 
@@ -410,8 +410,8 @@ namespace Fossa
 	 * @return Area, covered by text.
 	 */
 	static QRect MultilineBoundingRect(QFont font, QString text);
-    };
-  }
+		};
+	}
 }
 
 

@@ -25,18 +25,18 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 AdcTemperatureConvertor::AdcTemperatureConvertor()
 {
 	this->description = QObject::tr("Not initialized yet");
-	this->a = 0;
-	this->b = 0;
+	this->_a = 0;
+	this->_b = 0;
 }
 
 double AdcTemperatureConvertor::ADC2TEMP(uint adc)
 {
-	return this->a * adc + this->b;
+	return this->_a * adc + this->_b;
 }
 
 uint AdcTemperatureConvertor::TEMP2ADC(double temp)
 {
-	int pre_result = (int)floor((temp - this->b) / this->a + 0.5);
+	int pre_result = (int)floor((temp - this->_b) / this->_a + 0.5);
 	if(pre_result < 0)
 	{
 		return 0;
@@ -51,14 +51,14 @@ uint AdcTemperatureConvertor::TEMP2ADC(double temp)
 
 void AdcTemperatureConvertor::SetADC2TempConversionFactors(double a, double b)
 {
-	this->a = a;
-	this->b = b;
+	this->_a = a;
+	this->_b = b;
 }
 
 void AdcTemperatureConvertor::GetADC2TempConversionFactors(double *a, double *b)
 {
-	*a = this->a;
-	*b = this->b;
+	*a = this->_a;
+	*b = this->_b;
 }
 
 
@@ -125,7 +125,7 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 			else if (A2T_SETTINGS_MULTIPLICATIVE_EL == xsr.name())
 			{
 				bool success = false;
-				this->a = xsr.readElementText().toDouble(&success);
+				this->_a = xsr.readElementText().toDouble(&success);
 
 				if (!success)
 				{
@@ -140,7 +140,7 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 			else if (A2T_SETTINGS_ADDITIVE_EL == xsr.name())
 			{
 				bool success = false;
-				this->b = xsr.readElementText().toDouble(&success);
+				this->_b = xsr.readElementText().toDouble(&success);
 
 				if (!success)
 				{
@@ -195,8 +195,8 @@ void AdcTemperatureConvertor::WriteADC2TemperatureSection(QXmlStreamWriter *writ
 		writer->writeAttribute(A2T_SETTINGS_DEVICE_ATTR, A2T_SETTINGS_DEVICE_NAME); // For what device
 		writer->writeAttribute(A2T_SETTINGS_VERSION_ATTR, A2T_SETTINGS_VERSION); // Settings file version
 		writer->writeTextElement(A2T_SETTINGS_DESCRIPTION_EL, this->description); // Settings description
-		writer->writeTextElement(A2T_SETTINGS_MULTIPLICATIVE_EL, FormatDoubleForXML(this->a)); // a
-		writer->writeTextElement(A2T_SETTINGS_ADDITIVE_EL, FormatDoubleForXML(this->b)); // b
+		writer->writeTextElement(A2T_SETTINGS_MULTIPLICATIVE_EL, FormatDoubleForXML(this->_a)); // a
+		writer->writeTextElement(A2T_SETTINGS_ADDITIVE_EL, FormatDoubleForXML(this->_b)); // b
 	writer->writeEndElement(); // End of settings root
 }
 

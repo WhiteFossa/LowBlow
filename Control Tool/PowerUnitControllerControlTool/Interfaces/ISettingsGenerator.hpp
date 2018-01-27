@@ -91,10 +91,18 @@ namespace Interfaces
 
 		/**
 			 * @brief Returns pointer to step with given number to allow manipulations with step. Don't forget to call CalculateSteps() after making any changes.
-			 * @param step Step number
-			 * @return Pointer to step
+			 * Step index here is non-relative, i.e. step = 0 may mean "zero levels", step = 1 may mean "base levels" and step = 2 is actual first step.
+			 * @param step Step number.
+			 * @return Pointer to step.
 			 */
 			virtual Interfaces::ISettingsStep* GetStepPtr(uint step) = 0;
+
+			/**
+			 * @brief As GetStepPtr(), but step index is relative, i.e. step = 0 means actual first step.
+			 * @param step Step number.
+			 * @return Pointer to step.
+			 */
+			virtual Interfaces::ISettingsStep* GetStepPtrRelative(uint step) = 0;
 
 
 		// Protected members

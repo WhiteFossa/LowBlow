@@ -25,32 +25,6 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <Auxiliary.hpp>
 
 /**
-	* Number of steps. STEPS_NUMBER = EEPROM_SIZE - 3
-	*/
-#define STEPS_NUMBER 125
-
-/**
-	* Actually we creating two steps more, than given in InitializeStepsList() to store zero levels step and base level step.
-	*/
-#define ADDITIONAL_STEPS 2
-
-/**
-	STEPS_NUMBER + ADDITIONAL_STEPS
-	*/
-#define NUMBER_OF_STEPS_TABLE_RECORDS (STEPS_NUMBER + ADDITIONAL_STEPS)
-
-/**
-	* Zero levels step index
-	*/
-#define ZERO_STEP_INDEX 0
-
-/**
-	* Base levels step index
-	*/
-#define BASE_STEP_INDEX 1
-
-
-/**
  * @brief Class, being used to generate settings (see Interfaces/ISettingsGenerator for information)
  */
 class SettingsGenerator : public Interfaces::ISettingsGenerator
@@ -58,6 +32,30 @@ class SettingsGenerator : public Interfaces::ISettingsGenerator
 	Q_OBJECT
 
 	public:
+		/**
+		 * @brief Steps number = EEPROM Size - 3, i.e. 125 in our case.
+		 */
+		static const uint StepsNumber = 125;
+
+		/**
+		 * @brief Actually we creating two steps more, than given in InitializeStepsList() to store zero levels step and base level step.
+		 */
+		static const uint AdditionalSteps = 2;
+
+		/**
+		 * @brief Total steps number.
+		 */
+		static const uint TotalSteps = StepsNumber + AdditionalSteps;
+
+		/**
+		 * @brief Step with this index stores zero levels.
+		 */
+		static const uint ZeroLevelsStepIndex = 0;
+
+		/**
+		 * @brief Step with this index stores base levels.
+		 */
+		static const uint BaseLevelsStepIndex = 1;
 
 		/**
 		 * @brief Constructor. Initializes steps list, default base temperature and so on.
@@ -84,6 +82,7 @@ class SettingsGenerator : public Interfaces::ISettingsGenerator
 		void CalculateSteps();
 
 		Interfaces::ISettingsStep* GetStepPtr(uint step);
+		Interfaces::ISettingsStep* GetStepPtrRelative(uint step);
 
 
 
