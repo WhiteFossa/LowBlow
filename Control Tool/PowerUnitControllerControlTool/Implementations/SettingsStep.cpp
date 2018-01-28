@@ -34,9 +34,9 @@ void SettingsStep::CalculatePrimaryValues(uint previous_adc, uint previous_rpm)
 	this->_CurrentADC = previous_adc + this->_ADCDelta;
 	this->_CurrentRPM = previous_rpm + this->_RPMDelta;
 
-	if (this->_CurrentADC > ADC_MAX_VALUE)
+	if (this->_CurrentADC > AdcTemperatureConvertor::MaxADCValue)
 	{
-		this->_CurrentADC = ADC_MAX_VALUE;
+		this->_CurrentADC = AdcTemperatureConvertor::MaxADCValue;
 	}
 
 	if (this->_CurrentRPM > MAX_RPM)

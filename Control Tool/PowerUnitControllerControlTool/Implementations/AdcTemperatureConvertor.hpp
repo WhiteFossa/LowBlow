@@ -29,51 +29,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <QXmlStreamAttribute>
 #include <QException>
 #include <QDebug>
-
-/**
-	* Maximal value of thermometer ADC
-	*/
-#define ADC_MAX_VALUE 1023
-
-/**
-	* Save file root element
-	*/
-#define A2T_SETTINGS_ROOT_ELEMENT "ADC2TempSettings"
-
-/**
-	* Save file Device attribute name
-	*/
-#define A2T_SETTINGS_DEVICE_ATTR "Device"
-
-/**
- * Device name for use in saved settings
- */
-#define A2T_SETTINGS_DEVICE_NAME "TermalController_mk1"
-
-/**
-	* Save file Version attribute name
-	*/
-#define A2T_SETTINGS_VERSION_ATTR "Version"
-
-/**
- * Version of settings file
- */
-#define A2T_SETTINGS_VERSION "0"
-
-/**
-	* Save file Description attribute name
-	*/
-#define A2T_SETTINGS_DESCRIPTION_EL "Description"
-
-/**
-	* Save file Multiplicative (i.e. _a) attribute name
-	*/
-#define A2T_SETTINGS_MULTIPLICATIVE_EL "Multiplicative"
-
-/**
-	* Save file Additive (i.e. _b) attribute name
-	*/
-#define A2T_SETTINGS_ADDITIVE_EL "Additive"
+#include <QString>
 
 /**
  * @brief Implementation of Interfaces::IAdcTemperatureConvertor
@@ -83,6 +39,11 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 	Q_OBJECT
 
 	public:
+		/**
+		 * @brief Maximal ADC value.
+		 */
+		static const uint MaxADCValue = 1023;
+
 		/**
 		 * @brief Constructor. Call SetADC2TempConversionFactors() or LoadSettings() after class construction
 		 */
@@ -97,7 +58,7 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 
 		void GetADC2TempConversionFactors(double *_a, double *_b);
 
-		void LoadSettings(QString filename);
+		bool LoadSettings(QString filename, QString prefix);
 
 		void SaveSettings(QString filename);
 
@@ -108,6 +69,45 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 		void WriteADC2TemperatureSection(QXmlStreamWriter* writer);
 
 	private:
+
+
+		/**
+		* This element will be root XML element for ADC to temperature settings file.
+		*/
+		const QString SettingsRootElement = "ADC2TempSettings";
+
+		/**
+		 * @brief Store device name in attribute with this name.
+		 */
+		const QString DeviceAttribute = "Device";
+
+		/**
+		 * @brief Device name for settings file.
+		 */
+		const QString DeviceName = "LowBlow";
+
+		/**
+		 * @brief Store settings version in attribute with this name.
+		 */
+		const QString VersionAttribute = "Version";
+
+		/**
+		 * @brief Settings file version.
+		 */
+		const uint Version = 1;
+
+		/**
+		 * @brief Store settings description in this XML element.
+		 */
+		const QString DescriptionElement = "Description";
+
+		/**
+		 * @brief Store multiplicative factor in this element.
+		 */
+		const QString	MultiplicativeElement = "Multiplicative";
+
+		const QString AdditiveElement = "Additive";
+
 		/**
 		 * @brief Description of this instance (i.e. conversion settings)
 		 */

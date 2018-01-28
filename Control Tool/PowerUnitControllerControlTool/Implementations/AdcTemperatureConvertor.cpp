@@ -41,9 +41,9 @@ uint AdcTemperatureConvertor::TEMP2ADC(double temp)
 	{
 		return 0;
 	}
-	else if (pre_result > ADC_MAX_VALUE)
+	else if (pre_result > MaxADCValue)
 	{
-		return ADC_MAX_VALUE;
+		return MaxADCValue;
 	}
 
 	return (uint)pre_result;
@@ -62,7 +62,7 @@ void AdcTemperatureConvertor::GetADC2TempConversionFactors(double *a, double *b)
 }
 
 
-void AdcTemperatureConvertor::LoadSettings(QString filename)
+bool AdcTemperatureConvertor::LoadSettings(QString filename, QString prefix)
 {
 	QFile *file = new QFile(filename);
 	if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
@@ -83,23 +83,23 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 		QXmlStreamReader::TokenType token = xsr.readNext();
 		if (QXmlStreamReader::TokenType::StartElement == token)
 		{
-			if (A2T_SETTINGS_ROOT_ELEMENT == xsr.name())
+			if (SettingsRootElement == xsr.name())
 			{
 				// Root element
 				QXmlStreamAttributes attrs = xsr.attributes();
 
-				if (!attrs.hasAttribute(A2T_SETTINGS_DEVICE_ATTR) || !attrs.hasAttribute(A2T_SETTINGS_VERSION_ATTR))
+				if (!attrs.hasAttribute(DeviceAttribute) || !attrs.hasAttribute(VersionAttribute))
 				{
 					// Missing required attributes
 					file->close();
 					SafeDelete(file);
 					throw std::runtime_error(QString(QObject::tr("Either %1 or %2 attributes missing at %3 element"))
-						.arg(A2T_SETTINGS_DEVICE_ATTR)
-						.arg(A2T_SETTINGS_VERSION_ATTR)
-						.arg(A2T_SETTINGS_ROOT_ELEMENT).toStdString());
+						.arg(DeviceAttribute)
+						.arg(VersionAttribute)
+						.arg(SettingsRootElement).toStdString());
 				}
 
-				if (attrs.value(A2T_SETTINGS_DEVICE_ATTR) != A2T_SETTINGS_DEVICE_NAME)
+				if (attrs.value(DeviceAttribute) != DeviceName)
 				{
 					// Wrong device
 					file->close();
@@ -107,7 +107,7 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 					throw std::runtime_error(QString(QObject::tr("%1 file is for another device")).arg(filename).toStdString());
 				}
 
-				if (attrs.value(A2T_SETTINGS_VERSION_ATTR) != A2T_SETTINGS_VERSION)
+				if (attrs.value(VersionAttribute) != QString(QObject::tr("%1").arg(Version)))
 				{
 					// Wrong version
 					file->close();
@@ -117,12 +117,12 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 
 				start_found = true;
 			}
-			else if (A2T_SETTINGS_DESCRIPTION_EL == xsr.name())
+			else if (DescriptionElement == xsr.name())
 			{
 				this->description = xsr.readElementText();
 				description_loaded = true;
 			}
-			else if (A2T_SETTINGS_MULTIPLICATIVE_EL == xsr.name())
+			else if (MultiplicativeElement == xsr.name())
 			{
 				bool success = false;
 				this->_a = xsr.readElementText().toDouble(&success);
@@ -137,7 +137,7 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 				mul_loaded = true;
 			}
 
-			else if (A2T_SETTINGS_ADDITIVE_EL == xsr.name())
+			else if (AdditiveElement == xsr.name())
 			{
 				bool success = false;
 				this->_b = xsr.readElementText().toDouble(&success);
@@ -168,6 +168,8 @@ void AdcTemperatureConvertor::LoadSettings(QString filename)
 	{
 		 throw std::runtime_error(QString(QObject::tr("File %1 have missing required records")).arg(filename).toStdString());
 	}
+
+	return true;
 }
 
 void AdcTemperatureConvertor::SaveSettings(QString filename)
@@ -191,12 +193,12 @@ void AdcTemperatureConvertor::SaveSettings(QString filename)
 
 void AdcTemperatureConvertor::WriteADC2TemperatureSection(QXmlStreamWriter *writer)
 {
-	writer->writeStartElement(A2T_SETTINGS_ROOT_ELEMENT); // Settings root
-		writer->writeAttribute(A2T_SETTINGS_DEVICE_ATTR, A2T_SETTINGS_DEVICE_NAME); // For what device
-		writer->writeAttribute(A2T_SETTINGS_VERSION_ATTR, A2T_SETTINGS_VERSION); // Settings file version
-		writer->writeTextElement(A2T_SETTINGS_DESCRIPTION_EL, this->description); // Settings description
-		writer->writeTextElement(A2T_SETTINGS_MULTIPLICATIVE_EL, FormatDoubleForXML(this->_a)); // a
-		writer->writeTextElement(A2T_SETTINGS_ADDITIVE_EL, FormatDoubleForXML(this->_b)); // b
+	writer->writeStartElement(SettingsRootElement); // Settings root
+		writer->writeAttribute(DeviceAttribute, DeviceName); // For what device
+		writer->writeAttribute(VersionAttribute, QString(QObject::tr("%1")).arg(Version)); // Settings file version
+		writer->writeTextElement(DescriptionElement, this->description); // Settings description
+		writer->writeTextElement(MultiplicativeElement, FormatDoubleForXML(this->_a)); // a
+		writer->writeTextElement(AdditiveElement, FormatDoubleForXML(this->_b)); // b
 	writer->writeEndElement(); // End of settings root
 }
 

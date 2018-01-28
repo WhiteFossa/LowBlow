@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	STColumnLabels.append(QObject::tr("Zero")); // Zero level
 	STColumnLabels.append(QObject::tr("Base"));
 
-	for (int i = 0; i < SettingsGenerator::StepsNumber; i++)
+	for (uint i = 0; i < SettingsGenerator::StepsNumber; i++)
 	{
 		STColumnLabels.append(QString(QObject::tr("Step %1")).arg(i + 1));
 	}
@@ -251,7 +251,7 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 	if (SettingsGenerator::BaseLevelsStepIndex == col)
 	{
 		// Base step, it have wide range
-		this->_ADCDeltaSpinboxes[col]->setRange(0, ADC_MAX_VALUE);
+		this->_ADCDeltaSpinboxes[col]->setRange(0, AdcTemperatureConvertor::MaxADCValue);
 		this->_RPMDeltaSpinboxes[col]->setRange(0, MAX_RPM);
 	}
 	else

@@ -90,7 +90,7 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		/**
 		 * @brief Settings file version.
 		 */
-		const int SettingsVersion = 1;
+		const uint SettingsVersion = 1;
 
 		/**
 		 * @brief Base temperature ADC level element name.

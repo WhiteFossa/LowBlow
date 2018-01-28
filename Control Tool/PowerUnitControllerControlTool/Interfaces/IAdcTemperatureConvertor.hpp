@@ -79,9 +79,12 @@ namespace Interfaces
 
 			/**
 			 * @brief Load conversion settings from given file. File may contain only settings, or another data too.
-			 * @param filename Full path to file with settings
+			 * @param filename Full path to file with settings.
+			 * @param prefix Prefix for XML data. I.e. set it to "" to load from root element, set it to "foo/bar/" to load
+			 * from /foo/bar and so on.
+			 * @return True if load successfull.
 			 */
-			virtual void LoadSettings(QString filename) = 0;
+			virtual bool LoadSettings(QString filename, QString prefix) = 0;
 
 			/**
 			 * @brief Save conversion settings to given file. If file already exists it will be overwritten.
