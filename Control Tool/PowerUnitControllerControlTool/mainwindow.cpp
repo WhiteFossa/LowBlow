@@ -41,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(this->ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFile()));
 	QObject::connect(this->ui->actionSave_As, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFileAs()));
 	QObject::connect(this->ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(MwSlotLoadFile()));
+	QObject::connect(this, SIGNAL(MwSignalFileModified()), this, SLOT(MwSlotMarkAsModified()));
 
 	// Initializing status bar
 	// ADC->Temperature conversion info
@@ -99,6 +100,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	this->ui->mwMainLayout->insertWidget(0, this->_graph, MainWindow::_graphStretchFactor);
 
+	// TODO: Remove it
 	// For debug
 	this->_graph->SetMinXValue(0);
 	this->_graph->SetMaxXValue(120);
@@ -138,6 +140,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
 	{
 		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Unsaved changes"), QObject::tr("There is unsaved changes. Are you really want to quit?")))
 		{
+			MwSlotSaveFile();
 			e->accept();
 		}
 		else
@@ -149,7 +152,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
 
 void MainWindow::MwSlotExit()
 {
-	QCoreApplication::quit();
+	close();
 }
 
 void MainWindow::UpdateConvertorInformation()
@@ -193,6 +196,9 @@ void MainWindow::MwSlotBaseTemperatureChanged(double tempC)
 
 	this->ui->mw_basetemperatureADC->setNum((int)setgen->GetBaseTemperatureADC());
 
+	// Marking file as modified
+	emit MwSignalFileModified();
+
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
 }
@@ -200,6 +206,9 @@ void MainWindow::MwSlotBaseTemperatureChanged(double tempC)
 void MainWindow::MwSlotBaseRPMChanged(int RPM)
 {
 	this->_settingsSaverLoader->GetSettingsGeneratorPtr()->SetBaseRPM(RPM);
+
+	// Marking file as modified
+	emit MwSignalFileModified();
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -297,6 +306,9 @@ void MainWindow::MwSlotADCDeltaChanged(uint StepNumber, uint NewDelta)
 	setgen->GetStepPtr(StepNumber)->SetADCDelta(NewDelta);
 	setgen->CalculateSteps();
 
+	// Marking file as modified
+	emit MwSignalFileModified();
+
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
 }
@@ -306,6 +318,9 @@ void MainWindow::MwSlotRPMDeltaChanged(uint StepNumber, uint NewDelta)
 	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
 	setgen->GetStepPtr(StepNumber)->SetRPMDelta(NewDelta);
 	setgen->CalculateSteps();
+
+// Marking file as modified
+	emit MwSignalFileModified();
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -401,7 +416,6 @@ void MainWindow::LockUnlockInterface(bool isUnlock)
 	this->_graph->setEnabled(isUnlock);
 	this->ui->mw_StepsTable->setEnabled(isUnlock);
 }
-
 
 void MainWindow::MwSlotCreateFile()
 {
@@ -509,6 +523,12 @@ if (this->_settingsSaverLoader->IsModified())
 			this->_settingsSaverLoader->Save();
 		}
 	}
+}
+
+void MainWindow::MwSlotMarkAsModified()
+{
+	_settingsSaverLoader->MarkAsModified();
+	UpdateDisplayedFileName();
 }
 
 MainWindow::~MainWindow()

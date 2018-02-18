@@ -147,6 +147,11 @@ public slots:
 	 */
 	void MwSlotLoadFile();
 
+	/**
+	 * @brief Marks current file as modified.
+	 */
+	void MwSlotMarkAsModified();
+
 
 /* Signals */
 signals:
@@ -173,6 +178,11 @@ signals:
 	 * @brief Emit it when steps table (UI) needs to be re-read from settings generator.
 	 */
 	void MwSignalUpdateStepsTable();
+
+	/**
+	 * @brief Emit this signal when settings (such as base temperature, steps and so on) are modified to mark file as modified.
+	 */
+	void MwSignalFileModified();
 
 protected:
 	void changeEvent(QEvent *e);
