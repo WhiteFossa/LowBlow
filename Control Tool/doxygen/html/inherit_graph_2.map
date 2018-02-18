@@ -1,3 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$class_main_window.html" title="MainWindow" alt="" coords="160,5,257,32"/>
+<area shape="rect" id="node2" href="$class_interfaces_1_1_i_adc_temperature_convertor.html" title="Class, used to convert ADC values to Temperature and vice versa. " alt="" coords="134,5,339,47"/>
+<area shape="rect" id="node4" href="$class_interfaces_1_1_i_settings_generator.html" title="Class, containing all settings steps. It being used to generate settings table, which will be convert..." alt="" coords="128,71,345,98"/>
+<area shape="rect" id="node6" href="$class_interfaces_1_1_i_settings_saver_loader.html" title="Class to save and load controller settings into XML. " alt="" coords="142,123,331,164"/>
+<area shape="rect" id="node8" href="$class_interfaces_1_1_i_settings_step.html" title="Class with one settings step (i.e. with temperature and RPM percent increments) " alt="" coords="146,189,327,215"/>
+<area shape="rect" id="node3" href="$class_adc_temperature_convertor.html" title="Implementation of Interfaces::IAdcTemperatureConvertor. " alt="" coords="393,13,585,39"/>
+<area shape="rect" id="node5" href="$class_settings_generator.html" title="Class, being used to generate settings (see Interfaces/ISettingsGenerator for information) ..." alt="" coords="419,71,559,98"/>
+<area shape="rect" id="node7" href="$class_settings_saver_loader.html" title="Class to save and load settings to XML. " alt="" coords="411,130,567,157"/>
+<area shape="rect" id="node9" href="$class_settings_step.html" title="Class with one settings step (see Interfaces/ISettingsStep for information) " alt="" coords="437,189,541,215"/>
 </map>

@@ -97,6 +97,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b60ba05790994db0303b251f655e95d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8b60ba05790994db0303b251f655e95d">SetBaseTemperature</a> (double btemp)=0</td></tr>
 <tr class="memdesc:a8b60ba05790994db0303b251f655e95d"><td class="mdescLeft">&#160;</td><td class="mdescRight">SetBaseTemperature - Call it to set base temperature (in Celsius). Please note, that all steps will be recalculated afterwards.  <a href="#a8b60ba05790994db0303b251f655e95d">More...</a><br /></td></tr>
 <tr class="separator:a8b60ba05790994db0303b251f655e95d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af681d36295e95bd52cbfd1bbc3ae8cf9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#af681d36295e95bd52cbfd1bbc3ae8cf9">SetBaseTemperatureADC</a> (uint adc)=0</td></tr>
+<tr class="memdesc:af681d36295e95bd52cbfd1bbc3ae8cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Like <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8b60ba05790994db0303b251f655e95d" title="SetBaseTemperature - Call it to set base temperature (in Celsius). Please note, that all steps will b...">SetBaseTemperature()</a>, but accepts base ADC level.  <a href="#af681d36295e95bd52cbfd1bbc3ae8cf9">More...</a><br /></td></tr>
+<tr class="separator:af681d36295e95bd52cbfd1bbc3ae8cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cc36185b446f21e09a0e5633f39a1c5"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a9cc36185b446f21e09a0e5633f39a1c5">GetBaseTemperature</a> ()=0</td></tr>
 <tr class="memdesc:a9cc36185b446f21e09a0e5633f39a1c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetBaseTemperature - Call it to get base temperature (in Celsius). Please note, that base temperature returned by this method MAY DIFFER from that, what was set by <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8b60ba05790994db0303b251f655e95d" title="SetBaseTemperature - Call it to set base temperature (in Celsius). Please note, that all steps will b...">SetBaseTemperature()</a>. It is because implementation may store ADC value rather than temperature.  <a href="#a9cc36185b446f21e09a0e5633f39a1c5">More...</a><br /></td></tr>
 <tr class="separator:a9cc36185b446f21e09a0e5633f39a1c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,8 +117,11 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:a7788522bb5d25bfd8b8af430512ec5f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">CalculateSteps Call this method to recalculate step ADC levels and RPMs. <br /></td></tr>
 <tr class="separator:a7788522bb5d25bfd8b8af430512ec5f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1b65a18c3ade3235715ae2e9cdbcfe0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_interfaces_1_1_i_settings_step.html">Interfaces::ISettingsStep</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#af1b65a18c3ade3235715ae2e9cdbcfe0">GetStepPtr</a> (uint step)=0</td></tr>
-<tr class="memdesc:af1b65a18c3ade3235715ae2e9cdbcfe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns pointer to step with given number to allow manipulations with step. Don't forget to call <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a7788522bb5d25bfd8b8af430512ec5f5" title="CalculateSteps Call this method to recalculate step ADC levels and RPMs. ">CalculateSteps()</a> after making any changes.  <a href="#af1b65a18c3ade3235715ae2e9cdbcfe0">More...</a><br /></td></tr>
+<tr class="memdesc:af1b65a18c3ade3235715ae2e9cdbcfe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns pointer to step with given number to allow manipulations with step. Don't forget to call <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a7788522bb5d25bfd8b8af430512ec5f5" title="CalculateSteps Call this method to recalculate step ADC levels and RPMs. ">CalculateSteps()</a> after making any changes. Step index here is non-relative, i.e. step = 0 may mean "zero levels", step = 1 may mean "base levels" and step = 2 is actual first step.  <a href="#af1b65a18c3ade3235715ae2e9cdbcfe0">More...</a><br /></td></tr>
 <tr class="separator:af1b65a18c3ade3235715ae2e9cdbcfe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de5944be5295009b7407772bc9b1b3b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_interfaces_1_1_i_settings_step.html">Interfaces::ISettingsStep</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8de5944be5295009b7407772bc9b1b3b">GetStepPtrRelative</a> (uint step)=0</td></tr>
+<tr class="memdesc:a8de5944be5295009b7407772bc9b1b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">As <a class="el" href="class_interfaces_1_1_i_settings_generator.html#af1b65a18c3ade3235715ae2e9cdbcfe0" title="Returns pointer to step with given number to allow manipulations with step. Don&#39;t forget to call Calc...">GetStepPtr()</a>, but step index is relative, i.e. step = 0 means actual first step.  <a href="#a8de5944be5295009b7407772bc9b1b3b">More...</a><br /></td></tr>
+<tr class="separator:a8de5944be5295009b7407772bc9b1b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class, containing all settings steps. It being used to generate settings table, which will be converted to EEPROM data. </p>
@@ -236,16 +242,53 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>Returns pointer to step with given number to allow manipulations with step. Don't forget to call <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a7788522bb5d25bfd8b8af430512ec5f5" title="CalculateSteps Call this method to recalculate step ADC levels and RPMs. ">CalculateSteps()</a> after making any changes. </p>
+<p>Returns pointer to step with given number to allow manipulations with step. Don't forget to call <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a7788522bb5d25bfd8b8af430512ec5f5" title="CalculateSteps Call this method to recalculate step ADC levels and RPMs. ">CalculateSteps()</a> after making any changes. Step index here is non-relative, i.e. step = 0 may mean "zero levels", step = 1 may mean "base levels" and step = 2 is actual first step. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">step</td><td>Step number </td></tr>
+    <tr><td class="paramname">step</td><td>Step number. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to step </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to step. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_settings_generator.html#a37f4175a0ed24853b2f187f15505086b">SettingsGenerator</a>.</p>
+
+</div>
+</div>
+<a id="a8de5944be5295009b7407772bc9b1b3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de5944be5295009b7407772bc9b1b3b">&#9670;&nbsp;</a></span>GetStepPtrRelative()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_interfaces_1_1_i_settings_step.html">Interfaces::ISettingsStep</a>* Interfaces::ISettingsGenerator::GetStepPtrRelative </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>step</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>As <a class="el" href="class_interfaces_1_1_i_settings_generator.html#af1b65a18c3ade3235715ae2e9cdbcfe0" title="Returns pointer to step with given number to allow manipulations with step. Don&#39;t forget to call Calc...">GetStepPtr()</a>, but step index is relative, i.e. step = 0 means actual first step. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">step</td><td>Step number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to step. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_settings_generator.html#aa45d5a3c1349c18ac611ad960ff8470d">SettingsGenerator</a>.</p>
 
 </div>
 </div>
@@ -357,13 +400,49 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
+<a id="af681d36295e95bd52cbfd1bbc3ae8cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af681d36295e95bd52cbfd1bbc3ae8cf9">&#9670;&nbsp;</a></span>SetBaseTemperatureADC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Interfaces::ISettingsGenerator::SetBaseTemperatureADC </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>adc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Like <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8b60ba05790994db0303b251f655e95d" title="SetBaseTemperature - Call it to set base temperature (in Celsius). Please note, that all steps will b...">SetBaseTemperature()</a>, but accepts base ADC level. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adc</td><td>Base ADC level (i.e. base temperature). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_settings_generator.html#a806478b651a98ce128e97c2da385c302">SettingsGenerator</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Interfaces/<a class="el" href="_i_settings_generator_8hpp_source.html">ISettingsGenerator.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 12 2017 21:37:20 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

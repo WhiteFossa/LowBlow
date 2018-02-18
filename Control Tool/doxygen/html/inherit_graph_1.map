@@ -1,10 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$class_interfaces_1_1_i_adc_temperature_convertor.html" title="Class, used to convert ADC values to Temperature and vice versa. " alt="" coords="129,5,317,47"/>
-<area shape="rect" id="node4" href="$class_interfaces_1_1_i_settings_generator.html" title="Class, containing all settings steps. It being used to generate settings table, which will be convert..." alt="" coords="124,71,321,98"/>
-<area shape="rect" id="node6" href="$class_interfaces_1_1_i_settings_saver_loader.html" title="Class to save and load controller settings into XML. " alt="" coords="135,123,310,164"/>
-<area shape="rect" id="node8" href="$class_interfaces_1_1_i_settings_step.html" title="Class with one settings step (i.e. with temperature and RPM percent increments) " alt="" coords="139,189,306,215"/>
-<area shape="rect" id="node3" href="$class_adc_temperature_convertor.html" title="Implementation of Interfaces::IAdcTemperatureConvertor. " alt="" coords="369,13,544,39"/>
-<area shape="rect" id="node5" href="$class_settings_generator.html" title="Class, being used to generate settings (see Interfaces/ISettingsGenerator for information) ..." alt="" coords="393,71,520,98"/>
-<area shape="rect" id="node7" href="$class_settings_saver_loader.html" title="Class to save and load settings to XML. " alt="" coords="385,130,528,157"/>
-<area shape="rect" id="node9" href="$class_settings_step.html" title="Class with one settings step (see Interfaces/ISettingsStep for information) " alt="" coords="408,189,505,215"/>
+<area shape="rect" id="node1" href="$class_fossa_1_1_q_simple_graph_1_1_q_simple_graph.html" title="QSimpleGraph widget implementation. " alt="" coords="5,5,167,47"/>
+<area shape="rect" id="node2" href="$class_fossa_1_1_q_simple_graph_1_1_interfaces_1_1_i_q_simple_graph.html" title="Main interface of QSimpleGraph. " alt="" coords="215,5,416,47"/>
 </map>

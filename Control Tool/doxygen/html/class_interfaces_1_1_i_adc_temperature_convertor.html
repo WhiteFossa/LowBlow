@@ -109,9 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2f3b59be793c3ed43e880ef12e9749bc"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a2f3b59be793c3ed43e880ef12e9749bc">GetDescription</a> ()=0</td></tr>
 <tr class="memdesc:a2f3b59be793c3ed43e880ef12e9749bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get description of this instance (i.e. for this conversion settings).  <a href="#a2f3b59be793c3ed43e880ef12e9749bc">More...</a><br /></td></tr>
 <tr class="separator:a2f3b59be793c3ed43e880ef12e9749bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9697a0319f82ebd1fc20f5e24d3b191c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a9697a0319f82ebd1fc20f5e24d3b191c">LoadSettings</a> (QString filename)=0</td></tr>
-<tr class="memdesc:a9697a0319f82ebd1fc20f5e24d3b191c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load conversion settings from given file.  <a href="#a9697a0319f82ebd1fc20f5e24d3b191c">More...</a><br /></td></tr>
-<tr class="separator:a9697a0319f82ebd1fc20f5e24d3b191c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1d84ea243b62a36238f16433668a23"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a3b1d84ea243b62a36238f16433668a23">LoadSettings</a> (QString filename, QString prefix)=0</td></tr>
+<tr class="memdesc:a3b1d84ea243b62a36238f16433668a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load conversion settings from given file. File may contain only settings, or another data too.  <a href="#a3b1d84ea243b62a36238f16433668a23">More...</a><br /></td></tr>
+<tr class="separator:a3b1d84ea243b62a36238f16433668a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6631e979e067ab78d3e5c337449876ac"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a6631e979e067ab78d3e5c337449876ac">SaveSettings</a> (QString filename)=0</td></tr>
 <tr class="memdesc:a6631e979e067ab78d3e5c337449876ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save conversion settings to given file. If file already exists it will be overwritten.  <a href="#a6631e979e067ab78d3e5c337449876ac">More...</a><br /></td></tr>
 <tr class="separator:a6631e979e067ab78d3e5c337449876ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,7 +204,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#aeab56811467e8019731f1e2867a76671">AdcTemperatureConvertor</a>.</p>
+<p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#af7c23effdc32aa35c14813fd334572f2">AdcTemperatureConvertor</a>.</p>
 
 </div>
 </div>
@@ -238,8 +238,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9697a0319f82ebd1fc20f5e24d3b191c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9697a0319f82ebd1fc20f5e24d3b191c">&#9670;&nbsp;</a></span>LoadSettings()</h2>
+<a id="a3b1d84ea243b62a36238f16433668a23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b1d84ea243b62a36238f16433668a23">&#9670;&nbsp;</a></span>LoadSettings()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,11 +248,21 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Interfaces::IAdcTemperatureConvertor::LoadSettings </td>
+          <td class="memname">virtual bool Interfaces::IAdcTemperatureConvertor::LoadSettings </td>
           <td>(</td>
           <td class="paramtype">QString&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>prefix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -262,15 +272,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Load conversion settings from given file. </p>
+<p>Load conversion settings from given file. File may contain only settings, or another data too. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td>Full path to file with settings </td></tr>
+    <tr><td class="paramname">filename</td><td>Full path to file with settings. </td></tr>
+    <tr><td class="paramname">prefix</td><td>Prefix for XML data. I.e. set it to "" to load from root element, set it to "foo/bar/" to load from /foo/bar and so on. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if load successfull. </dd></dl>
 
-<p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#affab0a66a3508e2eedd8bab3407ae80f">AdcTemperatureConvertor</a>.</p>
+<p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#ac45f10e678aa2f9e25c5351dfd283de0">AdcTemperatureConvertor</a>.</p>
 
 </div>
 </div>
@@ -353,7 +365,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#a5a19355f805554763e914e5b2216d5f6">AdcTemperatureConvertor</a>.</p>
+<p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#a4850843e55992608213cc9cf82d36830">AdcTemperatureConvertor</a>.</p>
 
 </div>
 </div>
@@ -472,7 +484,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 12 2017 21:37:20 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

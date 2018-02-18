@@ -39,6 +39,8 @@ void \hyperlink{class_settings_generator_a84b81d11cb5f83d4066e73a03acfc143}{Init
 \begin{DoxyCompactList}\small\item\em Call this method to initialize steps list. It must be called before any other methods. Implementation must be ready to provide the instance of I\+Adc\+Temperature\+Convertor to steps. \end{DoxyCompactList}\item 
 void \hyperlink{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}{Set\+Base\+Temperature} (double btemp)
 \begin{DoxyCompactList}\small\item\em Set\+Base\+Temperature -\/ Call it to set base temperature (in Celsius). Please note, that all steps will be recalculated afterwards. \end{DoxyCompactList}\item 
+void \hyperlink{class_settings_generator_a806478b651a98ce128e97c2da385c302}{Set\+Base\+Temperature\+A\+DC} (uint adc)
+\begin{DoxyCompactList}\small\item\em Like \hyperlink{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}{Set\+Base\+Temperature()}, but accepts base A\+DC level. \end{DoxyCompactList}\item 
 double \hyperlink{class_settings_generator_a80b1ff8060a16d149989d98a88ab253e}{Get\+Base\+Temperature} ()
 \begin{DoxyCompactList}\small\item\em Get\+Base\+Temperature -\/ Call it to get base temperature (in Celsius). Please note, that base temperature returned by this method M\+AY D\+I\+F\+F\+ER from that, what was set by \hyperlink{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}{Set\+Base\+Temperature()}. It is because implementation may store A\+DC value rather than temperature. \end{DoxyCompactList}\item 
 uint \hyperlink{class_settings_generator_a5f3f78597f001c127b89f6447a46df09}{Get\+Base\+Temperature\+A\+DC} ()
@@ -51,13 +53,33 @@ uint \hyperlink{class_settings_generator_a99bbe6e67e638ccc7bf6b21b3bc36135}{Get\
 void \hyperlink{class_settings_generator_a7c9c1a7a3928ba3ce0ad110593b97a96}{Calculate\+Steps} ()
 \begin{DoxyCompactList}\small\item\em Calculate\+Steps Call this method to recalculate step A\+DC levels and R\+P\+Ms. \end{DoxyCompactList}\item 
 \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step} $\ast$ \hyperlink{class_settings_generator_a37f4175a0ed24853b2f187f15505086b}{Get\+Step\+Ptr} (uint step)
-\begin{DoxyCompactList}\small\item\em Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_settings_generator_a7c9c1a7a3928ba3ce0ad110593b97a96}{Calculate\+Steps()} after making any changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_settings_generator_a7c9c1a7a3928ba3ce0ad110593b97a96}{Calculate\+Steps()} after making any changes. Step index here is non-\/relative, i.\+e. step = 0 may mean \char`\"{}zero levels\char`\"{}, step = 1 may mean \char`\"{}base levels\char`\"{} and step = 2 is actual first step. \end{DoxyCompactList}\item 
+\hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step} $\ast$ \hyperlink{class_settings_generator_aa45d5a3c1349c18ac611ad960ff8470d}{Get\+Step\+Ptr\+Relative} (uint step)
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_settings_generator_a37f4175a0ed24853b2f187f15505086b}{Get\+Step\+Ptr()}, but step index is relative, i.\+e. step = 0 means actual first step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}\label{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}} 
+static const uint \hyperlink{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}{Steps\+Number} = 125
+\begin{DoxyCompactList}\small\item\em Steps number = E\+E\+P\+R\+OM Size -\/ 3, i.\+e. 125 in our case. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}\label{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}} 
+static const uint \hyperlink{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}{Additional\+Steps} = 2
+\begin{DoxyCompactList}\small\item\em Actually we creating two steps more, than given in \hyperlink{class_settings_generator_a84b81d11cb5f83d4066e73a03acfc143}{Initialize\+Steps\+List()} to store zero levels step and base level step. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_settings_generator_a21eb4eb09a0ff27bc530b56d34ed2e0c}\label{class_settings_generator_a21eb4eb09a0ff27bc530b56d34ed2e0c}} 
+static const uint \hyperlink{class_settings_generator_a21eb4eb09a0ff27bc530b56d34ed2e0c}{Total\+Steps} = \hyperlink{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}{Steps\+Number} + \hyperlink{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}{Additional\+Steps}
+\begin{DoxyCompactList}\small\item\em Total steps number. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}\label{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}} 
+static const uint \hyperlink{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}{Zero\+Levels\+Step\+Index} = 0
+\begin{DoxyCompactList}\small\item\em Step with this index stores zero levels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_settings_generator_aecf7db8691db606782959548c0aa4ff8}\label{class_settings_generator_aecf7db8691db606782959548c0aa4ff8}} 
+static const uint \hyperlink{class_settings_generator_aecf7db8691db606782959548c0aa4ff8}{Base\+Levels\+Step\+Index} = 1
+\begin{DoxyCompactList}\small\item\em Step with this index stores base levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Class, being used to generate settings (see Interfaces/\+I\+Settings\+Generator for information) 
 
-Definition at line 56 of file Settings\+Generator.\+hpp.
+Definition at line 30 of file Settings\+Generator.\+hpp.
 
 
 
@@ -103,7 +125,7 @@ Implements \hyperlink{class_interfaces_1_1_i_settings_generator_ad088253da57b2ee
 
 
 
-Definition at line 73 of file Settings\+Generator.\+cpp.
+Definition at line 79 of file Settings\+Generator.\+cpp.
 
 \mbox{\Hypertarget{class_settings_generator_a80b1ff8060a16d149989d98a88ab253e}\label{class_settings_generator_a80b1ff8060a16d149989d98a88ab253e}} 
 \index{Settings\+Generator@{Settings\+Generator}!Get\+Base\+Temperature@{Get\+Base\+Temperature}}
@@ -124,7 +146,7 @@ Implements \hyperlink{class_interfaces_1_1_i_settings_generator_a9cc36185b446f21
 
 
 
-Definition at line 56 of file Settings\+Generator.\+cpp.
+Definition at line 62 of file Settings\+Generator.\+cpp.
 
 \mbox{\Hypertarget{class_settings_generator_a5f3f78597f001c127b89f6447a46df09}\label{class_settings_generator_a5f3f78597f001c127b89f6447a46df09}} 
 \index{Settings\+Generator@{Settings\+Generator}!Get\+Base\+Temperature\+A\+DC@{Get\+Base\+Temperature\+A\+DC}}
@@ -145,7 +167,7 @@ Implements \hyperlink{class_interfaces_1_1_i_settings_generator_a1000ff41c6eecdb
 
 
 
-Definition at line 61 of file Settings\+Generator.\+cpp.
+Definition at line 67 of file Settings\+Generator.\+cpp.
 
 \mbox{\Hypertarget{class_settings_generator_a37f4175a0ed24853b2f187f15505086b}\label{class_settings_generator_a37f4175a0ed24853b2f187f15505086b}} 
 \index{Settings\+Generator@{Settings\+Generator}!Get\+Step\+Ptr@{Get\+Step\+Ptr}}
@@ -155,15 +177,15 @@ Definition at line 61 of file Settings\+Generator.\+cpp.
 
 
 
-Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_settings_generator_a7c9c1a7a3928ba3ce0ad110593b97a96}{Calculate\+Steps()} after making any changes. 
+Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_settings_generator_a7c9c1a7a3928ba3ce0ad110593b97a96}{Calculate\+Steps()} after making any changes. Step index here is non-\/relative, i.\+e. step = 0 may mean \char`\"{}zero levels\char`\"{}, step = 1 may mean \char`\"{}base levels\char`\"{} and step = 2 is actual first step. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em step} & Step number \\
+{\em step} & Step number. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to step 
+Pointer to step. 
 \end{DoxyReturn}
 
 
@@ -171,7 +193,33 @@ Implements \hyperlink{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade32
 
 
 
-Definition at line 110 of file Settings\+Generator.\+cpp.
+Definition at line 116 of file Settings\+Generator.\+cpp.
+
+\mbox{\Hypertarget{class_settings_generator_aa45d5a3c1349c18ac611ad960ff8470d}\label{class_settings_generator_aa45d5a3c1349c18ac611ad960ff8470d}} 
+\index{Settings\+Generator@{Settings\+Generator}!Get\+Step\+Ptr\+Relative@{Get\+Step\+Ptr\+Relative}}
+\index{Get\+Step\+Ptr\+Relative@{Get\+Step\+Ptr\+Relative}!Settings\+Generator@{Settings\+Generator}}
+\subsubsection{\texorpdfstring{Get\+Step\+Ptr\+Relative()}{GetStepPtrRelative()}}
+{\footnotesize\ttfamily \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step} $\ast$ Settings\+Generator\+::\+Get\+Step\+Ptr\+Relative (\begin{DoxyParamCaption}\item[{uint}]{step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+As \hyperlink{class_settings_generator_a37f4175a0ed24853b2f187f15505086b}{Get\+Step\+Ptr()}, but step index is relative, i.\+e. step = 0 means actual first step. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em step} & Step number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to step. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_generator_a8de5944be5295009b7407772bc9b1b3b}{Interfaces\+::\+I\+Settings\+Generator}.
+
+
+
+Definition at line 121 of file Settings\+Generator.\+cpp.
 
 \mbox{\Hypertarget{class_settings_generator_a84b81d11cb5f83d4066e73a03acfc143}\label{class_settings_generator_a84b81d11cb5f83d4066e73a03acfc143}} 
 \index{Settings\+Generator@{Settings\+Generator}!Initialize\+Steps\+List@{Initialize\+Steps\+List}}
@@ -217,7 +265,7 @@ Implements \hyperlink{class_interfaces_1_1_i_settings_generator_a4caf07447d09304
 
 
 
-Definition at line 66 of file Settings\+Generator.\+cpp.
+Definition at line 72 of file Settings\+Generator.\+cpp.
 
 \mbox{\Hypertarget{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}\label{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}} 
 \index{Settings\+Generator@{Settings\+Generator}!Set\+Base\+Temperature@{Set\+Base\+Temperature}}
@@ -241,6 +289,29 @@ Implements \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994d
 
 
 Definition at line 49 of file Settings\+Generator.\+cpp.
+
+\mbox{\Hypertarget{class_settings_generator_a806478b651a98ce128e97c2da385c302}\label{class_settings_generator_a806478b651a98ce128e97c2da385c302}} 
+\index{Settings\+Generator@{Settings\+Generator}!Set\+Base\+Temperature\+A\+DC@{Set\+Base\+Temperature\+A\+DC}}
+\index{Set\+Base\+Temperature\+A\+DC@{Set\+Base\+Temperature\+A\+DC}!Settings\+Generator@{Settings\+Generator}}
+\subsubsection{\texorpdfstring{Set\+Base\+Temperature\+A\+D\+C()}{SetBaseTemperatureADC()}}
+{\footnotesize\ttfamily void Settings\+Generator\+::\+Set\+Base\+Temperature\+A\+DC (\begin{DoxyParamCaption}\item[{uint}]{adc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Like \hyperlink{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}{Set\+Base\+Temperature()}, but accepts base A\+DC level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & Base A\+DC level (i.\+e. base temperature). \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_interfaces_1_1_i_settings_generator_af681d36295e95bd52cbfd1bbc3ae8cf9}{Interfaces\+::\+I\+Settings\+Generator}.
+
+
+
+Definition at line 56 of file Settings\+Generator.\+cpp.
 
 
 

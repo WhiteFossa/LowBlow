@@ -99,10 +99,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a04e46c3ebe1f28e0ad0bce23fb863f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates primary values (i.e. current ADC level and current RPM) basing on previus step values. If resulting ADC / RPM levels will be greater than ADC_MAX_VALUE / MAX_RPM respectively, then levels will be set to ADC_MAX_VALUE / MAX_RPM.  <a href="#a04e46c3ebe1f28e0ad0bce23fb863f66">More...</a><br /></td></tr>
 <tr class="separator:a04e46c3ebe1f28e0ad0bce23fb863f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7575d43b7d178d700e161ec48e2c766f"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_step.html#a7575d43b7d178d700e161ec48e2c766f">GetCurrentRPMPercentsString</a> ()=0</td></tr>
-<tr class="memdesc:a7575d43b7d178d700e161ec48e2c766f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns "Off" if this-&gt;_CurrentRPM == 0, and string representation of this-&gt;<a class="el" href="class_interfaces_1_1_i_settings_step.html#abbbb49e91352212c6201a85f1a22253f" title="As GetCurrentRPM(), but returns value in percents. ">GetCurrentRPMPercents()</a> otherwise.  <a href="#a7575d43b7d178d700e161ec48e2c766f">More...</a><br /></td></tr>
+<tr class="memdesc:a7575d43b7d178d700e161ec48e2c766f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns "Off" if _CurrentRPM == 0, and string representation of <a class="el" href="class_interfaces_1_1_i_settings_step.html#abbbb49e91352212c6201a85f1a22253f" title="As GetCurrentRPM(), but returns value in percents. ">GetCurrentRPMPercents()</a> otherwise.  <a href="#a7575d43b7d178d700e161ec48e2c766f">More...</a><br /></td></tr>
 <tr class="separator:a7575d43b7d178d700e161ec48e2c766f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83f00b8b66f6566721065e34e41508c6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_step.html#a83f00b8b66f6566721065e34e41508c6">SetADCDelta</a> (uint delta, bool skipLimitsCheck=false)=0</td></tr>
-<tr class="memdesc:a83f00b8b66f6566721065e34e41508c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to set this-&gt;adc_delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it to MAX_ADC_DELTA, if it less then MIN_ADC_DELTA - set it to MIN_ADC_DELTA.  <a href="#a83f00b8b66f6566721065e34e41508c6">More...</a><br /></td></tr>
+<tr class="memdesc:a83f00b8b66f6566721065e34e41508c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to set ADC delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it to MAX_ADC_DELTA, if it less then MIN_ADC_DELTA - set it to MIN_ADC_DELTA.  <a href="#a83f00b8b66f6566721065e34e41508c6">More...</a><br /></td></tr>
 <tr class="separator:a83f00b8b66f6566721065e34e41508c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab77c6eaa45707ec4932a8f432b13ad78"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_step.html#ab77c6eaa45707ec4932a8f432b13ad78">GetADCDelta</a> ()=0</td></tr>
 <tr class="memdesc:ab77c6eaa45707ec4932a8f432b13ad78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns current ADC delta.  <a href="#ab77c6eaa45707ec4932a8f432b13ad78">More...</a><br /></td></tr>
@@ -111,7 +111,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7dd93517fbd9bc10a54b3b35a2f8bd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">As <a class="el" href="class_interfaces_1_1_i_settings_step.html#ab77c6eaa45707ec4932a8f432b13ad78" title="Returns current ADC delta. ">GetADCDelta()</a>, but returns current ADC delta, converted to Celsius.  <a href="#a7dd93517fbd9bc10a54b3b35a2f8bd78">More...</a><br /></td></tr>
 <tr class="separator:a7dd93517fbd9bc10a54b3b35a2f8bd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62997701dc6ad91ec0a9d699ef99463e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_step.html#a62997701dc6ad91ec0a9d699ef99463e">SetRPMDelta</a> (uint delta, bool skipLimitsCheck=false)=0</td></tr>
-<tr class="memdesc:a62997701dc6ad91ec0a9d699ef99463e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Like <a class="el" href="class_interfaces_1_1_i_settings_step.html#a83f00b8b66f6566721065e34e41508c6" title="Call it to set this-&gt;adc_delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it...">SetADCDelta()</a>, but for RPM delta. Making check for MAX_RPM_DELTA, if delta is greater then it, delta will be MAX_RPM_DELTA.  <a href="#a62997701dc6ad91ec0a9d699ef99463e">More...</a><br /></td></tr>
+<tr class="memdesc:a62997701dc6ad91ec0a9d699ef99463e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Like <a class="el" href="class_interfaces_1_1_i_settings_step.html#a83f00b8b66f6566721065e34e41508c6" title="Call it to set ADC delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it to MA...">SetADCDelta()</a>, but for RPM delta. Making check for MAX_RPM_DELTA, if delta is greater then it, delta will be MAX_RPM_DELTA.  <a href="#a62997701dc6ad91ec0a9d699ef99463e">More...</a><br /></td></tr>
 <tr class="separator:a62997701dc6ad91ec0a9d699ef99463e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace758dafae2a6bcbb0b1a3a64c802e3c"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_step.html#ace758dafae2a6bcbb0b1a3a64c802e3c">GetRPMDelta</a> ()=0</td></tr>
 <tr class="memdesc:ace758dafae2a6bcbb0b1a3a64c802e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">As <a class="el" href="class_interfaces_1_1_i_settings_step.html#ab77c6eaa45707ec4932a8f432b13ad78" title="Returns current ADC delta. ">GetADCDelta()</a>, but for RPM delta.  <a href="#ace758dafae2a6bcbb0b1a3a64c802e3c">More...</a><br /></td></tr>
@@ -334,7 +334,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns "Off" if this-&gt;_CurrentRPM == 0, and string representation of this-&gt;<a class="el" href="class_interfaces_1_1_i_settings_step.html#abbbb49e91352212c6201a85f1a22253f" title="As GetCurrentRPM(), but returns value in percents. ">GetCurrentRPMPercents()</a> otherwise. </p>
+<p>Returns "Off" if _CurrentRPM == 0, and string representation of <a class="el" href="class_interfaces_1_1_i_settings_step.html#abbbb49e91352212c6201a85f1a22253f" title="As GetCurrentRPM(), but returns value in percents. ">GetCurrentRPMPercents()</a> otherwise. </p>
 <dl class="section return"><dt>Returns</dt><dd>"Off" or current RPMs as string with percents </dd></dl>
 
 <p>Implemented in <a class="el" href="class_settings_step.html#a21e452401e180d6e114561a8b05ab1ae">SettingsStep</a>.</p>
@@ -495,7 +495,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Call it to set this-&gt;adc_delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it to MAX_ADC_DELTA, if it less then MIN_ADC_DELTA - set it to MIN_ADC_DELTA. </p>
+<p>Call it to set ADC delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it to MAX_ADC_DELTA, if it less then MIN_ADC_DELTA - set it to MIN_ADC_DELTA. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">delta</td><td>This value added to ADC value when we are going to next step (see Firmware/main.h EEPROM STRUCTURE section for description) </td></tr>
@@ -542,7 +542,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Like <a class="el" href="class_interfaces_1_1_i_settings_step.html#a83f00b8b66f6566721065e34e41508c6" title="Call it to set this-&gt;adc_delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it...">SetADCDelta()</a>, but for RPM delta. Making check for MAX_RPM_DELTA, if delta is greater then it, delta will be MAX_RPM_DELTA. </p>
+<p>Like <a class="el" href="class_interfaces_1_1_i_settings_step.html#a83f00b8b66f6566721065e34e41508c6" title="Call it to set ADC delta value. If delta more than MAX_ADC_DELTA (defined in descendant) set it to MA...">SetADCDelta()</a>, but for RPM delta. Making check for MAX_RPM_DELTA, if delta is greater then it, delta will be MAX_RPM_DELTA. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">delta</td><td>This value added to RPM raw value when we are going to next step (see Firmware/main.h EEPROM STRUCTURE section for description) </td></tr>
@@ -560,7 +560,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 12 2017 21:37:21 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

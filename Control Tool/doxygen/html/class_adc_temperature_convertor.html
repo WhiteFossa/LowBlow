@@ -61,6 +61,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_adc_temperature_convertor-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AdcTemperatureConvertor Class Reference</div>  </div>
@@ -92,7 +93,7 @@ Collaboration diagram for AdcTemperatureConvertor:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3a78f66052068b96ace348d55e54d05c"><td class="memItemLeft" align="right" valign="top"><a id="a3a78f66052068b96ace348d55e54d05c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#a3a78f66052068b96ace348d55e54d05c">AdcTemperatureConvertor</a> ()</td></tr>
-<tr class="memdesc:a3a78f66052068b96ace348d55e54d05c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Call <a class="el" href="class_adc_temperature_convertor.html#a5a19355f805554763e914e5b2216d5f6" title="Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Cel...">SetADC2TempConversionFactors()</a> or <a class="el" href="class_adc_temperature_convertor.html#affab0a66a3508e2eedd8bab3407ae80f" title="Load conversion settings from given file. ">LoadSettings()</a> after class construction. <br /></td></tr>
+<tr class="memdesc:a3a78f66052068b96ace348d55e54d05c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Call <a class="el" href="class_adc_temperature_convertor.html#a4850843e55992608213cc9cf82d36830" title="Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Cel...">SetADC2TempConversionFactors()</a> or <a class="el" href="class_adc_temperature_convertor.html#ac45f10e678aa2f9e25c5351dfd283de0" title="Load conversion settings from given file. File may contain only settings, or another data too...">LoadSettings()</a> after class construction. <br /></td></tr>
 <tr class="separator:a3a78f66052068b96ace348d55e54d05c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ee4549435400d9ed319fd5fdb83c97f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#a3ee4549435400d9ed319fd5fdb83c97f">ADC2TEMP</a> (uint adc)</td></tr>
 <tr class="memdesc:a3ee4549435400d9ed319fd5fdb83c97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert ADC measurement to temperature (Celsius).  <a href="#a3ee4549435400d9ed319fd5fdb83c97f">More...</a><br /></td></tr>
@@ -100,15 +101,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae82f374826a431c837bdf796c593775b"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#ae82f374826a431c837bdf796c593775b">TEMP2ADC</a> (double temp)</td></tr>
 <tr class="memdesc:ae82f374826a431c837bdf796c593775b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert temperature in Celsius to ADC measurement. Imitates ADC saturation, i.e. returns 0 if value must be less than 0, and ADC_MAX_VALUE if it must be more than ADC_MAX_VALUE.  <a href="#ae82f374826a431c837bdf796c593775b">More...</a><br /></td></tr>
 <tr class="separator:ae82f374826a431c837bdf796c593775b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a19355f805554763e914e5b2216d5f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#a5a19355f805554763e914e5b2216d5f6">SetADC2TempConversionFactors</a> (double a, double b)</td></tr>
-<tr class="memdesc:a5a19355f805554763e914e5b2216d5f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement. Reverse conversion factors (i.e. Temperature to ADC will be calculated automatically).  <a href="#a5a19355f805554763e914e5b2216d5f6">More...</a><br /></td></tr>
-<tr class="separator:a5a19355f805554763e914e5b2216d5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab56811467e8019731f1e2867a76671"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#aeab56811467e8019731f1e2867a76671">GetADC2TempConversionFactors</a> (double *a, double *b)</td></tr>
-<tr class="memdesc:aeab56811467e8019731f1e2867a76671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns temperature conversion factors (look <a class="el" href="class_adc_temperature_convertor.html#a5a19355f805554763e914e5b2216d5f6" title="Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Cel...">SetADC2TempConversionFactors()</a> for details).  <a href="#aeab56811467e8019731f1e2867a76671">More...</a><br /></td></tr>
-<tr class="separator:aeab56811467e8019731f1e2867a76671"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affab0a66a3508e2eedd8bab3407ae80f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#affab0a66a3508e2eedd8bab3407ae80f">LoadSettings</a> (QString filename)</td></tr>
-<tr class="memdesc:affab0a66a3508e2eedd8bab3407ae80f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load conversion settings from given file.  <a href="#affab0a66a3508e2eedd8bab3407ae80f">More...</a><br /></td></tr>
-<tr class="separator:affab0a66a3508e2eedd8bab3407ae80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4850843e55992608213cc9cf82d36830"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#a4850843e55992608213cc9cf82d36830">SetADC2TempConversionFactors</a> (double _a, double _b)</td></tr>
+<tr class="memdesc:a4850843e55992608213cc9cf82d36830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement. Reverse conversion factors (i.e. Temperature to ADC will be calculated automatically).  <a href="#a4850843e55992608213cc9cf82d36830">More...</a><br /></td></tr>
+<tr class="separator:a4850843e55992608213cc9cf82d36830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7c23effdc32aa35c14813fd334572f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#af7c23effdc32aa35c14813fd334572f2">GetADC2TempConversionFactors</a> (double *_a, double *_b)</td></tr>
+<tr class="memdesc:af7c23effdc32aa35c14813fd334572f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns temperature conversion factors (look <a class="el" href="class_adc_temperature_convertor.html#a4850843e55992608213cc9cf82d36830" title="Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Cel...">SetADC2TempConversionFactors()</a> for details).  <a href="#af7c23effdc32aa35c14813fd334572f2">More...</a><br /></td></tr>
+<tr class="separator:af7c23effdc32aa35c14813fd334572f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45f10e678aa2f9e25c5351dfd283de0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#ac45f10e678aa2f9e25c5351dfd283de0">LoadSettings</a> (QString filename, QString prefix)</td></tr>
+<tr class="memdesc:ac45f10e678aa2f9e25c5351dfd283de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load conversion settings from given file. File may contain only settings, or another data too.  <a href="#ac45f10e678aa2f9e25c5351dfd283de0">More...</a><br /></td></tr>
+<tr class="separator:ac45f10e678aa2f9e25c5351dfd283de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6935469c6bb9e2df9a21495d7e8b72a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#aa6935469c6bb9e2df9a21495d7e8b72a">SaveSettings</a> (QString filename)</td></tr>
 <tr class="memdesc:aa6935469c6bb9e2df9a21495d7e8b72a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save conversion settings to given file. If file already exists it will be overwritten.  <a href="#aa6935469c6bb9e2df9a21495d7e8b72a">More...</a><br /></td></tr>
 <tr class="separator:aa6935469c6bb9e2df9a21495d7e8b72a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,11 +122,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa06c19d0ac9f45d6f2f67718eda042ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#aa06c19d0ac9f45d6f2f67718eda042ac">WriteADC2TemperatureSection</a> (QXmlStreamWriter *writer)</td></tr>
 <tr class="memdesc:aa06c19d0ac9f45d6f2f67718eda042ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes ADC to temperature convertor settings section into given XML writer. Use this method to embed ADC -&gt; Temperature settings into existing XML file.  <a href="#aa06c19d0ac9f45d6f2f67718eda042ac">More...</a><br /></td></tr>
 <tr class="separator:aa06c19d0ac9f45d6f2f67718eda042ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a1c38417365e2f3a2ecc144e34e1b359b"><td class="memItemLeft" align="right" valign="top"><a id="a1c38417365e2f3a2ecc144e34e1b359b"></a>
+static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#a1c38417365e2f3a2ecc144e34e1b359b">MaxADCValue</a> = 1023</td></tr>
+<tr class="memdesc:a1c38417365e2f3a2ecc144e34e1b359b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximal ADC value. <br /></td></tr>
+<tr class="separator:a1c38417365e2f3a2ecc144e34e1b359b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html" title="Class, used to convert ADC values to Temperature and vice versa. ">Interfaces::IAdcTemperatureConvertor</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8hpp_source.html#l00081">81</a> of file <a class="el" href="_adc_temperature_convertor_8hpp_source.html">AdcTemperatureConvertor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8hpp_source.html#l00040">40</a> of file <a class="el" href="_adc_temperature_convertor_8hpp_source.html">AdcTemperatureConvertor.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3ee4549435400d9ed319fd5fdb83c97f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ee4549435400d9ed319fd5fdb83c97f">&#9670;&nbsp;</a></span>ADC2TEMP()</h2>
@@ -166,8 +174,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aeab56811467e8019731f1e2867a76671"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeab56811467e8019731f1e2867a76671">&#9670;&nbsp;</a></span>GetADC2TempConversionFactors()</h2>
+<a id="af7c23effdc32aa35c14813fd334572f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7c23effdc32aa35c14813fd334572f2">&#9670;&nbsp;</a></span>GetADC2TempConversionFactors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +208,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns temperature conversion factors (look <a class="el" href="class_adc_temperature_convertor.html#a5a19355f805554763e914e5b2216d5f6" title="Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Cel...">SetADC2TempConversionFactors()</a> for details). </p>
+<p>Returns temperature conversion factors (look <a class="el" href="class_adc_temperature_convertor.html#a4850843e55992608213cc9cf82d36830" title="Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Cel...">SetADC2TempConversionFactors()</a> for details). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Tc = a * ADC + b </td></tr>
@@ -243,12 +251,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a2f3b59be793c3ed43e880ef12e9749bc">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00207">207</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00146">146</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
-<a id="affab0a66a3508e2eedd8bab3407ae80f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affab0a66a3508e2eedd8bab3407ae80f">&#9670;&nbsp;</a></span>LoadSettings()</h2>
+<a id="ac45f10e678aa2f9e25c5351dfd283de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45f10e678aa2f9e25c5351dfd283de0">&#9670;&nbsp;</a></span>LoadSettings()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,11 +265,21 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void AdcTemperatureConvertor::LoadSettings </td>
+          <td class="memname">bool AdcTemperatureConvertor::LoadSettings </td>
           <td>(</td>
           <td class="paramtype">QString&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>prefix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -271,15 +289,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Load conversion settings from given file. </p>
+<p>Load conversion settings from given file. File may contain only settings, or another data too. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td>Full path to file with settings </td></tr>
+    <tr><td class="paramname">filename</td><td>Full path to file with settings. </td></tr>
+    <tr><td class="paramname">prefix</td><td>Prefix for XML data. I.e. set it to "" to load from root element, set it to "foo/bar/" to load from /foo/bar and so on. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if load successfull. </dd></dl>
 
-<p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a9697a0319f82ebd1fc20f5e24d3b191c">Interfaces::IAdcTemperatureConvertor</a>.</p>
+<p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a3b1d84ea243b62a36238f16433668a23">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00065">65</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
@@ -319,12 +339,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a6631e979e067ab78d3e5c337449876ac">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00172">172</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00111">111</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5a19355f805554763e914e5b2216d5f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a19355f805554763e914e5b2216d5f6">&#9670;&nbsp;</a></span>SetADC2TempConversionFactors()</h2>
+<a id="a4850843e55992608213cc9cf82d36830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4850843e55992608213cc9cf82d36830">&#9670;&nbsp;</a></span>SetADC2TempConversionFactors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -406,7 +426,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a65bbef2300e21c495d95305921ddb74b">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00202">202</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00141">141</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -483,7 +503,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#abc7ed5fdfeaed255af14930431b46ac1">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00191">191</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00130">130</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -494,7 +514,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 12 2017 21:37:20 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

@@ -33,9 +33,9 @@ Collaboration diagram for Interfaces\+:\+:I\+Settings\+Step\+:\nopagebreak
 virtual void \hyperlink{class_interfaces_1_1_i_settings_step_a04e46c3ebe1f28e0ad0bce23fb863f66}{Calculate\+Primary\+Values} (uint previous\+\_\+adc, uint previous\+\_\+rpm)=0
 \begin{DoxyCompactList}\small\item\em Calculates primary values (i.\+e. current A\+DC level and current R\+PM) basing on previus step values. If resulting A\+DC / R\+PM levels will be greater than A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM respectively, then levels will be set to A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM. \end{DoxyCompactList}\item 
 virtual Q\+String \hyperlink{class_interfaces_1_1_i_settings_step_a7575d43b7d178d700e161ec48e2c766f}{Get\+Current\+R\+P\+M\+Percents\+String} ()=0
-\begin{DoxyCompactList}\small\item\em Returns \char`\"{}\+Off\char`\"{} if this-\/$>$\+\_\+\+Current\+R\+PM == 0, and string representation of this-\/$>$\hyperlink{class_interfaces_1_1_i_settings_step_abbbb49e91352212c6201a85f1a22253f}{Get\+Current\+R\+P\+M\+Percents()} otherwise. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns \char`\"{}\+Off\char`\"{} if \+\_\+\+Current\+R\+PM == 0, and string representation of \hyperlink{class_interfaces_1_1_i_settings_step_abbbb49e91352212c6201a85f1a22253f}{Get\+Current\+R\+P\+M\+Percents()} otherwise. \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_interfaces_1_1_i_settings_step_a83f00b8b66f6566721065e34e41508c6}{Set\+A\+D\+C\+Delta} (uint delta, bool skip\+Limits\+Check=false)=0
-\begin{DoxyCompactList}\small\item\em Call it to set this-\/$>$adc\+\_\+delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Call it to set A\+DC delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. \end{DoxyCompactList}\item 
 virtual uint \hyperlink{class_interfaces_1_1_i_settings_step_ab77c6eaa45707ec4932a8f432b13ad78}{Get\+A\+D\+C\+Delta} ()=0
 \begin{DoxyCompactList}\small\item\em Returns current A\+DC delta. \end{DoxyCompactList}\item 
 virtual double \hyperlink{class_interfaces_1_1_i_settings_step_a7dd93517fbd9bc10a54b3b35a2f8bd78}{Get\+Temp\+Delta} ()=0
@@ -167,7 +167,7 @@ Implemented in \hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}
 
 
 
-Returns \char`\"{}\+Off\char`\"{} if this-\/$>$\+\_\+\+Current\+R\+PM == 0, and string representation of this-\/$>$\hyperlink{class_interfaces_1_1_i_settings_step_abbbb49e91352212c6201a85f1a22253f}{Get\+Current\+R\+P\+M\+Percents()} otherwise. 
+Returns \char`\"{}\+Off\char`\"{} if \+\_\+\+Current\+R\+PM == 0, and string representation of \hyperlink{class_interfaces_1_1_i_settings_step_abbbb49e91352212c6201a85f1a22253f}{Get\+Current\+R\+P\+M\+Percents()} otherwise. 
 
 \begin{DoxyReturn}{Returns}
 \char`\"{}\+Off\char`\"{} or current R\+P\+Ms as string with percents 
@@ -252,7 +252,7 @@ Implemented in \hyperlink{class_settings_step_a8162810e5ce2df99053ac5722acc0901}
 
 
 
-Call it to set this-\/$>$adc\+\_\+delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. 
+Call it to set A\+DC delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. 
 
 
 \begin{DoxyParams}{Parameters}

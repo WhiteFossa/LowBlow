@@ -42,8 +42,8 @@ virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a65bbef
 \begin{DoxyCompactList}\small\item\em Set description of this instance (i.\+e. for this conversion settings). \end{DoxyCompactList}\item 
 virtual Q\+String \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a2f3b59be793c3ed43e880ef12e9749bc}{Get\+Description} ()=0
 \begin{DoxyCompactList}\small\item\em Get description of this instance (i.\+e. for this conversion settings). \end{DoxyCompactList}\item 
-virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a9697a0319f82ebd1fc20f5e24d3b191c}{Load\+Settings} (Q\+String filename)=0
-\begin{DoxyCompactList}\small\item\em Load conversion settings from given file. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a3b1d84ea243b62a36238f16433668a23}{Load\+Settings} (Q\+String filename, Q\+String prefix)=0
+\begin{DoxyCompactList}\small\item\em Load conversion settings from given file. File may contain only settings, or another data too. \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a6631e979e067ab78d3e5c337449876ac}{Save\+Settings} (Q\+String filename)=0
 \begin{DoxyCompactList}\small\item\em Save conversion settings to given file. If file already exists it will be overwritten. \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_abc7ed5fdfeaed255af14930431b46ac1}{Write\+A\+D\+C2\+Temperature\+Section} (Q\+Xml\+Stream\+Writer $\ast$writer)=0
@@ -99,7 +99,7 @@ Returns temperature conversion factors (look \hyperlink{class_interfaces_1_1_i_a
 \end{DoxyParams}
 
 
-Implemented in \hyperlink{class_adc_temperature_convertor_aeab56811467e8019731f1e2867a76671}{Adc\+Temperature\+Convertor}.
+Implemented in \hyperlink{class_adc_temperature_convertor_af7c23effdc32aa35c14813fd334572f2}{Adc\+Temperature\+Convertor}.
 
 \mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a2f3b59be793c3ed43e880ef12e9749bc}\label{class_interfaces_1_1_i_adc_temperature_convertor_a2f3b59be793c3ed43e880ef12e9749bc}} 
 \index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Get\+Description@{Get\+Description}}
@@ -118,24 +118,29 @@ Description
 
 Implemented in \hyperlink{class_adc_temperature_convertor_ad82afdddbac46a95b6da44e769180d10}{Adc\+Temperature\+Convertor}.
 
-\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a9697a0319f82ebd1fc20f5e24d3b191c}\label{class_interfaces_1_1_i_adc_temperature_convertor_a9697a0319f82ebd1fc20f5e24d3b191c}} 
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a3b1d84ea243b62a36238f16433668a23}\label{class_interfaces_1_1_i_adc_temperature_convertor_a3b1d84ea243b62a36238f16433668a23}} 
 \index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Load\+Settings@{Load\+Settings}}
 \index{Load\+Settings@{Load\+Settings}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
 \subsubsection{\texorpdfstring{Load\+Settings()}{LoadSettings()}}
-{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Load\+Settings (\begin{DoxyParamCaption}\item[{Q\+String}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual bool Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Load\+Settings (\begin{DoxyParamCaption}\item[{Q\+String}]{filename,  }\item[{Q\+String}]{prefix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Load conversion settings from given file. 
+Load conversion settings from given file. File may contain only settings, or another data too. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em filename} & Full path to file with settings \\
+{\em filename} & Full path to file with settings. \\
+\hline
+{\em prefix} & Prefix for X\+ML data. I.\+e. set it to \char`\"{}\char`\"{} to load from root element, set it to \char`\"{}foo/bar/\char`\"{} to load from /foo/bar and so on. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if load successfull. 
+\end{DoxyReturn}
 
 
-Implemented in \hyperlink{class_adc_temperature_convertor_affab0a66a3508e2eedd8bab3407ae80f}{Adc\+Temperature\+Convertor}.
+Implemented in \hyperlink{class_adc_temperature_convertor_ac45f10e678aa2f9e25c5351dfd283de0}{Adc\+Temperature\+Convertor}.
 
 \mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a6631e979e067ab78d3e5c337449876ac}\label{class_interfaces_1_1_i_adc_temperature_convertor_a6631e979e067ab78d3e5c337449876ac}} 
 \index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Save\+Settings@{Save\+Settings}}
@@ -175,7 +180,7 @@ Call it to set A\+DC to Temperature conversion factors. Tc = a $\ast$ A\+DC + b,
 \end{DoxyParams}
 
 
-Implemented in \hyperlink{class_adc_temperature_convertor_a5a19355f805554763e914e5b2216d5f6}{Adc\+Temperature\+Convertor}.
+Implemented in \hyperlink{class_adc_temperature_convertor_a4850843e55992608213cc9cf82d36830}{Adc\+Temperature\+Convertor}.
 
 \mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a65bbef2300e21c495d95305921ddb74b}\label{class_interfaces_1_1_i_adc_temperature_convertor_a65bbef2300e21c495d95305921ddb74b}} 
 \index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Set\+Description@{Set\+Description}}

@@ -98,7 +98,7 @@ $(function() {
 
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>GetADC2TempConversionFactors()
-: <a class="el" href="class_adc_temperature_convertor.html#aeab56811467e8019731f1e2867a76671">AdcTemperatureConvertor</a>
+: <a class="el" href="class_adc_temperature_convertor.html#af7c23effdc32aa35c14813fd334572f2">AdcTemperatureConvertor</a>
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a61cff0aa0590906acfb18c9b789dceb2">Interfaces::IAdcTemperatureConvertor</a>
 </li>
 <li>GetADC2TempConvertorPtr()
@@ -145,9 +145,15 @@ $(function() {
 : <a class="el" href="class_adc_temperature_convertor.html#ad82afdddbac46a95b6da44e769180d10">AdcTemperatureConvertor</a>
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a2f3b59be793c3ed43e880ef12e9749bc">Interfaces::IAdcTemperatureConvertor</a>
 </li>
+<li>GetDoubleValue()
+: <a class="el" href="class_fossa_1_1_helpers_1_1_xml_helper.html#aa079061f79b80c958c5f21c3e0b02252">Fossa::Helpers::XmlHelper</a>
+</li>
 <li>GetFilePath()
 : <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a7224c9ffc2d9c6a3b98fb20246e97cc3">Interfaces::ISettingsSaverLoader</a>
 , <a class="el" href="class_settings_saver_loader.html#a006a6350a00ffc18ec544616e504ccf7">SettingsSaverLoader</a>
+</li>
+<li>GetIntegerValue()
+: <a class="el" href="class_fossa_1_1_helpers_1_1_xml_helper.html#a7bc8a5dd4d5ab503f274c3bb9a559f84">Fossa::Helpers::XmlHelper</a>
 </li>
 <li>GetRPMDelta()
 : <a class="el" href="class_interfaces_1_1_i_settings_step.html#ace758dafae2a6bcbb0b1a3a64c802e3c">Interfaces::ISettingsStep</a>
@@ -165,9 +171,16 @@ $(function() {
 : <a class="el" href="class_interfaces_1_1_i_settings_generator.html#af1b65a18c3ade3235715ae2e9cdbcfe0">Interfaces::ISettingsGenerator</a>
 , <a class="el" href="class_settings_generator.html#a37f4175a0ed24853b2f187f15505086b">SettingsGenerator</a>
 </li>
+<li>GetStepPtrRelative()
+: <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8de5944be5295009b7407772bc9b1b3b">Interfaces::ISettingsGenerator</a>
+, <a class="el" href="class_settings_generator.html#aa45d5a3c1349c18ac611ad960ff8470d">SettingsGenerator</a>
+</li>
 <li>GetTempDelta()
 : <a class="el" href="class_interfaces_1_1_i_settings_step.html#a7dd93517fbd9bc10a54b3b35a2f8bd78">Interfaces::ISettingsStep</a>
 , <a class="el" href="class_settings_step.html#a8162810e5ce2df99053ac5722acc0901">SettingsStep</a>
+</li>
+<li>GetTextValue()
+: <a class="el" href="class_fossa_1_1_helpers_1_1_xml_helper.html#a2e63bbe1bd57f655ee865171b7a24c4a">Fossa::Helpers::XmlHelper</a>
 </li>
 </ul>
 
@@ -189,12 +202,12 @@ $(function() {
 
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>Load()
-: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a615065a16447aaebc4f8ec5aacc28963">Interfaces::ISettingsSaverLoader</a>
-, <a class="el" href="class_settings_saver_loader.html#a423b613ca565c52de165dc976d0df066">SettingsSaverLoader</a>
+: <a class="el" href="class_interfaces_1_1_i_settings_saver_loader.html#a4d8bdb2c5a27b5b0aa5ee4e55483f0de">Interfaces::ISettingsSaverLoader</a>
+, <a class="el" href="class_settings_saver_loader.html#aaf225d7d568ce33f6350d886bb40312a">SettingsSaverLoader</a>
 </li>
 <li>LoadSettings()
-: <a class="el" href="class_adc_temperature_convertor.html#affab0a66a3508e2eedd8bab3407ae80f">AdcTemperatureConvertor</a>
-, <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a9697a0319f82ebd1fc20f5e24d3b191c">Interfaces::IAdcTemperatureConvertor</a>
+: <a class="el" href="class_adc_temperature_convertor.html#ac45f10e678aa2f9e25c5351dfd283de0">AdcTemperatureConvertor</a>
+, <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a3b1d84ea243b62a36238f16433668a23">Interfaces::IAdcTemperatureConvertor</a>
 </li>
 </ul>
 
@@ -215,6 +228,9 @@ $(function() {
 </li>
 <li>MwSignalConvertorChanged()
 : <a class="el" href="class_main_window.html#abc97afb888a70565123689a1444ab4b9">MainWindow</a>
+</li>
+<li>MwSignalFileModified()
+: <a class="el" href="class_main_window.html#a993ac6516e8f6f81a42dc878fc9fc8c9">MainWindow</a>
 </li>
 <li>MwSignalRPMDeltaChanged()
 : <a class="el" href="class_main_window.html#a7b5fab96f0c2363958436141a3aae65b">MainWindow</a>
@@ -242,6 +258,12 @@ $(function() {
 </li>
 <li>MwSlotExit()
 : <a class="el" href="class_main_window.html#a95fb3a2c4f9240d386029d5ffebab1ac">MainWindow</a>
+</li>
+<li>MwSlotLoadFile()
+: <a class="el" href="class_main_window.html#a1a8c873ce09b86ae625f08fc5fdd0552">MainWindow</a>
+</li>
+<li>MwSlotMarkAsModified()
+: <a class="el" href="class_main_window.html#ad7c825f88ddd5993b000a5dddc145bd3">MainWindow</a>
 </li>
 <li>MwSlotRPMDeltaChanged()
 : <a class="el" href="class_main_window.html#a32b3a311b7151092db3ec0756d2c22d4">MainWindow</a>
@@ -289,7 +311,7 @@ $(function() {
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a6631e979e067ab78d3e5c337449876ac">Interfaces::IAdcTemperatureConvertor</a>
 </li>
 <li>SetADC2TempConversionFactors()
-: <a class="el" href="class_adc_temperature_convertor.html#a5a19355f805554763e914e5b2216d5f6">AdcTemperatureConvertor</a>
+: <a class="el" href="class_adc_temperature_convertor.html#a4850843e55992608213cc9cf82d36830">AdcTemperatureConvertor</a>
 , <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a3e4c9204b3593bc434a041c7a69c430f">Interfaces::IAdcTemperatureConvertor</a>
 </li>
 <li>SetADCDelta()
@@ -303,6 +325,10 @@ $(function() {
 <li>SetBaseTemperature()
 : <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8b60ba05790994db0303b251f655e95d">Interfaces::ISettingsGenerator</a>
 , <a class="el" href="class_settings_generator.html#aed9e7acb30bfd559b1ac70ceeddd8973">SettingsGenerator</a>
+</li>
+<li>SetBaseTemperatureADC()
+: <a class="el" href="class_interfaces_1_1_i_settings_generator.html#af681d36295e95bd52cbfd1bbc3ae8cf9">Interfaces::ISettingsGenerator</a>
+, <a class="el" href="class_settings_generator.html#a806478b651a98ce128e97c2da385c302">SettingsGenerator</a>
 </li>
 <li>SetDescription()
 : <a class="el" href="class_adc_temperature_convertor.html#a56103443d7da4769339ddb685a0a8df0">AdcTemperatureConvertor</a>
@@ -384,7 +410,7 @@ $(function() {
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 12 2017 21:37:21 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

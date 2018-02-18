@@ -124,12 +124,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#aaadd1a2cd4aec05d23e934a26ee3dbc6">MwSlotSaveFileAs</a> ()</td></tr>
 <tr class="memdesc:aaadd1a2cd4aec05d23e934a26ee3dbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to save file under another name. <br /></td></tr>
 <tr class="separator:aaadd1a2cd4aec05d23e934a26ee3dbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8c873ce09b86ae625f08fc5fdd0552"><td class="memItemLeft" align="right" valign="top"><a id="a1a8c873ce09b86ae625f08fc5fdd0552"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a1a8c873ce09b86ae625f08fc5fdd0552">MwSlotLoadFile</a> ()</td></tr>
+<tr class="memdesc:a1a8c873ce09b86ae625f08fc5fdd0552"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to load existing file. <br /></td></tr>
+<tr class="separator:a1a8c873ce09b86ae625f08fc5fdd0552"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c825f88ddd5993b000a5dddc145bd3"><td class="memItemLeft" align="right" valign="top"><a id="ad7c825f88ddd5993b000a5dddc145bd3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#ad7c825f88ddd5993b000a5dddc145bd3">MwSlotMarkAsModified</a> ()</td></tr>
+<tr class="memdesc:ad7c825f88ddd5993b000a5dddc145bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks current file as modified. <br /></td></tr>
+<tr class="separator:ad7c825f88ddd5993b000a5dddc145bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:abc97afb888a70565123689a1444ab4b9"><td class="memItemLeft" align="right" valign="top"><a id="abc97afb888a70565123689a1444ab4b9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#abc97afb888a70565123689a1444ab4b9">MwSignalConvertorChanged</a> ()</td></tr>
-<tr class="memdesc:abc97afb888a70565123689a1444ab4b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit it when this-&gt;tconv initialized with the new instance of ADC to Temperature convertor. <br /></td></tr>
+<tr class="memdesc:abc97afb888a70565123689a1444ab4b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit it when temperature to ADC convertor initialized with the new instance of ADC to Temperature convertor. <br /></td></tr>
 <tr class="separator:abc97afb888a70565123689a1444ab4b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37ea64ccb9b5bcf9bb976602d42aadfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a37ea64ccb9b5bcf9bb976602d42aadfa">MwSignalADCDeltaChanged</a> (uint StepNumber, uint NewDelta)</td></tr>
 <tr class="memdesc:a37ea64ccb9b5bcf9bb976602d42aadfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">MwADCDeltaChanged Emitted when ADC delta changed for cell in steps table.  <a href="#a37ea64ccb9b5bcf9bb976602d42aadfa">More...</a><br /></td></tr>
@@ -141,6 +149,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#abf2e8820a7173fb2231e7f835160d8a1">MwSignalUpdateStepsTable</a> ()</td></tr>
 <tr class="memdesc:abf2e8820a7173fb2231e7f835160d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit it when steps table (UI) needs to be re-read from settings generator. <br /></td></tr>
 <tr class="separator:abf2e8820a7173fb2231e7f835160d8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a993ac6516e8f6f81a42dc878fc9fc8c9"><td class="memItemLeft" align="right" valign="top"><a id="a993ac6516e8f6f81a42dc878fc9fc8c9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a993ac6516e8f6f81a42dc878fc9fc8c9">MwSignalFileModified</a> ()</td></tr>
+<tr class="memdesc:a993ac6516e8f6f81a42dc878fc9fc8c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit this signal when settings (such as base temperature, steps and so on) are modified to mark file as modified. <br /></td></tr>
+<tr class="separator:a993ac6516e8f6f81a42dc878fc9fc8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -294,7 +306,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QClos
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00293">293</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00303">303</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -330,7 +342,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QClos
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00267">267</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00277">277</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -366,7 +378,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QClos
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00199">199</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00206">206</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -402,7 +414,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QClos
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00181">181</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00185">185</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -449,7 +461,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QClos
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00303">303</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00316">316</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -485,7 +497,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QClos
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00280">280</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mainwindow_8cpp_source.html#l00290">290</a> of file <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -496,7 +508,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QClos
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 12 2017 21:37:20 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

@@ -34,6 +34,8 @@ virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_a4aa0307e906c0
 \begin{DoxyCompactList}\small\item\em Call this method to initialize steps list. It must be called before any other methods. Implementation must be ready to provide the instance of \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor}{I\+Adc\+Temperature\+Convertor} to steps. \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}{Set\+Base\+Temperature} (double btemp)=0
 \begin{DoxyCompactList}\small\item\em Set\+Base\+Temperature -\/ Call it to set base temperature (in Celsius). Please note, that all steps will be recalculated afterwards. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_af681d36295e95bd52cbfd1bbc3ae8cf9}{Set\+Base\+Temperature\+A\+DC} (uint adc)=0
+\begin{DoxyCompactList}\small\item\em Like \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}{Set\+Base\+Temperature()}, but accepts base A\+DC level. \end{DoxyCompactList}\item 
 virtual double \hyperlink{class_interfaces_1_1_i_settings_generator_a9cc36185b446f21e09a0e5633f39a1c5}{Get\+Base\+Temperature} ()=0
 \begin{DoxyCompactList}\small\item\em Get\+Base\+Temperature -\/ Call it to get base temperature (in Celsius). Please note, that base temperature returned by this method M\+AY D\+I\+F\+F\+ER from that, what was set by \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}{Set\+Base\+Temperature()}. It is because implementation may store A\+DC value rather than temperature. \end{DoxyCompactList}\item 
 virtual uint \hyperlink{class_interfaces_1_1_i_settings_generator_a1000ff41c6eecdb55a46c859ca0ebe67}{Get\+Base\+Temperature\+A\+DC} ()=0
@@ -46,7 +48,9 @@ virtual uint \hyperlink{class_interfaces_1_1_i_settings_generator_ad088253da57b2
 virtual void \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps} ()=0
 \begin{DoxyCompactList}\small\item\em Calculate\+Steps Call this method to recalculate step A\+DC levels and R\+P\+Ms. \end{DoxyCompactList}\item 
 virtual \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade3235715ae2e9cdbcfe0}{Get\+Step\+Ptr} (uint step)=0
-\begin{DoxyCompactList}\small\item\em Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps()} after making any changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps()} after making any changes. Step index here is non-\/relative, i.\+e. step = 0 may mean \char`\"{}zero levels\char`\"{}, step = 1 may mean \char`\"{}base levels\char`\"{} and step = 2 is actual first step. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_generator_a8de5944be5295009b7407772bc9b1b3b}{Get\+Step\+Ptr\+Relative} (uint step)=0
+\begin{DoxyCompactList}\small\item\em As \hyperlink{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade3235715ae2e9cdbcfe0}{Get\+Step\+Ptr()}, but step index is relative, i.\+e. step = 0 means actual first step. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -116,19 +120,41 @@ Implemented in \hyperlink{class_settings_generator_a5f3f78597f001c127b89f6447a46
 
 
 
-Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps()} after making any changes. 
+Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps()} after making any changes. Step index here is non-\/relative, i.\+e. step = 0 may mean \char`\"{}zero levels\char`\"{}, step = 1 may mean \char`\"{}base levels\char`\"{} and step = 2 is actual first step. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em step} & Step number \\
+{\em step} & Step number. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to step 
+Pointer to step. 
 \end{DoxyReturn}
 
 
 Implemented in \hyperlink{class_settings_generator_a37f4175a0ed24853b2f187f15505086b}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a8de5944be5295009b7407772bc9b1b3b}\label{class_interfaces_1_1_i_settings_generator_a8de5944be5295009b7407772bc9b1b3b}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Get\+Step\+Ptr\+Relative@{Get\+Step\+Ptr\+Relative}}
+\index{Get\+Step\+Ptr\+Relative@{Get\+Step\+Ptr\+Relative}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Get\+Step\+Ptr\+Relative()}{GetStepPtrRelative()}}
+{\footnotesize\ttfamily virtual \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step}$\ast$ Interfaces\+::\+I\+Settings\+Generator\+::\+Get\+Step\+Ptr\+Relative (\begin{DoxyParamCaption}\item[{uint}]{step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+As \hyperlink{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade3235715ae2e9cdbcfe0}{Get\+Step\+Ptr()}, but step index is relative, i.\+e. step = 0 means actual first step. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em step} & Step number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to step. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_generator_aa45d5a3c1349c18ac611ad960ff8470d}{Settings\+Generator}.
 
 \mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a4aa0307e906c003012aad75101072c65}\label{class_interfaces_1_1_i_settings_generator_a4aa0307e906c003012aad75101072c65}} 
 \index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Initialize\+Steps\+List@{Initialize\+Steps\+List}}
@@ -186,6 +212,25 @@ Set\+Base\+Temperature -\/ Call it to set base temperature (in Celsius). Please 
 
 
 Implemented in \hyperlink{class_settings_generator_aed9e7acb30bfd559b1ac70ceeddd8973}{Settings\+Generator}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_af681d36295e95bd52cbfd1bbc3ae8cf9}\label{class_interfaces_1_1_i_settings_generator_af681d36295e95bd52cbfd1bbc3ae8cf9}} 
+\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}!Set\+Base\+Temperature\+A\+DC@{Set\+Base\+Temperature\+A\+DC}}
+\index{Set\+Base\+Temperature\+A\+DC@{Set\+Base\+Temperature\+A\+DC}!Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
+\subsubsection{\texorpdfstring{Set\+Base\+Temperature\+A\+D\+C()}{SetBaseTemperatureADC()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Settings\+Generator\+::\+Set\+Base\+Temperature\+A\+DC (\begin{DoxyParamCaption}\item[{uint}]{adc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Like \hyperlink{class_interfaces_1_1_i_settings_generator_a8b60ba05790994db0303b251f655e95d}{Set\+Base\+Temperature()}, but accepts base A\+DC level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & Base A\+DC level (i.\+e. base temperature). \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_settings_generator_a806478b651a98ce128e97c2da385c302}{Settings\+Generator}.
 
 
 

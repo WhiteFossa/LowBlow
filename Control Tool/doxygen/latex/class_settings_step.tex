@@ -36,9 +36,9 @@ Collaboration diagram for Settings\+Step\+:\nopagebreak
 void \hyperlink{class_settings_step_ac6f79a139ab25cc50ed105f64fc9652f}{Calculate\+Primary\+Values} (uint previous\+\_\+adc, uint previous\+\_\+rpm)
 \begin{DoxyCompactList}\small\item\em Calculates primary values (i.\+e. current A\+DC level and current R\+PM) basing on previus step values. If resulting A\+DC / R\+PM levels will be greater than A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM respectively, then levels will be set to A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE / M\+A\+X\+\_\+\+R\+PM. \end{DoxyCompactList}\item 
 Q\+String \hyperlink{class_settings_step_a21e452401e180d6e114561a8b05ab1ae}{Get\+Current\+R\+P\+M\+Percents\+String} ()
-\begin{DoxyCompactList}\small\item\em Returns \char`\"{}\+Off\char`\"{} if this-\/$>$\+\_\+\+Current\+R\+PM == 0, and string representation of this-\/$>$\hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}{Get\+Current\+R\+P\+M\+Percents()} otherwise. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns \char`\"{}\+Off\char`\"{} if \+\_\+\+Current\+R\+PM == 0, and string representation of \hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}{Get\+Current\+R\+P\+M\+Percents()} otherwise. \end{DoxyCompactList}\item 
 void \hyperlink{class_settings_step_a8124c87ae0b1d9fb3b623144d0e492db}{Set\+A\+D\+C\+Delta} (uint delta, bool skip\+Limits\+Check=false)
-\begin{DoxyCompactList}\small\item\em Call it to set this-\/$>$adc\+\_\+delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Call it to set A\+DC delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. \end{DoxyCompactList}\item 
 uint \hyperlink{class_settings_step_a443f5643d9b547632c261c5f3a4288f1}{Get\+Current\+A\+DC} ()
 \begin{DoxyCompactList}\small\item\em Returns A\+DC level for this step. \end{DoxyCompactList}\item 
 double \hyperlink{class_settings_step_a78ec872aa61713e3df36e93f56804afe}{Get\+Current\+Temperature} ()
@@ -185,7 +185,7 @@ Definition at line 125 of file Settings\+Step.\+cpp.
 
 
 
-Returns \char`\"{}\+Off\char`\"{} if this-\/$>$\+\_\+\+Current\+R\+PM == 0, and string representation of this-\/$>$\hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}{Get\+Current\+R\+P\+M\+Percents()} otherwise. 
+Returns \char`\"{}\+Off\char`\"{} if \+\_\+\+Current\+R\+PM == 0, and string representation of \hyperlink{class_settings_step_a35bea9115637a0c848e8f827f2353c11}{Get\+Current\+R\+P\+M\+Percents()} otherwise. 
 
 \begin{DoxyReturn}{Returns}
 \char`\"{}\+Off\char`\"{} or current R\+P\+Ms as string with percents 
@@ -290,7 +290,7 @@ Definition at line 81 of file Settings\+Step.\+cpp.
 
 
 
-Call it to set this-\/$>$adc\+\_\+delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. 
+Call it to set A\+DC delta value. If delta more than M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA (defined in descendant) set it to M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA, if it less then M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA -\/ set it to M\+I\+N\+\_\+\+A\+D\+C\+\_\+\+D\+E\+L\+TA. 
 
 
 \begin{DoxyParams}{Parameters}
