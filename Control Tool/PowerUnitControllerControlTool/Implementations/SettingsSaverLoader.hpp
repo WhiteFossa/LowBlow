@@ -123,6 +123,17 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		const QString RPMsPWMIncreaseElement = "RPMsPWMIncrease";
 
 		/**
+		 * @brief Prefix for loading ADC to Temperature convertor settings from settings file.
+		 */
+		const QString Adc2TempSettingsPrefixFromSettingsFile = QString(QObject::tr("doc($settingsFile)/%1/")).arg(SettingsRootElement);
+
+				/**
+		 * @brief Prefix for loading ADC to Temperature convertor settings from sensor file.
+		 */
+		const QString Adc2TempSettingsPrefixFromSensorFile = QString(QObject::tr("doc($settingsFile)/"));
+
+
+		/**
 		 * @brief _path Current file path.
 		 */
 		QString _path;

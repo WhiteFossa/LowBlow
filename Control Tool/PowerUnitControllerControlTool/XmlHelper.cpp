@@ -43,3 +43,19 @@ int Fossa::Helpers::XmlHelper::GetIntegerValue(const QXmlQuery *query)
 	return result;
 }
 
+double Fossa::Helpers::XmlHelper::GetDoubleValue(const QXmlQuery *query)
+{
+	QString parsedValue = Fossa::Helpers::XmlHelper::GetTextValue(query);
+
+	bool isSuccess = false;
+
+	double result = parsedValue.toDouble(&isSuccess);
+
+	if (!isSuccess)
+	{
+		throw std::runtime_error(QString(QObject::tr("%1 can't be converted to double.")).arg(parsedValue).toStdString());
+	}
+
+	return result;
+}
+

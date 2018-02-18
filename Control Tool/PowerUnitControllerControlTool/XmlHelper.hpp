@@ -41,6 +41,13 @@ namespace	Fossa
 				static int GetIntegerValue(const QXmlQuery *query);
 
 				/**
+				 * @brief As GetIntegerValue, but for double.
+				 * @param query Query to select node value, for example "doc($settingsFile)/Settings/BaseLevels/TemperatureADC/text()".
+				 * @return Double node value.
+				 */
+				static double GetDoubleValue(const QXmlQuery *query);
+
+				/**
 				 * @brief GetTextValue As GetIntegerValue(), but returns node text value, trimmed by QString::simplified()
 				 * @param query Query to select node value, for example "doc($settingsFile)/Settings/BaseLevels/TemperatureADC/text()".
 				 * @return Text node value.

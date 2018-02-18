@@ -32,7 +32,7 @@ void SettingsSaverLoader::Create(QString path, QString adc2TempPath)
 	this->_path = path;
 	this->_isModified = true;
 
-	this->_adc2Temp->LoadSettings(adc2TempPath, "");
+	this->_adc2Temp->LoadSettings(adc2TempPath, Adc2TempSettingsPrefixFromSensorFile);
 
 	// Regenerating settings generator
 	SafeDelete(this->_setgen);
@@ -49,7 +49,7 @@ bool SettingsSaverLoader::Load(QString path)
 	this->_isModified = false;
 
 	// Loading sensor settings
-	this->_adc2Temp->LoadSettings(this->_path, "");
+	this->_adc2Temp->LoadSettings(this->_path, Adc2TempSettingsPrefixFromSettingsFile);
 
 	SafeDelete(this->_setgen);
 	this->_setgen = new SettingsGenerator(this->_adc2Temp);
@@ -74,7 +74,7 @@ bool SettingsSaverLoader::Load(QString path)
 	query.setQuery(QString(QObject::tr("doc($settingsFile)/%1/@%2/string()")).arg(SettingsRootElement).arg(SettingsVersionAttribute));
 	uint version = Fossa::Helpers::XmlHelper::GetIntegerValue(&query);
 
-	if ((deviceName != SettingsDeviceName) ||(version != SettingsVersion))
+	if ((deviceName != SettingsDeviceName) || (version != SettingsVersion))
 	{
 		// Wrong file
 		file->close();

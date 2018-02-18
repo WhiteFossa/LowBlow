@@ -24,19 +24,19 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
  */
 AdcTemperatureConvertor::AdcTemperatureConvertor()
 {
-	this->description = QObject::tr("Not initialized yet");
-	this->_a = 0;
-	this->_b = 0;
+	_description = QObject::tr("Not initialized yet");
+	_a = 0;
+	_b = 0;
 }
 
 double AdcTemperatureConvertor::ADC2TEMP(uint adc)
 {
-	return this->_a * adc + this->_b;
+	return _a * adc + _b;
 }
 
 uint AdcTemperatureConvertor::TEMP2ADC(double temp)
 {
-	int pre_result = (int)floor((temp - this->_b) / this->_a + 0.5);
+	int pre_result = (int)floor((temp - _b) / _a + 0.5);
 	if(pre_result < 0)
 	{
 		return 0;
@@ -51,14 +51,14 @@ uint AdcTemperatureConvertor::TEMP2ADC(double temp)
 
 void AdcTemperatureConvertor::SetADC2TempConversionFactors(double a, double b)
 {
-	this->_a = a;
-	this->_b = b;
+	_a = a;
+	_b = b;
 }
 
 void AdcTemperatureConvertor::GetADC2TempConversionFactors(double *a, double *b)
 {
-	*a = this->_a;
-	*b = this->_b;
+	*a = _a;
+	*b = _b;
 }
 
 
@@ -68,106 +68,42 @@ bool AdcTemperatureConvertor::LoadSettings(QString filename, QString prefix)
 	if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 		SafeDelete(file);
-		throw std::runtime_error(QString(QObject::tr("Cannot open file \"%1\" for reading")).arg(filename).toStdString());
+		return false;
 	}
 
-	QXmlStreamReader xsr(file);
+	QXmlQuery query;
 
-	// Reading
-	bool start_found = false; // Load progress flags
-	bool description_loaded = false;
-	bool mul_loaded = false;
-	bool add_loaded = false;
-	while (!xsr.atEnd()) // atEnd() true not only for end of file, but for error too
+	// Binding settings file contents into $settingsFile variable
+	query.bindVariable("settingsFile", file);
+
+		// Is it our XML at all?
+	query.setQuery(QString(QObject::tr("%1/%2/@%3/string()")).arg(prefix).arg(SettingsRootElement).arg(DeviceAttribute));
+	QString deviceName = Fossa::Helpers::XmlHelper::GetTextValue(&query);
+
+	query.setQuery(QString(QObject::tr("%1/%2/@%3/string()")).arg(prefix).arg(SettingsRootElement).arg(VersionAttribute));
+	uint version = Fossa::Helpers::XmlHelper::GetIntegerValue(&query);
+
+	if ((deviceName != DeviceName) || (version != Version))
 	{
-		QXmlStreamReader::TokenType token = xsr.readNext();
-		if (QXmlStreamReader::TokenType::StartElement == token)
-		{
-			if (SettingsRootElement == xsr.name())
-			{
-				// Root element
-				QXmlStreamAttributes attrs = xsr.attributes();
-
-				if (!attrs.hasAttribute(DeviceAttribute) || !attrs.hasAttribute(VersionAttribute))
-				{
-					// Missing required attributes
-					file->close();
-					SafeDelete(file);
-					throw std::runtime_error(QString(QObject::tr("Either %1 or %2 attributes missing at %3 element"))
-						.arg(DeviceAttribute)
-						.arg(VersionAttribute)
-						.arg(SettingsRootElement).toStdString());
-				}
-
-				if (attrs.value(DeviceAttribute) != DeviceName)
-				{
-					// Wrong device
-					file->close();
-					SafeDelete(file);
-					throw std::runtime_error(QString(QObject::tr("%1 file is for another device")).arg(filename).toStdString());
-				}
-
-				if (attrs.value(VersionAttribute) != QString(QObject::tr("%1").arg(Version)))
-				{
-					// Wrong version
-					file->close();
-					SafeDelete(file);
-					throw std::runtime_error(QString(QObject::tr("%1 file have wrong version")).arg(filename).toStdString());
-				}
-
-				start_found = true;
-			}
-			else if (DescriptionElement == xsr.name())
-			{
-				this->description = xsr.readElementText();
-				description_loaded = true;
-			}
-			else if (MultiplicativeElement == xsr.name())
-			{
-				bool success = false;
-				this->_a = xsr.readElementText().toDouble(&success);
-
-				if (!success)
-				{
-					file->close();
-					SafeDelete(file);
-					throw std::runtime_error(QString(QObject::tr("Multiplicative parameter in %1 file is not a floating point number")).arg(filename).toStdString());
-				}
-
-				mul_loaded = true;
-			}
-
-			else if (AdditiveElement == xsr.name())
-			{
-				bool success = false;
-				this->_b = xsr.readElementText().toDouble(&success);
-
-				if (!success)
-				{
-					file->close();
-					SafeDelete(file);
-					throw std::runtime_error(QString(QObject::tr("Additive parameter in %1 file is not a floating point number")).arg(filename).toStdString());
-				}
-
-				add_loaded = true;
-			}
-		}
+		file->close();
+		SafeDelete(file);
+		return false;
 	}
+
+	// Description
+	query.setQuery(QString(QObject::tr("%1/%2/%3/text()")).arg(prefix).arg(SettingsRootElement).arg(DescriptionElement));
+	_description = Fossa::Helpers::XmlHelper::GetTextValue(&query);
+
+	// Multiplicative coefficient
+	query.setQuery(QString(QObject::tr("%1/%2/%3/text()")).arg(prefix).arg(SettingsRootElement).arg(MultiplicativeElement));
+	_a = Fossa::Helpers::XmlHelper::GetDoubleValue(&query);
+
+	// Additive coefficient
+	query.setQuery(QString(QObject::tr("%1/%2/%3/text()")).arg(prefix).arg(SettingsRootElement).arg(AdditiveElement));
+	_b = Fossa::Helpers::XmlHelper::GetDoubleValue(&query);
 
 	file->close();
 	SafeDelete(file);
-
-	// Is it error?
-	if (xsr.hasError())
-	{
-		throw std::runtime_error(QString(QObject::tr("Error %1 while parsing file %2")).arg(xsr.errorString()).arg(filename).toStdString());
-	}
-
-	// Do we have all data?
-	if (!(start_found && description_loaded && mul_loaded && add_loaded))
-	{
-		 throw std::runtime_error(QString(QObject::tr("File %1 have missing required records")).arg(filename).toStdString());
-	}
 
 	return true;
 }
@@ -184,7 +120,7 @@ void AdcTemperatureConvertor::SaveSettings(QString filename)
 	QXmlStreamWriter xsw(file); // Stream writer for XML data
 	xsw.setAutoFormatting(true);
 	xsw.writeStartDocument();
-		this->WriteADC2TemperatureSection(&xsw);
+		WriteADC2TemperatureSection(&xsw);
 	xsw.writeEndDocument();
 
 	file->close();
@@ -196,18 +132,18 @@ void AdcTemperatureConvertor::WriteADC2TemperatureSection(QXmlStreamWriter *writ
 	writer->writeStartElement(SettingsRootElement); // Settings root
 		writer->writeAttribute(DeviceAttribute, DeviceName); // For what device
 		writer->writeAttribute(VersionAttribute, QString(QObject::tr("%1")).arg(Version)); // Settings file version
-		writer->writeTextElement(DescriptionElement, this->description); // Settings description
-		writer->writeTextElement(MultiplicativeElement, FormatDoubleForXML(this->_a)); // a
-		writer->writeTextElement(AdditiveElement, FormatDoubleForXML(this->_b)); // b
+		writer->writeTextElement(DescriptionElement, _description); // Settings description
+		writer->writeTextElement(MultiplicativeElement, FormatDoubleForXML(_a)); // a
+		writer->writeTextElement(AdditiveElement, FormatDoubleForXML(_b)); // b
 	writer->writeEndElement(); // End of settings root
 }
 
 void AdcTemperatureConvertor::SetDescription(QString descr)
 {
-	this->description = descr;
+	_description = descr;
 }
 
 QString AdcTemperatureConvertor::GetDescription()
 {
-	return this->description;
+	return _description;
 }

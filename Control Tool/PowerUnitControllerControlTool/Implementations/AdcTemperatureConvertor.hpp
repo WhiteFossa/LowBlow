@@ -30,6 +30,9 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <QException>
 #include <QDebug>
 #include <QString>
+#include <QXmlQuery>
+#include <QXmlResultItems>
+#include <XmlHelper.hpp>
 
 /**
  * @brief Implementation of Interfaces::IAdcTemperatureConvertor
@@ -111,7 +114,7 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 		/**
 		 * @brief Description of this instance (i.e. conversion settings)
 		 */
-		QString description;
+		QString _description;
 
 		/**
 		 * @brief a Factor for ADC->Temperature conversion. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement.
