@@ -36,9 +36,6 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <Implementations/SettingsSaverLoader.hpp>
 #include <FossasSimpleGraph/Implementations/QSimpleGraph.hpp>
 
-
-#define MW_GRAPH_STRETCH_FACTOR 10
-
 namespace Ui {
 	class MainWindow;
 
@@ -279,6 +276,24 @@ private:
 	 * @brief Checks if current file modified, if so - shows request to save and saves if user approves.
 	 */
 	void CheckDoSaveNeeded();
+
+	/**
+	 * @brief Call this method to update base temperature (for example when user changed it). It doesn't mark file as modified.
+	 * @param baseTemp Base temperature in Celsius.
+	 */
+	void UpdateBaseTemperature(double baseTemp);
+
+	/**
+	 * @brief As UpdateBaseTemperature(), but for base RPMs.
+	 * @param RPM New base RPMs.
+	 */
+	void UpdateBaseRPMs(int RPM);
+
+	/**
+	 * @brief Call it to connect/disconnect user signals (such as base temperature/RPM delta changed) to slots.
+	 * @param isConnect If set to true, than signals will be connected, otherwise - disconnected.
+	 */
+	void ConnectUISlots(bool isConnect);
 
 
 };

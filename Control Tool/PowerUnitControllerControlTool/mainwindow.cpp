@@ -27,33 +27,30 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Saver/loader
-	this->_settingsSaverLoader = new SettingsSaverLoader();
+	_settingsSaverLoader = new SettingsSaverLoader();
 
 	// Connecting signals to slots
-	QObject::connect(this->ui->mw_actionExit, SIGNAL(triggered(bool)), this, SLOT(MwSlotExit()));
-	QObject::connect(this->ui->actionCreateNewADC2Temp, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateNewADC2Temp()));
-	QObject::connect(this->ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double)));
-	QObject::connect(this->ui->mw_baseRPM, SIGNAL(valueChanged(int)), this, SLOT(MwSlotBaseRPMChanged(int)));
-	QObject::connect(this, SIGNAL(MwSignalADCDeltaChanged(uint,uint)), this, SLOT(MwSlotADCDeltaChanged(uint, uint)));
-	QObject::connect(this, SIGNAL(MwSignalRPMDeltaChanged(uint,uint)), this, SLOT(MwSlotRPMDeltaChanged(uint, uint)));
+	QObject::connect(ui->mw_actionExit, SIGNAL(triggered(bool)), this, SLOT(MwSlotExit()));
+	QObject::connect(ui->actionCreateNewADC2Temp, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateNewADC2Temp()));
 	QObject::connect(this, SIGNAL(MwSignalUpdateStepsTable()), this, SLOT(MwSlotUpdateStepsTable()));
-	QObject::connect(this->ui->actionNew, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateFile()));
-	QObject::connect(this->ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFile()));
-	QObject::connect(this->ui->actionSave_As, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFileAs()));
-	QObject::connect(this->ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(MwSlotLoadFile()));
+	QObject::connect(ui->actionNew, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateFile()));
+	QObject::connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFile()));
+	QObject::connect(ui->actionSave_As, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFileAs()));
+	QObject::connect(ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(MwSlotLoadFile()));
 	QObject::connect(this, SIGNAL(MwSignalFileModified()), this, SLOT(MwSlotMarkAsModified()));
+	ConnectUISlots(true);
 
 	// Initializing status bar
 	// ADC->Temperature conversion info
-	this->_mwConversionStatus = new QLabel(this);
-	this->ui->mw_status->addPermanentWidget(this->_mwConversionStatus);
+	_mwConversionStatus = new QLabel(this);
+	ui->mw_status->addPermanentWidget(this->_mwConversionStatus);
 
 	// Current filename
-	this->_mwFileName = new QLabel(this);
-	this->ui->mw_status->addPermanentWidget(this->_mwFileName);
+	_mwFileName = new QLabel(this);
+	ui->mw_status->addPermanentWidget(this->_mwFileName);
 
 	// Initializing step table (UI)
-	this->ui->mw_StepsTable->setColumnCount(SettingsGenerator::TotalSteps);
+	ui->mw_StepsTable->setColumnCount(SettingsGenerator::TotalSteps);
 
 	// Column names
 	QStringList STColumnLabels;
@@ -65,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
 		STColumnLabels.append(QString(QObject::tr("Step %1")).arg(i + 1));
 	}
 
-	this->ui->mw_StepsTable->setHorizontalHeaderLabels(STColumnLabels);
+	ui->mw_StepsTable->setHorizontalHeaderLabels(STColumnLabels);
 
 	// Row names
 	QStringList STRowLabels;
@@ -78,47 +75,47 @@ MainWindow::MainWindow(QWidget *parent) :
 	STRowLabels.append(QObject::tr("RPM level increase"));
 	STRowLabels.append(QObject::tr("RPM increase percent"));
 
-	this->ui->mw_StepsTable->setVerticalHeaderLabels(STRowLabels);
+	ui->mw_StepsTable->setVerticalHeaderLabels(STRowLabels);
 
 	// Preparing tables of spinboxes
 	for (uint i = 0; i < SettingsGenerator::TotalSteps; i++)
 	{
-		this->_ADCDeltaSpinboxes.append(NULL);
-		this->_RPMDeltaSpinboxes.append(NULL);
+		_ADCDeltaSpinboxes.append(NULL);
+		_RPMDeltaSpinboxes.append(NULL);
 	}
 
 	// Initializing each column (requires initialized _ADCDetlaSpinboxes and _RPMDeltaSpinboxes)
 	for (uint i = 0; i < SettingsGenerator::TotalSteps; i++)
 	{
-		this->InitializeStepsTableColumn(i);
+		InitializeStepsTableColumn(i);
 	}
 
 	// Initializing the graph
-	this->_graph = new Fossa::QSimpleGraph::QSimpleGraph(this);
-	this->_graph->setMinimumSize(MainWindow::_minGraphWidth, MainWindow::_minGraphHeight);
-	this->_graph->setSizePolicy(MainWindow::_graphHSizePolicy, MainWindow::_graphVSizePolicy);
+	_graph = new Fossa::QSimpleGraph::QSimpleGraph(this);
+	_graph->setMinimumSize(MainWindow::_minGraphWidth, MainWindow::_minGraphHeight);
+	_graph->setSizePolicy(MainWindow::_graphHSizePolicy, MainWindow::_graphVSizePolicy);
 
-	this->ui->mwMainLayout->insertWidget(0, this->_graph, MainWindow::_graphStretchFactor);
+	ui->mwMainLayout->insertWidget(0, _graph, MainWindow::_graphStretchFactor);
 
 	// TODO: Remove it
 	// For debug
-	this->_graph->SetMinXValue(0);
-	this->_graph->SetMaxXValue(120);
-	this->_graph->SetXAxisTitle(QObject::tr("Temperature"));
+	_graph->SetMinXValue(0);
+	_graph->SetMaxXValue(120);
+	_graph->SetXAxisTitle(QObject::tr("Temperature"));
 
-	this->_graph->SetMinYValue(0);
-	this->_graph->SetMaxYValue(100);
-	this->_graph->SetYAxisTitle(QObject::tr("RPMs, %"));
+	_graph->SetMinYValue(0);
+	_graph->SetMaxYValue(100);
+	_graph->SetYAxisTitle(QObject::tr("RPMs, %"));
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
 
 	// Actualizing ADC->Temperature convertor settings
-	this->UpdateConvertorInformation();
+	UpdateConvertorInformation();
 
 	// And filename
-	this->UpdateDisplayedFileName();
-	this->LockUnlockInterface(false);
+	UpdateDisplayedFileName();
+	LockUnlockInterface(false);
 }
 
 void MainWindow::changeEvent(QEvent *e)
@@ -136,7 +133,7 @@ void MainWindow::changeEvent(QEvent *e)
 void MainWindow::closeEvent(QCloseEvent *e)
 {
 	// Do we have unsaved changes?
-	if(this->_settingsSaverLoader->IsModified())
+	if(_settingsSaverLoader->IsModified())
 	{
 		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Unsaved changes"), QObject::tr("There is unsaved changes. Are you really want to quit?")))
 		{
@@ -157,7 +154,7 @@ void MainWindow::MwSlotExit()
 
 void MainWindow::UpdateConvertorInformation()
 {
-	Interfaces::IAdcTemperatureConvertor* conv = this->_settingsSaverLoader->GetADC2TempConvertorPtr();
+	Interfaces::IAdcTemperatureConvertor* conv = _settingsSaverLoader->GetADC2TempConvertorPtr();
 
 	// Visualize new convertor
 	double a, b;
@@ -171,7 +168,7 @@ void MainWindow::UpdateConvertorInformation()
 
 	format_str += QObject::tr("%3");
 
-	this->_mwConversionStatus->setText(QString(format_str).arg(conv->GetDescription()).arg(a).arg(b));
+	_mwConversionStatus->setText(QString(format_str).arg(conv->GetDescription()).arg(a).arg(b));
 }
 
 void MainWindow::MwSlotCreateNewADC2Temp()
@@ -184,20 +181,25 @@ void MainWindow::MwSlotCreateNewADC2Temp()
 
 void MainWindow::MwSlotBaseTemperatureChanged(double tempC)
 {
-	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
-
-	setgen->SetBaseTemperature(tempC);
-	setgen->CalculateSteps(); // Updating steps values
-
-	// Setting temperature back (it may not be equal to entered by user due ADC granularity)
-	QObject::disconnect(this->ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double))); // Disabling signal-slot connection to avoid recursion
-	this->ui->mw_basetemperature->setValue(setgen->GetBaseTemperature());
-	QObject::connect(this->ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double))); // Re-enabling it
-
-	this->ui->mw_basetemperatureADC->setNum((int)setgen->GetBaseTemperatureADC());
+	UpdateBaseTemperature(tempC);
 
 	// Marking file as modified
 	emit MwSignalFileModified();
+}
+
+void MainWindow::UpdateBaseTemperature(double baseTemp)
+{
+	Interfaces::ISettingsGenerator* setgen = _settingsSaverLoader->GetSettingsGeneratorPtr();
+
+	setgen->SetBaseTemperature(baseTemp);
+	setgen->CalculateSteps(); // Updating steps values
+
+	// Setting temperature back (it may not be equal to entered by user due ADC granularity)
+	QObject::disconnect(ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double))); // Disabling signal-slot connection to avoid recursion
+	ui->mw_basetemperature->setValue(setgen->GetBaseTemperature());
+	QObject::connect(ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double))); // Re-enabling it
+
+	ui->mw_basetemperatureADC->setNum((int)setgen->GetBaseTemperatureADC());
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -205,10 +207,15 @@ void MainWindow::MwSlotBaseTemperatureChanged(double tempC)
 
 void MainWindow::MwSlotBaseRPMChanged(int RPM)
 {
-	this->_settingsSaverLoader->GetSettingsGeneratorPtr()->SetBaseRPM(RPM);
+	UpdateBaseRPMs(RPM);
 
 	// Marking file as modified
 	emit MwSignalFileModified();
+}
+
+void MainWindow::UpdateBaseRPMs(int RPM)
+{
+	_settingsSaverLoader->GetSettingsGeneratorPtr()->SetBaseRPM(RPM);
 
 	// Actualizing UI steps table
 	emit MwSignalUpdateStepsTable();
@@ -220,64 +227,64 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 
 	// ADC Level (label)
 	labelItem = new QTableWidgetItem(QObject::tr("0"), QTableWidgetItem::Type);
-	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::ADC_LEVEL, col, labelItem);
+	ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::ADC_LEVEL, col, labelItem);
 
 	// Temperature (label)
 	labelItem = new QTableWidgetItem(QObject::tr("0.0"), QTableWidgetItem::Type);
-	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::TEMPERATURE, col, labelItem);
+	ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::TEMPERATURE, col, labelItem);
 
 	// RPM level (label)
 	labelItem = new QTableWidgetItem(QObject::tr("0"), QTableWidgetItem::Type);
-	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_LEVEL, col, labelItem);
+	ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_LEVEL, col, labelItem);
 
 	// RPM percent (label)
 	labelItem = new QTableWidgetItem(QObject::tr("0.0%"), QTableWidgetItem::Type);
-	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_PERCENT, col, labelItem);
+	ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_PERCENT, col, labelItem);
 
 	// ADC level increase (spinbox)
-	this->_ADCDeltaSpinboxes[col] = new QSpinBox(this->ui->mw_StepsTable);
-	this->ui->mw_StepsTable->setCellWidget(Ui::STEPS_TABLE_ROWS::ADC_DELTA, col, this->_ADCDeltaSpinboxes[col]);
+	_ADCDeltaSpinboxes[col] = new QSpinBox(ui->mw_StepsTable);
+	ui->mw_StepsTable->setCellWidget(Ui::STEPS_TABLE_ROWS::ADC_DELTA, col, _ADCDeltaSpinboxes[col]);
 
 	// Temperature increase (label)
 	labelItem = new QTableWidgetItem(QObject::tr("0.0"), QTableWidgetItem::Type);
-	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::TEMPERATURE_DELTA, col, labelItem);
+	ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::TEMPERATURE_DELTA, col, labelItem);
 
 	// RPM increase (spinbox)
-	this->_RPMDeltaSpinboxes[col] = new QSpinBox(this->ui->mw_StepsTable);
-	this->ui->mw_StepsTable->setCellWidget(Ui::STEPS_TABLE_ROWS::RPM_DELTA, col, this->_RPMDeltaSpinboxes[col]);
+	_RPMDeltaSpinboxes[col] = new QSpinBox(ui->mw_StepsTable);
+	ui->mw_StepsTable->setCellWidget(Ui::STEPS_TABLE_ROWS::RPM_DELTA, col, _RPMDeltaSpinboxes[col]);
 
 	// RPM increase percent (label)
 	labelItem = new QTableWidgetItem(QObject::tr("0.0%"), QTableWidgetItem::Type);
-	this->ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_DELTA_PERCENT, col, labelItem);
+	ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_DELTA_PERCENT, col, labelItem);
 
 	if (col < SettingsGenerator::AdditionalSteps)
 	{
-		this->_ADCDeltaSpinboxes[col]->setReadOnly(true);
-		this->_RPMDeltaSpinboxes[col]->setReadOnly(true);
+		_ADCDeltaSpinboxes[col]->setReadOnly(true);
+		_RPMDeltaSpinboxes[col]->setReadOnly(true);
 	}
 
 	// Overriding ranges
 	if (SettingsGenerator::BaseLevelsStepIndex == col)
 	{
 		// Base step, it have wide range
-		this->_ADCDeltaSpinboxes[col]->setRange(0, AdcTemperatureConvertor::MaxADCValue);
-		this->_RPMDeltaSpinboxes[col]->setRange(0, MAX_RPM);
+		_ADCDeltaSpinboxes[col]->setRange(0, AdcTemperatureConvertor::MaxADCValue);
+		_RPMDeltaSpinboxes[col]->setRange(0, MAX_RPM);
 	}
 	else
 	{
-		this->_ADCDeltaSpinboxes[col]->setRange(MIN_ADC_DELTA, MAX_ADC_DELTA);
-		this->_RPMDeltaSpinboxes[col]->setRange(0, MAX_RPM_DELTA);
+		_ADCDeltaSpinboxes[col]->setRange(MIN_ADC_DELTA, MAX_ADC_DELTA);
+		_RPMDeltaSpinboxes[col]->setRange(0, MAX_RPM_DELTA);
 	}
 
 	// Connecting here to avoid calling slots during values/ranges initialization
-	QObject::connect(this->_RPMDeltaSpinboxes[col], SIGNAL(valueChanged(int)), this, SLOT(MwSlotRPMDeltaChangedRaw(int)));
-	QObject::connect(this->_ADCDeltaSpinboxes[col], SIGNAL(valueChanged(int)), this, SLOT(MwSlotADCDeltaChangedRaw(int)));
+	QObject::connect(_RPMDeltaSpinboxes[col], SIGNAL(valueChanged(int)), this, SLOT(MwSlotRPMDeltaChangedRaw(int)));
+	QObject::connect(_ADCDeltaSpinboxes[col], SIGNAL(valueChanged(int)), this, SLOT(MwSlotADCDeltaChangedRaw(int)));
 }
 
 void MainWindow::MwSlotADCDeltaChangedRaw(int newDelta)
 {
 	// Detecting sender
-	int senderColumn = this->_ADCDeltaSpinboxes.indexOf((QSpinBox*)QObject::sender());
+	int senderColumn = _ADCDeltaSpinboxes.indexOf((QSpinBox*)QObject::sender());
 
 	if (senderColumn < 0)
 	{
@@ -290,7 +297,7 @@ void MainWindow::MwSlotADCDeltaChangedRaw(int newDelta)
 void MainWindow::MwSlotRPMDeltaChangedRaw(int newDelta)
 {
 	// Detecting sender
-	int senderColumn = this->_RPMDeltaSpinboxes.indexOf((QSpinBox*)QObject::sender());
+	int senderColumn = _RPMDeltaSpinboxes.indexOf((QSpinBox*)QObject::sender());
 
 	if (senderColumn < 0)
 	{
@@ -302,7 +309,7 @@ void MainWindow::MwSlotRPMDeltaChangedRaw(int newDelta)
 
 void MainWindow::MwSlotADCDeltaChanged(uint StepNumber, uint NewDelta)
 {
-	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+	Interfaces::ISettingsGenerator* setgen = _settingsSaverLoader->GetSettingsGeneratorPtr();
 	setgen->GetStepPtr(StepNumber)->SetADCDelta(NewDelta);
 	setgen->CalculateSteps();
 
@@ -315,7 +322,7 @@ void MainWindow::MwSlotADCDeltaChanged(uint StepNumber, uint NewDelta)
 
 void MainWindow::MwSlotRPMDeltaChanged(uint StepNumber, uint NewDelta)
 {
-	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+	Interfaces::ISettingsGenerator* setgen = _settingsSaverLoader->GetSettingsGeneratorPtr();
 	setgen->GetStepPtr(StepNumber)->SetRPMDelta(NewDelta);
 	setgen->CalculateSteps();
 
@@ -328,20 +335,20 @@ void MainWindow::MwSlotRPMDeltaChanged(uint StepNumber, uint NewDelta)
 
 void MainWindow::MwSlotUpdateStepsTable()
 {
-	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
+	Interfaces::ISettingsGenerator* setgen = _settingsSaverLoader->GetSettingsGeneratorPtr();
 
-	// We can do nothing is setgen or this->_graph is not ready yet
-	if ((NULL == setgen) || (NULL == this->_graph))
+	// We can do nothing is setgen or _graph is not ready yet
+	if ((NULL == setgen) || (NULL == _graph))
 	{
 		return;
 	}
 
 	// Removing old points from graph
-	this->_graph->ClearAllPoints();
-	this->_graph->SetMinXValue(0); // TODO: Fix
-	this->_graph->SetMaxXValue(0);
-	this->_graph->SetMinYValue(0);
-	this->_graph->SetMaxYValue(0);
+	_graph->ClearAllPoints();
+	_graph->SetMinXValue(0); // TODO: Fix
+	_graph->SetMaxXValue(0);
+	_graph->SetMinYValue(0);
+	_graph->SetMaxYValue(0);
 
 	Interfaces::ISettingsStep *stepItem;
 
@@ -351,70 +358,70 @@ void MainWindow::MwSlotUpdateStepsTable()
 		stepItem = setgen->GetStepPtr(step);
 
 		// ADC level
-		this->ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::ADC_LEVEL, step)->setText(QString("%1").arg(stepItem->GetCurrentADC()));
+		ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::ADC_LEVEL, step)->setText(QString("%1").arg(stepItem->GetCurrentADC()));
 
 		// Temperature
-		this->ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::TEMPERATURE, step)->setText(QString("%1 °C").arg(stepItem->GetCurrentTemperature()));
+		ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::TEMPERATURE, step)->setText(QString("%1 °C").arg(stepItem->GetCurrentTemperature()));
 
 		// RPM level
-		this->ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::RPM_LEVEL, step)->setText(QString("%1").arg(stepItem->GetCurrentRPM()));
+		ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::RPM_LEVEL, step)->setText(QString("%1").arg(stepItem->GetCurrentRPM()));
 
 		// RPM percent
-		this->ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::RPM_PERCENT, step)->setText(stepItem->GetCurrentRPMPercentsString());
+		ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::RPM_PERCENT, step)->setText(stepItem->GetCurrentRPMPercentsString());
 
 		// ADC level increase
-		((QSpinBox*)this->ui->mw_StepsTable->cellWidget(Ui::STEPS_TABLE_ROWS::ADC_DELTA, step))->setValue(stepItem->GetADCDelta());
+		((QSpinBox*)ui->mw_StepsTable->cellWidget(Ui::STEPS_TABLE_ROWS::ADC_DELTA, step))->setValue(stepItem->GetADCDelta());
 
 		// Temperature increase
-		this->ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::TEMPERATURE_DELTA, step)->setText(QString("%1 °C").arg(stepItem->GetTempDelta()));
+		ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::TEMPERATURE_DELTA, step)->setText(QString("%1 °C").arg(stepItem->GetTempDelta()));
 
 		// RPM level increase
-		((QSpinBox*)this->ui->mw_StepsTable->cellWidget(Ui::STEPS_TABLE_ROWS::RPM_DELTA, step))->setValue(stepItem->GetRPMDelta());
+		((QSpinBox*)ui->mw_StepsTable->cellWidget(Ui::STEPS_TABLE_ROWS::RPM_DELTA, step))->setValue(stepItem->GetRPMDelta());
 
 		// RPM level increase (percents)
-		this->ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::RPM_DELTA_PERCENT, step)->setText(QString("%1%").arg(stepItem->GetRPMDeltaPercents()));
+		ui->mw_StepsTable->item(Ui::STEPS_TABLE_ROWS::RPM_DELTA_PERCENT, step)->setText(QString("%1%").arg(stepItem->GetRPMDeltaPercents()));
 
 		// Adding point to graph
-		this->_graph->AddPoint(stepItem->GetCurrentTemperature(), stepItem->GetCurrentRPMPercents());
+		_graph->AddPoint(stepItem->GetCurrentTemperature(), stepItem->GetCurrentRPMPercents());
 	}
 
-	this->_graph->update();
+	_graph->update();
 }
 
 void MainWindow::UpdateDisplayedFileName()
 {
-	QString filePath = this->_settingsSaverLoader->GetFilePath();
+	QString filePath = _settingsSaverLoader->GetFilePath();
 
 	QString windowTitle = "";
 	if (!filePath.isEmpty())
 	{
 		QString modifiedSign = "";
-		if (this->_settingsSaverLoader->IsModified())
+		if (_settingsSaverLoader->IsModified())
 		{
 			modifiedSign = QObject::tr("*");
 		}
 
 		windowTitle = QObject::tr("%1%2 - ").arg(filePath).arg(modifiedSign);
-		this->_mwFileName->setText(filePath);
+		_mwFileName->setText(filePath);
 	}
 	else
 	{
-		this->_mwFileName->setText(QObject::tr("File not specified"));
+		_mwFileName->setText(QObject::tr("File not specified"));
 	}
 
 	windowTitle += QObject::tr("Project \"LowBlow\" Control Tool");
 
-	this->setWindowTitle(windowTitle);
+	setWindowTitle(windowTitle);
 }
 
 void MainWindow::LockUnlockInterface(bool isUnlock)
 {
-	this->ui->actionSave->setEnabled(isUnlock);
-	this->ui->actionSave_As->setEnabled(isUnlock);
-	this->ui->mw_basetemperature->setEnabled(isUnlock);
-	this->ui->mw_baseRPM->setEnabled(isUnlock);
-	this->_graph->setEnabled(isUnlock);
-	this->ui->mw_StepsTable->setEnabled(isUnlock);
+	ui->actionSave->setEnabled(isUnlock);
+	ui->actionSave_As->setEnabled(isUnlock);
+	ui->mw_basetemperature->setEnabled(isUnlock);
+	ui->mw_baseRPM->setEnabled(isUnlock);
+	_graph->setEnabled(isUnlock);
+	ui->mw_StepsTable->setEnabled(isUnlock);
 }
 
 void MainWindow::MwSlotCreateFile()
@@ -438,9 +445,9 @@ void MainWindow::MwSlotCreateFile()
 		return;
 	}
 
-	this->_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
+	_settingsSaverLoader->Create(newFilePath, ADC2TempFilePath);
 
-	this->InitializeAfterFileChanged();
+	InitializeAfterFileChanged();
 }
 
 
@@ -449,28 +456,33 @@ void MainWindow::MwSlotLoadFile()
 	// Do save needed?
 	CheckDoSaveNeeded();
 
+	ConnectUISlots(false); // To avoid marking file as modified
+
 	// Load dialog
 	QString loadFilePath = QFileDialog::getOpenFileName(this, QObject::tr("Select file to open:"));
 
 	if ("" == loadFilePath)
 	{
+		ConnectUISlots(true);
 		return;
 	}
 
-	if (!this->_settingsSaverLoader->Load(loadFilePath))
+	if (!_settingsSaverLoader->Load(loadFilePath))
 	{
+		ConnectUISlots(true);
 		QMessageBox::warning(this, QObject::tr("Failed to load selected file"), QObject::tr("Failed to load selected file"));
 		return;
 	}
 
-	this->InitializeAfterFileChanged();
+	InitializeAfterFileChanged();
+	ConnectUISlots(true);
 }
 
 void MainWindow::MwSlotSaveFile()
 {
-	this->_settingsSaverLoader->Save();
+	_settingsSaverLoader->Save();
 
-	this->UpdateDisplayedFileName();
+	UpdateDisplayedFileName();
 }
 
 void MainWindow::MwSlotSaveFileAs()
@@ -483,7 +495,7 @@ void MainWindow::MwSlotSaveFileAs()
 		return;
 	}
 
-	if (saveAsPath == this->_settingsSaverLoader->GetFilePath())
+	if (saveAsPath == _settingsSaverLoader->GetFilePath())
 	{
 		QMessageBox::warning(this, QObject::tr("Can't override opened file!"),
 		QObject::tr("You are trying to override currently opened file. Use \"Save\", not \"Save As\" to do it."),
@@ -491,36 +503,35 @@ void MainWindow::MwSlotSaveFileAs()
 		);
 	}
 
-	this->_settingsSaverLoader->SaveAs(saveAsPath);
+	_settingsSaverLoader->SaveAs(saveAsPath);
 }
 
 
 void MainWindow::InitializeAfterFileChanged()
 {
-	this->UpdateDisplayedFileName();
-	this->UpdateConvertorInformation();
+	UpdateDisplayedFileName();
+	UpdateConvertorInformation();
 
 	// Setting base parameters
-	Interfaces::ISettingsGenerator* setgen = this->_settingsSaverLoader->GetSettingsGeneratorPtr();
-	this->ui->mw_basetemperature->setValue(setgen->GetBaseTemperature());
-	this->MwSlotBaseTemperatureChanged(this->ui->mw_basetemperature->value()); // Calling explicitly, because ValueChanged() signal may not be emitted
-	// if new value is equal to old one.
+	Interfaces::ISettingsGenerator* setgen = _settingsSaverLoader->GetSettingsGeneratorPtr();
+	ui->mw_basetemperature->setValue(setgen->GetBaseTemperature());
+	UpdateBaseTemperature(ui->mw_basetemperature->value());
 
-	this->ui->mw_baseRPM->setValue(setgen->GetBaseRPM());
-	this->MwSlotBaseRPMChanged(this->ui->mw_baseRPM->value());
+	ui->mw_baseRPM->setValue(setgen->GetBaseRPM());
+	UpdateBaseRPMs(ui->mw_baseRPM->value());
 
-	this->LockUnlockInterface(true);
+	LockUnlockInterface(true);
 }
 
 void MainWindow::CheckDoSaveNeeded()
 {
-if (this->_settingsSaverLoader->IsModified())
+if (_settingsSaverLoader->IsModified())
 	{
 		// Saving if needed
 		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Save changes?"), QObject::tr("Save changes before creating new settings file?"),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
 		{
-			this->_settingsSaverLoader->Save();
+			_settingsSaverLoader->Save();
 		}
 	}
 }
@@ -531,13 +542,31 @@ void MainWindow::MwSlotMarkAsModified()
 	UpdateDisplayedFileName();
 }
 
+void MainWindow::ConnectUISlots(bool isConnect)
+{
+	if (isConnect)
+	{
+		QObject::connect(ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double)));
+		QObject::connect(ui->mw_baseRPM, SIGNAL(valueChanged(int)), this, SLOT(MwSlotBaseRPMChanged(int)));
+		QObject::connect(this, SIGNAL(MwSignalADCDeltaChanged(uint,uint)), this, SLOT(MwSlotADCDeltaChanged(uint, uint)));
+		QObject::connect(this, SIGNAL(MwSignalRPMDeltaChanged(uint,uint)), this, SLOT(MwSlotRPMDeltaChanged(uint, uint)));
+	}
+	else
+	{
+		QObject::disconnect(ui->mw_basetemperature, SIGNAL(valueChanged(double)), this, SLOT(MwSlotBaseTemperatureChanged(double)));
+		QObject::disconnect(ui->mw_baseRPM, SIGNAL(valueChanged(int)), this, SLOT(MwSlotBaseRPMChanged(int)));
+		QObject::disconnect(this, SIGNAL(MwSignalADCDeltaChanged(uint,uint)), this, SLOT(MwSlotADCDeltaChanged(uint, uint)));
+		QObject::disconnect(this, SIGNAL(MwSignalRPMDeltaChanged(uint,uint)), this, SLOT(MwSlotRPMDeltaChanged(uint, uint)));
+	}
+}
+
 MainWindow::~MainWindow()
 {
-	SafeDelete(this->_mwConversionStatus);
+	SafeDelete(_mwConversionStatus);
 
-	SafeDelete(this->_mwFileName);
+	SafeDelete(_mwFileName);
 
-	SafeDelete(this->_settingsSaverLoader);
+	SafeDelete(_settingsSaverLoader);
 
 	SafeDelete(ui);
 }
