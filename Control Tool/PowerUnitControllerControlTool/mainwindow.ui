@@ -92,6 +92,9 @@
           </item>
           <item>
            <widget class="QSpinBox" name="mw_baseRPM">
+            <property name="minimum">
+             <number>1</number>
+            </property>
             <property name="maximum">
              <number>256</number>
             </property>
@@ -151,7 +154,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>27</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -171,7 +174,7 @@
     <property name="title">
      <string>Te&amp;mperature to ADC Settings</string>
     </property>
-    <addaction name="actionLoadADC2Temp"/>
+    <addaction name="actionNewADC2Temp"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuThemperature_to_ADC_Settings"/>
@@ -232,6 +235,11 @@
    </property>
   </action>
   <action name="actionNew">
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+  </action>
+  <action name="actionNewADC2Temp">
    <property name="text">
     <string>New</string>
    </property>

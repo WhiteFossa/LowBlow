@@ -97,7 +97,7 @@ bool SettingsSaverLoader::Load(QString path)
 	// Steps
 	QString stepsXPath = QString(QObject::tr("doc($settingsFile)/%1/%2/")).arg(SettingsRootElement).arg(StepsElement);
 
-	for (uint step = 0; step < SettingsGenerator::StepsNumber; step ++)
+	for (uint step = 0; step < Interfaces::ISettingsGenerator::StepsNumber; step ++)
 	{
 		Interfaces::ISettingsStep* stepData = this->_setgen->GetStepPtrRelative(step);
 
@@ -153,7 +153,7 @@ void SettingsSaverLoader::SaveAtGivenPath(QString path)
 
 		// Steps
 		xsw.writeStartElement(this->StepsElement);
-		for (uint step = 0; step < SettingsGenerator::StepsNumber; step ++)
+		for (uint step = 0; step < Interfaces::ISettingsGenerator::StepsNumber; step ++)
 		{
 			xsw.writeStartElement(this->StepElement.arg(step));
 				Interfaces::ISettingsStep* stepPtr = this->_setgen->GetStepPtrRelative(step);

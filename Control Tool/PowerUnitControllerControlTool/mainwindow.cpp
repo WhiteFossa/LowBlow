@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	// Connecting signals to slots
 	QObject::connect(ui->mw_actionExit, SIGNAL(triggered(bool)), this, SLOT(MwSlotExit()));
-	QObject::connect(ui->actionCreateNewADC2Temp, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateNewADC2Temp()));
+	QObject::connect(ui->actionNewADC2Temp, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateNewADC2Temp()));
 	QObject::connect(this, SIGNAL(MwSignalUpdateStepsTable()), this, SLOT(MwSlotUpdateStepsTable()));
 	QObject::connect(ui->actionNew, SIGNAL(triggered(bool)), this, SLOT(MwSlotCreateFile()));
 	QObject::connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFile()));
@@ -50,14 +50,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->mw_status->addPermanentWidget(this->_mwFileName);
 
 	// Initializing step table (UI)
-	ui->mw_StepsTable->setColumnCount(SettingsGenerator::TotalSteps);
+	ui->mw_StepsTable->setColumnCount(Interfaces::ISettingsGenerator::TotalSteps);
 
 	// Column names
 	QStringList STColumnLabels;
 	STColumnLabels.append(QObject::tr("Zero")); // Zero level
 	STColumnLabels.append(QObject::tr("Base"));
 
-	for (uint i = 0; i < SettingsGenerator::StepsNumber; i++)
+	for (uint i = 0; i < Interfaces::ISettingsGenerator::StepsNumber; i++)
 	{
 		STColumnLabels.append(QString(QObject::tr("Step %1")).arg(i + 1));
 	}
@@ -78,14 +78,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->mw_StepsTable->setVerticalHeaderLabels(STRowLabels);
 
 	// Preparing tables of spinboxes
-	for (uint i = 0; i < SettingsGenerator::TotalSteps; i++)
+	for (uint i = 0; i < Interfaces::ISettingsGenerator::TotalSteps; i++)
 	{
 		_ADCDeltaSpinboxes.append(NULL);
 		_RPMDeltaSpinboxes.append(NULL);
 	}
 
 	// Initializing each column (requires initialized _ADCDetlaSpinboxes and _RPMDeltaSpinboxes)
-	for (uint i = 0; i < SettingsGenerator::TotalSteps; i++)
+	for (uint i = 0; i < Interfaces::ISettingsGenerator::TotalSteps; i++)
 	{
 		InitializeStepsTableColumn(i);
 	}
@@ -97,14 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui->mwMainLayout->insertWidget(0, _graph, MainWindow::_graphStretchFactor);
 
-	// TODO: Remove it
-	// For debug
-	_graph->SetMinXValue(0);
-	_graph->SetMaxXValue(120);
 	_graph->SetXAxisTitle(QObject::tr("Temperature"));
-
-	_graph->SetMinYValue(0);
-	_graph->SetMaxYValue(100);
 	_graph->SetYAxisTitle(QObject::tr("RPMs, %"));
 
 	// Actualizing UI steps table
@@ -257,7 +250,7 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 	labelItem = new QTableWidgetItem(QObject::tr("0.0%"), QTableWidgetItem::Type);
 	ui->mw_StepsTable->setItem(Ui::STEPS_TABLE_ROWS::RPM_DELTA_PERCENT, col, labelItem);
 
-	if (col < SettingsGenerator::AdditionalSteps)
+	if (col < Interfaces::ISettingsGenerator::AdditionalSteps)
 	{
 		_ADCDeltaSpinboxes[col]->setReadOnly(true);
 		_RPMDeltaSpinboxes[col]->setReadOnly(true);
@@ -352,7 +345,7 @@ void MainWindow::MwSlotUpdateStepsTable()
 
 	Interfaces::ISettingsStep *stepItem;
 
-	for (uint step = 0; step < SettingsGenerator::TotalSteps; step++)
+	for (uint step = 0; step < Interfaces::ISettingsGenerator::TotalSteps; step++)
 	{
 		// Getting step
 		stepItem = setgen->GetStepPtr(step);

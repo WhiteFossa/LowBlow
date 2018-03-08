@@ -28,7 +28,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 namespace Interfaces
 {
 	/**
-	 * @brief Class with one settings step (i.e. with temperature and RPM percent increments)
+	 * @brief Interface with one settings step (i.e. with temperature and RPM percent increments)
 	 */
 	class ISettingsStep : public QObject
 	{

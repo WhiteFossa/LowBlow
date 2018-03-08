@@ -22,12 +22,11 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 #include <QObject>
 #include <Interfaces/ISettingsStep.hpp>
-#include <cstdint>
 
 namespace Interfaces
 {
 	/**
-	 * @brief Class, containing all settings steps. It being used to generate settings table, which will be converted to EEPROM data
+	 * @brief Interface to contain all settings steps. It being used to generate settings table, which will be converted to EEPROM data
 	 */
 	class ISettingsGenerator : public QObject
 	{
@@ -103,6 +102,21 @@ namespace Interfaces
 			 * @return Pointer to step.
 			 */
 			virtual Interfaces::ISettingsStep* GetStepPtrRelative(uint step) = 0;
+
+			/**
+			 * @brief Steps number = EEPROM Size - 3, i.e. 125 in our case.
+			 */
+			static const uint StepsNumber = 125;
+
+			/**
+			 * @brief Actually we creating two steps more, than given in InitializeStepsList() to store zero levels step and base level step.
+			 */
+			static const uint AdditionalSteps = 2;
+
+			/**
+			 * @brief Total amount of steps.
+			 */
+			static const uint TotalSteps = StepsNumber + AdditionalSteps;
 
 
 		// Protected members

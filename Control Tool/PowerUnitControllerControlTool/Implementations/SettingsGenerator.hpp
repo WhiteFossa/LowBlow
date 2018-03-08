@@ -33,19 +33,8 @@ class SettingsGenerator : public Interfaces::ISettingsGenerator
 
 	public:
 		/**
-		 * @brief Steps number = EEPROM Size - 3, i.e. 125 in our case.
-		 */
-		static const uint StepsNumber = 125;
-
-		/**
-		 * @brief Actually we creating two steps more, than given in InitializeStepsList() to store zero levels step and base level step.
-		 */
-		static const uint AdditionalSteps = 2;
-
-		/**
 		 * @brief Total steps number.
 		 */
-		static const uint TotalSteps = StepsNumber + AdditionalSteps;
 
 		/**
 		 * @brief Step with this index stores zero levels.
@@ -83,13 +72,9 @@ class SettingsGenerator : public Interfaces::ISettingsGenerator
 
 		Interfaces::ISettingsStep* GetStepPtr(uint step);
 		Interfaces::ISettingsStep* GetStepPtrRelative(uint step);
-
-
-
 	protected:
 
 	private:
-
 		Interfaces::IAdcTemperatureConvertor* _ADC2TempConvertor = NULL;
 
 		/**

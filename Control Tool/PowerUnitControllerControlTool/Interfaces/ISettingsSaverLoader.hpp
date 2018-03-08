@@ -28,7 +28,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 namespace Interfaces
 {
 	/**
-	 * @brief Class to save and load controller settings into XML.
+	 * @brief Interface to save and load controller settings into XML.
 	 */
 	class ISettingsSaverLoader : public QObject
 	{

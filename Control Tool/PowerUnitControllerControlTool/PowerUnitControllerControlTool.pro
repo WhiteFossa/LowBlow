@@ -21,7 +21,8 @@ SOURCES += main.cpp\
 		FossasSimpleGraph/Implementations/QSimpleGraph.cpp \
 		Implementations/SettingsSaverLoader.cpp \
 		Auxiliary.cpp \
-    XmlHelper.cpp
+    XmlHelper.cpp \
+    Implementations/EEPROMGenerator.cpp
 
 HEADERS  += mainwindow.hpp \
 		Interfaces/IAdcTemperatureConvertor.hpp \
@@ -36,7 +37,9 @@ HEADERS  += mainwindow.hpp \
 		FossasSimpleGraph/Interfaces/IQSimpleGraph.hpp \
 		Interfaces/ISettingsSaverLoader.hpp \
 		Implementations/SettingsSaverLoader.hpp \
-    XmlHelper.hpp
+    XmlHelper.hpp \
+    Interfaces/IEEPROMGenerator.hpp \
+    Implementations/EEPROMGenerator.hpp
 
 FORMS    += mainwindow.ui \
 		NewADC2TempDialog.ui
