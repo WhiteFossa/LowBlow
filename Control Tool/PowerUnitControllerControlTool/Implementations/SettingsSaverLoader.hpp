@@ -27,6 +27,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <Interfaces/ISettingsSaverLoader.hpp>
 #include <Implementations/AdcTemperatureConvertor.hpp>
 #include <Implementations/SettingsGenerator.hpp>
+#include <Implementations/EEPROMGenerator.hpp>
 #include <XmlHelper.hpp>
 #include <QMessageBox>
 
@@ -56,7 +57,7 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		bool IsModified();
 		Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr();
 		Interfaces::ISettingsGenerator* GetSettingsGeneratorPtr();
-
+		void ExportToEEPROM(QString path);
 
 	protected:
 

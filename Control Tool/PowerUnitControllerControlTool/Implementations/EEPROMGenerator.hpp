@@ -17,6 +17,10 @@ You should have received a copy of the GNU General Public License
 along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * See EEPROM Structure.odt for detains on EEPROM structure.
+*/
+
 #ifndef EEPROMGENERATOR_HPP
 #define EEPROMGENERATOR_HPP
 
@@ -28,7 +32,61 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 class EEPROMGenerator : public Interfaces::IEEPROMGenerator
 {
 	public:
-		QVector<uint> GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr);
+		QVector<uint8_t> GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr);
+
+	protected:
+
+	private:
+
+		/**
+		 * @brief Amount of EEPROM, taken by base levels.
+		 */
+		const uint BaseLevelsSize = 3U;
+
+		/**
+		 * @brief EEPROM address of base temperature least signigicant byte.
+		 */
+		const uint BaseTemperatureLSBAddr = 0U;
+
+		/**
+		 * @brief EEPROM address of base temperature most significant byte.
+		 */
+		const uint BaseTemperatureMSBAddr = 1;
+
+		/**
+		 * @brief And this mask with base temperature to get base temperature LSB.
+		 */
+		const uint BaseTemperatureLSBMask = 0xFFU;
+
+		/**
+		 * @brief And this mask with base temperature to get base temperature MSB.
+		 */
+		const uint BaseTemperatureMSBMask = 0xFF00U;
+
+		/**
+		 * @brief EEPROM address of base RPMs.
+		 */
+		const uint BaseRPMsAddr = 2U;
+
+		/**
+		 * @brief Add this shift to base RPMs before storing it in EEPROM. Read EEPROM Structure.odt for details.
+		 */
+		const int BaseRPMsShift = -1;
+
+		/**
+		 * @brief Add this shift to step's ADC delta before storing it in EEPROM. Read EEPROM Structure.odt for details.
+		 */
+		const int ADCDeltaShift = -1;
+
+		/**
+		 * @brief Mask for 4 least significant bits.
+		 */
+		const uint HalfByteMaskL = 0b1111U;
+
+		/**
+		 * @brief Shift RPMs delta left to this amount of bits before combining it with ADC delta.
+		 */
+		const uint RPMsDeltaLShift = 4U;
 };
 
 #endif // EEPROMGENERATOR_HPP

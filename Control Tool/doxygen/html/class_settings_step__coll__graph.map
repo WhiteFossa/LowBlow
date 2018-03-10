@@ -1,4 +1,4 @@
 <map id="SettingsStep" name="SettingsStep">
-<area shape="rect" id="node2" href="$class_interfaces_1_1_i_settings_step.html" title="Class with one settings step (i.e. with temperature and RPM percent increments) " alt="" coords="5,185,172,212"/>
-<area shape="rect" id="node4" href="$class_interfaces_1_1_i_adc_temperature_convertor.html" title="Class, used to convert ADC values to Temperature and vice versa. " alt="" coords="105,81,293,123"/>
+<area shape="rect" id="node2" href="$class_interfaces_1_1_i_settings_step.html" title="Interface with one settings step (i.e. with temperature and RPM percent increments) ..." alt="" coords="5,185,187,212"/>
+<area shape="rect" id="node4" href="$class_interfaces_1_1_i_adc_temperature_convertor.html" title="Class, used to convert ADC values to Temperature and vice versa. " alt="" coords="112,81,317,123"/>
 </map>

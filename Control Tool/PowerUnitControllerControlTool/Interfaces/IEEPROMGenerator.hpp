@@ -39,7 +39,7 @@ namespace Interfaces
 			 * @param setGenPtr Pointer to ISettingsGenerator instance.
 			 * @return EEPROM contents as QVector, starting from 0x00 address.
 			 */
-			virtual QVector<uint> GetEEPROMContents(ISettingsGenerator* setGenPtr) = 0;
+			virtual QVector<uint8_t> GetEEPROMContents(ISettingsGenerator* setGenPtr) = 0;
 	};
 }
 

@@ -46,9 +46,9 @@ namespace Fossa
 			// Are we in graph data area?
 			if
 			(
-	(event->x() >= _graphBorder.left()) && (event->x() <= _graphBorder.right())
-	&&
-	(event->y() >= _graphBorder.top()) && (event->y() <= _graphBorder.bottom())
+				(event->x() >= _graphBorder.left()) && (event->x() <= _graphBorder.right())
+				&&
+				(event->y() >= _graphBorder.top()) && (event->y() <= _graphBorder.bottom())
 			)
 			{
 				_localMouseX = event->x() - _graphBorder.left();
@@ -61,6 +61,8 @@ namespace Fossa
 
 		void QSimpleGraph::paintEvent(QPaintEvent *event)
 		{
+			Q_UNUSED(event);
+
 			// Setting up painter
 			QPainter painter(this);
 			_painter = &painter;
@@ -69,182 +71,182 @@ namespace Fossa
 
 			// Drawing outer rectangle
 			_graphBorder.setTop(_outerTopSpacing);
-			this->_graphBorder.setLeft(this->_outerLeftSpacing);
-			this->_graphBorder.setBottom(this->height() - this->_outerBottomSpacing);
-			this->_graphBorder.setRight(this->width() - this->_outerRightSpacing);
+			_graphBorder.setLeft(_outerLeftSpacing);
+			_graphBorder.setBottom(height() - _outerBottomSpacing);
+			_graphBorder.setRight(width() - _outerRightSpacing);
 
 			// Graph dimensions
-			this->_graphAreaWidth = this->_graphBorder.width();
-			this->_graphAreaHeight = this->_graphBorder.height();
+			_graphAreaWidth = _graphBorder.width();
+			_graphAreaHeight = _graphBorder.height();
 
 			// Scaling factors. TODO: Move to resize event
-			this->RecalculateXScalingFactor();
-			this->RecalculateYScalingFactor();
+			RecalculateXScalingFactor();
+			RecalculateYScalingFactor();
 
 			// Foreground pen
-			QPen fgPen(this->palette().color(QPalette::WindowText));
-			this->_painter->setPen(fgPen);
-			this->_painter->setBrush(Qt::NoBrush);
+			QPen fgPen(palette().color(QPalette::WindowText));
+			_painter->setPen(fgPen);
+			_painter->setBrush(Qt::NoBrush);
 
-			this->_painter->drawRect(this->_graphBorder);
+			_painter->drawRect(_graphBorder);
 
 			// Background grid
-			QPen backGridPen(this->palette().color(QPalette::Mid));
+			QPen backGridPen(palette().color(QPalette::Mid));
 			backGridPen.setStyle(Qt::DotLine);
-			this->_painter->setPen(backGridPen);
+			_painter->setPen(backGridPen);
 
 
 			// Horizontal lines
-			int hPos = this->_graphBorder.bottom() - this->_vCellSize;
-			while (hPos > this->_graphBorder.top())
+			int hPos = _graphBorder.bottom() - _vCellSize;
+			while (hPos > _graphBorder.top())
 			{
-	this->_painter->drawLine(this->_graphBorder.left(), hPos, this->_graphBorder.right(), hPos); // Lines
+				_painter->drawLine(_graphBorder.left(), hPos, _graphBorder.right(), hPos); // Lines
 
-	this->DrawTick(hPos, false); // Ticks
+				DrawTick(hPos, false); // Ticks
 
-	hPos -= this->_vCellSize;
+				hPos -= _vCellSize;
 			}
 
 			// Vertical lines
-			int vPos = this->_graphBorder.left() + this->_hCellSize;
-			while (vPos < this->_graphBorder.right())
+			int vPos = _graphBorder.left() + _hCellSize;
+			while (vPos < _graphBorder.right())
 			{
-	this->_painter->drawLine(vPos, this->_graphBorder.top(), vPos, this->_graphBorder.bottom());
+				_painter->drawLine(vPos, _graphBorder.top(), vPos, _graphBorder.bottom());
 
-	this->DrawTick(vPos, true);
+				DrawTick(vPos, true);
 
-	vPos += this->_hCellSize;
+				vPos += _hCellSize;
 			}
 
 			// Axis titles
-			this->_painter->setPen(fgPen);
-			this->_painter->save();
-			QFont boldFont = this->_painter->font();
+			_painter->setPen(fgPen);
+			_painter->save();
+			QFont boldFont = _painter->font();
 			boldFont.setBold(true);
-			this->_painter->setFont(boldFont);
+			_painter->setFont(boldFont);
 
-			QFontMetrics textMetrics(this->_painter->font());
+			QFontMetrics textMetrics(_painter->font());
 			QRect titleRect;
 
 			// X
-			titleRect = textMetrics.tightBoundingRect(this->_xAxisTitle);
-			this->_painter->drawText(this->_graphBorder.right() - this->_xAxisTitleHShift - titleRect.width(), this->_graphBorder.bottom() - this->_xAxisTitleVShift, this->_xAxisTitle);
+			titleRect = textMetrics.tightBoundingRect(_xAxisTitle);
+			_painter->drawText(_graphBorder.right() - _xAxisTitleHShift - titleRect.width(), _graphBorder.bottom() - _xAxisTitleVShift, _xAxisTitle);
 
 			// Y
-			titleRect = textMetrics.tightBoundingRect(this->_yAxisTitle);
-			this->_painter->drawText(this->_graphBorder.left() + this->_yAxisTitileHShift, this->_graphBorder.top() + this->_yAxisTitleVShift + titleRect.height(), this->_yAxisTitle);
-			this->_painter->restore();
+			titleRect = textMetrics.tightBoundingRect(_yAxisTitle);
+			_painter->drawText(_graphBorder.left() + _yAxisTitileHShift, _graphBorder.top() + _yAxisTitleVShift + titleRect.height(), _yAxisTitle);
+			_painter->restore();
 
 			// Drawing graph contents
-			this->DrawGraphContents();
+			DrawGraphContents();
 
 			// Drawing crosshair if we need it
-			QMap<double, double>::const_iterator crosshairPoint = this->GetClosestPoint(this->_localMouseX);
+			QMap<double, double>::const_iterator crosshairPoint = GetClosestPoint(_localMouseX);
 			if (crosshairPoint != NULL)
-	{
-	int crosshairX = this->GetScreenXByValue(crosshairPoint.key());
-	int crosshairY = this->GetScreenYByValue(crosshairPoint.value());
+			{
+				int crosshairX = GetScreenXByValue(crosshairPoint.key());
+				int crosshairY = GetScreenYByValue(crosshairPoint.value());
 
-	this->_painter->drawLine(crosshairX, this->_graphBorder.top(), crosshairX, this->_graphBorder.bottom());
-	this->_painter->drawLine(this->_graphBorder.left(), crosshairY, this->_graphBorder.right(), crosshairY);
+				_painter->drawLine(crosshairX, _graphBorder.top(), crosshairX, _graphBorder.bottom());
+				_painter->drawLine(_graphBorder.left(), crosshairY, _graphBorder.right(), crosshairY);
 
-	// Drawing tooltip with values
-	bool tooltipYDirDown = crosshairY < this->_graphBorder.center().y();
-	bool tooltipXDirRight = crosshairX < this->_graphBorder.center().x();
-	TooltipDirection tooltipDirection;
+				// Drawing tooltip with values
+				bool tooltipYDirDown = crosshairY < _graphBorder.center().y();
+				bool tooltipXDirRight = crosshairX < _graphBorder.center().x();
+				TooltipDirection tooltipDirection;
 
-	if (tooltipYDirDown)
-	{
-		if (tooltipXDirRight)
-		{
-			tooltipDirection = TooltipDirection::DownRight;
-		}
-		else
-		{
-			tooltipDirection = TooltipDirection::DownLeft;
-		}
-	}
-	else
-	{
-		if (tooltipXDirRight)
-		{
-			tooltipDirection = TooltipDirection::UpRight;
-		}
-		else
-		{
-			tooltipDirection = TooltipDirection::UpLeft;
-		}
-	}
+				if (tooltipYDirDown)
+				{
+					if (tooltipXDirRight)
+					{
+						tooltipDirection = TooltipDirection::DownRight;
+					}
+					else
+					{
+						tooltipDirection = TooltipDirection::DownLeft;
+					}
+				}
+				else
+				{
+					if (tooltipXDirRight)
+					{
+						tooltipDirection = TooltipDirection::UpRight;
+					}
+					else
+					{
+						tooltipDirection = TooltipDirection::UpLeft;
+					}
+				}
 
-	QString tooltipText = QString("%1: %2\n%3: %4")
-			.arg(this->_xAxisTitle)
-			.arg(crosshairPoint.key())
-			.arg(this->_yAxisTitle)
-			.arg(crosshairPoint.value());
-	this->DrawTooltip(QPoint(crosshairX, crosshairY), tooltipDirection, tooltipText);
+				QString tooltipText = QString("%1: %2\n%3: %4")
+						.arg(_xAxisTitle)
+						.arg(crosshairPoint.key())
+						.arg(_yAxisTitle)
+						.arg(crosshairPoint.value());
+				DrawTooltip(QPoint(crosshairX, crosshairY), tooltipDirection, tooltipText);
 			}
 		}
 
 		void QSimpleGraph::DrawTick(uint pos, bool IsXAxis)
 		{
 			// To not affect painter state outside
-			this->_painter->save();
+			_painter->save();
 
 
 			QPen tickPen;
-			tickPen.setColor(this->palette().color(QPalette::WindowText));
-			this->_painter->setPen(tickPen);
-			this->_painter->setBrush(Qt::NoBrush);
+			tickPen.setColor(palette().color(QPalette::WindowText));
+			_painter->setPen(tickPen);
+			_painter->setBrush(Qt::NoBrush);
 
 			double posValue;
 
 			if (IsXAxis)
 			{
-	this->_painter->drawLine(pos, this->_graphBorder.bottom() - this->_tickShift, pos, this->_graphBorder.bottom() + this->_tickShift + 1);
+				_painter->drawLine(pos, _graphBorder.bottom() - _tickShift, pos, _graphBorder.bottom() + _tickShift + 1);
 
-	posValue = this->GetValByX(pos - this->_graphBorder.left());
+				posValue = GetValByX(pos - _graphBorder.left());
 			}
 			else
 			{
-	this->_painter->drawLine(this->_graphBorder.left() - this->_tickShift - 1, pos, this->_graphBorder.left() + this->_tickShift, pos);
+				_painter->drawLine(_graphBorder.left() - _tickShift - 1, pos, _graphBorder.left() + _tickShift, pos);
 
-	posValue = this->GetValByY(this->_graphBorder.bottom() - pos);
+				posValue = GetValByY(_graphBorder.bottom() - pos);
 			}
 
 			if (IsXAxis)
 			{
-	// X axis labels
-	QString textValue = this->FitDoubleByWidth(posValue, this->_hCellSize);
-	this->DrawXLabel(pos, textValue);
+				// X axis labels
+				QString textValue = FitDoubleByWidth(posValue, _hCellSize);
+				DrawXLabel(pos, textValue);
 			}
 			else
 			{
-	// Y axis labels
-	QString textValue = this->FitDoubleByWidth(posValue, this->_graphBorder.left() - this->_yAxisTextHShift);
-	this->DrawYLabel(pos, textValue);
+				// Y axis labels
+				QString textValue = FitDoubleByWidth(posValue, _graphBorder.left() - _yAxisTextHShift);
+				DrawYLabel(pos, textValue);
 			}
 
-			this->_painter->restore();
+			_painter->restore();
 		}
 
 		QString QSimpleGraph::FitDoubleByWidth(double val, uint MaxWidth)
 		{
-			QFontMetrics textMetrics(this->_painter->font());
-			uint precision = this->_MaxDoublePrecision;
+			QFontMetrics textMetrics(_painter->font());
+			uint precision = _MaxDoublePrecision;
 
 			QString result;
 
 			do
 			{
-	result = QString("%1").arg(val, 1, 'g', precision);
+				result = QString("%1").arg(val, 1, 'g', precision);
 
-	if (precision <= 1)
-	{
-		// Can't fit at all
-		break;
-	}
+				if (precision <= 1)
+				{
+					// Can't fit at all
+					break;
+				}
 
-	precision --;
+				precision --;
 			}
 			while((uint)textMetrics.width(result) > MaxWidth);
 
@@ -253,265 +255,267 @@ namespace Fossa
 
 		void QSimpleGraph::DrawXLabel(uint xPos, QString label)
 		{
-			QFontMetrics textMetrics(this->_painter->font());
+			QFontMetrics textMetrics(_painter->font());
 			QRect textRect = textMetrics.tightBoundingRect(label);
 			int textHalfWidth = textRect.width() / 2;
 
-			this->_painter->drawText(xPos - textHalfWidth, this->_graphBorder.bottom() + textRect.height() + this->_xAxisTextVShift, label); // Text below X-axis
+			_painter->drawText(xPos - textHalfWidth, _graphBorder.bottom() + textRect.height() + _xAxisTextVShift, label); // Text below X-axis
 		}
 
 		void QSimpleGraph::DrawYLabel(uint yPos, QString label)
 		{
-			QFontMetrics textMetrics(this->_painter->font());
+			QFontMetrics textMetrics(_painter->font());
 			QRect textRect = textMetrics.tightBoundingRect(label);
 			uint textHalfHeight = textRect.height() / 2;
 
-			this->_painter->drawText(this->_graphBorder.left() - textRect.width() - this->_yAxisTextHShift, yPos + textHalfHeight + this->_yAxisTextVShift, label); // Text lefter than axis
+			_painter->drawText(_graphBorder.left() - textRect.width() - _yAxisTextHShift, yPos + textHalfHeight + _yAxisTextVShift, label); // Text lefter than axis
 		}
 
 		void QSimpleGraph::SetMinXValue(double minValue)
 		{
-			this->_minX = minValue;
-			this->RecalculateXScalingFactor();
+			_minX = minValue;
+			RecalculateXScalingFactor();
 		}
 
 		void QSimpleGraph::SetMaxXValue(double maxValue)
 		{
-			this->_maxX = maxValue;
-			this->RecalculateXScalingFactor();
+			_maxX = maxValue;
+			RecalculateXScalingFactor();
 		}
 
 		void QSimpleGraph::SetMinYValue(double minValue)
 		{
-			this->_minY = minValue;
-			this->RecalculateYScalingFactor();
+			_minY = minValue;
+			RecalculateYScalingFactor();
 		}
 
 		void QSimpleGraph::SetMaxYValue(double maxValue)
 		{
-			this->_maxY = maxValue;
-			this->RecalculateYScalingFactor();
+			_maxY = maxValue;
+			RecalculateYScalingFactor();
 		}
 
 		void QSimpleGraph::RecalculateXScalingFactor()
 		{
-			this->_xScalingFactor = this->_graphAreaWidth / (this->_maxX - this->_minX);
+			_xScalingFactor = _graphAreaWidth / (_maxX - _minX);
 		}
 
 		void QSimpleGraph::RecalculateYScalingFactor()
 		{
-			this->_yScalingFactor = this->_graphAreaHeight / (this->_maxY - this->_minY);
+			_yScalingFactor = _graphAreaHeight / (_maxY - _minY);
 		}
 
 		uint QSimpleGraph::GetXByVal(double val)
 		{
-			return floor(this->_xScalingFactor * (val - this->_minX) + 0.5);
+			return floor(_xScalingFactor * (val - _minX) + 0.5);
 		}
 
 		uint QSimpleGraph::GetYByVal(double val)
 		{
-			return floor(this->_yScalingFactor * (val - this->_minY) + 0.5);
+			return floor(_yScalingFactor * (val - _minY) + 0.5);
 		}
 
 		double QSimpleGraph::GetValByX(uint X)
 		{
-			return X / this->_xScalingFactor + this->_minX;
+			return X / _xScalingFactor + _minX;
 		}
 
 		double QSimpleGraph::GetValByY(uint Y)
 		{
-			return Y / this->_yScalingFactor + this->_minY;
+			return Y / _yScalingFactor + _minY;
 		}
 
 		void QSimpleGraph::SetXAxisTitle(QString title)
 		{
-			this->_xAxisTitle = title;
+			_xAxisTitle = title;
 		}
 
 		void QSimpleGraph::SetYAxisTitle(QString title)
 		{
-			this->_yAxisTitle = title;
+			_yAxisTitle = title;
 		}
 
 		void QSimpleGraph::ClearAllPoints()
 		{
-			this->_points.clear();
+			_points.clear();
 		}
 
 		void QSimpleGraph::AddPoint(double XVal, double YVal)
 		{
 			// Checking for border values
-			if (XVal > this->_maxX)
+			if (XVal > _maxX)
 			{
-	this->SetMaxXValue(XVal);
+				SetMaxXValue(XVal);
 			}
 
-			if (XVal < this->_minX)
+			if (XVal < _minX)
 			{
-	this->SetMinXValue(XVal);
+				SetMinXValue(XVal);
 			}
 
-			if (YVal > this->_maxY)
+			if (YVal > _maxY)
 			{
-	this->SetMaxYValue(YVal);
+				SetMaxYValue(YVal);
 			}
 
-			if (YVal < this->_minY)
+			if (YVal < _minY)
 			{
-	this->SetMinYValue(YVal);
+				SetMinYValue(YVal);
 			}
 
-			this->_points.insert(XVal, YVal);
+			_points.insert(XVal, YVal);
 		}
 
 		void QSimpleGraph::DrawGraphContents()
 		{
-			this->_painter->save();
+			_painter->save();
 
 			// Pen and brush to draw
-			QPen pen(this->palette().color(QPalette::WindowText));
-			this->_painter->setPen(pen);
+			QPen pen(palette().color(QPalette::WindowText));
+			_painter->setPen(pen);
 
-			QBrush brush(this->palette().color(QPalette::WindowText), Qt::SolidPattern);
-			this->_painter->setBrush(brush);
+			QBrush brush(palette().color(QPalette::WindowText), Qt::SolidPattern);
+			_painter->setBrush(brush);
 
 			// Iterating through points
 			uint prevX, prevY; // Previous point coordinates
-			QMap<double, double>::const_iterator item = this->_points.constBegin();
-			while (item != this->_points.constEnd())
+			QMap<double, double>::const_iterator item = _points.constBegin();
+			while (item != _points.constEnd())
 			{
-	// Point coordinates
-	uint xCoord = this->GetScreenXByValue(item.key());
-	uint yCoord = this->GetScreenYByValue(item.value());
+				// Point coordinates
+				uint xCoord = GetScreenXByValue(item.key());
+				uint yCoord = GetScreenYByValue(item.value());
 
-	if (item != this->_points.constBegin())
-	{
-		// Draw line
-		this->_painter->save();
+				if (item != _points.constBegin())
+				{
+					// Draw line
+					_painter->save();
 
-		QPen linePen(this->palette().color(QPalette::WindowText));
-		linePen.setWidth(this->_graphLineWidth);
-		this->_painter->setPen(linePen);
+					QPen linePen(palette().color(QPalette::WindowText));
+					linePen.setWidth(_graphLineWidth);
+					_painter->setPen(linePen);
 
-#ifdef FOSSA_SIMPLE_GRAPH_POINT_TO_POINT_LINE
-		this->_painter->drawLine(prevX, prevY, xCoord, yCoord);
-#else
+			#ifdef FOSSA_SIMPLE_GRAPH_POINT_TO_POINT_LINE
+					_painter->drawLine(prevX, prevY, xCoord, yCoord);
+			#else
 
-		this->_painter->drawLine(prevX, prevY, xCoord, prevY);
-		this->_painter->drawLine(xCoord, prevY, xCoord, yCoord);
-#endif
+					_painter->drawLine(prevX, prevY, xCoord, prevY);
+					_painter->drawLine(xCoord, prevY, xCoord, yCoord);
+			#endif
 
-		this->_painter->restore();
-	}
+					_painter->restore();
+				}
 
-	// * 2 because parameters are widht and height, not radiuses.
-	this->_painter->drawEllipse(xCoord - this->_pointRadius, yCoord - this->_pointRadius, this->_pointRadius * 2, this->_pointRadius * 2);
+				// * 2 because parameters are widht and height, not radiuses.
+				_painter->drawEllipse(xCoord - _pointRadius, yCoord - _pointRadius, _pointRadius * 2, _pointRadius * 2);
 
-	prevX = xCoord;
-	prevY = yCoord;
+				prevX = xCoord;
+				prevY = yCoord;
 
-	item ++;
+				item ++;
 			}
 
-			this->_painter->restore();
+			_painter->restore();
 		}
 
 		QMap<double, double>::const_iterator QSimpleGraph::GetClosestPoint(uint x)
 		{
-			if (0 == this->_points.count())
+			if (0 == _points.count())
 			{
-	return NULL;
+				return NULL;
 			}
 
 			// X value
-			double xVal = this->GetValByX(x);
+			double xVal = GetValByX(x);
 
 			// Before all
-			if (xVal < this->_points.constBegin().key())
+			if (xVal < _points.constBegin().key())
 			{
-	return this->_points.constBegin();
+				return _points.constBegin();
 			}
 
-			QMap<double, double>::const_iterator prevIterator = this->_points.constBegin();
+			QMap<double, double>::const_iterator prevIterator = _points.constBegin();
 			QMap<double, double>::const_iterator nextIterator = prevIterator + 1;
-			while (nextIterator != this->_points.constEnd())
+			while (nextIterator != _points.constEnd())
 			{
-	double prevIteratorX = prevIterator.key();
-	double nextIteratorX = nextIterator.key();
+				double prevIteratorX = prevIterator.key();
+				double nextIteratorX = nextIterator.key();
 
-	if ((xVal >= prevIteratorX) && (xVal <= nextIteratorX))
-	{
-		// Who is closer?
-		if ((xVal - prevIteratorX) < (nextIteratorX - xVal))
-		{
-			return prevIterator;
-		}
-		else
-		{
-			return nextIterator;
-		}
-	}
+				if ((xVal >= prevIteratorX) && (xVal <= nextIteratorX))
+				{
+					// Who is closer?
+					if ((xVal - prevIteratorX) < (nextIteratorX - xVal))
+					{
+						return prevIterator;
+					}
+					else
+					{
+						return nextIterator;
+					}
+				}
 
-	// Next point
-	prevIterator = nextIterator;
-	nextIterator ++;
+				// Next point
+				prevIterator = nextIterator;
+				nextIterator ++;
 			}
+
+			return nullptr; // To silence warning
 		}
 
 		uint QSimpleGraph::GetScreenXByValue(double xVal)
 		{
-			return this->_graphBorder.left() + this->GetXByVal(xVal);
+			return _graphBorder.left() + GetXByVal(xVal);
 		}
 
 		uint QSimpleGraph::GetScreenYByValue(double yVal)
 		{
-			return this->_graphBorder.bottom() - this->GetYByVal(yVal);
+			return _graphBorder.bottom() - GetYByVal(yVal);
 		}
 
 		void QSimpleGraph::DrawTooltip(QPoint targetPoint, TooltipDirection direction, QString text)
 		{
-			QRect textRect = QSimpleGraph::MultilineBoundingRect(this->_painter->font(), text);
+			QRect textRect = QSimpleGraph::MultilineBoundingRect(_painter->font(), text);
 
 			QRect borderRect = textRect;
-			borderRect.adjust(0, 0, this->_tooltipWidthAdd, this->_tooltipHeightAdd);
+			borderRect.adjust(0, 0, _tooltipWidthAdd, _tooltipHeightAdd);
 
 			QPoint shiftedTargetPoint;
 			switch(direction)
 			{
-	case TooltipDirection::DownRight:
-		shiftedTargetPoint.setX(targetPoint.x() + this->_tooltipXShift);
-		shiftedTargetPoint.setY(targetPoint.y() + this->_tooltipYShift);
-		borderRect.moveTopLeft(shiftedTargetPoint);
-	break;
-	case TooltipDirection::DownLeft:
-		shiftedTargetPoint.setX(targetPoint.x() - this->_tooltipXShift);
-		shiftedTargetPoint.setY(targetPoint.y() + this->_tooltipYShift);
-		borderRect.moveTopRight(shiftedTargetPoint);
-	break;
-	case TooltipDirection::UpRight:
-		shiftedTargetPoint.setX(targetPoint.x() + this->_tooltipXShift);
-		shiftedTargetPoint.setY(targetPoint.y() - this->_tooltipYShift);
-		borderRect.moveBottomLeft(shiftedTargetPoint);
-	break;
-	case TooltipDirection::UpLeft:
-		shiftedTargetPoint.setX(targetPoint.x() - this->_tooltipXShift);
-		shiftedTargetPoint.setY(targetPoint.y() - this->_tooltipYShift);
-		borderRect.moveBottomRight(shiftedTargetPoint);
-	break;
+				case TooltipDirection::DownRight:
+					shiftedTargetPoint.setX(targetPoint.x() + _tooltipXShift);
+					shiftedTargetPoint.setY(targetPoint.y() + _tooltipYShift);
+					borderRect.moveTopLeft(shiftedTargetPoint);
+				break;
+				case TooltipDirection::DownLeft:
+					shiftedTargetPoint.setX(targetPoint.x() - _tooltipXShift);
+					shiftedTargetPoint.setY(targetPoint.y() + _tooltipYShift);
+					borderRect.moveTopRight(shiftedTargetPoint);
+				break;
+				case TooltipDirection::UpRight:
+					shiftedTargetPoint.setX(targetPoint.x() + _tooltipXShift);
+					shiftedTargetPoint.setY(targetPoint.y() - _tooltipYShift);
+					borderRect.moveBottomLeft(shiftedTargetPoint);
+				break;
+				case TooltipDirection::UpLeft:
+					shiftedTargetPoint.setX(targetPoint.x() - _tooltipXShift);
+					shiftedTargetPoint.setY(targetPoint.y() - _tooltipYShift);
+					borderRect.moveBottomRight(shiftedTargetPoint);
+				break;
 			}
 
-			this->_painter->save();
+			_painter->save();
 
 			// Bounding rectangle
-			this->_painter->setPen(this->palette().color(QPalette::ToolTipText));
-			QBrush tooltipBrush(this->palette().color(QPalette::ToolTipBase), Qt::SolidPattern);
-			this->_painter->setBrush(tooltipBrush);
-			this->_painter->drawRect(borderRect);
+			_painter->setPen(palette().color(QPalette::ToolTipText));
+			QBrush tooltipBrush(palette().color(QPalette::ToolTipBase), Qt::SolidPattern);
+			_painter->setBrush(tooltipBrush);
+			_painter->drawRect(borderRect);
 
 			// Drawing text
-			this->_painter->drawText(borderRect, text, Qt::AlignLeft | Qt::AlignVCenter);
+			_painter->drawText(borderRect, text, Qt::AlignLeft | Qt::AlignVCenter);
 
-			this->_painter->restore();
+			_painter->restore();
 		}
 
 		QRect QSimpleGraph::MultilineBoundingRect(QFont font, QString text)
@@ -523,19 +527,17 @@ namespace Fossa
 			// Text metrics can't work with text with line breaks, so splitting by hands
 			foreach (QString line, text.split('\n'))
 			{
-	QRect boundRect = textMetrics.boundingRect(line);
+				QRect boundRect = textMetrics.boundingRect(line);
 
-	if (boundRect.width() > width)
-	{
-		width = boundRect.width();
-	}
+				if (boundRect.width() > width)
+				{
+					width = boundRect.width();
+				}
 
-	height += boundRect.height();
+				height += boundRect.height();
 			}
 
 			return QRect(0, 0, width, height);
 		}
 	}
 }
-
-

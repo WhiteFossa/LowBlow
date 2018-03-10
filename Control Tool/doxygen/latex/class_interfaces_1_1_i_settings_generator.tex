@@ -2,7 +2,7 @@
 \label{class_interfaces_1_1_i_settings_generator}\index{Interfaces\+::\+I\+Settings\+Generator@{Interfaces\+::\+I\+Settings\+Generator}}
 
 
-Class, containing all settings steps. It being used to generate settings table, which will be converted to E\+E\+P\+R\+OM data.  
+Interface to contain all settings steps. It being used to generate settings table, which will be converted to E\+E\+P\+R\+OM data.  
 
 
 
@@ -51,12 +51,24 @@ virtual \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Sett
 \begin{DoxyCompactList}\small\item\em Returns pointer to step with given number to allow manipulations with step. Don\textquotesingle{}t forget to call \hyperlink{class_interfaces_1_1_i_settings_generator_a7788522bb5d25bfd8b8af430512ec5f5}{Calculate\+Steps()} after making any changes. Step index here is non-\/relative, i.\+e. step = 0 may mean \char`\"{}zero levels\char`\"{}, step = 1 may mean \char`\"{}base levels\char`\"{} and step = 2 is actual first step. \end{DoxyCompactList}\item 
 virtual \hyperlink{class_interfaces_1_1_i_settings_step}{Interfaces\+::\+I\+Settings\+Step} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_generator_a8de5944be5295009b7407772bc9b1b3b}{Get\+Step\+Ptr\+Relative} (uint step)=0
 \begin{DoxyCompactList}\small\item\em As \hyperlink{class_interfaces_1_1_i_settings_generator_af1b65a18c3ade3235715ae2e9cdbcfe0}{Get\+Step\+Ptr()}, but step index is relative, i.\+e. step = 0 means actual first step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a4d30fe2c1b05dcf333bf9074cde59697}\label{class_interfaces_1_1_i_settings_generator_a4d30fe2c1b05dcf333bf9074cde59697}} 
+static const uint \hyperlink{class_interfaces_1_1_i_settings_generator_a4d30fe2c1b05dcf333bf9074cde59697}{Steps\+Number} = 125
+\begin{DoxyCompactList}\small\item\em Steps number = E\+E\+P\+R\+OM Size -\/ 3, i.\+e. 125 in our case. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_a1762ee2d49d5347d39deced532795972}\label{class_interfaces_1_1_i_settings_generator_a1762ee2d49d5347d39deced532795972}} 
+static const uint \hyperlink{class_interfaces_1_1_i_settings_generator_a1762ee2d49d5347d39deced532795972}{Additional\+Steps} = 2
+\begin{DoxyCompactList}\small\item\em Actually we creating two steps more, than given in \hyperlink{class_interfaces_1_1_i_settings_generator_a4aa0307e906c003012aad75101072c65}{Initialize\+Steps\+List()} to store zero levels step and base level step. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_generator_ab9566ce8cb583c2a8029e79c459fee84}\label{class_interfaces_1_1_i_settings_generator_ab9566ce8cb583c2a8029e79c459fee84}} 
+static const uint \hyperlink{class_interfaces_1_1_i_settings_generator_ab9566ce8cb583c2a8029e79c459fee84}{Total\+Steps} = \hyperlink{class_interfaces_1_1_i_settings_generator_a4d30fe2c1b05dcf333bf9074cde59697}{Steps\+Number} + \hyperlink{class_interfaces_1_1_i_settings_generator_a1762ee2d49d5347d39deced532795972}{Additional\+Steps}
+\begin{DoxyCompactList}\small\item\em Total amount of steps. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class, containing all settings steps. It being used to generate settings table, which will be converted to E\+E\+P\+R\+OM data. 
+Interface to contain all settings steps. It being used to generate settings table, which will be converted to E\+E\+P\+R\+OM data. 
 
-Definition at line 32 of file I\+Settings\+Generator.\+hpp.
+Definition at line 31 of file I\+Settings\+Generator.\+hpp.
 
 
 

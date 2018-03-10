@@ -24,6 +24,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <QString>
 #include <Interfaces/IAdcTemperatureConvertor.hpp>
 #include <Interfaces/ISettingsGenerator.hpp>
+#include <Interfaces/IEEPROMGenerator.hpp>
 
 namespace Interfaces
 {
@@ -92,6 +93,12 @@ namespace Interfaces
 			 */
 			virtual Interfaces::ISettingsGenerator* GetSettingsGeneratorPtr() = 0;
 
+			/**
+			 * @brief Export current settings to EEPROM file at given path.
+			 * @param path File, where EEPROM contents will be saved.
+			 */
+			virtual void ExportToEEPROM(QString path) = 0;
+
 		protected:
 			/**
 			 * @brief ADC to temperature convertor.
@@ -99,9 +106,15 @@ namespace Interfaces
 			Interfaces::IAdcTemperatureConvertor* _adc2Temp = nullptr;
 
 			/**
-			* @brief _setgen Settings generator
+			* @brief Settings generator.
 			*/
 			Interfaces::ISettingsGenerator *_setgen = nullptr;
+
+
+			/**
+			 * @brief EEPROM contents generator.
+			 */
+			Interfaces::IEEPROMGenerator *_eepromGen = nullptr;
 	};
 }
 

@@ -45,7 +45,7 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 		/**
 		 * @brief Maximal ADC value.
 		 */
-		static const uint MaxADCValue = 1023;
+		static const int MaxADCValue = 1023;
 
 		/**
 		 * @brief Constructor. Call SetADC2TempConversionFactors() or LoadSettings() after class construction

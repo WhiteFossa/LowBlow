@@ -65,13 +65,14 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_interfaces_1_1_i_settings_generator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Interfaces::ISettingsGenerator Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Class, containing all settings steps. It being used to generate settings table, which will be converted to EEPROM data.  
+<p>Interface to contain all settings steps. It being used to generate settings table, which will be converted to EEPROM data.  
  <a href="class_interfaces_1_1_i_settings_generator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_i_settings_generator_8hpp_source.html">ISettingsGenerator.hpp</a>&gt;</code></p>
@@ -122,11 +123,26 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a8de5944be5295009b7407772bc9b1b3b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_interfaces_1_1_i_settings_step.html">Interfaces::ISettingsStep</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a8de5944be5295009b7407772bc9b1b3b">GetStepPtrRelative</a> (uint step)=0</td></tr>
 <tr class="memdesc:a8de5944be5295009b7407772bc9b1b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">As <a class="el" href="class_interfaces_1_1_i_settings_generator.html#af1b65a18c3ade3235715ae2e9cdbcfe0" title="Returns pointer to step with given number to allow manipulations with step. Don&#39;t forget to call Calc...">GetStepPtr()</a>, but step index is relative, i.e. step = 0 means actual first step.  <a href="#a8de5944be5295009b7407772bc9b1b3b">More...</a><br /></td></tr>
 <tr class="separator:a8de5944be5295009b7407772bc9b1b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a4d30fe2c1b05dcf333bf9074cde59697"><td class="memItemLeft" align="right" valign="top"><a id="a4d30fe2c1b05dcf333bf9074cde59697"></a>
+static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a4d30fe2c1b05dcf333bf9074cde59697">StepsNumber</a> = 125</td></tr>
+<tr class="memdesc:a4d30fe2c1b05dcf333bf9074cde59697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps number = EEPROM Size - 3, i.e. 125 in our case. <br /></td></tr>
+<tr class="separator:a4d30fe2c1b05dcf333bf9074cde59697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1762ee2d49d5347d39deced532795972"><td class="memItemLeft" align="right" valign="top"><a id="a1762ee2d49d5347d39deced532795972"></a>
+static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a1762ee2d49d5347d39deced532795972">AdditionalSteps</a> = 2</td></tr>
+<tr class="memdesc:a1762ee2d49d5347d39deced532795972"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually we creating two steps more, than given in <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a4aa0307e906c003012aad75101072c65" title="Call this method to initialize steps list. It must be called before any other methods. Implementation must be ready to provide the instance of IAdcTemperatureConvertor to steps. ">InitializeStepsList()</a> to store zero levels step and base level step. <br /></td></tr>
+<tr class="separator:a1762ee2d49d5347d39deced532795972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9566ce8cb583c2a8029e79c459fee84"><td class="memItemLeft" align="right" valign="top"><a id="ab9566ce8cb583c2a8029e79c459fee84"></a>
+static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#ab9566ce8cb583c2a8029e79c459fee84">TotalSteps</a> = <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a4d30fe2c1b05dcf333bf9074cde59697">StepsNumber</a> + <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a1762ee2d49d5347d39deced532795972">AdditionalSteps</a></td></tr>
+<tr class="memdesc:ab9566ce8cb583c2a8029e79c459fee84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total amount of steps. <br /></td></tr>
+<tr class="separator:ab9566ce8cb583c2a8029e79c459fee84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class, containing all settings steps. It being used to generate settings table, which will be converted to EEPROM data. </p>
+<div class="textblock"><p>Interface to contain all settings steps. It being used to generate settings table, which will be converted to EEPROM data. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_settings_generator_8hpp_source.html#l00032">32</a> of file <a class="el" href="_i_settings_generator_8hpp_source.html">ISettingsGenerator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_settings_generator_8hpp_source.html#l00031">31</a> of file <a class="el" href="_i_settings_generator_8hpp_source.html">ISettingsGenerator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad088253da57b2ee0b94fe6fd1fb2dfdd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad088253da57b2ee0b94fe6fd1fb2dfdd">&#9670;&nbsp;</a></span>GetBaseRPM()</h2>
@@ -442,7 +458,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 10 2018 17:47:11 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

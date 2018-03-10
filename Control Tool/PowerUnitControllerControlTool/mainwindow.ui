@@ -168,6 +168,8 @@
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
     <addaction name="separator"/>
+    <addaction name="actionExport_to_EEPROM"/>
+    <addaction name="separator"/>
     <addaction name="mw_actionExit"/>
    </widget>
    <widget class="QMenu" name="menuThemperature_to_ADC_Settings">
@@ -241,7 +243,12 @@
   </action>
   <action name="actionNewADC2Temp">
    <property name="text">
-    <string>New</string>
+    <string>&amp;New</string>
+   </property>
+  </action>
+  <action name="actionExport_to_EEPROM">
+   <property name="text">
+    <string>Export to EEPROM</string>
    </property>
   </action>
  </widget>

@@ -19,9 +19,33 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Implementations/EEPROMGenerator.hpp>
 
-QVector<uint> EEPROMGenerator::GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr)
+QVector<uint8_t> EEPROMGenerator::GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr)
 {
-	// TODO: Implement it.
-	return QVector<uint>();
+	uint eepromSize = BaseLevelsSize + Interfaces::ISettingsGenerator::StepsNumber;
+
+	QVector<uint8_t> result;
+
+	result.resize(eepromSize);
+
+	// Base temperature
+	uint16_t baseTemperature = (uint16_t)setGenPtr->GetBaseTemperatureADC();
+	result[BaseTemperatureLSBAddr] = baseTemperature & BaseTemperatureLSBMask;
+	result[BaseTemperatureMSBAddr] = baseTemperature & BaseTemperatureMSBMask;
+
+	// Base RPMs
+	result[BaseRPMsAddr] = (uint8_t)((int)setGenPtr->GetBaseRPM() + BaseRPMsShift);
+
+	// Steps
+	for (uint stepIndex = 0; stepIndex < Interfaces::ISettingsGenerator::StepsNumber; stepIndex ++)
+	{
+		auto step = setGenPtr->GetStepPtrRelative(stepIndex);
+
+		uint8_t adcDelta = (uint8_t)((int)step->GetADCDelta() + ADCDeltaShift) & HalfByteMaskL;
+		uint8_t RPMsDelta = (uint8_t)step->GetRPMDelta() & HalfByteMaskL;
+
+		result[stepIndex + BaseLevelsSize] = (uint8_t)((RPMsDelta << RPMsDeltaLShift) | adcDelta);
+	}
+
+	return result;
 }
 

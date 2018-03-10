@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qsimplegraph',['QSimpleGraph',['../class_fossa_1_1_q_simple_graph_1_1_q_simple_graph.html',1,'Fossa::QSimpleGraph']]]
+  ['newadc2tempdialog',['NewADC2TempDialog',['../class_new_a_d_c2_temp_dialog.html',1,'']]]
 ];

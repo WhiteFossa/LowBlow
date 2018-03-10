@@ -77,7 +77,7 @@ Inheritance diagram for SettingsGenerator:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_settings_generator__inherit__graph.png" border="0" usemap="#_settings_generator_inherit__map" alt="Inheritance graph"/></div>
 <map name="_settings_generator_inherit__map" id="_settings_generator_inherit__map">
-<area shape="rect" id="node2" href="class_interfaces_1_1_i_settings_generator.html" title="Class, containing all settings steps. It being used to generate settings table, which will be convert..." alt="" coords="5,80,203,107"/>
+<area shape="rect" id="node2" href="class_interfaces_1_1_i_settings_generator.html" title="Interface to contain all settings steps. It being used to generate settings table, which will be converted to EEPROM data. " alt="" coords="5,80,223,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -85,7 +85,7 @@ Collaboration diagram for SettingsGenerator:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_settings_generator__coll__graph.png" border="0" usemap="#_settings_generator_coll__map" alt="Collaboration graph"/></div>
 <map name="_settings_generator_coll__map" id="_settings_generator_coll__map">
-<area shape="rect" id="node2" href="class_interfaces_1_1_i_settings_generator.html" title="Class, containing all settings steps. It being used to generate settings table, which will be convert..." alt="" coords="5,80,203,107"/>
+<area shape="rect" id="node2" href="class_interfaces_1_1_i_settings_generator.html" title="Interface to contain all settings steps. It being used to generate settings table, which will be converted to EEPROM data. " alt="" coords="5,80,223,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -132,26 +132,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a157c342983c2943653d10e6e854d3d5e"><td class="memItemLeft" align="right" valign="top"><a id="a157c342983c2943653d10e6e854d3d5e"></a>
-static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings_generator.html#a157c342983c2943653d10e6e854d3d5e">StepsNumber</a> = 125</td></tr>
-<tr class="memdesc:a157c342983c2943653d10e6e854d3d5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps number = EEPROM Size - 3, i.e. 125 in our case. <br /></td></tr>
-<tr class="separator:a157c342983c2943653d10e6e854d3d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8f91fd5fd02a587aba2d217ede43e49"><td class="memItemLeft" align="right" valign="top"><a id="af8f91fd5fd02a587aba2d217ede43e49"></a>
-static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings_generator.html#af8f91fd5fd02a587aba2d217ede43e49">AdditionalSteps</a> = 2</td></tr>
-<tr class="memdesc:af8f91fd5fd02a587aba2d217ede43e49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually we creating two steps more, than given in <a class="el" href="class_settings_generator.html#a84b81d11cb5f83d4066e73a03acfc143" title="Call this method to initialize steps list. It must be called before any other methods. Implementation must be ready to provide the instance of IAdcTemperatureConvertor to steps. ">InitializeStepsList()</a> to store zero levels step and base level step. <br /></td></tr>
-<tr class="separator:af8f91fd5fd02a587aba2d217ede43e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21eb4eb09a0ff27bc530b56d34ed2e0c"><td class="memItemLeft" align="right" valign="top"><a id="a21eb4eb09a0ff27bc530b56d34ed2e0c"></a>
-static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings_generator.html#a21eb4eb09a0ff27bc530b56d34ed2e0c">TotalSteps</a> = <a class="el" href="class_settings_generator.html#a157c342983c2943653d10e6e854d3d5e">StepsNumber</a> + <a class="el" href="class_settings_generator.html#af8f91fd5fd02a587aba2d217ede43e49">AdditionalSteps</a></td></tr>
-<tr class="memdesc:a21eb4eb09a0ff27bc530b56d34ed2e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total steps number. <br /></td></tr>
-<tr class="separator:a21eb4eb09a0ff27bc530b56d34ed2e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45b535223390381aba891c7fa7e7a29f"><td class="memItemLeft" align="right" valign="top"><a id="a45b535223390381aba891c7fa7e7a29f"></a>
-static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings_generator.html#a45b535223390381aba891c7fa7e7a29f">ZeroLevelsStepIndex</a> = 0</td></tr>
-<tr class="memdesc:a45b535223390381aba891c7fa7e7a29f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step with this index stores zero levels. <br /></td></tr>
+<tr class="memitem:a45b535223390381aba891c7fa7e7a29f"><td class="memItemLeft" align="right" valign="top">static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings_generator.html#a45b535223390381aba891c7fa7e7a29f">ZeroLevelsStepIndex</a> = 0</td></tr>
+<tr class="memdesc:a45b535223390381aba891c7fa7e7a29f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total steps number.  <a href="#a45b535223390381aba891c7fa7e7a29f">More...</a><br /></td></tr>
 <tr class="separator:a45b535223390381aba891c7fa7e7a29f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf7db8691db606782959548c0aa4ff8"><td class="memItemLeft" align="right" valign="top"><a id="aecf7db8691db606782959548c0aa4ff8"></a>
 static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings_generator.html#aecf7db8691db606782959548c0aa4ff8">BaseLevelsStepIndex</a> = 1</td></tr>
 <tr class="memdesc:aecf7db8691db606782959548c0aa4ff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step with this index stores base levels. <br /></td></tr>
 <tr class="separator:aecf7db8691db606782959548c0aa4ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_interfaces_1_1_i_settings_generator')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_interfaces_1_1_i_settings_generator.html">Interfaces::ISettingsGenerator</a></td></tr>
+<tr class="memitem:a4d30fe2c1b05dcf333bf9074cde59697 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="memItemLeft" align="right" valign="top"><a id="a4d30fe2c1b05dcf333bf9074cde59697"></a>
+static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a4d30fe2c1b05dcf333bf9074cde59697">StepsNumber</a> = 125</td></tr>
+<tr class="memdesc:a4d30fe2c1b05dcf333bf9074cde59697 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps number = EEPROM Size - 3, i.e. 125 in our case. <br /></td></tr>
+<tr class="separator:a4d30fe2c1b05dcf333bf9074cde59697 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1762ee2d49d5347d39deced532795972 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="memItemLeft" align="right" valign="top"><a id="a1762ee2d49d5347d39deced532795972"></a>
+static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#a1762ee2d49d5347d39deced532795972">AdditionalSteps</a> = 2</td></tr>
+<tr class="memdesc:a1762ee2d49d5347d39deced532795972 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually we creating two steps more, than given in <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a4aa0307e906c003012aad75101072c65" title="Call this method to initialize steps list. It must be called before any other methods. Implementation must be ready to provide the instance of IAdcTemperatureConvertor to steps. ">InitializeStepsList()</a> to store zero levels step and base level step. <br /></td></tr>
+<tr class="separator:a1762ee2d49d5347d39deced532795972 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9566ce8cb583c2a8029e79c459fee84 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="memItemLeft" align="right" valign="top"><a id="ab9566ce8cb583c2a8029e79c459fee84"></a>
+static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_settings_generator.html#ab9566ce8cb583c2a8029e79c459fee84">TotalSteps</a> = <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a4d30fe2c1b05dcf333bf9074cde59697">StepsNumber</a> + <a class="el" href="class_interfaces_1_1_i_settings_generator.html#a1762ee2d49d5347d39deced532795972">AdditionalSteps</a></td></tr>
+<tr class="memdesc:ab9566ce8cb583c2a8029e79c459fee84 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total amount of steps. <br /></td></tr>
+<tr class="separator:ab9566ce8cb583c2a8029e79c459fee84 inherit pub_static_attribs_class_interfaces_1_1_i_settings_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class, being used to generate settings (see Interfaces/ISettingsGenerator for information) </p>
@@ -513,6 +513,34 @@ static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a45b535223390381aba891c7fa7e7a29f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45b535223390381aba891c7fa7e7a29f">&#9670;&nbsp;</a></span>ZeroLevelsStepIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint SettingsGenerator::ZeroLevelsStepIndex = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Total steps number. </p>
+<p>Step with this index stores zero levels. </p>
+
+<p class="definition">Definition at line <a class="el" href="_settings_generator_8hpp_source.html#l00042">42</a> of file <a class="el" href="_settings_generator_8hpp_source.html">SettingsGenerator.hpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Implementations/<a class="el" href="_settings_generator_8hpp_source.html">SettingsGenerator.hpp</a></li>
 <li>Implementations/<a class="el" href="_settings_generator_8cpp_source.html">SettingsGenerator.cpp</a></li>
@@ -520,7 +548,7 @@ static const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Feb 18 2018 21:44:48 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 10 2018 17:47:11 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

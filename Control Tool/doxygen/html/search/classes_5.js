@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['settingsgenerator',['SettingsGenerator',['../class_settings_generator.html',1,'']]],
-  ['settingssaverloader',['SettingsSaverLoader',['../class_settings_saver_loader.html',1,'']]],
-  ['settingsstep',['SettingsStep',['../class_settings_step.html',1,'']]]
+  ['qsimplegraph',['QSimpleGraph',['../class_fossa_1_1_q_simple_graph_1_1_q_simple_graph.html',1,'Fossa::QSimpleGraph']]]
 ];

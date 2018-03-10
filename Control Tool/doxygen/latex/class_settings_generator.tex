@@ -11,20 +11,22 @@ Class, being used to generate settings (see Interfaces/\+I\+Settings\+Generator 
 
 
 
-Inheritance diagram for Settings\+Generator\+:\nopagebreak
+Inheritance diagram for Settings\+Generator\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=228pt]{class_settings_generator__inherit__graph}
+\includegraphics[width=243pt]{class_settings_generator__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Settings\+Generator\+:\nopagebreak
+Collaboration diagram for Settings\+Generator\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=228pt]{class_settings_generator__coll__graph}
+\includegraphics[width=243pt]{class_settings_generator__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -59,18 +61,8 @@ void \hyperlink{class_settings_generator_a7c9c1a7a3928ba3ce0ad110593b97a96}{Calc
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}\label{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}} 
-static const uint \hyperlink{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}{Steps\+Number} = 125
-\begin{DoxyCompactList}\small\item\em Steps number = E\+E\+P\+R\+OM Size -\/ 3, i.\+e. 125 in our case. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}\label{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}} 
-static const uint \hyperlink{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}{Additional\+Steps} = 2
-\begin{DoxyCompactList}\small\item\em Actually we creating two steps more, than given in \hyperlink{class_settings_generator_a84b81d11cb5f83d4066e73a03acfc143}{Initialize\+Steps\+List()} to store zero levels step and base level step. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_settings_generator_a21eb4eb09a0ff27bc530b56d34ed2e0c}\label{class_settings_generator_a21eb4eb09a0ff27bc530b56d34ed2e0c}} 
-static const uint \hyperlink{class_settings_generator_a21eb4eb09a0ff27bc530b56d34ed2e0c}{Total\+Steps} = \hyperlink{class_settings_generator_a157c342983c2943653d10e6e854d3d5e}{Steps\+Number} + \hyperlink{class_settings_generator_af8f91fd5fd02a587aba2d217ede43e49}{Additional\+Steps}
-\begin{DoxyCompactList}\small\item\em Total steps number. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}\label{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}} 
 static const uint \hyperlink{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}{Zero\+Levels\+Step\+Index} = 0
-\begin{DoxyCompactList}\small\item\em Step with this index stores zero levels. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Total steps number. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_settings_generator_aecf7db8691db606782959548c0aa4ff8}\label{class_settings_generator_aecf7db8691db606782959548c0aa4ff8}} 
 static const uint \hyperlink{class_settings_generator_aecf7db8691db606782959548c0aa4ff8}{Base\+Levels\+Step\+Index} = 1
 \begin{DoxyCompactList}\small\item\em Step with this index stores base levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -312,6 +304,23 @@ Implements \hyperlink{class_interfaces_1_1_i_settings_generator_af681d36295e95bd
 
 
 Definition at line 56 of file Settings\+Generator.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}\label{class_settings_generator_a45b535223390381aba891c7fa7e7a29f}} 
+\index{Settings\+Generator@{Settings\+Generator}!Zero\+Levels\+Step\+Index@{Zero\+Levels\+Step\+Index}}
+\index{Zero\+Levels\+Step\+Index@{Zero\+Levels\+Step\+Index}!Settings\+Generator@{Settings\+Generator}}
+\subsubsection{\texorpdfstring{Zero\+Levels\+Step\+Index}{ZeroLevelsStepIndex}}
+{\footnotesize\ttfamily const uint Settings\+Generator\+::\+Zero\+Levels\+Step\+Index = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Total steps number. 
+
+Step with this index stores zero levels. 
+
+Definition at line 42 of file Settings\+Generator.\+hpp.
 
 
 

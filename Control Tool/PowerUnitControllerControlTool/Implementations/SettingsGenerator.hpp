@@ -72,6 +72,7 @@ class SettingsGenerator : public Interfaces::ISettingsGenerator
 
 		Interfaces::ISettingsStep* GetStepPtr(uint step);
 		Interfaces::ISettingsStep* GetStepPtrRelative(uint step);
+
 	protected:
 
 	private:

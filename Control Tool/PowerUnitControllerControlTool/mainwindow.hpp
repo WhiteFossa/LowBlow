@@ -149,6 +149,11 @@ public slots:
 	 */
 	void MwSlotMarkAsModified();
 
+	/**
+	 * @brief Call it to export current settings to EEPROM.
+	 */
+	void MwSlotExportToEEPROM();
+
 
 /* Signals */
 signals:
@@ -274,8 +279,9 @@ private:
 
 	/**
 	 * @brief Checks if current file modified, if so - shows request to save and saves if user approves.
+	 * @param action Text, representing action. For example "create new file".
 	 */
-	void CheckDoSaveNeeded();
+	void CheckDoSaveNeeded(QString action);
 
 	/**
 	 * @brief Call this method to update base temperature (for example when user changed it). It doesn't mark file as modified.

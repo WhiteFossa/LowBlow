@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(ui->actionSave_As, SIGNAL(triggered(bool)), this, SLOT(MwSlotSaveFileAs()));
 	QObject::connect(ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(MwSlotLoadFile()));
 	QObject::connect(this, SIGNAL(MwSignalFileModified()), this, SLOT(MwSlotMarkAsModified()));
+	QObject::connect(ui->actionExport_to_EEPROM, SIGNAL(triggered(bool)), this, SLOT(MwSlotExportToEEPROM()));
 	ConnectUISlots(true);
 
 	// Initializing status bar
@@ -411,6 +412,7 @@ void MainWindow::LockUnlockInterface(bool isUnlock)
 {
 	ui->actionSave->setEnabled(isUnlock);
 	ui->actionSave_As->setEnabled(isUnlock);
+	ui->actionExport_to_EEPROM->setEnabled(isUnlock);
 	ui->mw_basetemperature->setEnabled(isUnlock);
 	ui->mw_baseRPM->setEnabled(isUnlock);
 	_graph->setEnabled(isUnlock);
@@ -420,7 +422,7 @@ void MainWindow::LockUnlockInterface(bool isUnlock)
 void MainWindow::MwSlotCreateFile()
 {
 	// Do current file saved?
-	CheckDoSaveNeeded();
+	CheckDoSaveNeeded(QObject::tr("creating new settings file"));
 
 	// Settings filename
 	QString newFilePath = QFileDialog::getSaveFileName(this, QObject::tr("New settings file:"));
@@ -447,7 +449,7 @@ void MainWindow::MwSlotCreateFile()
 void MainWindow::MwSlotLoadFile()
 {
 	// Do save needed?
-	CheckDoSaveNeeded();
+	CheckDoSaveNeeded(QObject::tr("before loading new settings file"));
 
 	ConnectUISlots(false); // To avoid marking file as modified
 
@@ -516,15 +518,17 @@ void MainWindow::InitializeAfterFileChanged()
 	LockUnlockInterface(true);
 }
 
-void MainWindow::CheckDoSaveNeeded()
+void MainWindow::CheckDoSaveNeeded(QString action)
 {
 if (_settingsSaverLoader->IsModified())
 	{
 		// Saving if needed
-		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Save changes?"), QObject::tr("Save changes before creating new settings file?"),
+		if (QMessageBox::Yes == QMessageBox::question(this, QObject::tr("Save changes?"), QObject::tr("Save changes before %1?").arg(action),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
 		{
 			_settingsSaverLoader->Save();
+
+			UpdateDisplayedFileName();
 		}
 	}
 }
@@ -533,6 +537,24 @@ void MainWindow::MwSlotMarkAsModified()
 {
 	_settingsSaverLoader->MarkAsModified();
 	UpdateDisplayedFileName();
+}
+
+void MainWindow::MwSlotExportToEEPROM()
+{
+	// Do save needed?
+	CheckDoSaveNeeded(QObject::tr("exporting settings to EEPROM"));
+
+	// Showing save dialogue
+	QFileDialog* saveDialog = new QFileDialog(this, Qt::Dialog);
+	QString extFilter = QObject::tr("Intel HEX (*.hex)");
+	QString savePath = saveDialog->getSaveFileName(this, QObject::tr("Export EEPROM contents into file:"), saveDialog->directory().absolutePath(), extFilter, &extFilter);
+
+	if (savePath == "")
+	{
+		return;
+	}
+
+	_settingsSaverLoader->ExportToEEPROM(savePath);
 }
 
 void MainWindow::ConnectUISlots(bool isConnect)
