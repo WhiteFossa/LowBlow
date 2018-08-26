@@ -226,7 +226,6 @@ void SettingsSaverLoader::ExportToEEPROM(QString path)
 	QVector<uint8_t> eepromContents = _eepromGen->GetEEPROMContents(_setgen);
 
 	// TODO: Convert to Intel HEX here
-	qWarning() << path;
 }
 
 SettingsSaverLoader::~SettingsSaverLoader()
