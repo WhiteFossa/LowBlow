@@ -59,17 +59,11 @@ namespace Fossa
 			update();
 		}
 
-		void QSimpleGraph::paintEvent(QPaintEvent *event)
+		void QSimpleGraph::resizeEvent(QResizeEvent *event)
 		{
 			Q_UNUSED(event);
 
-			// Setting up painter
-			QPainter painter(this);
-			_painter = &painter;
-
-			painter.setRenderHint(QPainter::Antialiasing);
-
-			// Drawing outer rectangle
+			// Outer rectangle position
 			_graphBorder.setTop(_outerTopSpacing);
 			_graphBorder.setLeft(_outerLeftSpacing);
 			_graphBorder.setBottom(height() - _outerBottomSpacing);
@@ -79,9 +73,20 @@ namespace Fossa
 			_graphAreaWidth = _graphBorder.width();
 			_graphAreaHeight = _graphBorder.height();
 
-			// Scaling factors. TODO: Move to resize event
+			// Scaling factors.
 			RecalculateXScalingFactor();
 			RecalculateYScalingFactor();
+		}
+
+		void QSimpleGraph::paintEvent(QPaintEvent *event)
+		{
+			Q_UNUSED(event);
+
+			// Setting up painter
+			QPainter painter(this);
+			_painter = &painter;
+
+			painter.setRenderHint(QPainter::Antialiasing);
 
 			// Foreground pen
 			QPen fgPen(palette().color(QPalette::WindowText));

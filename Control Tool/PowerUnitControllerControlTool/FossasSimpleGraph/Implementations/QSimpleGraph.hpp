@@ -101,6 +101,12 @@ namespace Fossa
 	void paintEvent(QPaintEvent *event);
 
 	/**
+	 * @brief Called when widget resized.
+	 * @param event Pointer to resize event.
+	 */
+	void resizeEvent(QResizeEvent *event);
+
+	/**
 	 * @brief Called when mouse is being moved.
 	 * @param event Mouse move parameters.
 	 */
