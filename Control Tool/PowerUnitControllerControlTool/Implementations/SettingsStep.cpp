@@ -80,7 +80,7 @@ uint SettingsStep::GetADCDelta()
 
 double SettingsStep::GetTempDelta()
 {
-	return this->conv->ADC2TEMP(this->_ADCDelta);
+	return this->conv->GetTempDelta(0, this->_ADCDelta);
 }
 
 void SettingsStep::SetRPMDelta(uint delta, bool skipLimitsCheck)

@@ -57,6 +57,8 @@ class AdcTemperatureConvertor : public Interfaces::IAdcTemperatureConvertor
 
 		uint TEMP2ADC(double temp);
 
+		double GetTempDelta(uint adc1, uint adc2);
+
 		void SetADC2TempConversionFactors(double _a, double _b);
 
 		void GetADC2TempConversionFactors(double *_a, double *_b);

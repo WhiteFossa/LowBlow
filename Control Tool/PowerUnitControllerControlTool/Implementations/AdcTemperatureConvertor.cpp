@@ -49,6 +49,11 @@ uint AdcTemperatureConvertor::TEMP2ADC(double temp)
 	return (uint)pre_result;
 }
 
+double AdcTemperatureConvertor::GetTempDelta(uint adc1, uint adc2)
+{
+	return ADC2TEMP(adc2) - ADC2TEMP(adc1);
+}
+
 void AdcTemperatureConvertor::SetADC2TempConversionFactors(double a, double b)
 {
 	_a = a;

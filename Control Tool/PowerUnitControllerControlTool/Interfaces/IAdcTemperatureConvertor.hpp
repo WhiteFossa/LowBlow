@@ -51,6 +51,12 @@ namespace Interfaces
 			virtual uint TEMP2ADC(double temp) = 0;
 
 			/**
+			 * @brief Returns delta (in celsius) for two given ADC measurements. Delta is positive it adc2 means higher temperature then adc1.
+			 * @return Delta in celsius.
+			 */
+			virtual double GetTempDelta(uint adc1, uint adc2) = 0;
+
+			/**
 			 * @brief Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement.
 			 * Reverse conversion factors (i.e. Temperature to ADC will be calculated automatically).
 			 * @param a Tc = a * ADC + b
