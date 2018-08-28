@@ -27,13 +27,13 @@ NewADC2TempDialog::NewADC2TempDialog(QWidget *parent) :
 	ui->setupUi(this);
 
 	/* No path specified */
-	this->_filepath = "";
-	this->SlotCheckRequirements();
+	_filepath = "";
+	SlotCheckRequirements();
 
-	QObject::connect(this->ui->Cancel, SIGNAL(clicked()), this, SLOT(reject()));
-	QObject::connect(this->ui->Create, SIGNAL(clicked()), this, SLOT(SlotSaveSettings()));
-	QObject::connect(this->ui->tbSelectFile, SIGNAL(clicked()), this, SLOT(SlotSelectFile()));
-	QObject::connect(this->ui->lnDescription, SIGNAL(textChanged(QString)), this, SLOT(SlotCheckRequirements()));
+	QObject::connect(ui->Cancel, SIGNAL(clicked()), this, SLOT(reject()));
+	QObject::connect(ui->Create, SIGNAL(clicked()), this, SLOT(SlotSaveSettings()));
+	QObject::connect(ui->tbSelectFile, SIGNAL(clicked()), this, SLOT(SlotSelectFile()));
+	QObject::connect(ui->lnDescription, SIGNAL(textChanged(QString)), this, SLOT(SlotCheckRequirements()));
 }
 
 NewADC2TempDialog::~NewADC2TempDialog()
@@ -54,30 +54,30 @@ void NewADC2TempDialog::changeEvent(QEvent *e)
 }
 
 /**
- * @brief Call it to specify target file (this->filepath)
+ * @brief Call it to specify target file (filepath)
  */
 void NewADC2TempDialog::SlotSelectFile()
 {
-	this->_filepath = QFileDialog::getSaveFileName(this, QObject::tr("Save ADC to Temperature settings"));
-	this->ui->lnFilePath->setText(this->_filepath);
+	_filepath = QFileDialog::getSaveFileName(this, QObject::tr("Save ADC to Temperature settings"));
+	ui->lnFilePath->setText(_filepath);
 
-	this->SlotCheckRequirements();
+	SlotCheckRequirements();
 }
 
 /**
- * @brief Call it to save settings into new this->filepath file
+ * @brief Call it to save settings into new filepath file
  */
 void NewADC2TempDialog::SlotSaveSettings()
 {
 	Interfaces::IAdcTemperatureConvertor *conv = new AdcTemperatureConvertor();
-	conv->SetDescription(this->ui->lnDescription->text());
-	conv->SetADC2TempConversionFactors(this->ui->sbMul->value(), this->ui->sbAdd->value());
+	conv->SetDescription(ui->lnDescription->text());
+	conv->SetADC2TempConversionFactors(ui->sbMul->value(), ui->sbAdd->value());
 
-	conv->SaveSettings(this->_filepath);
+	conv->SaveSettings(_filepath);
 
 	SafeDelete(conv);
 
-	this->accept();
+	accept();
 }
 
 /**
@@ -85,12 +85,12 @@ void NewADC2TempDialog::SlotSaveSettings()
  */
 void NewADC2TempDialog::SlotCheckRequirements()
 {
-	if ("" == this->_filepath || "" == this->ui->lnDescription->text())
+	if ("" == _filepath || "" == ui->lnDescription->text())
 	{
-		this->ui->Create->setEnabled(false);
+		ui->Create->setEnabled(false);
 	}
 	else
 	{
-		this->ui->Create->setEnabled(true);
+		ui->Create->setEnabled(true);
 	}
 }

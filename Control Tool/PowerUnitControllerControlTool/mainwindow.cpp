@@ -47,11 +47,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	// Initializing status bar
 	// ADC->Temperature conversion info
 	_mwConversionStatus = new QLabel(this);
-	ui->mw_status->addPermanentWidget(this->_mwConversionStatus);
+	ui->mw_status->addPermanentWidget(_mwConversionStatus);
 
 	// Current filename
 	_mwFileName = new QLabel(this);
-	ui->mw_status->addPermanentWidget(this->_mwFileName);
+	ui->mw_status->addPermanentWidget(_mwFileName);
 
 	// Initializing step table (UI)
 	ui->mw_StepsTable->setColumnCount(Interfaces::ISettingsGenerator::TotalSteps);

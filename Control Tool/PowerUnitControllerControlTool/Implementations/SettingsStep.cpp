@@ -21,38 +21,38 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 SettingsStep::SettingsStep(Interfaces::IAdcTemperatureConvertor *conv)
 {
-	this->conv = conv;
+	conv = conv;
 
-	this->_RPMDelta = 0;
-	this->_ADCDelta = MIN_ADC_DELTA;
-	this->_CurrentADC = 0;
-	this->_CurrentRPM = 0;
+	_RPMDelta = 0;
+	_ADCDelta = MIN_ADC_DELTA;
+	_CurrentADC = 0;
+	_CurrentRPM = 0;
 }
 
 void SettingsStep::CalculatePrimaryValues(uint previous_adc, uint previous_rpm)
 {
-	this->_CurrentADC = previous_adc + this->_ADCDelta;
-	this->_CurrentRPM = previous_rpm + this->_RPMDelta;
+	_CurrentADC = previous_adc + _ADCDelta;
+	_CurrentRPM = previous_rpm + _RPMDelta;
 
-	if (this->_CurrentADC > AdcTemperatureConvertor::MaxADCValue)
+	if (_CurrentADC > AdcTemperatureConvertor::MaxADCValue)
 	{
-		this->_CurrentADC = AdcTemperatureConvertor::MaxADCValue;
+		_CurrentADC = AdcTemperatureConvertor::MaxADCValue;
 	}
 
-	if (this->_CurrentRPM > MAX_RPM)
+	if (_CurrentRPM > MAX_RPM)
 	{
-		this->_CurrentRPM = MAX_RPM;
+		_CurrentRPM = MAX_RPM;
 	}
 }
 
 QString SettingsStep::GetCurrentRPMPercentsString()
 {
-	if (0 == this->_CurrentRPM)
+	if (0 == _CurrentRPM)
 	{
 		return QObject::tr("Off");
 	}
 
-	return QString::number(this->GetCurrentRPMPercents(), 'f', 2);
+	return QString::number(GetCurrentRPMPercents(), 'f', 2);
 }
 
 void SettingsStep::SetADCDelta(uint delta, bool skipLimitsCheck)
@@ -69,18 +69,18 @@ void SettingsStep::SetADCDelta(uint delta, bool skipLimitsCheck)
 		}
 	}
 
-	this->_ADCDelta = delta;
+	_ADCDelta = delta;
 
 }
 
 uint SettingsStep::GetADCDelta()
 {
-	return this->_ADCDelta;
+	return _ADCDelta;
 }
 
 double SettingsStep::GetTempDelta()
 {
-	return this->conv->GetTempDelta(0, this->_ADCDelta);
+	return conv->GetTempDelta(0, _ADCDelta);
 }
 
 void SettingsStep::SetRPMDelta(uint delta, bool skipLimitsCheck)
@@ -93,42 +93,42 @@ void SettingsStep::SetRPMDelta(uint delta, bool skipLimitsCheck)
 		}
 	}
 
-	this->_RPMDelta = delta;
+	_RPMDelta = delta;
 
 }
 
 uint SettingsStep::GetRPMDelta()
 {
-	return this->_RPMDelta;
+	return _RPMDelta;
 }
 
 uint SettingsStep::GetCurrentADC()
 {
-	return this->_CurrentADC;
+	return _CurrentADC;
 }
 
 uint SettingsStep::GetCurrentRPM()
 {
-	return this->_CurrentRPM;
+	return _CurrentRPM;
 }
 
 double SettingsStep::GetRPMDeltaPercents()
 {
-	return this->_RPMDelta / RPM_STEPS_FOR_1_PERCENT;
+	return _RPMDelta / RPM_STEPS_FOR_1_PERCENT;
 }
 
 double SettingsStep::GetCurrentTemperature()
 {
-	return this->conv->ADC2TEMP(this->_CurrentADC);
+	return conv->ADC2TEMP(_CurrentADC);
 }
 
 double SettingsStep::GetCurrentRPMPercents()
 {
-	if (0 == this->_CurrentRPM)
+	if (0 == _CurrentRPM)
 	{
 		return 0;
 	}
 
-	return (this->_CurrentRPM - 1) / RPM_STEPS_FOR_1_PERCENT;
+	return (_CurrentRPM - 1) / RPM_STEPS_FOR_1_PERCENT;
 }
 
