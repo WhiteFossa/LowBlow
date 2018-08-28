@@ -266,6 +266,8 @@ SettingsSaverLoader::~SettingsSaverLoader()
  */
 void ihex_flush_buffer(struct ihex_state *ihex, char *buffer, char *eptr)
 {
+	Q_UNUSED(ihex);
+
 	auto size = eptr - buffer;
 	SettingsSaverLoader::EEPROMBuffer.append(buffer, size);
 }
