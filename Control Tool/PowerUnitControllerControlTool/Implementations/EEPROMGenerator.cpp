@@ -19,11 +19,11 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Implementations/EEPROMGenerator.hpp>
 
-QVector<uint8_t> EEPROMGenerator::GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr)
+QByteArray EEPROMGenerator::GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr)
 {
 	uint eepromSize = BaseLevelsSize + Interfaces::ISettingsGenerator::StepsNumber;
 
-	QVector<uint8_t> result;
+	QByteArray result;
 
 	result.resize(eepromSize);
 

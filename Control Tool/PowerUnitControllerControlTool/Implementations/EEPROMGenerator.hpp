@@ -32,7 +32,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 class EEPROMGenerator : public Interfaces::IEEPROMGenerator
 {
 	public:
-		QVector<uint8_t> GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr);
+		QByteArray GetEEPROMContents(Interfaces::ISettingsGenerator* setGenPtr);
 
 	protected:
 

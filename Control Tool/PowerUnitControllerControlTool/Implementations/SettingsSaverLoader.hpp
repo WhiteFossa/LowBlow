@@ -30,6 +30,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 #include <Implementations/EEPROMGenerator.hpp>
 #include <XmlHelper.hpp>
 #include <QMessageBox>
+#include <Ihex/kk_ihex_write.h>
 
 /**
  * @brief Class to save and load settings to XML.
@@ -58,6 +59,11 @@ class SettingsSaverLoader : public Interfaces::ISettingsSaverLoader
 		Interfaces::IAdcTemperatureConvertor* GetADC2TempConvertorPtr();
 		Interfaces::ISettingsGenerator* GetSettingsGeneratorPtr();
 		void ExportToEEPROM(QString path);
+
+		/**
+		 * @brief Binary EEPROM data will be stored here.
+		 */
+		static QByteArray EEPROMBuffer;
 
 	protected:
 

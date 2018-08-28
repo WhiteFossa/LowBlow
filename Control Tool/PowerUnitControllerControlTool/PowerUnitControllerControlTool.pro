@@ -22,7 +22,8 @@ SOURCES += main.cpp\
 		Implementations/SettingsSaverLoader.cpp \
 		Auxiliary.cpp \
 		XmlHelper.cpp \
-		Implementations/EEPROMGenerator.cpp
+		Implementations/EEPROMGenerator.cpp \
+		Ihex/kk_ihex_write.c
 
 HEADERS  += mainwindow.hpp \
 		Interfaces/IAdcTemperatureConvertor.hpp \
@@ -39,7 +40,13 @@ HEADERS  += mainwindow.hpp \
 		Implementations/SettingsSaverLoader.hpp \
 		XmlHelper.hpp \
 		Interfaces/IEEPROMGenerator.hpp \
-		Implementations/EEPROMGenerator.hpp
+		Implementations/EEPROMGenerator.hpp \
+		Ihex/kk_ihex.h \
+		Ihex/kk_ihex_write.h
 
 FORMS    += mainwindow.ui \
 		NewADC2TempDialog.ui
+
+DISTFILES += \
+    Ihex/LICENSE \
+    Ihex/URL.txt

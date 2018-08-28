@@ -19,6 +19,8 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Implementations/SettingsSaverLoader.hpp>
 
+QByteArray SettingsSaverLoader::EEPROMBuffer;
+
 SettingsSaverLoader::SettingsSaverLoader()
 {
 	_adc2Temp = new AdcTemperatureConvertor();
@@ -223,9 +225,28 @@ Interfaces::ISettingsGenerator* SettingsSaverLoader::GetSettingsGeneratorPtr()
 
 void SettingsSaverLoader::ExportToEEPROM(QString path)
 {
-	QVector<uint8_t> eepromContents = _eepromGen->GetEEPROMContents(_setgen);
+	auto eepromContents = _eepromGen->GetEEPROMContents(_setgen);
 
-	// TODO: Convert to Intel HEX here
+	EEPROMBuffer.clear();
+
+	// Generating iHEX
+	struct ihex_state ihex;
+	ihex_init(&ihex);
+	ihex_write_at_address(&ihex, 0); // Start address
+	ihex_write_bytes(&ihex, eepromContents.constData(), eepromContents.count());
+	ihex_end_write(&ihex);
+
+	// Writing to file
+	QFile *file = new QFile(path);
+	if (!file->open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+	{
+		SafeDelete(file);
+		throw std::runtime_error(QString(QObject::tr("Cannot open file \"%1\" for writing.")).arg(path).toStdString());
+	}
+
+	file->write(EEPROMBuffer);
+	file->close();
+	SafeDelete(file);
 }
 
 SettingsSaverLoader::~SettingsSaverLoader()
@@ -234,3 +255,14 @@ SettingsSaverLoader::~SettingsSaverLoader()
 	SafeDelete(_setgen);
 	SafeDelete(_adc2Temp);
 }
+
+/**
+ * @brief ihex_flush_buffer Callback function to store iHEX file data.
+ */
+void ihex_flush_buffer(struct ihex_state *ihex, char *buffer, char *eptr)
+{
+	auto size = eptr - buffer;
+	//*eptr = '\0'; // Adding 0-termination
+	SettingsSaverLoader::EEPROMBuffer.append(buffer, size);
+}
+
