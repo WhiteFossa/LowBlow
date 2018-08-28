@@ -95,7 +95,7 @@ void SettingsGenerator::CalculateSteps()
 	// Zero levels step
 	Interfaces::ISettingsStep *stepPtr = _steps[ZeroLevelsStepIndex];
 
-	stepPtr->SetADCDelta(0);
+	stepPtr->SetADCDelta(0, true);
 	stepPtr->SetRPMDelta(0);
 	stepPtr->CalculatePrimaryValues(0, 0);
 

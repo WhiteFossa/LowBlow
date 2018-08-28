@@ -258,7 +258,13 @@ void MainWindow::InitializeStepsTableColumn(uint col)
 	}
 
 	// Overriding ranges
-	if (SettingsGenerator::BaseLevelsStepIndex == col)
+	if (SettingsGenerator::ZeroLevelsStepIndex == col)
+	{
+		// Zero step, always have zeros
+		_ADCDeltaSpinboxes[col]->setRange(0, 0);
+		_RPMDeltaSpinboxes[col]->setRange(0, 0);
+	}
+	else if (SettingsGenerator::BaseLevelsStepIndex == col)
 	{
 		// Base step, it have wide range
 		_ADCDeltaSpinboxes[col]->setRange(0, AdcTemperatureConvertor::MaxADCValue);
@@ -320,7 +326,7 @@ void MainWindow::MwSlotRPMDeltaChanged(uint StepNumber, uint NewDelta)
 	setgen->GetStepPtr(StepNumber)->SetRPMDelta(NewDelta);
 	setgen->CalculateSteps();
 
-// Marking file as modified
+	// Marking file as modified
 	emit MwSignalFileModified();
 
 	// Actualizing UI steps table

@@ -244,7 +244,12 @@ void SettingsSaverLoader::ExportToEEPROM(QString path)
 		throw std::runtime_error(QString(QObject::tr("Cannot open file \"%1\" for writing.")).arg(path).toStdString());
 	}
 
-	file->write(EEPROMBuffer);
+	if (file->write(EEPROMBuffer) != EEPROMBuffer.count())
+	{
+		file->close();
+		SafeDelete(file);
+		throw std::runtime_error(QString(QObject::tr("Error during write to \"%1\".")).arg(path).toStdString());
+	}
 	file->close();
 	SafeDelete(file);
 }
@@ -262,7 +267,6 @@ SettingsSaverLoader::~SettingsSaverLoader()
 void ihex_flush_buffer(struct ihex_state *ihex, char *buffer, char *eptr)
 {
 	auto size = eptr - buffer;
-	//*eptr = '\0'; // Adding 0-termination
 	SettingsSaverLoader::EEPROMBuffer.append(buffer, size);
 }
 
