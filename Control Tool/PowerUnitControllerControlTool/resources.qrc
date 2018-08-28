@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/lowblow">
+        <file>LowBlow.png</file>
+    </qresource>
+</RCC>

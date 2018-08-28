@@ -50,3 +50,6 @@ FORMS    += mainwindow.ui \
 DISTFILES += \
     Ihex/LICENSE \
     Ihex/URL.txt
+
+RESOURCES += \
+    resources.qrc

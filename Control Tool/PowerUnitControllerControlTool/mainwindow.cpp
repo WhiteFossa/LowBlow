@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	// Setting icon
+	setWindowIcon(QIcon(":/lowblow/LowBlow.png"));
+
 	// Saver/loader
 	_settingsSaverLoader = new SettingsSaverLoader();
 
@@ -345,7 +348,7 @@ void MainWindow::MwSlotUpdateStepsTable()
 
 	// Removing old points from graph
 	_graph->ClearAllPoints();
-	_graph->SetMinXValue(0); // TODO: Fix
+	_graph->SetMinXValue(0);
 	_graph->SetMaxXValue(0);
 	_graph->SetMinYValue(0);
 	_graph->SetMaxYValue(0);
