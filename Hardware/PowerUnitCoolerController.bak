@@ -268,23 +268,23 @@ $EndComp
 $Comp
 L CONN_01X03 P4
 U 1 1 56A2C9DB
-P 8520 2920
-F 0 "P4" H 8520 3120 50  0000 C CNN
-F 1 "Cooler" V 8620 2920 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 8520 2920 60  0001 C CNN
-F 3 "" H 8520 2920 60  0000 C CNN
-	1    8520 2920
+P 7990 2720
+F 0 "P4" H 7990 2920 50  0000 C CNN
+F 1 "Cooler" V 8090 2720 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 7990 2720 60  0001 C CNN
+F 3 "" H 7990 2720 60  0000 C CNN
+	1    7990 2720
 	1    0    0    1   
 $EndComp
 $Comp
 L GND #PWR010
 U 1 1 56A2D4A4
-P 8260 3120
-F 0 "#PWR010" H 8260 2870 50  0001 C CNN
-F 1 "GND" H 8260 2970 50  0000 C CNN
-F 2 "" H 8260 3120 60  0000 C CNN
-F 3 "" H 8260 3120 60  0000 C CNN
-	1    8260 3120
+P 7730 2920
+F 0 "#PWR010" H 7730 2670 50  0001 C CNN
+F 1 "GND" H 7730 2770 50  0000 C CNN
+F 2 "" H 7730 2920 60  0000 C CNN
+F 3 "" H 7730 2920 60  0000 C CNN
+	1    7730 2920
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -374,11 +374,11 @@ F 3 "" H 1860 4160 60  0000 C CNN
 $EndComp
 Text GLabel 5390 2360 1    60   Input ~ 0
 +5V
-Text Notes 8980 2850 2    60   ~ 0
+Text Notes 8450 2650 2    60   ~ 0
 Sensor
-Text Notes 8940 2960 2    60   ~ 0
+Text Notes 8410 2760 2    60   ~ 0
 Power
-Text Notes 8860 3070 2    60   ~ 0
+Text Notes 8330 2870 2    60   ~ 0
 GND
 Text Notes 1310 1750 2    60   ~ 0
 +12V
@@ -543,9 +543,9 @@ Connection ~ 6180 2020
 Wire Wire Line
 	6180 1500 6180 1650
 Wire Wire Line
-	8260 3120 8260 3020
+	7730 2920 7730 2820
 Wire Wire Line
-	8260 3020 8320 3020
+	7730 2820 7790 2820
 Connection ~ 6940 1500
 Connection ~ 3520 1710
 Wire Wire Line
@@ -591,9 +591,7 @@ Wire Wire Line
 Wire Wire Line
 	4720 3060 5390 3060
 Wire Wire Line
-	7590 2820 8320 2820
-Wire Wire Line
-	7590 2820 7590 3340
+	7590 2620 7590 3340
 Connection ~ 5390 3060
 Wire Wire Line
 	1630 1710 2380 1710
@@ -673,6 +671,9 @@ Wire Wire Line
 Wire Wire Line
 	7330 2770 7330 2720
 Wire Wire Line
-	7330 2720 7040 2720
+	7040 2720 7790 2720
 Connection ~ 7040 2720
+Connection ~ 7330 2720
+Wire Wire Line
+	7590 2620 7790 2620
 $EndSCHEMATC

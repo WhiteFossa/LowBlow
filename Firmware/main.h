@@ -55,22 +55,28 @@
  *
  * We have 128 bytes of EEPROM
  *
- * First 2 bytes (word) - ADC base level (ABL), in ADC code. Temperature values are relative to this base value.
+ * First 2 bytes (word) - ADC base level (ABL) AKA base temperature, in ADC code. Temperature values are relative to this base value.
  * MN_LOOKUP_ABL_ADDRESS points to EEPROM address of ABL.
+ *
+ * Then - base RPMs, 1 byte, i.e. RPMs at base temperature. Obviously it can't be "off", so actual base RPMs is this value + MN_BRPM_INCREMENT.
+ * MN_LOOKUP_BRPM_ADDRESS points to it.
  *
  * Then, temperature/RPM lookup table follows. Each lookup packed into 1 byte as follow:
  * RRRRTTTT, where RRRR is 4-bit RPM delta, and TTTT is 4-bit temperature delta.
+ *
+ * Temperature delta can't be 0, so actually we have TTTT+1, i.e. 0000 means 1.
  *
  * MN_LOOKUP_FIRST_VALUE_ADDRESS points to EEPROM address of the first lookup value.
  *
  * When looking up for RPM for given temperature the next algorithm is used:
  * 1) Declare RPM and Temperature variables;
- * 2) RPM = 0, Temperature = ABL (ADC base level);
- * 3) EEPROM address points to the first lookup table byte;
- * 4) If measured temperature <= Temperature, then return RPM and exit;
- * 5) Read lookup byte, parse it, RPM += RPM delta; Temperature += Temperature delta;
- * 6) Increment EEPROM address;
- * 7) Goto 4.
+ * 2) If temperature < ABL, then RPM = 0 and exit;
+ * 3) RPM = Base RPM, Temperature = ABL (ADC base level);
+ * 4) EEPROM address points to the first lookup table byte;
+ * 5) If measured temperature <= Temperature, then return RPM and exit;
+ * 6) Read lookup byte, parse it, RPM += RPM delta; Temperature += Temperature delta + MN_LOOKUP_TEMPERATURE_INCREMENT;
+ * 7) Increment EEPROM address;
+ * 8) Goto 5.
  *
  * Temperature here is the ADC value, and RPM is the argument of mn_set_rpm_in_percents() function.
  */
@@ -116,9 +122,29 @@
 #define MN_LOOKUP_ABL_ADDRESS 0x00U
 
 /**
+ * EEPROM address of base RPMs.
+ */
+#define MN_LOOKUP_BRPM_ADDRESS 0x02U
+
+/**
  * EEPROM address of the first temperature to RPM lookup value.
  */
-#define MN_LOOKUP_FIRST_VALUE_ADDRESS 0x02U
+#define MN_LOOKUP_FIRST_VALUE_ADDRESS 0x03U
+
+/**
+ * Actual base RMPs is value at EEPROM[MN_LOOKUP_BRPM_ADDRESS] + this value.
+ */
+#define MN_BRPM_INCREMENT 0x01U
+
+/**
+ * Full throttle for cooler. Maximal value for mn_set_rpm_in_percents().
+ */
+#define MN_FULL_THROTTLE 0x100U
+
+/**
+ * Actual temperature increment per step is value from EEPROM low halfbyte + this value.
+ */
+#define MN_LOOKUP_TEMPERATURE_INCREMENT 0x01U
 
 
 /* End of constants */

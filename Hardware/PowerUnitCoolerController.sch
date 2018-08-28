@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:lm1117
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -29,6 +28,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:lm1117
 LIBS:fossa library
 LIBS:PowerUnitCoolerController-cache
 EELAYER 25 0
@@ -676,4 +676,6 @@ Connection ~ 7040 2720
 Connection ~ 7330 2720
 Wire Wire Line
 	7590 2620 7790 2620
+Text Notes 5750 4150 0    60   ~ 0
+Desolder C8 before flashing, solder back before running!
 $EndSCHEMATC

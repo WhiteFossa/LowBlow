@@ -47,7 +47,7 @@
  *                             ATTINY25
  *                           +----__----+
  * RESET (PB5)          ->---| 1      8 |-----     VCC
- * NOT CONNECTED	->---| 2      7 |---<-     TACHO	(INT0/PB2)
+ * NOT CONNECTED		->---| 2      7 |---<-     TACHO	(INT0/PB2)
  * TSENS (ADC2/PB4)     ->---| 3      6 |---<-     NOT CONNECTED
  * GND                  -----| 4      5 |--->-     PWM		(PB0/OC0A)
  *                           +----------+

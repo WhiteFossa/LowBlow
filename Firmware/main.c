@@ -224,8 +224,17 @@ void mn_set_rpm_in_percents(uint16_t target_rpm)
  */
 uint16_t mn_lookup_rpm(uint16_t tmes)
 {
-	uint16_t rpm = 0; /* Desired RPM */
-	uint16_t temp = eeprom_read_word(MN_LOOKUP_ABL_ADDRESS); /* Temperature (reading base ADC level) */
+	/* Do we exceeded base temperature? */
+	uint16_t baseTemp = eeprom_read_word(MN_LOOKUP_ABL_ADDRESS); /* Temperature (reading base ADC level) */
+
+	if (tmes < baseTemp)
+	{
+		// Temperature is too low, cooler off.
+		return 0;
+	}
+
+	uint16_t rpm = eeprom_read_byte(MN_LOOKUP_BRPM_ADDRESS) + MN_BRPM_INCREMENT; /* RPMs at base temperature */
+	uint16_t temp = baseTemp;
 
 	uint8_t *eeprom_lookup_ptr = (uint8_t*)MN_LOOKUP_FIRST_VALUE_ADDRESS;
 
@@ -239,10 +248,10 @@ uint16_t mn_lookup_rpm(uint16_t tmes)
 		if (eeprom_lookup_ptr > E2END)
 		{
 			/* Probably EEPROM unprogrammed */
-			return 0x100; /* Maximal value for mn_set_rpm_in_percents() */
+			return MN_FULL_THROTTLE;
 		}
 
-		temp += (lookup_byte & 0b00001111);
+		temp += (lookup_byte & 0b00001111) + MN_LOOKUP_TEMPERATURE_INCREMENT;
 		rpm += (lookup_byte & 0b11110000) >> 4;
 	}
 
