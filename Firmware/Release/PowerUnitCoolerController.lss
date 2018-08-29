@@ -3,15 +3,15 @@ PowerUnitCoolerController.elf:     формат файла elf32-avr
 
 Разделы:
 Инд Имя           Размер    VMA       LMA       Файл      Вырав
-  0 .text         00000612  00000000  00000000  00000094  2**1
+  0 .text         0000061e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00000612  000006a6  2**0
+  1 .data         00000000  00800060  0000061e  000006b2  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000017  00800060  00800060  000006a6  2**0
+  2 .bss          00000017  00800060  00800060  000006b2  2**0
                   ALLOC
-  3 .comment      00000011  00000000  00000000  000006a6  2**0
+  3 .comment      00000011  00000000  00000000  000006b2  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000006b8  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000006c4  2**2
                   CONTENTS, READONLY
 
 Дизассемблирование раздела .text:
@@ -64,7 +64,7 @@ PowerUnitCoolerController.elf:     формат файла elf32-avr
   44:	b2 07       	cpc	r27, r18
   46:	e1 f7       	brne	.-8      	; 0x40 <.do_clear_bss_loop>
   48:	f6 d1       	rcall	.+1004   	; 0x436 <main>
-  4a:	e1 c2       	rjmp	.+1474   	; 0x60e <_exit>
+  4a:	e7 c2       	rjmp	.+1486   	; 0x61a <_exit>
 
 0000004c <__bad_interrupt>:
   4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
@@ -423,7 +423,7 @@ PowerUnitCoolerController.elf:     формат файла elf32-avr
  39c:	35 0b       	sbc	r19, r21
  39e:	40 e0       	ldi	r20, 0x00	; 0
  3a0:	50 e0       	ldi	r21, 0x00	; 0
- 3a2:	a5 d0       	rcall	.+330    	; 0x4ee <__umulsidi3>
+ 3a2:	ab d0       	rcall	.+342    	; 0x4fa <__umulsidi3>
  3a4:	83 2f       	mov	r24, r19
  3a6:	8c 0f       	add	r24, r28
  3a8:	01 c0       	rjmp	.+2      	; 0x3ac <mn_set_rpm_in_percents+0x3c>
@@ -445,14 +445,14 @@ PowerUnitCoolerController.elf:     формат файла elf32-avr
  3c4:	8c 01       	movw	r16, r24
  3c6:	80 e0       	ldi	r24, 0x00	; 0
  3c8:	90 e0       	ldi	r25, 0x00	; 0
- 3ca:	0f d1       	rcall	.+542    	; 0x5ea <eeprom_read_word>
+ 3ca:	15 d1       	rcall	.+554    	; 0x5f6 <eeprom_read_word>
  3cc:	7c 01       	movw	r14, r24
  3ce:	08 17       	cp	r16, r24
  3d0:	19 07       	cpc	r17, r25
  3d2:	18 f1       	brcs	.+70     	; 0x41a <__FUSE_REGION_LENGTH__+0x1a>
  3d4:	82 e0       	ldi	r24, 0x02	; 2
  3d6:	90 e0       	ldi	r25, 0x00	; 0
- 3d8:	00 d1       	rcall	.+512    	; 0x5da <eeprom_read_byte>
+ 3d8:	06 d1       	rcall	.+524    	; 0x5e6 <eeprom_read_byte>
  3da:	c8 2f       	mov	r28, r24
  3dc:	d0 e0       	ldi	r29, 0x00	; 0
  3de:	21 96       	adiw	r28, 0x01	; 1
@@ -463,7 +463,7 @@ PowerUnitCoolerController.elf:     формат файла elf32-avr
  3e8:	f1 06       	cpc	r15, r17
  3ea:	a8 f4       	brcc	.+42     	; 0x416 <__FUSE_REGION_LENGTH__+0x16>
  3ec:	c6 01       	movw	r24, r12
- 3ee:	f5 d0       	rcall	.+490    	; 0x5da <eeprom_read_byte>
+ 3ee:	fb d0       	rcall	.+502    	; 0x5e6 <eeprom_read_byte>
  3f0:	9f ef       	ldi	r25, 0xFF	; 255
  3f2:	c9 1a       	sub	r12, r25
  3f4:	d9 0a       	sbc	r13, r25
@@ -560,179 +560,185 @@ PowerUnitCoolerController.elf:     формат файла elf32-avr
  4d4:	10 f0       	brcs	.+4      	; 0x4da <main+0xa4>
  4d6:	a8 95       	wdr
  4d8:	fe cf       	rjmp	.-4      	; 0x4d6 <main+0xa0>
- 4da:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <hal_temperature>
- 4de:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <hal_temperature+0x1>
- 4e2:	68 df       	rcall	.-304    	; 0x3b4 <mn_lookup_rpm>
- 4e4:	45 df       	rcall	.-374    	; 0x370 <mn_set_rpm_in_percents>
- 4e6:	a8 95       	wdr
- 4e8:	f8 cf       	rjmp	.-16     	; 0x4da <main+0xa4>
+ 4da:	8f ef       	ldi	r24, 0xFF	; 255
+ 4dc:	90 e0       	ldi	r25, 0x00	; 0
+ 4de:	10 df       	rcall	.-480    	; 0x300 <mn_set_target_rpm>
+ 4e0:	80 e0       	ldi	r24, 0x00	; 0
+ 4e2:	90 e0       	ldi	r25, 0x00	; 0
+ 4e4:	0d df       	rcall	.-486    	; 0x300 <mn_set_target_rpm>
+ 4e6:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <hal_temperature>
+ 4ea:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <hal_temperature+0x1>
+ 4ee:	62 df       	rcall	.-316    	; 0x3b4 <mn_lookup_rpm>
+ 4f0:	3f df       	rcall	.-386    	; 0x370 <mn_set_rpm_in_percents>
+ 4f2:	a8 95       	wdr
+ 4f4:	f8 cf       	rjmp	.-16     	; 0x4e6 <main+0xb0>
 
-000004ea <__mulsidi3>:
- 4ea:	68 94       	set
- 4ec:	00 13       	cpse	r16, r16
+000004f6 <__mulsidi3>:
+ 4f6:	68 94       	set
+ 4f8:	00 13       	cpse	r16, r16
 
-000004ee <__umulsidi3>:
- 4ee:	e8 94       	clt
- 4f0:	a0 e0       	ldi	r26, 0x00	; 0
- 4f2:	b0 e0       	ldi	r27, 0x00	; 0
- 4f4:	ed e7       	ldi	r30, 0x7D	; 125
- 4f6:	f2 e0       	ldi	r31, 0x02	; 2
- 4f8:	1d c0       	rjmp	.+58     	; 0x534 <__prologue_saves__+0x10>
- 4fa:	ef ef       	ldi	r30, 0xFF	; 255
- 4fc:	e7 f9       	bld	r30, 7
- 4fe:	59 01       	movw	r10, r18
- 500:	6a 01       	movw	r12, r20
- 502:	5e 23       	and	r21, r30
- 504:	55 0f       	add	r21, r21
- 506:	ee 08       	sbc	r14, r14
- 508:	fe 2c       	mov	r15, r14
- 50a:	87 01       	movw	r16, r14
- 50c:	9b 01       	movw	r18, r22
- 50e:	ac 01       	movw	r20, r24
- 510:	9e 23       	and	r25, r30
- 512:	99 0f       	add	r25, r25
- 514:	66 0b       	sbc	r22, r22
- 516:	76 2f       	mov	r23, r22
- 518:	cb 01       	movw	r24, r22
- 51a:	31 d0       	rcall	.+98     	; 0x57e <__muldi3>
- 51c:	cd b7       	in	r28, 0x3d	; 61
- 51e:	dd 27       	eor	r29, r29
- 520:	ea e0       	ldi	r30, 0x0A	; 10
- 522:	1f c0       	rjmp	.+62     	; 0x562 <__epilogue_restores__+0x10>
+000004fa <__umulsidi3>:
+ 4fa:	e8 94       	clt
+ 4fc:	a0 e0       	ldi	r26, 0x00	; 0
+ 4fe:	b0 e0       	ldi	r27, 0x00	; 0
+ 500:	e3 e8       	ldi	r30, 0x83	; 131
+ 502:	f2 e0       	ldi	r31, 0x02	; 2
+ 504:	1d c0       	rjmp	.+58     	; 0x540 <__prologue_saves__+0x10>
+ 506:	ef ef       	ldi	r30, 0xFF	; 255
+ 508:	e7 f9       	bld	r30, 7
+ 50a:	59 01       	movw	r10, r18
+ 50c:	6a 01       	movw	r12, r20
+ 50e:	5e 23       	and	r21, r30
+ 510:	55 0f       	add	r21, r21
+ 512:	ee 08       	sbc	r14, r14
+ 514:	fe 2c       	mov	r15, r14
+ 516:	87 01       	movw	r16, r14
+ 518:	9b 01       	movw	r18, r22
+ 51a:	ac 01       	movw	r20, r24
+ 51c:	9e 23       	and	r25, r30
+ 51e:	99 0f       	add	r25, r25
+ 520:	66 0b       	sbc	r22, r22
+ 522:	76 2f       	mov	r23, r22
+ 524:	cb 01       	movw	r24, r22
+ 526:	31 d0       	rcall	.+98     	; 0x58a <__muldi3>
+ 528:	cd b7       	in	r28, 0x3d	; 61
+ 52a:	dd 27       	eor	r29, r29
+ 52c:	ea e0       	ldi	r30, 0x0A	; 10
+ 52e:	1f c0       	rjmp	.+62     	; 0x56e <__epilogue_restores__+0x10>
 
-00000524 <__prologue_saves__>:
- 524:	2f 92       	push	r2
- 526:	3f 92       	push	r3
- 528:	4f 92       	push	r4
- 52a:	5f 92       	push	r5
- 52c:	6f 92       	push	r6
- 52e:	7f 92       	push	r7
- 530:	8f 92       	push	r8
- 532:	9f 92       	push	r9
- 534:	af 92       	push	r10
- 536:	bf 92       	push	r11
- 538:	cf 92       	push	r12
- 53a:	df 92       	push	r13
- 53c:	ef 92       	push	r14
- 53e:	ff 92       	push	r15
- 540:	0f 93       	push	r16
- 542:	1f 93       	push	r17
- 544:	cf 93       	push	r28
- 546:	df 93       	push	r29
- 548:	cd b7       	in	r28, 0x3d	; 61
- 54a:	ca 1b       	sub	r28, r26
- 54c:	cd bf       	out	0x3d, r28	; 61
- 54e:	dd 27       	eor	r29, r29
- 550:	09 94       	ijmp
+00000530 <__prologue_saves__>:
+ 530:	2f 92       	push	r2
+ 532:	3f 92       	push	r3
+ 534:	4f 92       	push	r4
+ 536:	5f 92       	push	r5
+ 538:	6f 92       	push	r6
+ 53a:	7f 92       	push	r7
+ 53c:	8f 92       	push	r8
+ 53e:	9f 92       	push	r9
+ 540:	af 92       	push	r10
+ 542:	bf 92       	push	r11
+ 544:	cf 92       	push	r12
+ 546:	df 92       	push	r13
+ 548:	ef 92       	push	r14
+ 54a:	ff 92       	push	r15
+ 54c:	0f 93       	push	r16
+ 54e:	1f 93       	push	r17
+ 550:	cf 93       	push	r28
+ 552:	df 93       	push	r29
+ 554:	cd b7       	in	r28, 0x3d	; 61
+ 556:	ca 1b       	sub	r28, r26
+ 558:	cd bf       	out	0x3d, r28	; 61
+ 55a:	dd 27       	eor	r29, r29
+ 55c:	09 94       	ijmp
 
-00000552 <__epilogue_restores__>:
- 552:	2a 88       	ldd	r2, Y+18	; 0x12
- 554:	39 88       	ldd	r3, Y+17	; 0x11
- 556:	48 88       	ldd	r4, Y+16	; 0x10
- 558:	5f 84       	ldd	r5, Y+15	; 0x0f
- 55a:	6e 84       	ldd	r6, Y+14	; 0x0e
- 55c:	7d 84       	ldd	r7, Y+13	; 0x0d
- 55e:	8c 84       	ldd	r8, Y+12	; 0x0c
- 560:	9b 84       	ldd	r9, Y+11	; 0x0b
- 562:	aa 84       	ldd	r10, Y+10	; 0x0a
- 564:	b9 84       	ldd	r11, Y+9	; 0x09
- 566:	c8 84       	ldd	r12, Y+8	; 0x08
- 568:	df 80       	ldd	r13, Y+7	; 0x07
- 56a:	ee 80       	ldd	r14, Y+6	; 0x06
- 56c:	fd 80       	ldd	r15, Y+5	; 0x05
- 56e:	0c 81       	ldd	r16, Y+4	; 0x04
- 570:	1b 81       	ldd	r17, Y+3	; 0x03
- 572:	aa 81       	ldd	r26, Y+2	; 0x02
- 574:	d9 81       	ldd	r29, Y+1	; 0x01
- 576:	ce 0f       	add	r28, r30
- 578:	cd bf       	out	0x3d, r28	; 61
- 57a:	ca 2f       	mov	r28, r26
- 57c:	08 95       	ret
+0000055e <__epilogue_restores__>:
+ 55e:	2a 88       	ldd	r2, Y+18	; 0x12
+ 560:	39 88       	ldd	r3, Y+17	; 0x11
+ 562:	48 88       	ldd	r4, Y+16	; 0x10
+ 564:	5f 84       	ldd	r5, Y+15	; 0x0f
+ 566:	6e 84       	ldd	r6, Y+14	; 0x0e
+ 568:	7d 84       	ldd	r7, Y+13	; 0x0d
+ 56a:	8c 84       	ldd	r8, Y+12	; 0x0c
+ 56c:	9b 84       	ldd	r9, Y+11	; 0x0b
+ 56e:	aa 84       	ldd	r10, Y+10	; 0x0a
+ 570:	b9 84       	ldd	r11, Y+9	; 0x09
+ 572:	c8 84       	ldd	r12, Y+8	; 0x08
+ 574:	df 80       	ldd	r13, Y+7	; 0x07
+ 576:	ee 80       	ldd	r14, Y+6	; 0x06
+ 578:	fd 80       	ldd	r15, Y+5	; 0x05
+ 57a:	0c 81       	ldd	r16, Y+4	; 0x04
+ 57c:	1b 81       	ldd	r17, Y+3	; 0x03
+ 57e:	aa 81       	ldd	r26, Y+2	; 0x02
+ 580:	d9 81       	ldd	r29, Y+1	; 0x01
+ 582:	ce 0f       	add	r28, r30
+ 584:	cd bf       	out	0x3d, r28	; 61
+ 586:	ca 2f       	mov	r28, r26
+ 588:	08 95       	ret
 
-0000057e <__muldi3>:
- 57e:	df 93       	push	r29
- 580:	cf 93       	push	r28
- 582:	9f 92       	push	r9
- 584:	a0 e4       	ldi	r26, 0x40	; 64
- 586:	9a 2e       	mov	r9, r26
- 588:	00 24       	eor	r0, r0
- 58a:	d0 01       	movw	r26, r0
- 58c:	e0 01       	movw	r28, r0
- 58e:	f0 01       	movw	r30, r0
- 590:	16 95       	lsr	r17
- 592:	07 95       	ror	r16
- 594:	f7 94       	ror	r15
- 596:	e7 94       	ror	r14
- 598:	d7 94       	ror	r13
- 59a:	c7 94       	ror	r12
- 59c:	b7 94       	ror	r11
- 59e:	a7 94       	ror	r10
- 5a0:	48 f4       	brcc	.+18     	; 0x5b4 <__muldi3+0x36>
- 5a2:	10 68       	ori	r17, 0x80	; 128
- 5a4:	a2 0f       	add	r26, r18
- 5a6:	b3 1f       	adc	r27, r19
- 5a8:	c4 1f       	adc	r28, r20
- 5aa:	d5 1f       	adc	r29, r21
- 5ac:	e6 1f       	adc	r30, r22
- 5ae:	f7 1f       	adc	r31, r23
- 5b0:	08 1e       	adc	r0, r24
- 5b2:	19 1e       	adc	r1, r25
- 5b4:	22 0f       	add	r18, r18
- 5b6:	33 1f       	adc	r19, r19
- 5b8:	44 1f       	adc	r20, r20
- 5ba:	55 1f       	adc	r21, r21
- 5bc:	66 1f       	adc	r22, r22
- 5be:	77 1f       	adc	r23, r23
- 5c0:	88 1f       	adc	r24, r24
- 5c2:	99 1f       	adc	r25, r25
- 5c4:	9a 94       	dec	r9
- 5c6:	21 f7       	brne	.-56     	; 0x590 <__muldi3+0x12>
- 5c8:	9d 01       	movw	r18, r26
- 5ca:	ae 01       	movw	r20, r28
- 5cc:	bf 01       	movw	r22, r30
- 5ce:	c0 01       	movw	r24, r0
- 5d0:	11 24       	eor	r1, r1
- 5d2:	9f 90       	pop	r9
- 5d4:	cf 91       	pop	r28
- 5d6:	df 91       	pop	r29
- 5d8:	08 95       	ret
+0000058a <__muldi3>:
+ 58a:	df 93       	push	r29
+ 58c:	cf 93       	push	r28
+ 58e:	9f 92       	push	r9
+ 590:	a0 e4       	ldi	r26, 0x40	; 64
+ 592:	9a 2e       	mov	r9, r26
+ 594:	00 24       	eor	r0, r0
+ 596:	d0 01       	movw	r26, r0
+ 598:	e0 01       	movw	r28, r0
+ 59a:	f0 01       	movw	r30, r0
+ 59c:	16 95       	lsr	r17
+ 59e:	07 95       	ror	r16
+ 5a0:	f7 94       	ror	r15
+ 5a2:	e7 94       	ror	r14
+ 5a4:	d7 94       	ror	r13
+ 5a6:	c7 94       	ror	r12
+ 5a8:	b7 94       	ror	r11
+ 5aa:	a7 94       	ror	r10
+ 5ac:	48 f4       	brcc	.+18     	; 0x5c0 <__muldi3+0x36>
+ 5ae:	10 68       	ori	r17, 0x80	; 128
+ 5b0:	a2 0f       	add	r26, r18
+ 5b2:	b3 1f       	adc	r27, r19
+ 5b4:	c4 1f       	adc	r28, r20
+ 5b6:	d5 1f       	adc	r29, r21
+ 5b8:	e6 1f       	adc	r30, r22
+ 5ba:	f7 1f       	adc	r31, r23
+ 5bc:	08 1e       	adc	r0, r24
+ 5be:	19 1e       	adc	r1, r25
+ 5c0:	22 0f       	add	r18, r18
+ 5c2:	33 1f       	adc	r19, r19
+ 5c4:	44 1f       	adc	r20, r20
+ 5c6:	55 1f       	adc	r21, r21
+ 5c8:	66 1f       	adc	r22, r22
+ 5ca:	77 1f       	adc	r23, r23
+ 5cc:	88 1f       	adc	r24, r24
+ 5ce:	99 1f       	adc	r25, r25
+ 5d0:	9a 94       	dec	r9
+ 5d2:	21 f7       	brne	.-56     	; 0x59c <__muldi3+0x12>
+ 5d4:	9d 01       	movw	r18, r26
+ 5d6:	ae 01       	movw	r20, r28
+ 5d8:	bf 01       	movw	r22, r30
+ 5da:	c0 01       	movw	r24, r0
+ 5dc:	11 24       	eor	r1, r1
+ 5de:	9f 90       	pop	r9
+ 5e0:	cf 91       	pop	r28
+ 5e2:	df 91       	pop	r29
+ 5e4:	08 95       	ret
 
-000005da <eeprom_read_byte>:
- 5da:	e1 99       	sbic	0x1c, 1	; 28
- 5dc:	fe cf       	rjmp	.-4      	; 0x5da <eeprom_read_byte>
- 5de:	1f ba       	out	0x1f, r1	; 31
- 5e0:	8e bb       	out	0x1e, r24	; 30
- 5e2:	e0 9a       	sbi	0x1c, 0	; 28
- 5e4:	99 27       	eor	r25, r25
- 5e6:	8d b3       	in	r24, 0x1d	; 29
- 5e8:	08 95       	ret
+000005e6 <eeprom_read_byte>:
+ 5e6:	e1 99       	sbic	0x1c, 1	; 28
+ 5e8:	fe cf       	rjmp	.-4      	; 0x5e6 <eeprom_read_byte>
+ 5ea:	1f ba       	out	0x1f, r1	; 31
+ 5ec:	8e bb       	out	0x1e, r24	; 30
+ 5ee:	e0 9a       	sbi	0x1c, 0	; 28
+ 5f0:	99 27       	eor	r25, r25
+ 5f2:	8d b3       	in	r24, 0x1d	; 29
+ 5f4:	08 95       	ret
 
-000005ea <eeprom_read_word>:
- 5ea:	a8 e1       	ldi	r26, 0x18	; 24
- 5ec:	42 e0       	ldi	r20, 0x02	; 2
- 5ee:	02 c0       	rjmp	.+4      	; 0x5f4 <eeprom_read_blraw>
+000005f6 <eeprom_read_word>:
+ 5f6:	a8 e1       	ldi	r26, 0x18	; 24
+ 5f8:	42 e0       	ldi	r20, 0x02	; 2
+ 5fa:	02 c0       	rjmp	.+4      	; 0x600 <eeprom_read_blraw>
 
-000005f0 <eeprom_read_block>:
- 5f0:	a8 2f       	mov	r26, r24
- 5f2:	86 2f       	mov	r24, r22
+000005fc <eeprom_read_block>:
+ 5fc:	a8 2f       	mov	r26, r24
+ 5fe:	86 2f       	mov	r24, r22
 
-000005f4 <eeprom_read_blraw>:
- 5f4:	e8 2f       	mov	r30, r24
- 5f6:	e1 99       	sbic	0x1c, 1	; 28
- 5f8:	fe cf       	rjmp	.-4      	; 0x5f6 <eeprom_read_blraw+0x2>
- 5fa:	1f ba       	out	0x1f, r1	; 31
- 5fc:	05 c0       	rjmp	.+10     	; 0x608 <eeprom_read_blraw+0x14>
- 5fe:	ee bb       	out	0x1e, r30	; 30
- 600:	e0 9a       	sbi	0x1c, 0	; 28
- 602:	e3 95       	inc	r30
- 604:	0d b2       	in	r0, 0x1d	; 29
- 606:	0d 92       	st	X+, r0
- 608:	41 50       	subi	r20, 0x01	; 1
- 60a:	c8 f7       	brcc	.-14     	; 0x5fe <eeprom_read_blraw+0xa>
- 60c:	08 95       	ret
+00000600 <eeprom_read_blraw>:
+ 600:	e8 2f       	mov	r30, r24
+ 602:	e1 99       	sbic	0x1c, 1	; 28
+ 604:	fe cf       	rjmp	.-4      	; 0x602 <eeprom_read_blraw+0x2>
+ 606:	1f ba       	out	0x1f, r1	; 31
+ 608:	05 c0       	rjmp	.+10     	; 0x614 <eeprom_read_blraw+0x14>
+ 60a:	ee bb       	out	0x1e, r30	; 30
+ 60c:	e0 9a       	sbi	0x1c, 0	; 28
+ 60e:	e3 95       	inc	r30
+ 610:	0d b2       	in	r0, 0x1d	; 29
+ 612:	0d 92       	st	X+, r0
+ 614:	41 50       	subi	r20, 0x01	; 1
+ 616:	c8 f7       	brcc	.-14     	; 0x60a <eeprom_read_blraw+0xa>
+ 618:	08 95       	ret
 
-0000060e <_exit>:
- 60e:	f8 94       	cli
+0000061a <_exit>:
+ 61a:	f8 94       	cli
 
-00000610 <__stop_program>:
- 610:	ff cf       	rjmp	.-2      	; 0x610 <__stop_program>
+0000061c <__stop_program>:
+ 61c:	ff cf       	rjmp	.-2      	; 0x61c <__stop_program>

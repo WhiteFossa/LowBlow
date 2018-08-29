@@ -110,6 +110,10 @@ void main()
 		}
 	}
 
+	/* To set up cooler enabled flag correctly */
+	mn_set_target_rpm(0xFF);
+	mn_set_target_rpm(0x00);
+
 	/* Main loop */
 	while(1)
 	{
