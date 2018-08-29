@@ -21,7 +21,7 @@ along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
 
 SettingsStep::SettingsStep(Interfaces::IAdcTemperatureConvertor *conv)
 {
-	conv = conv;
+	_conv = conv;
 
 	_RPMDelta = 0;
 	_ADCDelta = MIN_ADC_DELTA;
@@ -80,7 +80,7 @@ uint SettingsStep::GetADCDelta()
 
 double SettingsStep::GetTempDelta()
 {
-	return conv->GetTempDelta(0, _ADCDelta);
+	return _conv->GetTempDelta(0, _ADCDelta);
 }
 
 void SettingsStep::SetRPMDelta(uint delta, bool skipLimitsCheck)
@@ -119,7 +119,7 @@ double SettingsStep::GetRPMDeltaPercents()
 
 double SettingsStep::GetCurrentTemperature()
 {
-	return conv->ADC2TEMP(_CurrentADC);
+	return _conv->ADC2TEMP(_CurrentADC);
 }
 
 double SettingsStep::GetCurrentRPMPercents()

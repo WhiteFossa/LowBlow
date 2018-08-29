@@ -124,7 +124,7 @@ namespace Interfaces
 			/**
 			 * @brief ADC<->Temperature convertor
 			 */
-			Interfaces::IAdcTemperatureConvertor *conv = 0;
+			Interfaces::IAdcTemperatureConvertor *_conv = 0;
 	};
 
 }

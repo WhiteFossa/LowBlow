@@ -55,49 +55,49 @@ class SettingsStep : public Interfaces::ISettingsStep
   Q_OBJECT
 
   public:
-    SettingsStep(Interfaces::IAdcTemperatureConvertor *conv);
+	SettingsStep(Interfaces::IAdcTemperatureConvertor *_conv);
 
-    void CalculatePrimaryValues(uint previous_adc, uint previous_rpm);
+	void CalculatePrimaryValues(uint previous_adc, uint previous_rpm);
 
-    QString GetCurrentRPMPercentsString();
-
-
-    void SetADCDelta(uint delta, bool skipLimitsCheck = false);
-    uint GetCurrentADC();
-    double GetCurrentTemperature();
-    uint GetADCDelta();
-    double GetTempDelta();
+	QString GetCurrentRPMPercentsString();
 
 
-    void SetRPMDelta(uint delta, bool skipLimitsCheck = false);
-    uint GetCurrentRPM();
-    double GetCurrentRPMPercents();
-    uint GetRPMDelta();
-    double GetRPMDeltaPercents();
+	void SetADCDelta(uint delta, bool skipLimitsCheck = false);
+	uint GetCurrentADC();
+	double GetCurrentTemperature();
+	uint GetADCDelta();
+	double GetTempDelta();
+
+
+	void SetRPMDelta(uint delta, bool skipLimitsCheck = false);
+	uint GetCurrentRPM();
+	double GetCurrentRPMPercents();
+	uint GetRPMDelta();
+	double GetRPMDeltaPercents();
 
 
   private:
 
-    /**
-     * @brief ADC value for this step
-     */
-    uint _CurrentADC;
+	/**
+	 * @brief ADC value for this step
+	 */
+	uint _CurrentADC;
 
-    /**
-     * @brief _ADCDelta Current ADC delta
-     */
-    uint _ADCDelta;
+	/**
+	 * @brief _ADCDelta Current ADC delta
+	 */
+	uint _ADCDelta;
 
-    /**
-     * @brief RPM for this step
-     */
-    uint _CurrentRPM;
+	/**
+	 * @brief RPM for this step
+	 */
+	uint _CurrentRPM;
 
 
-    /**
-     * @brief Current RPM delta
-     */
-    uint _RPMDelta;
+	/**
+	 * @brief Current RPM delta
+	 */
+	uint _RPMDelta;
 
 
 };
