@@ -97,6 +97,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab5d3453ecc41848b723a790fe7e01f79"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#ab5d3453ecc41848b723a790fe7e01f79">TEMP2ADC</a> (double temp)=0</td></tr>
 <tr class="memdesc:ab5d3453ecc41848b723a790fe7e01f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert temperature in Celsius to ADC measurement. Imitates ADC saturation, i.e. returns 0 if value must be less than 0, and ADC_MAX_VALUE if it must be more than ADC_MAX_VALUE.  <a href="#ab5d3453ecc41848b723a790fe7e01f79">More...</a><br /></td></tr>
 <tr class="separator:ab5d3453ecc41848b723a790fe7e01f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70d62425963cadadd88db1d7028bf722"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a70d62425963cadadd88db1d7028bf722">GetTempDelta</a> (uint adc1, uint adc2)=0</td></tr>
+<tr class="memdesc:a70d62425963cadadd88db1d7028bf722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns delta (in celsius) for two given ADC measurements. Delta is positive it adc2 means higher temperature then adc1.  <a href="#a70d62425963cadadd88db1d7028bf722">More...</a><br /></td></tr>
+<tr class="separator:a70d62425963cadadd88db1d7028bf722"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e4c9204b3593bc434a041c7a69c430f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a3e4c9204b3593bc434a041c7a69c430f">SetADC2TempConversionFactors</a> (double a, double b)=0</td></tr>
 <tr class="memdesc:a3e4c9204b3593bc434a041c7a69c430f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement. Reverse conversion factors (i.e. Temperature to ADC will be calculated automatically).  <a href="#a3e4c9204b3593bc434a041c7a69c430f">More...</a><br /></td></tr>
 <tr class="separator:a3e4c9204b3593bc434a041c7a69c430f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,6 +238,47 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Description </dd></dl>
 
 <p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#ad82afdddbac46a95b6da44e769180d10">AdcTemperatureConvertor</a>.</p>
+
+</div>
+</div>
+<a id="a70d62425963cadadd88db1d7028bf722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70d62425963cadadd88db1d7028bf722">&#9670;&nbsp;</a></span>GetTempDelta()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual double Interfaces::IAdcTemperatureConvertor::GetTempDelta </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>adc1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>adc2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns delta (in celsius) for two given ADC measurements. Delta is positive it adc2 means higher temperature then adc1. </p>
+<dl class="section return"><dt>Returns</dt><dd>Delta in celsius. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_adc_temperature_convertor.html#a6742f0177d4dcd1aab1087b5d7512146">AdcTemperatureConvertor</a>.</p>
 
 </div>
 </div>
@@ -484,7 +528,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 28 2018 16:32:44 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 29 2018 10:21:22 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

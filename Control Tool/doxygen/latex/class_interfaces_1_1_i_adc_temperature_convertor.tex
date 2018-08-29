@@ -34,6 +34,8 @@ virtual double \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_aa628
 \begin{DoxyCompactList}\small\item\em Convert A\+DC measurement to temperature (Celsius). \end{DoxyCompactList}\item 
 virtual uint \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_ab5d3453ecc41848b723a790fe7e01f79}{T\+E\+M\+P2\+A\+DC} (double temp)=0
 \begin{DoxyCompactList}\small\item\em Convert temperature in Celsius to A\+DC measurement. Imitates A\+DC saturation, i.\+e. returns 0 if value must be less than 0, and A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE if it must be more than A\+D\+C\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE. \end{DoxyCompactList}\item 
+virtual double \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a70d62425963cadadd88db1d7028bf722}{Get\+Temp\+Delta} (uint adc1, uint adc2)=0
+\begin{DoxyCompactList}\small\item\em Returns delta (in celsius) for two given A\+DC measurements. Delta is positive it adc2 means higher temperature then adc1. \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a3e4c9204b3593bc434a041c7a69c430f}{Set\+A\+D\+C2\+Temp\+Conversion\+Factors} (double a, double b)=0
 \begin{DoxyCompactList}\small\item\em Call it to set A\+DC to Temperature conversion factors. Tc = a $\ast$ A\+DC + b, where Tc -\/ Temperature in Celsius, A\+DC -\/ A\+DC measurement. Reverse conversion factors (i.\+e. Temperature to A\+DC will be calculated automatically). \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor_a61cff0aa0590906acfb18c9b789dceb2}{Get\+A\+D\+C2\+Temp\+Conversion\+Factors} (double $\ast$a, double $\ast$b)=0
@@ -117,6 +119,23 @@ Description
 
 
 Implemented in \hyperlink{class_adc_temperature_convertor_ad82afdddbac46a95b6da44e769180d10}{Adc\+Temperature\+Convertor}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a70d62425963cadadd88db1d7028bf722}\label{class_interfaces_1_1_i_adc_temperature_convertor_a70d62425963cadadd88db1d7028bf722}} 
+\index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Get\+Temp\+Delta@{Get\+Temp\+Delta}}
+\index{Get\+Temp\+Delta@{Get\+Temp\+Delta}!Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}}
+\subsubsection{\texorpdfstring{Get\+Temp\+Delta()}{GetTempDelta()}}
+{\footnotesize\ttfamily virtual double Interfaces\+::\+I\+Adc\+Temperature\+Convertor\+::\+Get\+Temp\+Delta (\begin{DoxyParamCaption}\item[{uint}]{adc1,  }\item[{uint}]{adc2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns delta (in celsius) for two given A\+DC measurements. Delta is positive it adc2 means higher temperature then adc1. 
+
+\begin{DoxyReturn}{Returns}
+Delta in celsius. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_adc_temperature_convertor_a6742f0177d4dcd1aab1087b5d7512146}{Adc\+Temperature\+Convertor}.
 
 \mbox{\Hypertarget{class_interfaces_1_1_i_adc_temperature_convertor_a3b1d84ea243b62a36238f16433668a23}\label{class_interfaces_1_1_i_adc_temperature_convertor_a3b1d84ea243b62a36238f16433668a23}} 
 \index{Interfaces\+::\+I\+Adc\+Temperature\+Convertor@{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}!Load\+Settings@{Load\+Settings}}

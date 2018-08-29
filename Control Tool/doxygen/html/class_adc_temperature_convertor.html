@@ -101,6 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae82f374826a431c837bdf796c593775b"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#ae82f374826a431c837bdf796c593775b">TEMP2ADC</a> (double temp)</td></tr>
 <tr class="memdesc:ae82f374826a431c837bdf796c593775b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert temperature in Celsius to ADC measurement. Imitates ADC saturation, i.e. returns 0 if value must be less than 0, and ADC_MAX_VALUE if it must be more than ADC_MAX_VALUE.  <a href="#ae82f374826a431c837bdf796c593775b">More...</a><br /></td></tr>
 <tr class="separator:ae82f374826a431c837bdf796c593775b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6742f0177d4dcd1aab1087b5d7512146"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#a6742f0177d4dcd1aab1087b5d7512146">GetTempDelta</a> (uint adc1, uint adc2)</td></tr>
+<tr class="memdesc:a6742f0177d4dcd1aab1087b5d7512146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns delta (in celsius) for two given ADC measurements. Delta is positive it adc2 means higher temperature then adc1.  <a href="#a6742f0177d4dcd1aab1087b5d7512146">More...</a><br /></td></tr>
+<tr class="separator:a6742f0177d4dcd1aab1087b5d7512146"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4850843e55992608213cc9cf82d36830"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adc_temperature_convertor.html#a4850843e55992608213cc9cf82d36830">SetADC2TempConversionFactors</a> (double _a, double _b)</td></tr>
 <tr class="memdesc:a4850843e55992608213cc9cf82d36830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call it to set ADC to Temperature conversion factors. Tc = a * ADC + b, where Tc - Temperature in Celsius, ADC - ADC measurement. Reverse conversion factors (i.e. Temperature to ADC will be calculated automatically).  <a href="#a4850843e55992608213cc9cf82d36830">More...</a><br /></td></tr>
 <tr class="separator:a4850843e55992608213cc9cf82d36830"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,7 +222,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a61cff0aa0590906acfb18c9b789dceb2">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00058">58</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00063">63</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -251,7 +254,50 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a2f3b59be793c3ed43e880ef12e9749bc">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00146">146</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00151">151</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6742f0177d4dcd1aab1087b5d7512146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6742f0177d4dcd1aab1087b5d7512146">&#9670;&nbsp;</a></span>GetTempDelta()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double AdcTemperatureConvertor::GetTempDelta </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>adc1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>adc2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns delta (in celsius) for two given ADC measurements. Delta is positive it adc2 means higher temperature then adc1. </p>
+<dl class="section return"><dt>Returns</dt><dd>Delta in celsius. </dd></dl>
+
+<p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a70d62425963cadadd88db1d7028bf722">Interfaces::IAdcTemperatureConvertor</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00052">52</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -301,7 +347,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a3b1d84ea243b62a36238f16433668a23">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00065">65</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00070">70</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -339,7 +385,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a6631e979e067ab78d3e5c337449876ac">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00111">111</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00116">116</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -388,7 +434,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a3e4c9204b3593bc434a041c7a69c430f">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00052">52</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00057">57</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -426,7 +472,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#a65bbef2300e21c495d95305921ddb74b">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00141">141</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00146">146</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +549,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implements <a class="el" href="class_interfaces_1_1_i_adc_temperature_convertor.html#abc7ed5fdfeaed255af14930431b46ac1">Interfaces::IAdcTemperatureConvertor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00130">130</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_adc_temperature_convertor_8cpp_source.html#l00135">135</a> of file <a class="el" href="_adc_temperature_convertor_8cpp_source.html">AdcTemperatureConvertor.cpp</a>.</p>
 
 </div>
 </div>
@@ -514,7 +560,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 28 2018 16:32:43 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 29 2018 10:21:20 for Project LowBlow Thermal Controller Setup Tool by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>
