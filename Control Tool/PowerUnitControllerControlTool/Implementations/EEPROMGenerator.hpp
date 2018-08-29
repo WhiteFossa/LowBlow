@@ -64,6 +64,11 @@ class EEPROMGenerator : public Interfaces::IEEPROMGenerator
 		const uint BaseTemperatureMSBMask = 0xFF00U;
 
 		/**
+		 * @brief Shift base temperature & BaseTemperatureMSBMask right to this value to get base temperature MSB.
+		 */
+		const uint BaseTemperatureMSBRShift = 8U;
+
+		/**
 		 * @brief EEPROM address of base RPMs.
 		 */
 		const uint BaseRPMsAddr = 2U;

@@ -30,7 +30,7 @@ QByteArray EEPROMGenerator::GetEEPROMContents(Interfaces::ISettingsGenerator* se
 	// Base temperature
 	uint16_t baseTemperature = (uint16_t)setGenPtr->GetBaseTemperatureADC();
 	result[BaseTemperatureLSBAddr] = baseTemperature & BaseTemperatureLSBMask;
-	result[BaseTemperatureMSBAddr] = baseTemperature & BaseTemperatureMSBMask;
+	result[BaseTemperatureMSBAddr] = (baseTemperature & BaseTemperatureMSBMask) >> BaseTemperatureMSBRShift;
 
 	// Base RPMs
 	result[BaseRPMsAddr] = (uint8_t)((int)setGenPtr->GetBaseRPM() + BaseRPMsShift);
