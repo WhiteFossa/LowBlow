@@ -17,6 +17,7 @@ var main_8h =
     [ "mn_seconds_delay", "main_8h.html#aaa95b4e58cd4639d9ac2b932bdad5e34", null ],
     [ "mn_set_rpm_in_percents", "main_8h.html#a65809cbce2d6d54feb40be3b843127c0", null ],
     [ "mn_set_target_rpm", "main_8h.html#aee2dfb2c8a92072f190431c7bd0e7d0a", null ],
+    [ "mn_stop_cooler", "main_8h.html#a6f6888ef364c4052cbe892df51a39693", null ],
     [ "mn_flags0", "main_8h.html#ab7a46fa3c0d093be90698b8bdce49f91", null ],
     [ "mn_max_rpm", "main_8h.html#a6518139a433a8d328b612641e4fcacfc", null ],
     [ "mn_min_duty_cycle", "main_8h.html#a543398b596a04bff13e31c67fda3c529", null ],

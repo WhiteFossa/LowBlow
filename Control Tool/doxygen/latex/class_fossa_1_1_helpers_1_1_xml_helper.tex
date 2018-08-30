@@ -1,0 +1,102 @@
+\hypertarget{class_fossa_1_1_helpers_1_1_xml_helper}{}\section{Fossa\+:\+:Helpers\+:\+:Xml\+Helper Class Reference}
+\label{class_fossa_1_1_helpers_1_1_xml_helper}\index{Fossa\+::\+Helpers\+::\+Xml\+Helper@{Fossa\+::\+Helpers\+::\+Xml\+Helper}}
+
+
+Helper class to work with X\+ML (parse it, to be precise).  
+
+
+
+
+{\ttfamily \#include $<$Xml\+Helper.\+hpp$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{class_fossa_1_1_helpers_1_1_xml_helper_a7bc8a5dd4d5ab503f274c3bb9a559f84}{Get\+Integer\+Value} (const Q\+Xml\+Query $\ast$query)
+\begin{DoxyCompactList}\small\item\em Returns X\+ML node value as integer. Throws exception if node value is not integer. \end{DoxyCompactList}\item 
+static double \hyperlink{class_fossa_1_1_helpers_1_1_xml_helper_aa079061f79b80c958c5f21c3e0b02252}{Get\+Double\+Value} (const Q\+Xml\+Query $\ast$query)
+\begin{DoxyCompactList}\small\item\em As Get\+Integer\+Value, but for double. \end{DoxyCompactList}\item 
+static Q\+String \hyperlink{class_fossa_1_1_helpers_1_1_xml_helper_a2e63bbe1bd57f655ee865171b7a24c4a}{Get\+Text\+Value} (const Q\+Xml\+Query $\ast$query)
+\begin{DoxyCompactList}\small\item\em Get\+Text\+Value As \hyperlink{class_fossa_1_1_helpers_1_1_xml_helper_a7bc8a5dd4d5ab503f274c3bb9a559f84}{Get\+Integer\+Value()}, but returns node text value, trimmed by Q\+String\+::simplified() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class to work with X\+ML (parse it, to be precise). 
+
+Definition at line 33 of file Xml\+Helper.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fossa_1_1_helpers_1_1_xml_helper_aa079061f79b80c958c5f21c3e0b02252}\label{class_fossa_1_1_helpers_1_1_xml_helper_aa079061f79b80c958c5f21c3e0b02252}} 
+\index{Fossa\+::\+Helpers\+::\+Xml\+Helper@{Fossa\+::\+Helpers\+::\+Xml\+Helper}!Get\+Double\+Value@{Get\+Double\+Value}}
+\index{Get\+Double\+Value@{Get\+Double\+Value}!Fossa\+::\+Helpers\+::\+Xml\+Helper@{Fossa\+::\+Helpers\+::\+Xml\+Helper}}
+\subsubsection{\texorpdfstring{Get\+Double\+Value()}{GetDoubleValue()}}
+{\footnotesize\ttfamily double Fossa\+::\+Helpers\+::\+Xml\+Helper\+::\+Get\+Double\+Value (\begin{DoxyParamCaption}\item[{const Q\+Xml\+Query $\ast$}]{query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+As Get\+Integer\+Value, but for double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & Query to select node value, for example \char`\"{}doc(\$settings\+File)/\+Settings/\+Base\+Levels/\+Temperature\+A\+D\+C/text()\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Double node value. 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file Xml\+Helper.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_helpers_1_1_xml_helper_a7bc8a5dd4d5ab503f274c3bb9a559f84}\label{class_fossa_1_1_helpers_1_1_xml_helper_a7bc8a5dd4d5ab503f274c3bb9a559f84}} 
+\index{Fossa\+::\+Helpers\+::\+Xml\+Helper@{Fossa\+::\+Helpers\+::\+Xml\+Helper}!Get\+Integer\+Value@{Get\+Integer\+Value}}
+\index{Get\+Integer\+Value@{Get\+Integer\+Value}!Fossa\+::\+Helpers\+::\+Xml\+Helper@{Fossa\+::\+Helpers\+::\+Xml\+Helper}}
+\subsubsection{\texorpdfstring{Get\+Integer\+Value()}{GetIntegerValue()}}
+{\footnotesize\ttfamily int Fossa\+::\+Helpers\+::\+Xml\+Helper\+::\+Get\+Integer\+Value (\begin{DoxyParamCaption}\item[{const Q\+Xml\+Query $\ast$}]{query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns X\+ML node value as integer. Throws exception if node value is not integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & Query to select node value, for example \char`\"{}doc(\$settings\+File)/\+Settings/\+Base\+Levels/\+Temperature\+A\+D\+C/text()\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer node value. 
+\end{DoxyReturn}
+
+
+Definition at line 30 of file Xml\+Helper.\+cpp.
+
+\mbox{\Hypertarget{class_fossa_1_1_helpers_1_1_xml_helper_a2e63bbe1bd57f655ee865171b7a24c4a}\label{class_fossa_1_1_helpers_1_1_xml_helper_a2e63bbe1bd57f655ee865171b7a24c4a}} 
+\index{Fossa\+::\+Helpers\+::\+Xml\+Helper@{Fossa\+::\+Helpers\+::\+Xml\+Helper}!Get\+Text\+Value@{Get\+Text\+Value}}
+\index{Get\+Text\+Value@{Get\+Text\+Value}!Fossa\+::\+Helpers\+::\+Xml\+Helper@{Fossa\+::\+Helpers\+::\+Xml\+Helper}}
+\subsubsection{\texorpdfstring{Get\+Text\+Value()}{GetTextValue()}}
+{\footnotesize\ttfamily Q\+String Fossa\+::\+Helpers\+::\+Xml\+Helper\+::\+Get\+Text\+Value (\begin{DoxyParamCaption}\item[{const Q\+Xml\+Query $\ast$}]{query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get\+Text\+Value As \hyperlink{class_fossa_1_1_helpers_1_1_xml_helper_a7bc8a5dd4d5ab503f274c3bb9a559f84}{Get\+Integer\+Value()}, but returns node text value, trimmed by Q\+String\+::simplified() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & Query to select node value, for example \char`\"{}doc(\$settings\+File)/\+Settings/\+Base\+Levels/\+Temperature\+A\+D\+C/text()\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Text node value. 
+\end{DoxyReturn}
+
+
+Definition at line 22 of file Xml\+Helper.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Xml\+Helper.\+hpp\item 
+Xml\+Helper.\+cpp\end{DoxyCompactItemize}

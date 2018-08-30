@@ -109,6 +109,8 @@ Functions</h2></td></tr>
 <tr class="separator:aaa95b4e58cd4639d9ac2b932bdad5e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee2dfb2c8a92072f190431c7bd0e7d0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#aee2dfb2c8a92072f190431c7bd0e7d0a">mn_set_target_rpm</a> (uint16_t target_rpm)</td></tr>
 <tr class="separator:aee2dfb2c8a92072f190431c7bd0e7d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6888ef364c4052cbe892df51a39693"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a6f6888ef364c4052cbe892df51a39693">mn_stop_cooler</a> ()</td></tr>
+<tr class="separator:a6f6888ef364c4052cbe892df51a39693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65809cbce2d6d54feb40be3b843127c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a65809cbce2d6d54feb40be3b843127c0">mn_set_rpm_in_percents</a> (uint16_t target_rpm)</td></tr>
 <tr class="separator:a65809cbce2d6d54feb40be3b843127c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af55c438389c250e55e154ca7b8433d5c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af55c438389c250e55e154ca7b8433d5c">mn_lookup_rpm</a> (uint16_t tmes)</td></tr>
@@ -157,7 +159,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00225">225</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00236">236</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -177,7 +179,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This function gets called every second (from <a class="el" href="hal_8c.html#a09985dd15e83bdf67de9b094fedfc3c4">hal_second_tick()</a>) </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00124">124</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00127">127</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -198,7 +200,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Function waits given number of seconds. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00138">138</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00141">141</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -224,7 +226,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00205">205</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00216">216</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -251,7 +253,27 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00156">156</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00159">159</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a6f6888ef364c4052cbe892df51a39693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f6888ef364c4052cbe892df51a39693">&#9670;&nbsp;</a></span>mn_stop_cooler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mn_stop_cooler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stops cooler and disables RPMs feedback loop. </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00202">202</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>

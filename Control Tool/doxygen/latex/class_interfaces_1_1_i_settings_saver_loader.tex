@@ -1,0 +1,230 @@
+\hypertarget{class_interfaces_1_1_i_settings_saver_loader}{}\section{Interfaces\+:\+:I\+Settings\+Saver\+Loader Class Reference}
+\label{class_interfaces_1_1_i_settings_saver_loader}\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+
+
+Interface to save and load controller settings into X\+ML.  
+
+
+
+
+{\ttfamily \#include $<$I\+Settings\+Saver\+Loader.\+hpp$>$}
+
+
+
+Inheritance diagram for Interfaces\+:\+:I\+Settings\+Saver\+Loader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_interfaces_1_1_i_settings_saver_loader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Interfaces\+:\+:I\+Settings\+Saver\+Loader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interfaces_1_1_i_settings_saver_loader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a67e729cc53f53b6bdeb534dc62000531}{Create} (Q\+String path, Q\+String adc2\+Temp\+Path)=0
+\begin{DoxyCompactList}\small\item\em Creates settings file at path and embeds A\+D\+C-\/$>$Temperature settings from adc2\+Temp\+Path into it. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a4d8bdb2c5a27b5b0aa5ee4e55483f0de}{Load} (Q\+String path)=0
+\begin{DoxyCompactList}\small\item\em Loads settings from given file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a5434144e59300dd6ed380f9600870cfa}\label{class_interfaces_1_1_i_settings_saver_loader_a5434144e59300dd6ed380f9600870cfa}} 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a5434144e59300dd6ed380f9600870cfa}{Save} ()=0
+\begin{DoxyCompactList}\small\item\em Saves settings to current file or throws exception if current file is not set. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a2d6a6dd6e5b6fe15e8b78af2e75725fc}{Save\+As} (Q\+String path)=0
+\begin{DoxyCompactList}\small\item\em Saves settings to given file, then sets this file as current. \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a7224c9ffc2d9c6a3b98fb20246e97cc3}{Get\+File\+Path} ()=0
+\begin{DoxyCompactList}\small\item\em Get\+File\+Path Returns current file full path. If null then file wasn\textquotesingle{}t loaded/created at all. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_aba09cbe4cc05e6cef67c41789bdccd23}\label{class_interfaces_1_1_i_settings_saver_loader_aba09cbe4cc05e6cef67c41789bdccd23}} 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_saver_loader_aba09cbe4cc05e6cef67c41789bdccd23}{Mark\+As\+Modified} ()=0
+\begin{DoxyCompactList}\small\item\em Makrs current file is modified. If no file loaded does nothing. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a4c3f69d0bc7c355030c8d371367108d3}{Is\+Modified} ()=0
+\begin{DoxyCompactList}\small\item\em Is\+Modified True if file was modified and haven\textquotesingle{}t saved till now. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor}{Interfaces\+::\+I\+Adc\+Temperature\+Convertor} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a44d68d2bc7de1717bc41ee264db13ac5}{Get\+A\+D\+C2\+Temp\+Convertor\+Ptr} ()=0
+\begin{DoxyCompactList}\small\item\em Returns pointer to A\+D\+C-\/$>$Temperature convertor instance. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_interfaces_1_1_i_settings_generator}{Interfaces\+::\+I\+Settings\+Generator} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a73c8012dc63ca02d65a013ca901840ba}{Get\+Settings\+Generator\+Ptr} ()=0
+\begin{DoxyCompactList}\small\item\em Returns pointer to settings generator. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a4f855492363276d81031d931a72a49a3}{Export\+To\+E\+E\+P\+R\+OM} (Q\+String path)=0
+\begin{DoxyCompactList}\small\item\em Export current settings to E\+E\+P\+R\+OM file at given path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_accc3becffc7bb3688db96f3f34a68b80}\label{class_interfaces_1_1_i_settings_saver_loader_accc3becffc7bb3688db96f3f34a68b80}} 
+\hyperlink{class_interfaces_1_1_i_adc_temperature_convertor}{Interfaces\+::\+I\+Adc\+Temperature\+Convertor} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_saver_loader_accc3becffc7bb3688db96f3f34a68b80}{\+\_\+adc2\+Temp} = nullptr
+\begin{DoxyCompactList}\small\item\em A\+DC to temperature convertor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a7b2968ed33e6f5e2cc3b863649aa7f17}\label{class_interfaces_1_1_i_settings_saver_loader_a7b2968ed33e6f5e2cc3b863649aa7f17}} 
+\hyperlink{class_interfaces_1_1_i_settings_generator}{Interfaces\+::\+I\+Settings\+Generator} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a7b2968ed33e6f5e2cc3b863649aa7f17}{\+\_\+setgen} = nullptr
+\begin{DoxyCompactList}\small\item\em Settings generator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a14446fa4caf99dcbfd748eaaa4ef3596}\label{class_interfaces_1_1_i_settings_saver_loader_a14446fa4caf99dcbfd748eaaa4ef3596}} 
+\hyperlink{class_interfaces_1_1_i_e_e_p_r_o_m_generator}{Interfaces\+::\+I\+E\+E\+P\+R\+O\+M\+Generator} $\ast$ \hyperlink{class_interfaces_1_1_i_settings_saver_loader_a14446fa4caf99dcbfd748eaaa4ef3596}{\+\_\+eeprom\+Gen} = nullptr
+\begin{DoxyCompactList}\small\item\em E\+E\+P\+R\+OM contents generator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface to save and load controller settings into X\+ML. 
+
+Definition at line 34 of file I\+Settings\+Saver\+Loader.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a67e729cc53f53b6bdeb534dc62000531}\label{class_interfaces_1_1_i_settings_saver_loader_a67e729cc53f53b6bdeb534dc62000531}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Create@{Create}}
+\index{Create@{Create}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Create (\begin{DoxyParamCaption}\item[{Q\+String}]{path,  }\item[{Q\+String}]{adc2\+Temp\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Creates settings file at path and embeds A\+D\+C-\/$>$Temperature settings from adc2\+Temp\+Path into it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path where created file will be stored (actual write occurs on \char`\"{}\+Save\char`\"{} call). \\
+\hline
+{\em adc2\+Temp\+Path} & path to file with A\+D\+C-\/$>$Temperature settings. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_a23524241e3edea7f26b72807c0090bdc}{Settings\+Saver\+Loader}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a4f855492363276d81031d931a72a49a3}\label{class_interfaces_1_1_i_settings_saver_loader_a4f855492363276d81031d931a72a49a3}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Export\+To\+E\+E\+P\+R\+OM@{Export\+To\+E\+E\+P\+R\+OM}}
+\index{Export\+To\+E\+E\+P\+R\+OM@{Export\+To\+E\+E\+P\+R\+OM}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Export\+To\+E\+E\+P\+R\+O\+M()}{ExportToEEPROM()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Export\+To\+E\+E\+P\+R\+OM (\begin{DoxyParamCaption}\item[{Q\+String}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Export current settings to E\+E\+P\+R\+OM file at given path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File, where E\+E\+P\+R\+OM contents will be saved. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_a2a3e3c7f6f1f521b9423db4d63ddae74}{Settings\+Saver\+Loader}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a44d68d2bc7de1717bc41ee264db13ac5}\label{class_interfaces_1_1_i_settings_saver_loader_a44d68d2bc7de1717bc41ee264db13ac5}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Get\+A\+D\+C2\+Temp\+Convertor\+Ptr@{Get\+A\+D\+C2\+Temp\+Convertor\+Ptr}}
+\index{Get\+A\+D\+C2\+Temp\+Convertor\+Ptr@{Get\+A\+D\+C2\+Temp\+Convertor\+Ptr}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Get\+A\+D\+C2\+Temp\+Convertor\+Ptr()}{GetADC2TempConvertorPtr()}}
+{\footnotesize\ttfamily virtual \hyperlink{class_interfaces_1_1_i_adc_temperature_convertor}{Interfaces\+::\+I\+Adc\+Temperature\+Convertor}$\ast$ Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Get\+A\+D\+C2\+Temp\+Convertor\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns pointer to A\+D\+C-\/$>$Temperature convertor instance. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to A\+D\+C-\/$>$Temperature convertor. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_aa1265b1e9431bf3b611e5b45b4782700}{Settings\+Saver\+Loader}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a7224c9ffc2d9c6a3b98fb20246e97cc3}\label{class_interfaces_1_1_i_settings_saver_loader_a7224c9ffc2d9c6a3b98fb20246e97cc3}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Get\+File\+Path@{Get\+File\+Path}}
+\index{Get\+File\+Path@{Get\+File\+Path}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Get\+File\+Path()}{GetFilePath()}}
+{\footnotesize\ttfamily virtual Q\+String Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Get\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get\+File\+Path Returns current file full path. If null then file wasn\textquotesingle{}t loaded/created at all. 
+
+\begin{DoxyReturn}{Returns}
+Current file path. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_a006a6350a00ffc18ec544616e504ccf7}{Settings\+Saver\+Loader}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a73c8012dc63ca02d65a013ca901840ba}\label{class_interfaces_1_1_i_settings_saver_loader_a73c8012dc63ca02d65a013ca901840ba}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Get\+Settings\+Generator\+Ptr@{Get\+Settings\+Generator\+Ptr}}
+\index{Get\+Settings\+Generator\+Ptr@{Get\+Settings\+Generator\+Ptr}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Get\+Settings\+Generator\+Ptr()}{GetSettingsGeneratorPtr()}}
+{\footnotesize\ttfamily virtual \hyperlink{class_interfaces_1_1_i_settings_generator}{Interfaces\+::\+I\+Settings\+Generator}$\ast$ Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Get\+Settings\+Generator\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns pointer to settings generator. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to settings generator. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_aa6b0a9b4f42335b03341a13f8bfff845}{Settings\+Saver\+Loader}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a4c3f69d0bc7c355030c8d371367108d3}\label{class_interfaces_1_1_i_settings_saver_loader_a4c3f69d0bc7c355030c8d371367108d3}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Is\+Modified@{Is\+Modified}}
+\index{Is\+Modified@{Is\+Modified}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Is\+Modified()}{IsModified()}}
+{\footnotesize\ttfamily virtual bool Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Is\+Modified (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Is\+Modified True if file was modified and haven\textquotesingle{}t saved till now. 
+
+\begin{DoxyReturn}{Returns}
+True if file modified. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_a35574bdfc340a148245ea8017c59f2eb}{Settings\+Saver\+Loader}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a4d8bdb2c5a27b5b0aa5ee4e55483f0de}\label{class_interfaces_1_1_i_settings_saver_loader_a4d8bdb2c5a27b5b0aa5ee4e55483f0de}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Load@{Load}}
+\index{Load@{Load}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily virtual bool Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Load (\begin{DoxyParamCaption}\item[{Q\+String}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Loads settings from given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File to load from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if load successful. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_aaf225d7d568ce33f6350d886bb40312a}{Settings\+Saver\+Loader}.
+
+\mbox{\Hypertarget{class_interfaces_1_1_i_settings_saver_loader_a2d6a6dd6e5b6fe15e8b78af2e75725fc}\label{class_interfaces_1_1_i_settings_saver_loader_a2d6a6dd6e5b6fe15e8b78af2e75725fc}} 
+\index{Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}!Save\+As@{Save\+As}}
+\index{Save\+As@{Save\+As}!Interfaces\+::\+I\+Settings\+Saver\+Loader@{Interfaces\+::\+I\+Settings\+Saver\+Loader}}
+\subsubsection{\texorpdfstring{Save\+As()}{SaveAs()}}
+{\footnotesize\ttfamily virtual void Interfaces\+::\+I\+Settings\+Saver\+Loader\+::\+Save\+As (\begin{DoxyParamCaption}\item[{Q\+String}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Saves settings to given file, then sets this file as current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to save. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_settings_saver_loader_a67b93496f8b0a0a779d783e967d93572}{Settings\+Saver\+Loader}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Interfaces/I\+Settings\+Saver\+Loader.\+hpp\end{DoxyCompactItemize}

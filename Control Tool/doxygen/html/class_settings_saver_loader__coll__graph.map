@@ -1,0 +1,6 @@
+<map id="SettingsSaverLoader" name="SettingsSaverLoader">
+<area shape="rect" id="node2" href="$class_interfaces_1_1_i_settings_saver_loader.html" title="Interface to save and load controller settings into XML. " alt="" coords="484,54,673,96"/>
+<area shape="rect" id="node4" href="$class_interfaces_1_1_i_e_e_p_r_o_m_generator.html" title="Interface to convert settings into EEPROM content. " alt="" coords="129,31,348,58"/>
+<area shape="rect" id="node5" href="$class_interfaces_1_1_i_adc_temperature_convertor.html" title="Class, used to convert ADC values to Temperature and vice versa. " alt="" coords="136,82,341,124"/>
+<area shape="rect" id="node6" href="$class_interfaces_1_1_i_settings_generator.html" title="Interface to contain all settings steps. It being used to generate settings table, which will be converted to EEPROM data. " alt="" coords="130,148,347,175"/>
+</map>

@@ -110,9 +110,8 @@ void main()
 		}
 	}
 
-	/* To set up cooler enabled flag correctly */
-	mn_set_target_rpm(0xFF);
-	mn_set_target_rpm(0x00);
+	/* Stopping cooler */
+	mn_stop_cooler();
 
 	/* Main loop */
 	while(1)
@@ -165,8 +164,7 @@ void mn_set_target_rpm(uint16_t target_rpm)
 		if (0x00 == (mn_flags0 & _BV(MN_F0_DISABLE_RPM_LOOP)))
 		{
 			/* Yes */
-			hal_set_cooler_duty_cycle(0x00);
-			mn_flags0 |= _BV(MN_F0_DISABLE_RPM_LOOP);
+			mn_stop_cooler();
 		}
 		return;
 	}
@@ -196,6 +194,15 @@ void mn_set_target_rpm(uint16_t target_rpm)
 		/* Activating loop */
 		mn_flags0 &= ~_BV(MN_F0_DISABLE_RPM_LOOP);
 	}
+}
+
+/**
+ * Stops cooler and disables RPMs feedback loop.
+ */
+void mn_stop_cooler()
+{
+	hal_set_cooler_duty_cycle(0x00);
+	mn_flags0 |= _BV(MN_F0_DISABLE_RPM_LOOP);
 }
 
 /**

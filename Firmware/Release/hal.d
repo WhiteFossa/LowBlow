@@ -1,4 +1,4 @@
-hal.d: ../hal.c ../main.h ../hal.h
+hal.o: ../hal.c ../main.h ../hal.h
 
 ../main.h:
 

@@ -211,6 +211,11 @@ void mn_second_tick();
 void mn_set_target_rpm(uint16_t target_rpm);
 
 /**
+ * Stops cooler and disables RPMs feedback loop.
+ */
+void mn_stop_cooler();
+
+/**
  * Call this function to set target RPM in percents.
  * @param target_rpm Target RPM in percents:
  * 0x00 - cooler stopped;
