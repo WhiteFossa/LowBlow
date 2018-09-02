@@ -6,7 +6,7 @@
         <Additive>-273.15</Additive>
     </ADC2TempSettings>
     <BaseLevels>
-        <TemperatureADC>836</TemperatureADC>
+        <TemperatureADC>833</TemperatureADC>
         <RPMsPWM>27</RPMsPWM>
     </BaseLevels>
     <Steps>

@@ -22,13 +22,15 @@
 
 	main.c
 
-	Main code file
+	Main code file.
 
-	Created 2016/02/07 by White Fossa, also known as Artyom Vetrov
+	Part of "LowBlow" project.
 
-	Feel free to contact: fossa-artem@mail.ru
+	Created 2016/02/07 by White Fossa, also known as Artyom Vetrov.
 
-	Repository: http://home.whitefossa.org/svn/PowerUnitCoolerController/
+	Feel free to contact: whitefossa@gmail.com
+
+	Repository: https://github.com/WhiteFossa/LowBlow
 
 	If repository above is not available, try my LiveJournal:
 	fossa-white.livejournal.com
