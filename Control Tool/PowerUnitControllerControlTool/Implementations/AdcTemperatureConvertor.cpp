@@ -15,6 +15,17 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with project "LowBlow" files. If not, see <http://www.gnu.org/licenses/>.
+
+---
+
+Part of "LowBlow" project.
+
+Feel free to contact: whitefossa@gmail.com
+
+Repository: https://github.com/WhiteFossa/LowBlow
+
+If repository above is not available, try my LiveJournal: fossa-white.livejournal.com
+or as last measure try to search for #WhiteFossa hashtag.
 */
 
 #include <Implementations/AdcTemperatureConvertor.hpp>
