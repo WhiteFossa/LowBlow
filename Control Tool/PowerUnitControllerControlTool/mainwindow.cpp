@@ -445,6 +445,11 @@ void MainWindow::MwSlotCreateFile()
 	CheckDoSaveNeeded(QObject::tr("creating new settings file"));
 
 	// Settings filename
+	QMessageBox::information(this,
+							 QObject::tr("Specify settings file"),
+							 QObject::tr("First specify file, where temperature-to-RPMs settings will be stored."),
+							 QMessageBox::Ok);
+
 	QString newFilePath = QFileDialog::getSaveFileName(this, QObject::tr("New settings file:"));
 
 	if ("" == newFilePath)
@@ -453,7 +458,12 @@ void MainWindow::MwSlotCreateFile()
 	}
 
 	// ADC->Temperature settings file
-	QString ADC2TempFilePath = QFileDialog::getOpenFileName(this, QObject::tr("Select ADC to temperature settings file:"));
+	QMessageBox::information(this,
+							 QObject::tr("Select sensor file"),
+							 QObject::tr("Now select existing file with sensor (ADC-to-temperature) settings.\n"
+										 "You can create such file via Temperature to ADC -> New meny item."),
+							 QMessageBox::Ok);
+	QString ADC2TempFilePath = QFileDialog::getOpenFileName(this, QObject::tr("Select ADC-to-temperature settings file:"));
 
 	if ("" == ADC2TempFilePath)
 	{
