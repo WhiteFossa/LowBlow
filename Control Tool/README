@@ -1,0 +1,33 @@
+Project LowBlow control tool.
+https://github.com/WhiteFossa/LowBlow
+
+I. Building
+II. Using
+
+I. Building
+
+I've already compiled control tool for linux x64, you can find it in PowerUnitControllerTool/Release directory. If you want to build it yourself, you can do it in two ways:
+a) Via QtCreator, b) Via command line.
+
+For build via Qt Creator just open project PowerUnitControllerTool/PowerUnitControllerControlTool.pro in Qt Creator, setup build tools and build it.
+
+For commandline build do the next:
+1) cd PowerUnitControllerTool/Release
+2) rm -rf *
+3) qmake ../PowerUnitControllerControlTool.pro -spec linux-g++-64
+4) make -j 8
+
+
+II. Using
+
+This tool allows you to configure temperature-RPMs curve and then generate EEPROM file with given curve to flash MCU.
+
+Run the tool, and create new Temperature to ADC settings. This settings is the XML file, specifying relationship between temperature and ADC readout. Sensors settings directory contains two examples - file for LM35 sensor and for LM335 with 2/3 divider.
+
+Then create new settings file (it will contain temperature to RPMs curve). Specify where file will be stored and temperature to ADC settings file. You will see table with steps and curve graph. By varying steps width (temperature) and RPMs increment for step set up desired temperature to RPMs curve.
+
+Then you can generate EEPROM file by using File -> Export to EEPROM command.
+
+Flash this EEPROM into MCU (don't forget to desolder capacitor, mentioned in Hardware/README before flashing and solder it back before use).
+
+If you need an example, you can find it in Example settings directory.
