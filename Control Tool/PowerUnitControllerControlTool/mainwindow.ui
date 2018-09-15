@@ -178,8 +178,15 @@
     </property>
     <addaction name="actionNewADC2Temp"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuThemperature_to_ADC_Settings"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="mw_status"/>
   <action name="actionManage">
@@ -258,6 +265,11 @@
   <action name="actionExport_to_EEPROM">
    <property name="text">
     <string>Export &amp;to EEPROM</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>

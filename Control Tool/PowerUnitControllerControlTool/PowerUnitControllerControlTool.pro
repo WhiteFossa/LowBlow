@@ -23,7 +23,8 @@ SOURCES += main.cpp\
 		Auxiliary.cpp \
 		XmlHelper.cpp \
 		Implementations/EEPROMGenerator.cpp \
-		Ihex/kk_ihex_write.c
+		Ihex/kk_ihex_write.c \
+    aboutdialog.cpp
 
 HEADERS  += mainwindow.hpp \
 		Interfaces/IAdcTemperatureConvertor.hpp \
@@ -42,10 +43,12 @@ HEADERS  += mainwindow.hpp \
 		Interfaces/IEEPROMGenerator.hpp \
 		Implementations/EEPROMGenerator.hpp \
 		Ihex/kk_ihex.h \
-		Ihex/kk_ihex_write.h
+		Ihex/kk_ihex_write.h \
+    aboutdialog.h
 
 FORMS    += mainwindow.ui \
-		NewADC2TempDialog.ui
+		NewADC2TempDialog.ui \
+    aboutdialog.ui
 
 DISTFILES += \
     Ihex/LICENSE \

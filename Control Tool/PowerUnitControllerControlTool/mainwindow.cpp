@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(MwSlotLoadFile()));
 	QObject::connect(this, SIGNAL(MwSignalFileModified()), this, SLOT(MwSlotMarkAsModified()));
 	QObject::connect(ui->actionExport_to_EEPROM, SIGNAL(triggered(bool)), this, SLOT(MwSlotExportToEEPROM()));
+	QObject::connect(ui->actionAbout, SIGNAL(triggered(bool)), this, SLOT(MwSlotShowAboutDialog()));
 	ConnectUISlots(true);
 
 	// Initializing status bar
@@ -181,10 +182,18 @@ void MainWindow::UpdateConvertorInformation()
 
 void MainWindow::MwSlotCreateNewADC2Temp()
 {
-		NewADC2TempDialog *dlg = new NewADC2TempDialog(this);
+		auto *dlg = new NewADC2TempDialog(this);
 		dlg->exec();
 
 		SafeDelete(dlg);
+}
+
+void MainWindow::MwSlotShowAboutDialog()
+{
+	auto *dlg = new AboutDialog(this);
+	dlg->exec();
+
+	SafeDelete(dlg);
 }
 
 void MainWindow::MwSlotBaseTemperatureChanged(double tempC)

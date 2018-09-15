@@ -46,6 +46,7 @@ or as last measure try to search for #WhiteFossa hashtag.
 #include <Implementations/SettingsStep.hpp>
 #include <Implementations/SettingsSaverLoader.hpp>
 #include <FossasSimpleGraph/Implementations/QSimpleGraph.hpp>
+#include <aboutdialog.h>
 
 namespace Ui {
 	class MainWindow;
@@ -164,6 +165,11 @@ public slots:
 	 * @brief Call it to export current settings to EEPROM.
 	 */
 	void MwSlotExportToEEPROM();
+
+	/**
+	 * @brief Called when user wants to see about information.
+	 */
+	void MwSlotShowAboutDialog();
 
 
 /* Signals */
