@@ -22,5 +22,6 @@ var searchData=
   ['mwslotrpmdeltachangedraw',['MwSlotRPMDeltaChangedRaw',['../class_main_window.html#a4480e7516f91b93c8abc3d42c1284124',1,'MainWindow']]],
   ['mwslotsavefile',['MwSlotSaveFile',['../class_main_window.html#a198ce62c26c57d653b0ac9f94eac87a4',1,'MainWindow']]],
   ['mwslotsavefileas',['MwSlotSaveFileAs',['../class_main_window.html#aaadd1a2cd4aec05d23e934a26ee3dbc6',1,'MainWindow']]],
+  ['mwslotshowaboutdialog',['MwSlotShowAboutDialog',['../class_main_window.html#a8d2271688fa08105bc522e01c7cae563',1,'MainWindow']]],
   ['mwslotupdatestepstable',['MwSlotUpdateStepsTable',['../class_main_window.html#a07c8e8c9d91588bdcc8e1eae01c4ffd7',1,'MainWindow']]]
 ];
