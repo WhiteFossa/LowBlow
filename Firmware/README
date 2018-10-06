@@ -1,0 +1,20 @@
+Project LowBlow control tool.
+https://github.com/WhiteFossa/LowBlow
+
+Firmware building and flashing README
+
+I. Building
+II. Flashing
+
+I. Building
+
+This firmware was created with Eclipse + AVR Plugin. So, to build it you need Eclipse + AVR Plugin + working AVR toolcahin.
+You can build two different versions of this firmware - one with 2.56V ADC reference and another with 1.1V ADC reference.
+
+By default firmware will built with 2.56V reference, to switch to 1.1V uncomment #define USE_LM35_SENSOR in hal.h.
+
+You can find already built firmware in Release directory.
+
+II. Flashing
+Fuses settings are in FUSES file.
+Firmware can't be flashed with fully assembled circuit - you have to desolder one capacitor before flashing/solder it back before use. Consult with the README in Hardware directory.

@@ -1,0 +1,8 @@
+Project LowBlow control tool.
+https://github.com/WhiteFossa/LowBlow
+
+Hardware README
+
+I. Desolder C8 before flashing (flashing will be unsuccessfull if not desoldered) and solder back before using (without C8 tachometer signal wouldn't be clear and device may not work).
+
+II. Project depends on my components for KiCAD library, you can download it here: https://github.com/WhiteFossa/fossas_kicad_lib
