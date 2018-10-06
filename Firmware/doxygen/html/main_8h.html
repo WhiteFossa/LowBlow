@@ -181,7 +181,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Actual base RMPs is value at EEPROM[MN_LOOKUP_BRPM_ADDRESS] + this value. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00137">137</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00138">138</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -198,7 +198,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>When determining minimal duty cycle we starting from duty cycle = HAL_MIN_DUTY_CYCLE and then increasing it every <a class="el" href="hal_8c.html#a09985dd15e83bdf67de9b094fedfc3c4">hal_second_tick()</a> until cooler reach minimal RPM. This constant defines duty cycle increment if cooler not started yet. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00100">100</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00101">101</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -215,7 +215,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>When powered on, we starting from minimal duty cycle and then increasing it until next tachometer measurement will me greater or equal to this constant. When it occurs firmware believe that cooler started and spinning stable. For 2 pulses per revolution cooler we have 1 = 30 RPM. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00107">107</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00108">108</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -232,7 +232,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Wait this time (in seconds) before remembering RPM at spin-up stage </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00112">112</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00113">113</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -249,7 +249,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>If this flag set to 1, then duty cycle adjustment will be disabled. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00094">94</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00095">95</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -266,7 +266,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Full throttle for cooler. Maximal value for <a class="el" href="main_8h.html#a65809cbce2d6d54feb40be3b843127c0">mn_set_rpm_in_percents()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00142">142</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00143">143</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -283,7 +283,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>EEPROM address of ABL (ADC base level). </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00122">122</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00123">123</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -300,7 +300,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>EEPROM address of base RPMs. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00127">127</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00128">128</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -317,7 +317,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>EEPROM address of the first temperature to RPM lookup value. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00132">132</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00133">133</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -334,7 +334,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Actual temperature increment per step is value from EEPROM low halfbyte + this value. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00147">147</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00148">148</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -351,7 +351,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Wait this time (in seconds) when starting cooler before enabling RPM loop </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00117">117</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00118">118</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -376,7 +376,7 @@ Variables</h2></td></tr>
 <p>When looking up for RPM for given temperature the next algorithm is used: 1) Declare RPM and Temperature variables; 2) If temperature &lt; ABL, then RPM = 0 and exit; 3) RPM = Base RPM, Temperature = ABL (ADC base level); 4) EEPROM address points to the first lookup table byte; 5) If measured temperature &lt;= Temperature, then return RPM and exit; 6) Read lookup byte, parse it, RPM += RPM delta; Temperature += Temperature delta + MN_LOOKUP_TEMPERATURE_INCREMENT; 7) Increment EEPROM address; 8) Goto 5.</p>
 <p>Temperature here is the ADC value, and RPM is the argument of <a class="el" href="main_8h.html#a65809cbce2d6d54feb40be3b843127c0">mn_set_rpm_in_percents()</a> function. When powered on controller will turn cooler off and then will wait until cooler stopped. If no tachometer pulses came during given (in seconds) interval, cooler treated as stopped. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00089">89</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00090">90</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -403,7 +403,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00236">236</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00238">238</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -423,7 +423,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>This function gets called every second (from <a class="el" href="hal_8c.html#a09985dd15e83bdf67de9b094fedfc3c4">hal_second_tick()</a>) </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00127">127</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00129">129</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -444,7 +444,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Function waits given number of seconds. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00141">141</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00143">143</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -470,7 +470,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00216">216</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00218">218</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -497,7 +497,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00159">159</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00161">161</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -517,7 +517,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Stops cooler and disables RPMs feedback loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00202">202</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00204">204</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -535,7 +535,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Flags variable 0 </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00157">157</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00158">158</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -552,7 +552,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Maximal RPM for given cooler </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00177">177</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00178">178</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -569,7 +569,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Duty cycle, for which mn_min_rpm reached </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00172">172</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00173">173</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -586,7 +586,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Minimal RPM for given cooler </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00167">167</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00168">168</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -603,7 +603,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Used as counter in in <a class="el" href="main_8h.html#aaa95b4e58cd4639d9ac2b932bdad5e34">mn_seconds_delay()</a>. Decreases every second, then stays at zero </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00162">162</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00163">163</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -620,7 +620,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>If RPM control loop is enabled, then it will try to get this RPM. DO NOT SET IT MANUALLY, USE <a class="el" href="main_8h.html#aee2dfb2c8a92072f190431c7bd0e7d0a">mn_set_target_rpm()</a> INSTEAD! </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00183">183</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00184">184</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
