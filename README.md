@@ -7,6 +7,9 @@ Open source and hardware (GPLv3+) advanced programmable cooler controller.
 - Cooler speed is being controlled via RPMs loopback (using tachometer), so 50% RPMs will actually be 50% RPMs, not just a half of power voltage. In addition if anything affects cooler RPMs, voltage will be adjusted to keep desired RPMs.
 - Control tool to configure temperature-to-RPMs curve. Using this tool you can set up curve via changing values in table, view how curve looks and finally generate EEPROM HEX file to flash it into controller.
 
+Control tool screenshot:
+![Control tool screenshot](https://raw.githubusercontent.com/WhiteFossa/LowBlow/master/ControlToolScreenshot.png)
+
 ## How to build/flash/use etc
 Each project directory (i.e. Hardware, Firmware and Control Tool) contain README file with instructions.
 
